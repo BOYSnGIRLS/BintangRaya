@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Input Sewa</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -32,7 +32,27 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <style>
+    table, td, th {    
+        border: 0px solid #ddd;
+        text-align: left;
+    }
 
+    table {
+        border-collapse: collapse;
+        /*width: 100%;*/ 
+        background-color: #00FFFF;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+
+    button{
+        background-color: #00FFFF;
+        padding: 5px;
+    }
+    </style>
 </head>
 
 <body class="animsition">
@@ -123,7 +143,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <li class=" has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -178,7 +198,8 @@
         </aside>
         <!-- END MENU SIDEBAR-->
 
-        <!-- PAGE CONTAINER-->
+
+         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
@@ -233,142 +254,69 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">Stok Barang</h2>
-                                    <button class="au-btn au-btn-icon au-btn--blue">
-                                        <i class="zmdi zmdi-plus"></i>tambah barang</button>
+                            <div class="col-lg-12">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+									<center>
+                                        <h2>Persewaan Tenda dan Alat Pesta</h2>
+										<h1>Bintang Raya</h1>
+                                        <h3 >Jl. Singosari No.1 Sumber Pakem Kebonsari Jember</h3>
+										<h3 >Telp. (0331) 323204, 0831 044 055 05</h3>
+									</center>
+                                        <br>
+                                        
+                                        <center><h2 class="title-2 m-b-40">Surat Jalan</h2></center>
+										<h4>No Surat 		:</h4>
+										<h4>Tanggal Pasang	:</h4>
+										<h4>Tanggal Acara 	:</h4>
+										<h4>Tanggal Bongkar :</h4>
+										<h4>Nama			:</h4>
+										<h4>Alamat 			:</h4>
+										<h4>Telp 			:</h4>
+										
+                                        <br>
+									
+                                        <div class="table-responsive table--no-card m-b-30">
+										<table class="table table-borderless table-striped table-earning">
+                                            <thead>
+                                            <tr>
+                                                <th>Jumlah</th>
+                                                <th>Nama Barang</th>
+												<th>Keterangan</th>
+											</tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>100</td>
+                                                <td>Kursi</td>
+                                                <td>Lengkap</td>
+                                            </tr>
+											<tr>
+                                                <td>100</td>
+                                                <td>Mangkok</td>
+                                                <td>Lengkap</td>
+                                            </tr>
+											<tr>
+                                                <td>200</td>
+                                                <td>Sendok</td>
+                                                <td>Lengkap</td>
+                                            </tr>
+											<tr>
+                                                <td>5</td>
+                                                <td>Pemanas</td>
+                                                <td>Lengkap</td>
+                                            </tr>
+											
+                                        </table>
+										</div>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                        <button class="au-btn au-btn-icon au-btn--blue">
+                                        <i></i>Cetak</button>
+                                    <br>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row m-t-25">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c1">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>20</h2>
-                                                <span>Tenda</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1000</h2>
-                                                <span>Piring</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>800</h2>
-                                                <span>Mangkok</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>30</h2>
-                                                <span>Meja</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-       
-                        <div class="row">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>30</h2>
-                                                <span>Meja</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-							</div>
-							  <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>800</h2>
-                                                <span>Mangkok</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1000</h2>
-                                                <span>Piring</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c1">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>20</h2>
-                                                <span>Tenda</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                       
-                                    </div>
-                                </div>
-                            </div> 	
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -381,8 +329,8 @@
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
         </div>
+        <!-- END PAGE CONTAINER-->
 
     </div>
 
