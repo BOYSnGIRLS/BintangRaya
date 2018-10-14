@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="<?= base_url('Welcome/cek_login')?>" method="post">
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" type="username" name="username" placeholder="Username">

@@ -2,15 +2,17 @@
 class Login extends CI_Controller{
     function __construct(){
         parent::__construct();
-        // $this->load->model('model_app');
+        $this->load->model('Model_app');
     }
 
-    function index(){
-        $data=array(
+    public function index()  { 
+    $data=array(
             'title'=>'Login Page'
         );
-        $this->load->view('pages/v_login',$data);
-    }
+        $this->load->view('element/css',$data);
+        $this->load->view('v_login');
+        $this->load->view('element/v_footer');
+  }
 
   //   function cek_login() {
   //       //Field validation succeeded.  Validate against database

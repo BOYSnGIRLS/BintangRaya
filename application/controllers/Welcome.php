@@ -3,25 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-
 	function __construct(){
         parent::__construct();
-        $this->load->model('model_app');
+        $this->load->model('Model_app');
     }
 
 	public function index()
@@ -33,4 +17,44 @@ class Welcome extends CI_Controller {
         $this->load->view('v_login');
         $this->load->view('element/v_footer');
 	}
+
+	function cek_login() {
+        //Field validation succeeded.  Validate against database
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        //query the database
+        $result = $this->Model_app->login($username, $password);
+        if($result) {
+            $sess_array = array();
+            foreach($result as $row) {
+                //create the session
+                $sess_array = array(
+                    'ID' => $row->id_user,
+                    'USERNAME' => $row->username,
+                    'PASS'=>$row->password,
+                    'login_status'=>true,
+                );
+                //set session with value from database
+                $this->session->set_userdata($sess_array);
+               // echo "benar";
+                redirect('Welcome','refresh');
+            }
+            return TRUE;
+        } else {
+            //if form validate false
+            $this->session->set_flashdata('notif', 'password atau username salah');
+            redirect('Welcome','refresh');
+			//echo "salah";
+            return FALSE;
+        }
+    }
+
+    function logout() {
+        $this->session->unset_userdata('ID');
+        $this->session->unset_userdata('USERNAME');
+        $this->session->unset_userdata('PASS');
+        $this->session->unset_userdata('login_status');
+        $this->session->set_flashdata('notif','THANK YOU FOR LOGIN IN THIS APP');
+        redirect('login');
+    }
 }
