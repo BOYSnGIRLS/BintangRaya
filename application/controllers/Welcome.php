@@ -37,7 +37,7 @@ class Welcome extends CI_Controller {
                 //set session with value from database
                 $this->session->set_userdata($sess_array);
                // echo "benar";
-                redirect('Welcome','refresh');
+                redirect('DataBarang','refresh');
             }
             return TRUE;
         } else {
