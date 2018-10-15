@@ -17,13 +17,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="login-form">
                             <form action="<?= base_url('Welcome/cek_login')?>" method="post">
+
+                                <!-- NOTIF -->
+                                <?php
+                                $message = $this->session->flashdata('notif');
+                                if($message){
+                                    echo '<p class="alert alert-danger text-center">'.$message .'</p>';
+                                }?>
+                                
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="au-input au-input--full" type="username" name="username" placeholder="Username">
+                                    <input class="au-input au-input--full" type="username" name="username" placeholder="Username" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required="">
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Masuk</button>                             
                             </form>

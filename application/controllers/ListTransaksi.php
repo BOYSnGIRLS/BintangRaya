@@ -1,6 +1,6 @@
 <?php
 
-class DataBarang extends CI_Controller {
+class ListTransaksi extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
@@ -14,11 +14,11 @@ class DataBarang extends CI_Controller {
 	public function index()
 	{	
 		$data=array(
-            'title'=>'Data Barang'
+            'title'=>'List Transaksi'
         );
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_databarang');
+        $this->load->view('v_listtransaksi');
         $this->load->view('element/v_footer');
 	}
 }
