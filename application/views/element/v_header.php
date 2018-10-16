@@ -22,37 +22,27 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="<?= base_url('DataBarang')?>">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="inputsewa.html">
+                            <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
                         </li>
                         <li>
-                            <a href="listtransaksi.html">
+                            <a href="<?= base_url('ListTransaksi')?>">
                                 <i class="fas fa-table"></i>List Transaksi</a>
                         </li>
                         <li>
-                            <a href="datakerja.html">
+                            <a href="<?= base_url('ListPengembalian')?>">
+                                <i class="fas fa-table"></i>List Transaksi</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('DataKerja')?>">
                                 <i class="far fa-check-square"></i>Data Kerja Pegawai</a>
                         </li>
                         <li>
-                            <a href="gajipegawai.html">
+                            <a href="<?=base_url('GajiPegawai')?>">
                                 <i class="fas fa-calendar-alt"></i>Gaji Pegawai</a>
                         </li>
                         <!-- <li class="has-sub">
