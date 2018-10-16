@@ -14,7 +14,8 @@ class DataBarang extends CI_Controller {
 	public function index()
 	{	
 		$data=array(
-            'title'=>'Data Barang'
+            'title'=>'Data Barang',
+            'active_dashboard'=>'active'
         );
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');

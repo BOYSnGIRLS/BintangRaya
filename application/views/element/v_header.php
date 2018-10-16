@@ -35,7 +35,7 @@
                         </li>
                         <li>
                             <a href="<?= base_url('ListPengembalian')?>">
-                                <i class="fas fa-table"></i>List Transaksi</a>
+                                <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
                         <li>
                             <a href="<?= base_url('DataKerja')?>">
@@ -77,17 +77,21 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <li class="<?php if(isset($active_dashboard)){echo $active_dashboard ;}?> has-sub">
                             <a class="js-arrow" href="<?= base_url('DataBarang')?>">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_inputsewa)){echo $active_inputsewa ;}?> has-sub">
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
                         </li>
                         <li>
                             <a href="<?= base_url('ListTransaksi')?>">
                                 <i class="fas fa-table"></i>List Transaksi</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('ListPengembalian')?>">
+                                <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
                         <li>
                             <a href="datakerja.html">

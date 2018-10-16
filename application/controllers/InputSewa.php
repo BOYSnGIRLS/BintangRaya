@@ -14,7 +14,8 @@ class InputSewa extends CI_Controller {
 	public function index()
 	{	
 		$data=array(
-            'title'=>'Input Sewa'
+            'title'=>'Input Sewa',
+            'active_inputsewa'=>'active'
         );
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
