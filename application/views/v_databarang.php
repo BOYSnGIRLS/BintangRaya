@@ -41,11 +41,12 @@
                                                 <td><?php echo $row->stok_barang;?></td>
                                                 <td><?php echo $row->sewa_barang;?></td>
                                                  <td><?php echo $row->jasa_barang;?></td>
-                                                 <td>EDIT</td>
-                                                 <td>HAPUS</td>
+                                                 <!-- <td>EDIT</td> -->
+                                                 <!-- <td>HAPUS</td> -->
 
-                                                <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->nim;?>">Edit</a></td>
-                                                <td><a href="<?php echo base_url(); ?>DataBarang/delete/<?php echo $row->nim;?>">Hapus</a></td> -->
+                                                <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td>
+
+                                                <td><a href="<?php echo base_url(); ?>DataBarang/delete/<?php echo $row->id_barang;?>">Hapus</a></td>
                                             </tr>
                                             <?php $no++;
                                             endforeach;?>

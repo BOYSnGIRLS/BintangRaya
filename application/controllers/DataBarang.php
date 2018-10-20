@@ -56,6 +56,35 @@ class DataBarang extends CI_Controller {
             $this->load->view('v_inputBarang');
             $this->load->view('element/v_footer');
         }
-    
     }
+
+    function delete($id){
+        $this->Model_Barang->delete($id);
+        redirect('DataBarang/home');
+    }
+
+    function edit(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'user' => $this->Model_Barang->get_data_edit($id),
+        );
+        
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view("v_editbarang", $data);
+         $this->load->view('element/v_footer');
+
+    }
+
+    function update(){
+        $id = $this->input->post('id_barang');
+        $insert = $this->Model_Barang->update(array(
+                
+                'nama_barang' => $this->input->post('namaBarang'),
+                'stok_barang' => $this->input->post('stokBarang'),
+                'sewa_barang' => $this->input->post('sewaBarang'),
+                'jasa_barang' => $this->input->post('jasaBarang')
+            ), $id);
+        redirect('DataBarang/home');
+        }
 }

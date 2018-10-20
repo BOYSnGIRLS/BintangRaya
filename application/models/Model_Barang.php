@@ -14,13 +14,18 @@ class Model_Barang extends CI_Model {
 		return $this->db->insert('barang',$data);
 	}
 	
-	// function delete($id){
-	// 	$this->db->where('nim', $id);
- //        return $this->db->delete('tm_mahasiswa');
-	// }
+	function delete($id){
+		$this->db->where('id_barang', $id);
+        return $this->db->delete('barang');
+	}
 	
-	// function update($data = array(),$id){
-	// 	$this->db->where('nim',$id);
-	// 	return $this->db->update('tm_mahasiswa',$data);
-	// }
+	function get_data_edit($id){
+		$query = $this->db->query("SELECT * FROM barang WHERE id_barang = '$id'");
+		return $query->result_array();
+	}
+
+	function update($data = array(),$id){
+		$this->db->where('id_barang',$id);
+		return $this->db->update('barang',$data);
+	}
 }
