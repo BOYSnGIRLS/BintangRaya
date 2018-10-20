@@ -139,7 +139,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="Pak Andre" />
+                                            <img src="<?= base_url('assets/images/icon/avatar-01.jpg')?>" alt="Pak Andre" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">Pak Andre</a>
@@ -148,7 +148,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="Pak Andre" />
+                                                        <img src="<?= base_url('assets/images/icon/avatar-01.jpg')?> " alt="Pak Andre" />
                                                     </a>
                                                 </div>
                                                 <div class="content">

@@ -31,7 +31,7 @@ class Model_app extends CI_Model{
     function login($username, $password) {
         //create query to connect user login database
         $this->db->select('*');
-        $this->db->from('tabel_user');
+        $this->db->from('user');
         $this->db->where('username', $username);
         $this->db->where('password', $password);
         $this->db->limit(1);
