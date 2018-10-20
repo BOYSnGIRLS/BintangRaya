@@ -10,25 +10,9 @@ class Model_Barang extends CI_Model {
 		return $query->result();
 	}
 	
-	// function get_prodi(){
-	// 	$query = $this->db->query("SELECT * FROM tm_prodi");
-	// 	return $query->result();
-	// }
-	
-	// function get_gol(){
-	// 	$query = $this->db->query("SELECT * FROM tm_gol");
-	// 	return $query->result();
-	// }
-	
-	// function get_data_edit($id){
-	// 	$query = $this->db->query("SELECT * FROM tm_mahasiswa WHERE nim = '$id'");
-	// 	return $query->result_array();
-	// }
-	
-	// function input($data = array()){
-	// 	return $this->db->insert('tm_mahasiswa',$data);
-	// 	//return $this->db->update('tm_mahasiswa',$data);
-	// }
+	function input($data = array()){
+		return $this->db->insert('barang',$data);
+	}
 	
 	// function delete($id){
 	// 	$this->db->where('nim', $id);

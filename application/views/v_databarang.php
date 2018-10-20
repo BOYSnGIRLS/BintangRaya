@@ -12,9 +12,8 @@
 						<div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <button class="au-btn au-btn-icon au-btn--blue">
-                                        <i class="zmdi zmdi-plus"></i>tambah barang</button>
-									<h3 class="title-1">Kategori</h3>
+                                    
+									<h3 class="title-1"><a href="<?php echo base_url()?>DataBarang/input">Tambah Barang</a></h3>
                                 </div>
                             </div>
                         </div>
