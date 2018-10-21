@@ -20,7 +20,6 @@ class InputSewa extends CI_Controller {
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
         $this->load->view('v_inputsewa');
-        $this->load->view('element/v_footer');
 	}
 
     public function get_autocomplete(){    //membuat dropdown pilihan di search box

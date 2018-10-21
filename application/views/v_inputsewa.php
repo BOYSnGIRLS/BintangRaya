@@ -98,20 +98,6 @@
                                 <th>Jumlah Sewa</th>
                             </tr>
                             </thead>
-                            <tr>
-                                <td>1.</td>
-                                <td>PA011</td>
-                                <td>Tenda Medium</td>
-                                <td>5</td>
-                                <td><input type="text" name="jml1"></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><input type="" name=""></td>
-                                <td><input type="" name=""></td>
-                                <td></td>
-                                <td><input type="" name=""></td>
-                            </tr>
                         </table>
                     </div>
                     <hr>
@@ -136,3 +122,29 @@
 <!-- END PAGE CONTAINER-->
 
 </div>
+
+ <!-- Bootstrap JS-->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+</body>
+
+</html>
