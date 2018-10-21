@@ -66,7 +66,9 @@ class DataBarang extends CI_Controller {
     function edit(){
         $id = $this->uri->segment(3);
         $data = array(
-            'user' => $this->Model_Barang->get_data_edit($id),
+            'title'=>'Data Barang',
+            'active_dashboard'=>'active',
+            'user' => $this->Model_Barang->get_data_edit($id)
         );
         
         $this->load->view('element/css',$data);
@@ -80,10 +82,10 @@ class DataBarang extends CI_Controller {
         $id = $this->input->post('id_barang');
         $insert = $this->Model_Barang->update(array(
                 
-                'nama_barang' => $this->input->post('namaBarang'),
-                'stok_barang' => $this->input->post('stokBarang'),
-                'sewa_barang' => $this->input->post('sewaBarang'),
-                'jasa_barang' => $this->input->post('jasaBarang')
+                'nama_barang' => $this->input->post('nama_barang'),
+                'stok_barang' => $this->input->post('stok_barang'),
+                'sewa_barang' => $this->input->post('sewa_barang'),
+                'jasa_barang' => $this->input->post('jasa_barang'),
             ), $id);
         redirect('DataBarang/home');
         }

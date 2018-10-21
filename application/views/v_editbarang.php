@@ -14,19 +14,19 @@
                                 <div class="overview-wrap">
                                     <p>
 										<form method="post" action="<?php echo base_url()?>DataBarang/update">
-							        Kode Barang<br/><input type="text" name="kodeBarang" size="5" maxlength="5" value="<?php echo @$user[0]['kodeBarang']; ?>"><br/><br/>
+							        Kode Barang<br/><input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>"><br/><br/>
 									
-							        Nama<br/><input type="text" name="namaBarang" size="30" maxlength="25" value="<?php echo @$user[0]['namaBarang']; ?>"><br/><br/>
+							        Nama<br/><input type="text" name="nama_barang" size="30" maxlength="25" value="<?php echo @$user[0]['nama_barang']; ?>"><br/><br/>
 									
-							        Stok Barang<br/><input type="number" name="stokBarang" size="5" maxlength="5" value="<?php echo @$user[0]['stokBarang']; ?>"><br/><br/>
+							        Stok Barang<br/><input type="number" name="stok_barang" size="5" maxlength="5" value="<?php echo @$user[0]['stok_barang']; ?>"><br/><br/>
 
-							        Harga Sewa<br/><input type="number" name="sewaBarang" size="5" maxlength="5" value="<?php echo @$user[0]['sewaBarang']; ?>"><br/><br/>
+							        Harga Sewa<br/><input type="number" name="sewa_barang" size="5" maxlength="5" value="<?php echo @$user[0]['sewa_barang']; ?>"><br/><br/>
 
-							        Harga Jasa<br/><input type="number" name="jasaBarang" size="5" maxlength="5" value="<?php echo @$user[0]['jasaBarang']; ?>"><br/><br/>
+							        Harga Jasa<br/><input type="number" name="jasa_barang" size="5" maxlength="5" value="<?php echo @$user[0]['jasa_barang']; ?>"><br/><br/>
 
 
 									<br/><br/>
-							        <input type="submit" name="btnTambah" value="Simpan"/>
+							        <input type="submit" name="btnSimpan" value="Simpan"/>
 							        <a href="<?php echo base_url()?>DataBarang/home">Kembali</a>
 							    </form>
 									</p>
