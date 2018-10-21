@@ -46,5 +46,11 @@ class Model_app extends CI_Model{
         }
     }
 	
+    function search($title){
+        $this->db->like('nama_barang', $title , 'both');
+        $this->db->order_by('nama_barang', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('barang')->result();
+    }
    
 }

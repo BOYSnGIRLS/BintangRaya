@@ -22,4 +22,18 @@ class InputSewa extends CI_Controller {
         $this->load->view('v_inputsewa');
         $this->load->view('element/v_footer');
 	}
+
+    public function get_autocomplete(){    //membuat dropdown pilihan di search box
+        if (isset($_GET['term'])) {
+            $result = $this->Model_app->search($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = array(
+                    'label'=> $row->nama_barang,
+                    'id_barang' => $row->id_barang
+                );
+                echo json_encode($arr_result);
+            }
+        }
+    }
 }
