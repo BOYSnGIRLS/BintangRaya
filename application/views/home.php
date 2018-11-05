@@ -13,8 +13,8 @@
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1"><a href="<?php echo base_url()?>DataBarang/home">TENDA</a></h2>
-                                    <h2 class="title-1"><a href="<?php echo base_url()?>DataBarang/home">ALAT MAKAN</a></h2>
-                                   <h2 class="title-1"><a href="<?php echo base_url()?>DataBarang/home">BARANG</a></h2>
+                                    <h2 class="title-1"><a href="<?php echo base_url()?>DataBarang/home2">ALAT MAKAN</a></h2>
+                                   <h2 class="title-1"><a href="<?php echo base_url()?>DataBarang/home3">BARANG</a></h2>
 									
                                 </div>
                             </div>

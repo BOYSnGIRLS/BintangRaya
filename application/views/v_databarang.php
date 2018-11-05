@@ -39,8 +39,8 @@
                                                 <td><?php echo $row->id_barang;?></td>
                                                 <td><?php echo $row->nama_barang;?></td>
                                                 <td><?php echo $row->stok_barang;?></td>
-                                                <td><?php echo $row->sewa_barang;?></td>
-                                                 <td><?php echo $row->jasa_barang;?></td>
+                                                <td><?php echo $row->harga_sewa;?></td>
+                                                 <td><?php echo $row->harga_jasa;?></td>
                                                  <!-- <td>EDIT</td> -->
                                                  <!-- <td>HAPUS</td> -->
 
