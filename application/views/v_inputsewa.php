@@ -7,8 +7,13 @@
                 <div class="au-card m-b-30">
                     <div class="au-card-inner">
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
-
+        <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
                     <!-- input data penyewa -->
+                    <div class="form-group row">
+                        <label>No Pesanan</label>
+                        <input type="text" class="form-control" id="id_sewa" name="id_sewa"  style="width:200px;" value="<?php echo $kode;?>" readonly>
+                    </div>
+
                     <div class="form-group row">
 
                       <div class="col-sm-4" >
@@ -30,14 +35,14 @@
 
                       <div class="col-sm-3">
                         <label for="Pesan">Tanggal Pakai:</label>
-                        <input class="form-control" type="date" name="tgl_ambil" value="<?php if(isset($data)) { echo $data[0]->tgl_ambil; } ?>">
+                        <input class="form-control" type="date" name="tgl_ambil" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
                       </div>
                     </div>
 
                     </div>
 
 
-                    <div class="row">
+                    <div class="form-group row">
                         <div class="col-lg-9">
                         
                         <form id="form_search" action="<?php echo site_url('InputSewa/get_autocomplete');?>" method="GET">
@@ -47,8 +52,8 @@
                                 
                              </div>
                         </form>
-
                     </div>
+
                     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
@@ -61,6 +66,8 @@
                                 $(this).val(ui.item.label);
                                 $('[name="id_barang"]').val(ui.item.id_barang);
                                 $('[name="nama_barang"]').val(ui.item.label);
+                                $('[name="stok_barang"]').val(ui.item.stok);
+                                $('[name="harga_sewa"]').val(ui.item.harga);
                             
                             }
                         });
@@ -72,32 +79,42 @@
                         <div class="col-sm-3" >
                             <label  for="nama">Id Barang:</label>
                             <input class="form-control" type="text" name="id_barang" readonly>
+                            <input type="hidden" class="form-control" id="id_sewa" name="id_sewa" style="width:200px;" value="<?php echo $kode;?>" readonly>
                           </div>
 
                           <div class="col-sm-3" >
                             <label  for="nama">Nama Barang:</label>
                             <input class="form-control" type="text" name="nama_barang" readonly >
                           </div>
+
+                          <div class="col-sm-3" >
+                            <label  for="nama">Stok Barang:</label>
+                            <input class="form-control" type="text" name="stok_barang" readonly >
+                          </div>
                           
-                          <div class="col-lg-3">
-                          <label for="nomor">Jumlah Beli: </label>
-                            <input class="form-control" placeholder="Masukan Jumlah Beli" type="text" name="jumlah">
-                            <span class="input-group-btn">
+                          <div class="col-sm-3">
+                          <label for="nomor">Jumlah Sewa: </label>
+                            <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
+                            <!-- <span class="input-group-btn">
                                     <button class="btn btn-info" type="submit">Submit</button>
-                                </span>
+                                </span> -->
                             </div>
                         </div>
-
+                </form>
                         <table class="table table-borderless table-data3">
                             <thead>
                             <tr>
                                 <th>No.</th>
                                 <th>ID Barang</th>
                                 <th>Nama Barang</th>
-                                <th>Stok Barang</th>
                                 <th>Jumlah Sewa</th>
+                                <th>Biaya Sewa</th>
+                                <th>Total</th>
                             </tr>
                             </thead>
+                            <tbody>
+                                <!--  -->
+                            </tbody>
                         </table>
                     </div>
                     <hr>
@@ -122,6 +139,16 @@
 <!-- END PAGE CONTAINER-->
 
 </div>
+
+<script type="text/javascript">
+        function hanyaAngka(evt) {
+          var charCode = (evt.which) ? evt.which : event.keyCode
+           if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+            return false;
+          return true;
+        }
+    </script>
 
  <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
