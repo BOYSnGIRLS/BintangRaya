@@ -28,6 +28,12 @@ class Model_app extends CI_Model{
         $this->db->insert($table,$data) or die ($db->error);
     }
 
+   
+    // =============================================LOGIN=======================================================
+    public function logged_id(){
+        return $this->session->userdata('username');
+    }
+    
     function login($username, $password) {
         //create query to connect user login database
         $this->db->select('*');
@@ -42,9 +48,11 @@ class Model_app extends CI_Model{
             return $query->result(); //if data is true
         } else {
             return false; //if data is wrong
-			redirect('login');
+            redirect('login');
         }
     }
+
+    // ==========================================PENYEWAAN=======================================================
 	
     function search($title){
         $this->db->like('nama_barang', $title , 'both');
