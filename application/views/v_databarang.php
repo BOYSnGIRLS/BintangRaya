@@ -51,7 +51,7 @@
 
                                                 <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td>
 
-                                                <td><a href="<?php echo base_url(); ?>DataBarang/delete/<?php echo $row->id_barang;?>">Hapus</a></td>
+                                                <td><a href="<?php echo base_url(); ?>DataBarang/delete2/<?php echo $row->id_barang;?>">Hapus</a></td>
                                             </tr>
                                             <?php $no++;
                                             endforeach;?>
