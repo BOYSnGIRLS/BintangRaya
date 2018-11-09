@@ -73,6 +73,13 @@ class Model_Barang extends CI_Model {
 	    return $kodejadi;
 	  }
 
+	function get_kategori(){
+		$this->db->select('*');
+		$this->db->from('kategori_barang');
+	    $data = $this->db->get();
+	    return $data->result();
+	}
+
 	  function inputdetail($data,$table) {
 	    $this->db->insert($table,$data);
 
