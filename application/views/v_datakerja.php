@@ -155,4 +155,18 @@
                     </div>
                 </div>
             </div>
+<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
+<script language="javascript">
+   function tambah() {
+     var idf = document.getElementById("idf").value;
+     var stre;
+     stre="<p id='srow" + idf + "'><input type='text' size='40' name='rincian_hobi[]' placeholder='Masukkan Hobi' /> <a href='#' style=\"color:#3399FD;\" onclick='hapusElemen(\"#srow" + idf + "\"); return false;'>Hapus</a></p>";
+     $("#divHobi").append(stre);
+     idf = (idf-1) + 2;
+     document.getElementById("idf").value = idf;
+   }
+   function hapusElemen(idf) {
+     $(idf).remove();
+   }
+</script>
         
