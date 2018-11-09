@@ -10,7 +10,9 @@ class DataBarang extends CI_Controller {
         };
         $this->load->helper(array('url'));
         $this->load->model('Model_Barang');
-    }
+
+        }
+    
 
 	public function index()
 	{	
