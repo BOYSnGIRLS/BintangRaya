@@ -10,27 +10,29 @@
         <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
                     <!-- input data penyewa -->
                     <div class="form-group row">
+                         <div class="col-sm-4" >
                         <label>No Pesanan</label>
                         <input type="text" class="form-control" id="id_sewa" name="id_sewa"  style="width:200px;" value="<?php echo $kode;?>" readonly>
+                    </div>
                     </div>
 
                     <div class="form-group row">
 
                       <div class="col-sm-4" >
                         <label  for="nama">Nama Penyewa:</label>
-                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pemesan" value="<?php if(isset($data)) { echo $data[0]->nama_pemesan; } ?>">
+                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pemesan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
                       </div>
                       
                       <div class="col-sm-4">
                       <label for="nomor">Nomor Telepon: </label>
-                        <input class="form-control" placeholder="Masukan Nomor" type="text" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->no_telp; } ?>">
+                        <input class="form-control" placeholder="Masukan Nomor" type="text" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>">
                         </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-4">
                         <label for="alamat">Alamat Lengkap:</label>
-                        <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_antar; } ?>">
+                        <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>">
                       </div>
 
                       <div class="col-sm-3">
@@ -77,27 +79,28 @@
 
                     <div class="form-group row">
                         <div class="col-sm-3" >
-                            <label  for="nama">Id Barang:</label>
-                            <input class="form-control" type="text" name="id_barang" readonly>
-                            <input type="hidden" class="form-control" id="id_sewa" name="id_sewa" style="width:200px;" value="<?php echo $kode;?>" readonly>
-                          </div>
-
-                          <div class="col-sm-3" >
                             <label  for="nama">Nama Barang:</label>
-                            <input class="form-control" type="text" name="nama_barang" readonly >
+                            <input class="form-control" type="text" name="nama_barang" readonly>
+                            <input class="form-control" type="hidden" name="id_barang" readonly>
+                            <input type="hidden" class="form-control" id="nama_barang" name="nama_barang" style="width:200px;" value="<?php echo $kode;?>" readonly>
                           </div>
 
                           <div class="col-sm-3" >
                             <label  for="nama">Stok Barang:</label>
                             <input class="form-control" type="text" name="stok_barang" readonly >
                           </div>
+
+                          <div class="col-sm-3" >
+                            <label  for="nama">Biaya Sewa:</label>
+                            <input class="form-control" type="text" name="harga_sewa" readonly >
+                          </div>
                           
                           <div class="col-sm-3">
                           <label for="nomor">Jumlah Sewa: </label>
                             <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
-                            <!-- <span class="input-group-btn">
+                            <span class="input-group-btn">
                                     <button class="btn btn-info" type="submit">Submit</button>
-                                </span> -->
+                                </span>
                             </div>
                         </div>
                 </form>
@@ -113,14 +116,53 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <!--  -->
+                                <?php $i = 1; ?>
+                                <?php foreach ($detail_sewa as $items): ?>
+                                
+                                <tr>
+                                    <td><? echo $i ;?></td>
+                                     <td><?=$items->id_barang;?></td>
+                                     <td><?=$items->nama_barang;?></td>
+                                     <td style="text-align:right;"><?php echo number_format($items->harga);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
+                                     <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
+                                     <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
+                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                                </tr>
+                                
+                                <?php $i++; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
                     <hr>
-                    <br>
-                        <h3><button>SIMPAN</button></h3>
-                    <br>
+                    <form action="<?php echo base_url().'InputSewa'?>" method="post">
+            <table>
+                <tr>
+                    <td style="width:760px;" rowspan="2"></td>
+                    <th style="width:140px;">Total (Rp)</th>
+                    <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($total[0]->total);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
+                    <input type="hidden" id="total" name="total" value="<?php echo $total[0]->total;?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                </tr>
+                <tr>
+                    <th>DP (Rp)</th>
+                    <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
+                    <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>Pelunasan (Rp)</th>
+                    <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th><input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
+                    <th><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></th>
+                </tr>
+            </table>
+            </form>
+            <hr/>
+        </div>
                 </div>
             </div>
         </div>

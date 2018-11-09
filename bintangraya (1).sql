@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2018 at 05:10 AM
+-- Generation Time: Nov 09, 2018 at 03:05 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -100,6 +100,7 @@ CREATE TABLE `paket_tenda` (
 
 CREATE TABLE `pelanggan` (
   `id_pelanggan` int(6) NOT NULL,
+  `id_sewa` varchar(6) NOT NULL,
   `nama_pelanggan` varchar(15) NOT NULL,
   `alamat_pelanggan` text NOT NULL,
   `telp_pelanggan` varchar(15) NOT NULL
@@ -127,7 +128,6 @@ CREATE TABLE `pengembalian` (
 
 CREATE TABLE `sewa` (
   `id_sewa` varchar(6) NOT NULL,
-  `id_pelanggan` int(11) NOT NULL,
   `tgl_sekarang` date NOT NULL,
   `tgl_pasang` date NOT NULL,
   `tgl_acara` date NOT NULL,
@@ -212,7 +212,8 @@ ALTER TABLE `paket_tenda`
 -- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  ADD PRIMARY KEY (`id_pelanggan`);
+  ADD PRIMARY KEY (`id_pelanggan`),
+  ADD KEY `id_sewa` (`id_sewa`);
 
 --
 -- Indexes for table `pengembalian`
@@ -225,8 +226,7 @@ ALTER TABLE `pengembalian`
 -- Indexes for table `sewa`
 --
 ALTER TABLE `sewa`
-  ADD PRIMARY KEY (`id_sewa`),
-  ADD KEY `id_pelanggan` (`id_pelanggan`);
+  ADD PRIMARY KEY (`id_sewa`);
 
 --
 -- Indexes for table `tenda`
@@ -277,16 +277,16 @@ ALTER TABLE `paket_tenda`
   ADD CONSTRAINT `paket_tenda_ibfk_1` FOREIGN KEY (`id_tenda`) REFERENCES `tenda` (`id_tenda`);
 
 --
+-- Constraints for table `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  ADD CONSTRAINT `pelanggan_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`);
+
+--
 -- Constraints for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`);
-
---
--- Constraints for table `sewa`
---
-ALTER TABLE `sewa`
-  ADD CONSTRAINT `sewa_ibfk_1` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
