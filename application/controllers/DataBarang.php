@@ -48,7 +48,7 @@ class DataBarang extends CI_Controller {
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
         $this->load->view('v_databarang',$data+$kode+$option_kategori);    
-        $this->load->view('element/v_footer');
+        // $this->load->view('element/v_footer');
     }
 
     function barang(){
@@ -83,6 +83,20 @@ class DataBarang extends CI_Controller {
             $this->load->view('v_inputBarang');
             $this->load->view('element/v_footer');
         }
+    }
+
+    public function tambah(){
+        $data = array(
+            'nama_barang'     => $this->input->post('nama_barang'),
+            'harga_sewa' => $this->input->post('harga_sewa'),
+            'harga_jasa' => $this->input->post('harga_jasa'),
+            'stok_barang' => $this->input->post('stok_barang'),
+            'id_kategori' => $this->input->post('id_kategori')
+
+        );
+        $this->Model_Barang->tambah($data);
+        $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        redirect('DataBarang/Home');
     }
 
     function delete($id){

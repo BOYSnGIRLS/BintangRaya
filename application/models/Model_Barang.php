@@ -80,8 +80,13 @@ class Model_Barang extends CI_Model {
 	    return $data->result();
 	}
 
-	  function inputdetail($data,$table) {
+	function inputdetail($data,$table) {
 	    $this->db->insert($table,$data);
 
 	  }
+
+	function tambah($data){
+	    $this->db->insert('barang', $data);
+	    return TRUE;
+}
 }

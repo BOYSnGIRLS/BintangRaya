@@ -14,7 +14,21 @@
                                   </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
+=======
+                        </div>
+<<<<<<< HEAD
+						<div class="row">
+                            <div class="col-md-12">
+                                <div class="overview-wrap">
+									<!-- <h3 class="title-1"><a href="<?php echo base_url()?>DataBarang/input">Tambah Barang</a></h3> -->
+                                </div>
+                            </div>
+                        </div>
+=======
+>>>>>>> 2c5f2ce8e5aab807cc32f1fe555eb7c7ef9ffd97
 						
+>>>>>>> 108a8793a9df5dbf563a597efc862e6ca9fca841
                             <div class="table-responsive table--no-card m-b-30">
                                     <table class=" table-striped table-earning">
                                         <thead>
@@ -76,7 +90,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/input')?>" method="post" enctype="multipart/form-data" role="form">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>
@@ -85,7 +99,7 @@
                                         <option value="" class="form-control">Pilih</option>
                                         <?php
                                         foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->nama_kategori.'">'.$data->nama_kategori.'</option>';
+                                            echo '<option value="'.$data->id_kategori.'">'.$data->nama_kategori.'</option>';
                                         }
                                         ?>
                                     </select>
@@ -104,22 +118,35 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Harga Sewa </label>
+                                    <div class="col-lg-10">
+                                      <input type="number" class="form-control" name="harga_sewa" placeholder="Tuliskan Harga"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Harga Jasa</label>
                                     <div class="col-lg-10">
                                       <input type="number" class="form-control" name="harga_jasa" placeholder="Tuliskan Harga"></textarea>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Stok</label>
+                                    <div class="col-lg-10">
+                                      <input type="number" class="form-control" name="stok_barang" placeholder="Tuliskan Jumlah Stok"></textarea>
+                                    </div>
+                                </div>
                             </div>
-                          </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="button" class="btn btn-primary" type="submit" name="btnTambah">Simpan</button>
+                  </div></form>
                   </div>
                 </div>
               </div>
             </div>
       <!-- end modal large -->
+<<<<<<< HEAD
 
        <!-- modal edit Barang -->
             <div class="modal fade" id="editBarang" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
@@ -133,6 +160,25 @@
                   </div>
                   <div class="modal-body">
                     <form class="form-horizontal" action="<?php echo base_url('DataBarang/update')?>" method="post" enctype="multipart/form-data" role="form">
+=======
+<<<<<<< HEAD
+                              
+=======
+                
+        
+<<<<<<< HEAD
+        
+=======
+        <!-- Modal Tambah -->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tambah-data" class="modal fade">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                          <h4 class="modal-title">Tambah Data</h4>
+                      </div>
+                      <form class="form-horizontal" action="<?php echo base_url('DataBarang/input')?>" method="post" enctype="multipart/form-data" role="form">
+>>>>>>> 2c5f2ce8e5aab807cc32f1fe555eb7c7ef9ffd97
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Kode Barang</label>
@@ -173,24 +219,65 @@
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
             </div>
       <!-- end modal -->
      
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+=======
+          </div>
+>>>>>>> 860461f1e47ae788e8432eed2f624d061aa2a092
+
+                  
+>>>>>>> 108a8793a9df5dbf563a597efc862e6ca9fca841
+
+    <!-- <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script> -->
+>>>>>>> 2c5f2ce8e5aab807cc32f1fe555eb7c7ef9ffd97
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
     <script>
       $(document).ready(function() {
           // Untuk sunting
-          $('#tambah-data').on('show.bs.modal', function (event) {
+          $('#largeModal').on('show.bs.modal', function (event) {
               var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
               var modal          = $(this)
  
               // Isi nilai pada field
+              modal.find('#id_kategori').html(div.data('id_kategori'));
               modal.find('#id_barang').attr("value",div.data('id_barang'));
               modal.find('#nama_barang').attr("value",div.data('nama_barang'));
+              modal.find('#harga_sewa').html(div.data('harga_sewa'));
               modal.find('#harga_jasa').html(div.data('harga_jasa'));
+              modal.find('#stok_barang').html(div.data('stok_barang'));
           });
       });
   </script>
+  
+<!-- Jquery JS-->
+    <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
+    </script>
 
+    <!-- Main JS-->
+    <script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
