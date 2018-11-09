@@ -14,7 +14,7 @@ class GajiPegawai extends CI_Controller {
 	public function index()
 	{	
 		$data=array(
-            'title'=>'List Transaksi'
+            'title'=>'Gaji Pegawai'
         );
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');

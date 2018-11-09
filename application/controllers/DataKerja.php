@@ -14,7 +14,7 @@ class DataKerja extends CI_Controller {
 	public function index()
 	{	
 		$data=array(
-            'title'=>'List Transaksi'
+            'title'=>'Data Kerja'
         );
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
