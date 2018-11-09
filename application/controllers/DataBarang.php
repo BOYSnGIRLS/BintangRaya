@@ -4,27 +4,33 @@ class DataBarang extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
-        if($this->session->userdata('login_status') != TRUE ){
-            $this->session->set_flashdata('notif','LOGIN GAGAL USERNAME ATAU PASSWORD ANDA SALAH !');
-            redirect('');
-        };
         $this->load->helper(array('url'));
         $this->load->model('Model_Barang');
 
+        $this->load->library('session');
+        $this->load->helper('url');
+
+        if(!$this->session->userdata('username')){
+            redirect('Login');
         }
+
+    }
     
 
-	public function index()
-	{	
-	   $data=array(
+	public function index(){	
+	   if($this->session->userdata('username')){
+        $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active'
         );
         $kode['kode'] = $this->Model_Barang->get_id();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('home', $kode);	
+        $this->load->view('home', $kode);   
         $this->load->view('element/v_footer');
+       }else{
+        redirect('Login');
+       }
 	}
 
     function tenda(){

@@ -30,7 +30,7 @@ class Login extends CI_Controller{
         if(isset($_POST['btn_log'])){
             $this->Model_app->username = $_POST['username'];
             $this->Model_app->password = $_POST['password'];
-            if($this->Model_app->login()==TRUE){
+            if($this->Model_app->cek_log()==TRUE){
                 $this->session->set_userdata('username', $this->Model_app->username);
                 redirect('DataBarang');
             }else{
