@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Id Barang</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="id_barang" value="" readonly>
+                                        <input type="text" class="form-control" name="id_barang" value="<?php echo $kode ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -108,7 +108,48 @@
       <!-- end modal large -->
                 
         
+<<<<<<< HEAD
         
+=======
+        <!-- Modal Tambah -->
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tambah-data" class="modal fade">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                          <h4 class="modal-title">Tambah Data</h4>
+                      </div>
+                      <form class="form-horizontal" action="<?php echo base_url('DataBarang/input')?>" method="post" enctype="multipart/form-data" role="form">
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Id Barang</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="id_barang" value="<? echo $kode; ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Nama Barang</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="nama_barang" placeholder="Tuliskan Nama">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Harga Jasa</label>
+                                    <div class="col-lg-10">
+                                      <input type="number" class="form-control" name="harga_jasa" placeholder="Tuliskan Harga"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+>>>>>>> 860461f1e47ae788e8432eed2f624d061aa2a092
 
                   
 

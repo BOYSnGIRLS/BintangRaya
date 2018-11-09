@@ -53,4 +53,28 @@ class Model_Barang extends CI_Model {
 		$this->db->where('id_barang',$id);
 		return $this->db->update('barang',$data);
 	}
+
+	function get_id(){
+	    $this->db->select('RIGHT(barang.id_barang,4) as kode', FALSE);
+	    $this->db->order_by('id_barang','DESC');    
+	    $this->db->limit(1);    
+	    $query = $this->db->get('barang');     
+	    if($query->num_rows() <> 0){      
+	  
+	     $data = $query->row();      
+	     $kode = intval($data->kode) + 1;    
+	    }
+	    else {      
+	     //jika kode belum ada      
+	     $kode = 1;    
+	    }
+	    $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); 
+	    $kodejadi = "BR".$kodemax;  
+	    return $kodejadi;
+	  }
+
+	  function inputdetail($data,$table) {
+	    $this->db->insert($table,$data);
+
+	  }
 }
