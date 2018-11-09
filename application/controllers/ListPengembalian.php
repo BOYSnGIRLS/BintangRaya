@@ -4,15 +4,18 @@ class ListPengembalian extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
-        if($this->session->userdata('login_status') != TRUE ){
-            $this->session->set_flashdata('notif','LOGIN GAGAL USERNAME ATAU PASSWORD ANDA SALAH !');
-            redirect('');
-        };
         $this->load->model('Model_app');
+
+        $this->load->library('session');
+        $this->load->helper('url');
+
+        if(!$this->session->userdata('username')){
+            redirect('Login');
+        }
     }
 
-	public function index()
-	{	
+	public function index(){	
+        if($this->session->userdata('username')){
 		$data=array(
             'title'=>'List Pengembalian'
         );
@@ -20,5 +23,8 @@ class ListPengembalian extends CI_Controller {
         $this->load->view('element/v_header');
         $this->load->view('v_listpengembalian');
         $this->load->view('element/v_footer');
-	}
+	   }else{
+        redirect('Login');
+       }
+    }
 }
