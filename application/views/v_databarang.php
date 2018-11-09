@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Id Barang</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="id_barang" value="" readonly>
+                                        <input type="text" class="form-control" name="id_barang" value="<? echo $kode; ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
