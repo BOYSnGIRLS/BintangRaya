@@ -45,4 +45,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url ('assets/css/sb-admin.css');?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/jquery-ui.css'?>">
+    <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 </head>

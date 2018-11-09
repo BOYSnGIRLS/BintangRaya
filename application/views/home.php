@@ -19,7 +19,7 @@
                                     <img class="card-img-top" src="assets/images/tenda.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">TENDA</h4>
-                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/home">Lihat</a></p>
+                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/tenda">Lihat</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                                     <img class="card-img-top" src="assets/images/alat makan.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">ALAT MAKAN</h4>
-                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/home2">Lihat</a></p>
+                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/alatmakan">Lihat</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <img class="card-img-top" src="assets/images/barang.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">BARANG</h4>
-                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/home3">Lihat</a></p>
+                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/barang">Lihat</a></p>
                                     </div>
                                 </div>
                             </div>
