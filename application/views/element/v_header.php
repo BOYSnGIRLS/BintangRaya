@@ -94,11 +94,11 @@
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
                         <li>
-                            <a href="datakerja.html">
+                            <a href="<?= base_url('DataKerja')?>">
                                 <i class="far fa-check-square"></i>Data Kerja Pegawai</a>
                         </li>
                         <li>
-                            <a href="gajipegawai.html">
+                            <a href="<?= base_url('GajiPegawai')?>">
                                 <i class="fas fa-calendar-alt"></i>Gaji Pegawai</a>
                         </li>
                         <!-- <li class="has-sub">
