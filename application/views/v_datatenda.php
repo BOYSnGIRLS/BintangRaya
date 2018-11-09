@@ -30,8 +30,14 @@
                                         <td><?php echo $row->id_tenda;?></td>
                                         <td><?php echo $row->ukuran_tenda;?></td>
                                         <td><?php echo $row->stok_tenda;?></td>
-                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_tenda;?>">Edit</a></td>
-
+                                        <td><a href="javascript:;"
+                                            data-id_tenda="<?php echo $row->id_tenda ?>"
+                                            data-ukuran_tenda="<?php echo $row->ukuran_tenda ?>"
+                                            data-stok_tenda="<?php echo $row->stok_tenda ?>"
+                                            data-toggle="modal" data-target="#edit-tenda">
+                                            <!-- <button  data-toggle="modal" data-target="#ubah-tenda" class="btn btn-info">Edit</button></a>">Edit</a> -->
+                                            <button class="btn au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#edit-tenda"><i class="zmdi zmdi-plus"></i>Tambah Data</button></a>
+                                        </td>
                                         <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td>
                                     </tr>
                                     <?php $no++;
@@ -203,6 +209,36 @@
     </div>
 <!-- end modal large -->
 
+
+<!-- Modal Edit -->
+    <div class="modal fade" id="edit-tenda" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+                      <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                      <h4 class="modal-title">Ubah Data</h4>
+                  </div>
+                  <form class="form-horizontal" action="<?php echo base_url('Dashboard/ubah_tenda')?>" method="post" enctype="multipart/form-data" role="form">
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-lg-4 col-sm-2 control-label">Ukuran Tenda</label>
+                                <div class="col-lg-10">
+                                  <!-- <input type="hidden" id="id_roti" name="id_roti"> -->
+                                  <input class="form-control" id="ukuran_tenda" name="ukuran_tenda"></input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-4 col-sm-2 control-label">Stok Tenda</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="stok_tenda" name="stok_tenda">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
+                          </div></form></div></div></div>
+
 <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
@@ -213,6 +249,18 @@
               var modal          = $(this)
               // Isi nilai pada field
               modal.find('#id_tenda').html(div.data('id_tenda'));
+              modal.find('#ukuran_tenda').attr("value",div.data('ukuran_tenda'));
+              modal.find('#stok_tenda').html(div.data('stok_tenda'));
+          });
+      });
+      $(document).ready(function() {
+          // Untuk sunting
+          $('#edit-data').on('show.bs.modal', function (event) {
+              var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+              var modal          = $(this)
+ 
+              // Isi nilai pada field
+              modal.find('#id_tenda').attr("value",div.data('id_tenda'));
               modal.find('#ukuran_tenda').attr("value",div.data('ukuran_tenda'));
               modal.find('#stok_tenda').html(div.data('stok_tenda'));
           });

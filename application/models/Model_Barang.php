@@ -34,6 +34,11 @@ class Model_Barang extends CI_Model {
 		return $this->db->insert('barang',$data);
 	}
 	
+	function delete($id){
+		$this->db->where('id_barang', $id);
+        return $this->db->delete('barang');
+	}
+
 	function delete_tenda($id){
 		$this->db->where('id_tenda', $id);
         return $this->db->delete('tenda');

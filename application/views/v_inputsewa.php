@@ -2,12 +2,12 @@
 <div class="main-content">
 <div class="section__content section__content--p30">
     <div class="container-fluid">
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
                     <div class="au-card-inner">
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
-        <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
                     <!-- input data penyewa -->
                     <div class="form-group row">
                          <div class="col-sm-4" >
@@ -99,7 +99,7 @@
                           <label for="nomor">Jumlah Sewa: </label>
                             <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
                             <span class="input-group-btn">
-                                    <button class="btn btn-info" type="submit">Submit</button>
+                                    <button class="btn btn-info" type="submit">Submit&nbsp;</button>
                                 </span>
                             </div>
                         </div>
@@ -134,9 +134,8 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
                     <hr>
-                    <form action="<?php echo base_url().'InputSewa'?>" method="post">
+        <form action="<?php echo base_url().'InputSewa'?>" method="post">
             <table>
                 <tr>
                     <td style="width:760px;" rowspan="2"></td>
@@ -192,7 +191,8 @@
         }
     </script>
 
- <!-- Bootstrap JS-->
+<!-- Jquery JS-->
+    <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
@@ -217,3 +217,4 @@
 </body>
 
 </html>
+<!-- end document-->
