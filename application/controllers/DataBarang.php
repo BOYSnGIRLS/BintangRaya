@@ -44,9 +44,10 @@ class DataBarang extends CI_Controller {
             'data'=>$this->Model_Barang->get_data2()
         );
         $kode['kode'] = $this->Model_Barang->get_id();
+        $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_databarang',$data+$kode);    
+        $this->load->view('v_databarang',$data+$kode+$option_kategori);    
         $this->load->view('element/v_footer');
     }
 
