@@ -18,9 +18,10 @@ class DataBarang extends CI_Controller {
             'title'=>'Data Barang',
             'active_dashboard'=>'active'
         );
+        $kode['kode'] = $this->Model_Barang->get_id();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('home');	
+        $this->load->view('home', $kode);	
         $this->load->view('element/v_footer');
 	}
 
@@ -30,44 +31,35 @@ class DataBarang extends CI_Controller {
             'active_dashboard'=>'active',
             'data'=>$this->Model_Barang->get_data()
         );
-
+        $kode['kode'] = $this->Model_Barang->get_id();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_datatenda',$data);    
+        $this->load->view('v_datatenda',$data+$kode);    
         $this->load->view('element/v_footer');
     }
-
-<<<<<<< HEAD
     function home2(){
-=======
-     function home2(){
->>>>>>> cde792465947ef3759c59d617dff1443e31fca76
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
             'data'=>$this->Model_Barang->get_data2()
         );
-
+        $kode['kode'] = $this->Model_Barang->get_id();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_databarang',$data);    
+        $this->load->view('v_databarang',$data+$kode);    
         $this->load->view('element/v_footer');
     }
-    
-<<<<<<< HEAD
-=======
 
->>>>>>> cde792465947ef3759c59d617dff1443e31fca76
     function home3(){
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
             'data'=>$this->Model_Barang->get_data3()
         );
-
+        $kode['kode'] = $this->Model_Barang->get_id();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_databarang',$data);    
+        $this->load->view('v_databarang',$data+$kode);    
         $this->load->view('element/v_footer');
     }
 
