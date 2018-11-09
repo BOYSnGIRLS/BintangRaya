@@ -5,8 +5,18 @@ class Model_Barang extends CI_Model {
         return $this->db->get("barang");
     }
 
-    function get_data(){
-		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda");
+    function get_tenda(){
+    	$this->db->select('*');
+    	$this->db->from('tenda');
+    	$query = $this->db->get();
+		return $query->result();
+	}
+
+	function get_pkttenda(){
+    	$this->db->select('*');
+    	$this->db->from('paket_tenda');
+    	$this->db->join('tenda', 'paket_tenda.id_tenda=tenda.id_tenda');
+    	$query = $this->db->get();
 		return $query->result();
 	}
     
@@ -24,14 +34,14 @@ class Model_Barang extends CI_Model {
 		return $this->db->insert('barang',$data);
 	}
 	
-	function delete($id){
-		$this->db->where('id_hargatenda', $id);
-        return $this->db->delete('paket_tenda');
+	function delete_tenda($id){
+		$this->db->where('id_tenda', $id);
+        return $this->db->delete('tenda');
 	}
 
-	function delete2($id){
-		$this->db->where('id_barang', $id);
-        return $this->db->delete('barang');
+	function delete_paket($id){
+		$this->db->where('id_hargatenda', $id);
+        return $this->db->delete('paket_tenda');
 	}
 	
 	function get_data_edit($id){
@@ -73,6 +83,44 @@ class Model_Barang extends CI_Model {
 	    return $kodejadi;
 	  }
 
+	function get_idtenda(){
+	    $this->db->select('RIGHT(tenda.id_tenda,3) as kode', FALSE);
+	    $this->db->order_by('id_tenda','DESC');    
+	    $this->db->limit(1);    
+	    $query = $this->db->get('tenda');     
+	    if($query->num_rows() <> 0){      
+	  
+	     $data = $query->row();      
+	     $kode = intval($data->kode) + 1;    
+	    }
+	    else {      
+	     //jika kode belum ada      
+	     $kode = 1;    
+	    }
+	    $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); 
+	    $kodejadi = "TD".$kodemax;  
+	    return $kodejadi;
+	  }
+
+	function get_idpkttenda(){
+	    $this->db->select('RIGHT(paket_tenda.id_hargatenda,3) as kode', FALSE);
+	    $this->db->order_by('id_hargatenda','DESC');    
+	    $this->db->limit(1);    
+	    $query = $this->db->get('paket_tenda');     
+	    if($query->num_rows() <> 0){      
+	  
+	     $data = $query->row();      
+	     $kode = intval($data->kode) + 1;    
+	    }
+	    else {      
+	     //jika kode belum ada      
+	     $kode = 1;    
+	    }
+	    $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); 
+	    $kodejadi = "PT".$kodemax;  
+	    return $kodejadi;
+	  }
+
 	function get_kategori(){
 		$this->db->select('*');
 		$this->db->from('kategori_barang');
@@ -88,5 +136,15 @@ class Model_Barang extends CI_Model {
 	function tambah($data){
 	    $this->db->insert('barang', $data);
 	    return TRUE;
-}
+	}
+
+	function tambah_tenda($data){
+	    $this->db->insert('tenda', $data);
+	    return TRUE;
+	}
+
+	function tambah_paket($data){
+	    $this->db->insert('paket_tenda', $data);
+	    return TRUE;
+	}
 }

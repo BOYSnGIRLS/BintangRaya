@@ -208,7 +208,7 @@
     <script>
       $(document).ready(function() {
           // Untuk sunting
-          $('#largeModal').on('show.bs.modal', function (event) {
+          $('#tambah-data').on('show.bs.modal', function (event) {
               var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
               var modal          = $(this)
  
