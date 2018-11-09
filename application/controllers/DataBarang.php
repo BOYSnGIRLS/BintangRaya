@@ -37,11 +37,7 @@ class DataBarang extends CI_Controller {
         $this->load->view('element/v_footer');
     }
 
-<<<<<<< HEAD
     function home2(){
-=======
-     function home2(){
->>>>>>> 33745c65aff234cb06a1c711190bc6a44c56bcec
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
@@ -53,11 +49,7 @@ class DataBarang extends CI_Controller {
         $this->load->view('v_databarang',$data);    
         $this->load->view('element/v_footer');
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 33745c65aff234cb06a1c711190bc6a44c56bcec
     function home3(){
         $data=array(
             'title'=>'Data Barang',
@@ -70,11 +62,7 @@ class DataBarang extends CI_Controller {
         $this->load->view('v_databarang',$data);    
         $this->load->view('element/v_footer');
     }
-<<<<<<< HEAD
-=======
 
-   
->>>>>>> 33745c65aff234cb06a1c711190bc6a44c56bcec
     function input(){
         if (isset($_POST['btnTambah'])){
             $data = $this->Model_Barang->input(array (
