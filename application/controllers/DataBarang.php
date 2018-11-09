@@ -37,7 +37,11 @@ class DataBarang extends CI_Controller {
         $this->load->view('element/v_footer');
     }
 
+<<<<<<< HEAD
     function home2(){
+=======
+     function home2(){
+>>>>>>> cde792465947ef3759c59d617dff1443e31fca76
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
@@ -50,6 +54,10 @@ class DataBarang extends CI_Controller {
         $this->load->view('element/v_footer');
     }
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> cde792465947ef3759c59d617dff1443e31fca76
     function home3(){
         $data=array(
             'title'=>'Data Barang',
