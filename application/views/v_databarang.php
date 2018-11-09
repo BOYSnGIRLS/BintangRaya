@@ -15,53 +15,49 @@
                             </div>
                             </div>
                         </div>
-<<<<<<< HEAD
 						<div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-									<!-- <h3 class="title-1"><a href="<?php echo base_url()?>DataBarang/input">Tambah Barang</a></h3> -->
-                                </div>
-                            </div>
-                        </div>
-=======
-						
->>>>>>> 108a8793a9df5dbf563a597efc862e6ca9fca841
-                            <div class="table-responsive table--no-card m-b-30">
-                                    <table class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Kode Barang</th>
-                                                <th>Nama Barang</th>
-												<th>Stok Barang</th>
-												<th>Harga Sewa</th>
-												<th>Harga Jasa</th>
-												<th colspan="2">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
-                                            foreach ($data as $row): ?>
-                                            <tr>
-                                                <td><?php echo $no;?></td>
-                                                <td><?php echo $row->id_barang;?></td>
-                                                <td><?php echo $row->nama_barang;?></td>
-                                                <td><?php echo $row->stok_barang;?></td>
-                                                <td><?php echo $row->harga_sewa;?></td>
-                                                 <td><?php echo $row->harga_jasa;?></td>
-                                                 <!-- <td>EDIT</td> -->
-                                                 <!-- <td>HAPUS</td> -->
+                  <div class="col-md-12">
+                      <div class="overview-wrap">
+				<!-- <h3 class="title-1"><a href="<?php echo base_url()?>DataBarang/input">Tambah Barang</a></h3> -->
+                      </div>
+                  </div>
+              </div>
+                  <div class="table-responsive table--no-card m-b-30">
+                          <table class="table table-borderless table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>No</th>
+                                      <th>Kode Barang</th>
+                                      <th>Nama Barang</th>
+              												<th>Stok Barang</th>
+              												<th>Harga Sewa</th>
+              												<th>Harga Jasa</th>
+              												<th colspan="2">Aksi</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <?php
+                                  $no = 1;
+                                  foreach ($data as $row): ?>
+                                  <tr>
+                                      <td><?php echo $no;?></td>
+                                      <td><?php echo $row->id_barang;?></td>
+                                      <td><?php echo $row->nama_barang;?></td>
+                                      <td><?php echo $row->stok_barang;?></td>
+                                      <td><?php echo $row->harga_sewa;?></td>
+                                       <td><?php echo $row->harga_jasa;?></td>
+                                       <!-- <td>EDIT</td> -->
+                                       <!-- <td>HAPUS</td> -->
 
-                                                <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td>
+                                      <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td>
 
-                                                <td><a href="<?php echo base_url(); ?>DataBarang/delete2/<?php echo $row->id_barang;?>">Hapus</a></td>
-                                            </tr>
-                                            <?php $no++;
-                                            endforeach;?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                      <td><a href="<?php echo base_url(); ?>DataBarang/delete2/<?php echo $row->id_barang;?>">Hapus</a></td>
+                                  </tr>
+                                  <?php $no++;
+                                  endforeach;?>
+                              </tbody>
+                          </table>
+                      </div>
                         </div>
                 </div>
                 <div class="row">
@@ -141,14 +137,6 @@
               </div>
             </div>
       <!-- end modal large -->
-<<<<<<< HEAD
-                              
-=======
-                
-        
-<<<<<<< HEAD
-        
-=======
         <!-- Modal Tambah -->
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tambah-data" class="modal fade">
               <div class="modal-dialog">
@@ -187,12 +175,8 @@
                   </div>
               </div>
           </div>
->>>>>>> 860461f1e47ae788e8432eed2f624d061aa2a092
 
-                  
->>>>>>> 108a8793a9df5dbf563a597efc862e6ca9fca841
-
-    <!-- <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script> -->
+  <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
     <script>
@@ -215,6 +199,8 @@
   
 <!-- Jquery JS-->
     <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script>
+
+    <script src="<?php echo base_url ('assets/vendor/jquery/jquery.min.js') ?>"></script>
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>

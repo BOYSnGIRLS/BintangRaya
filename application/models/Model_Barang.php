@@ -55,7 +55,7 @@ class Model_Barang extends CI_Model {
 	}
 
 	function get_id(){
-	    $this->db->select('RIGHT(barang.id_barang,4) as kode', FALSE);
+	    $this->db->select('RIGHT(barang.id_barang,3) as kode', FALSE);
 	    $this->db->order_by('id_barang','DESC');    
 	    $this->db->limit(1);    
 	    $query = $this->db->get('barang');     
@@ -68,8 +68,8 @@ class Model_Barang extends CI_Model {
 	     //jika kode belum ada      
 	     $kode = 1;    
 	    }
-	    $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); 
-	    $kodejadi = "BR".$kodemax;  
+	    $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); 
+	    $kodejadi = "MK".$kodemax;  
 	    return $kodejadi;
 	  }
 
