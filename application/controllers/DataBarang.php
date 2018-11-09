@@ -23,12 +23,39 @@ class DataBarang extends CI_Controller {
         $this->load->view('home');	
         $this->load->view('element/v_footer');
 	}
-    
+
     function home(){
+        $data=array(
+            'title'=>'Data Tenda',
+            'active_dashboard'=>'active',
+            'data'=>$this->Model_Barang->get_data()
+        );
+
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view('v_datatenda',$data);    
+        $this->load->view('element/v_footer');
+    }
+
+     function home2(){
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
-            'data'=>$this->Model_Barang->get_data()
+            'data'=>$this->Model_Barang->get_data2()
+        );
+
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view('v_databarang',$data);    
+        $this->load->view('element/v_footer');
+    }
+    
+
+    function home3(){
+        $data=array(
+            'title'=>'Data Barang',
+            'active_dashboard'=>'active',
+            'data'=>$this->Model_Barang->get_data3()
         );
 
         $this->load->view('element/css',$data);
@@ -61,6 +88,16 @@ class DataBarang extends CI_Controller {
     function delete($id){
         $this->Model_Barang->delete($id);
         redirect('DataBarang/home');
+    }
+
+    function delete2($id){
+        $this->Model_Barang->delete($id);
+        redirect('DataBarang/home2');
+    }
+
+     function delete3($id){
+        $this->Model_Barang->delete($id);
+        redirect('DataBarang/home3');
     }
 
     function edit(){

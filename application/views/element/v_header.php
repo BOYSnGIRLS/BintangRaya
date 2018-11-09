@@ -159,7 +159,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="<?php echo base_url();?>Login/Logout">
                                                     <i class="zmdi zmdi-power"></i>Keluar</a>
                                             </div>
                                         </div>

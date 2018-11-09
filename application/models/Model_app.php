@@ -28,6 +28,12 @@ class Model_app extends CI_Model{
         $this->db->insert($table,$data) or die ($db->error);
     }
 
+   
+    // =============================================LOGIN=======================================================
+    public function logged_id(){
+        return $this->session->userdata('username');
+    }
+    
     function login($username, $password) {
         //create query to connect user login database
         $this->db->select('*');
@@ -42,9 +48,11 @@ class Model_app extends CI_Model{
             return $query->result(); //if data is true
         } else {
             return false; //if data is wrong
-			redirect('login');
+            redirect('login');
         }
     }
+
+    // ==========================================PENYEWAAN=======================================================
 	
     function search($title){
         $this->db->like('nama_barang', $title , 'both');
@@ -53,4 +61,22 @@ class Model_app extends CI_Model{
         return $this->db->get('barang')->result();
     }
    
+   function get_notrans(){
+    $this->db->select('RIGHT(sewa.id_sewa,4) as kode', FALSE);
+    $this->db->order_by('id_sewa','DESC');    
+    $this->db->limit(1);    
+    $query = $this->db->get('sewa');     
+    if($query->num_rows() <> 0){      
+  
+     $data = $query->row();      
+     $kode = intval($data->kode) + 1;    
+    }
+    else {      
+     //jika kode belum ada      
+     $kode = 1;    
+    }
+    $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); 
+    $kodejadi = "TS".$kodemax;  
+    return $kodejadi;
+  }
 }
