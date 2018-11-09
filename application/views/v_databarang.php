@@ -78,6 +78,19 @@
                     <form class="form-horizontal" action="<?php echo base_url('DataBarang/input')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
                                 <div class="form-group">
+                                    <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>
+                                    <div class="col-lg-10">
+                                       <select name="tahun">
+                                        <option value="" class="form-control">Pilih</option>
+                                        <?php
+                                        foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
+                                            echo '<option value="'.$data->nama_kategori.'">'.$data->nama_kategori.'</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Id Barang</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" name="id_barang" value="<?php echo $kode ?>" readonly>
