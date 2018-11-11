@@ -35,8 +35,7 @@
                                             data-ukuran_tenda="<?php echo $row->ukuran_tenda ?>"
                                             data-stok_tenda="<?php echo $row->stok_tenda ?>"
                                             data-toggle="modal" data-target="#edit-tenda">
-                                            <!-- <button  data-toggle="modal" data-target="#ubah-tenda" class="btn btn-info">Edit</button></a>">Edit</a> -->
-                                            <button class="btn au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#edit-tenda"><i class="zmdi zmdi-plus"></i>Tambah Data</button></a>
+                                            <button  data-toggle="modal" data-target="#ubah-tenda" class="btn btn-info">Edit</button></a></a>
                                         </td>
                                         <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td>
                                     </tr>
@@ -77,8 +76,8 @@
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $row->jenis_tenda;?></td>
                                 <td><?php echo $row->ukuran_tenda;?></td>
-                                <td><?php echo $row->sewa_tenda;?></td>
-                                <td><?php echo $row->jasa_tenda;?></td>
+                                <td><?php echo $row->harga_sewa;?></td>
+                                <td><?php echo $row->harga_jasa;?></td>
                                  <!-- <td>EDIT</td> -->
                                  <!-- <td>HAPUS</td> -->
 
@@ -118,6 +117,19 @@
           <div class="modal-body">
             <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah_tenda')?>" method="post" enctype="multipart/form-data" role="form">
                 <div class="modal-body">
+                        <div class="form-group">
+                          <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>
+                                    <div class="col-lg-10">
+                                       <select name="id_kategori">
+                                        <option value="" class="form-control">Pilih</option>
+                                        <?php
+                                        foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
+                                            echo '<option value="'.$data->id_kategori.'">'.$data->nama_kategori.'</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-lg-4 col-sm-2 control-label">Id Tenda</label>
                             <div class="col-lg-10">

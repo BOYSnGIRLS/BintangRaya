@@ -61,6 +61,7 @@ class DataBarang extends CI_Controller {
             'title'=>'Data Tenda',
             'active_dashboard'=>'active'
         );
+        $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
         $data['data']=$this->Model_Barang->get_tenda();
         $datapaket['data_paket']=$this->Model_Barang->get_pkttenda();
         $kode=array(
@@ -70,7 +71,7 @@ class DataBarang extends CI_Controller {
         ); 
         $this->load->view('element/css',$title);
         $this->load->view('element/v_header');
-        $this->load->view('v_datatenda',$data+$datapaket+$kode);    
+        $this->load->view('v_datatenda',$data+$datapaket+$kode+$option_kategori);    
         $this->load->view('element/v_footer');
     }
 
@@ -78,7 +79,8 @@ class DataBarang extends CI_Controller {
         $data = array(
             'id_tenda' => $this->input->post('id_tenda'),
             'ukuran_tenda'     => $this->input->post('ukuran_tenda'),
-            'stok_tenda' => $this->input->post('stok_tenda')
+            'stok_tenda' => $this->input->post('stok_tenda'),
+            'id_kategori' => $this->input->post('id_kategori')
         );
         $this->Model_Barang->tambah_tenda($data);
         redirect('DataBarang/tenda');
@@ -95,8 +97,8 @@ class DataBarang extends CI_Controller {
             'id_hargatenda' => $this->input->post('id_hargatenda'),
             'id_tenda' => $this->input->post('id_tenda'),
             'jenis_tenda'     => $this->input->post('jenis_tenda'),
-            'sewa_tenda' => $this->input->post('sewa_tenda'),
-            'jasa_tenda' => $this->input->post('jasa_tenda')
+            'harga_sewa' => $this->input->post('sewa_tenda'),
+            'harga_jasa' => $this->input->post('jasa_tenda')
         );
         $this->Model_Barang->tambah_paket($data);
         redirect('DataBarang/tenda');

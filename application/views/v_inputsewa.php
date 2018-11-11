@@ -20,7 +20,7 @@
 
                       <div class="col-sm-4" >
                         <label  for="nama">Nama Penyewa:</label>
-                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pemesan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
+                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
                       </div>
                       
                       <div class="col-sm-4">
@@ -36,8 +36,8 @@
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="Pesan">Tanggal Pakai:</label>
-                        <input class="form-control" type="date" name="tgl_ambil" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                        <label for="Pesan">Tanggal Acara:</label>
+                        <input class="form-control" type="date" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
                       </div>
                     </div>
 
@@ -113,25 +113,26 @@
                                 <th>Jumlah Sewa</th>
                                 <th>Biaya Sewa</th>
                                 <th>Total</th>
+                                <th>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($detail_sewa as $items): ?>
+                                <?php ?>
+                                <?php  $no = 1; 
+                                foreach ($detail_sewa as $items): ?>
                                 
                                 <tr>
-                                    <td><? echo $i ;?></td>
+                                    <td><?php echo $no ;?></td>
                                      <td><?=$items->id_barang;?></td>
                                      <td><?=$items->nama_barang;?></td>
-                                     <td style="text-align:right;"><?php echo number_format($items->harga);?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
                                      <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                                 </tr>
                                 
-                                <?php $i++; ?>
-                                <?php endforeach; ?>
+                                <?php $no++;
+                                endforeach; ?>
                             </tbody>
                         </table>
                     <hr>
@@ -181,6 +182,18 @@
 
 </div>
 
+<script type="text/javascript">
+        $(function(){
+            $('#jml_uang').on("input",function(){
+                var total=$('#total').val();
+                var jumuang=$('#jml_uang').val();
+                var hsl=jumuang.replace(/[^\d]/g,"");
+                $('#jml_uang2').val(hsl);
+                $('#kembalian').val(hsl-total);
+            })
+            
+        });
+    </script>
 <script type="text/javascript">
         function hanyaAngka(evt) {
           var charCode = (evt.which) ? evt.which : event.keyCode
