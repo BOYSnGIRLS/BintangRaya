@@ -103,7 +103,7 @@
                                                     <div class="form-group">
                                                         <div class="row form-group">
                                                             <div class="col col-md-10">
-                                                                <select name="select" id="select" class="form-control">
+                                                                <select name="pemasangan[]" id="select" class="form-control">
                                                                     <option value="0">Nama Pegawai</option>
                                                                     <option value="1">Option #1</option>
                                                                     <option value="2">Option #2</option>
@@ -111,10 +111,14 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-7">
-                                                                <a href="#">+ Tambah</a>
-                                                        </div>
+															<input id="idf" value="1" type="hidden" />
+                                                                <button type="button" onclick="tambah(); return false;">+ Tambah</button>
+																<div class="row form-group">
+															<div class="col col-md-10">
+																<div id="divTambah"></div>
+                                                        
+														
+														</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -125,7 +129,7 @@
                                                     <div class="form-group">
                                                         <div class="row form-group">
                                                             <div class="col col-md-10">
-                                                                <select name="select" id="select" class="form-control">
+                                                                <select name="pembongkaran" id="select" class="form-control">
                                                                     <option value="0">Nama Pegawai</option>
                                                                     <option value="1">Option #1</option>
                                                                     <option value="2">Option #2</option>
@@ -133,11 +137,14 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-7">
-                                                                <a href="#">+ Tambah</a>
-                                                        </div>
-                                                        </div>
+                                                                <input id="idf2" value="1" type="hidden" />
+                                                                <button type="button" onclick="tambah2(); return false;">+ Tambah</button>
+														<div class="row form-group">
+															<div class="col col-md-10">
+																<div  id="divTambah2"></div>
+															</div>
+														</div>
+                                                    </div>
                                                     </div>
                                                 </div>    
                                             </div>
@@ -155,18 +162,35 @@
                     </div>
                 </div>
             </div>
-<script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
-<script language="javascript">
+<script type="text/javascript">
+
    function tambah() {
      var idf = document.getElementById("idf").value;
      var stre;
-     stre="<p id='srow" + idf + "'><input type='text' size='40' name='rincian_hobi[]' placeholder='Masukkan Hobi' /> <a href='#' style=\"color:#3399FD;\" onclick='hapusElemen(\"#srow" + idf + "\"); return false;'>Hapus</a></p>";
-     $("#divHobi").append(stre);
+     stre="<p id='srow" + idf + "'> <select name='pemasangan[]'  class='form-control'> <option>Nama Pegawai</option></select> <a href='#' style=\"color:#3399FD;\" onclick='hapus(\"#srow" + idf + "\"); return false;'>Hapus</a></p> ";
+     $("#divTambah").append(stre);
      idf = (idf-1) + 2;
      document.getElementById("idf").value = idf;
    }
-   function hapusElemen(idf) {
+   function hapus(idf) {
      $(idf).remove();
    }
 </script>
+<script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+<script type="text/javascript">
+
+   function tambah2() {
+     var idf2 = document.getElementById("idf2").value;
+     var stre2;
+     stre2="<p id='srow2" + idf2 + "'><select name='pembongkaran[]' class='form-control'> <option>Nama Pegawai</option></select> <a href='#' style=\"color:#3399FD;\" onclick='hapus2(\"#srow2" + idf2 + "\"); return false;'>Hapus</a></p>";
+     $("#divTambah2").append(stre2);
+     idf2 = (idf2-1) + 2;
+     document.getElementById("idf2").value = idf2;
+   }
+   function hapus2(idf2) {
+     $(idf2).remove();
+   }
+</script>
+<script src="<?php echo base_url();?>assets/js/main.js"></script>
         
