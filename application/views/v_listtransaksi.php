@@ -60,72 +60,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($trans as $row){
+                                            ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>TR_01</td>
-                                                <td>Mardiana</td>
-                                                <td>2018-09-29</td>
-                                                <td> Jember</td>
-                                                <td>Akan</td>
-                                                <td class="process">Detail</td>
-                                                <td>Detail</td>
-                                                <td>Edit</td>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?= $row['id_sewa'];?></td>
+                                                <td><?= $row['nama_pelanggan'];?></td>
+                                                <td><?= $row['tgl_pasang'];?></td>
+                                                <td><?= $row['alamat_pelanggan'];?></td>
+                                                <td>akan</td>
+                                                <td>detail</td>
+                                                <td>detail</td>
+                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa;?>">Edit</a></td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>TR_02</td>
-                                                <td>Azizah</td>
-                                                <td>2018-09-28</td>
-                                                <td>Jember</td>
-                                                <td>Akan</td>
-                                                <td class="process">Detail</td>
-                                                <td>Detail</td>
-                                                <td>Edit</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>TR_03</td>
-                                                <td>Jazil</td>
-                                                <td>2018-09-27</td>
-                                                <td>Jember</td>
-                                                <td>Proses</td>
-                                                <td class="denied">Detail</td>
-                                                <td>Detail</td>
-                                                <td>Edit</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>TR_04</td>
-                                                <td>Ramadhanty</td>
-                                                <td>2018-09-26</td>
-                                                <td>Jember</td>
-                                                <td>Proses</td>
-                                                <td class="denied">Detail</td>
-                                                <td>Detail</td>
-                                                <td>Edit</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>TR_05</td>
-                                                <td>Rizky</td>
-                                                <td>2018-09-25</td>
-                                                <td>Jember</td>
-                                                <td>Selesai</td>
-                                                <td class="process">Detail</td>
-                                                <td>Detail</td>
-                                                <td>Edit</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>TR_06</td>
-                                                <td>Aulia</td>
-                                                <td>2018-09-24</td>
-                                                <td>Jember</td>
-                                                <td>Selesai</td>
-                                                <td class="denied">Detail</td>
-                                                <td>Detail</td>
-                                                <td>Edit</td>
-                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -136,5 +86,3 @@
                 </div>
             </div>
         </div>
-
-    </div>
