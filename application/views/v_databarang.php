@@ -49,7 +49,7 @@
 
                                 <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td> -->
 
-                      <td><a href="<?php echo base_url(); ?>DataBarang/delete2/<?php echo $row->id_barang;?>">Hapus</a></td>
+                      <td><a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a></td>
                   </tr>
                   <?php $no++;
                   endforeach;?>
@@ -79,12 +79,12 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah')?>" method="post" enctype="multipart/form-data" role="form">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah_barang')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>
                                     <div class="col-lg-10">
-                                       <select name="tahun">
+                                       <select name="id_kategori">
                                         <option value="" class="form-control">Pilih</option>
                                         <?php
                                         foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
@@ -127,9 +127,9 @@
                             </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" type="submit" name="btnTambah">Simpan</button>
-                  </div></form>
+                    <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
+                </div></form>
                   </div>
                 </div>
               </div>
@@ -208,7 +208,7 @@
     <script>
       $(document).ready(function() {
           // Untuk sunting
-          $('#largeModal').on('show.bs.modal', function (event) {
+          $('#tambah-data').on('show.bs.modal', function (event) {
               var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
               var modal          = $(this)
  
@@ -223,33 +223,3 @@
       });
   </script>
   
-<!-- Jquery JS-->
-    <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script>
-
-    <script src="<?php echo base_url ('assets/vendor/jquery/jquery.min.js') ?>"></script>
-    <!-- Bootstrap JS-->
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
-    </script>
-    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
-    </script>
-
-    <!-- Main JS-->
-    <script src="<?php echo base_url();?>assets/js/main.js"></script>
-
-</body>
-
-</html>
-<!-- end document-->

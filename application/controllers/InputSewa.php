@@ -100,6 +100,7 @@ class InputSewa extends CI_Controller {
         $no_telp = $this->input->post('no_telp');
         $alamat = $this->input->post('alamat');
         $id_barang = $this->input->post('id_barang');
+        $harga=$this->input->post('harga_sewa');
         $jumlah = $this->input->post('jumlah_sewa');
         $total = $harga*$jumlah;
         $ceklagi = $this->db->query("SELECT * FROM 'pelanggan' WHERE id_sewa='".$id_sewa."'")->num_rows();
