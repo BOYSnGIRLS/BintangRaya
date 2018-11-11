@@ -62,7 +62,7 @@
                                         <tbody>
                                             <?php
                                             $no = 1;
-                                            foreach ($trans as $row){
+                                            foreach ($trans as $row):
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
@@ -73,9 +73,10 @@
                                                 <td>akan</td>
                                                 <td>detail</td>
                                                 <td>detail</td>
-                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa;?>">Edit</a></td>
+                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row['id_sewa'] ;?>">Edit</a></td>
                                             </tr>
-                                            <?php } ?>
+                                            <?php $no++;
+                                    endforeach;  ?>
                                         </tbody>
                                     </table>
                                 </div>
