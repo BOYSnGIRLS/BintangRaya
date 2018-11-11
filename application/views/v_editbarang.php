@@ -20,9 +20,9 @@
 									
 							        Stok Barang<br/><input type="number" name="stok_barang" size="5" maxlength="5" value="<?php echo @$user[0]['stok_barang']; ?>"><br/><br/>
 
-							        Harga Sewa<br/><input type="number" name="sewa_barang" size="5" maxlength="5" value="<?php echo @$user[0]['sewa_barang']; ?>"><br/><br/>
+							        Harga Sewa<br/><input type="number" name="harga_sewa" size="5" maxlength="5" value="<?php echo @$user[0]['harga_sewa']; ?>"><br/><br/>
 
-							        Harga Jasa<br/><input type="number" name="jasa_barang" size="5" maxlength="5" value="<?php echo @$user[0]['jasa_barang']; ?>"><br/><br/>
+							        Harga Jasa<br/><input type="number" name="harga_jasa" size="5" maxlength="5" value="<?php echo @$user[0]['harga_jasa']; ?>"><br/><br/>
 
 
 									<br/><br/>

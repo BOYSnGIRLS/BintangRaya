@@ -25,42 +25,31 @@ class Login extends CI_Controller{
 
     }
 
+
     function cek_login() {
-        //Field validation succeeded.  Validate against database
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        //query the database
-        $result = $this->Model_app->login($username, $password);
-        if($result) {
-            $sess_array = array();
-            foreach($result as $row) {
-                //create the session
-                $sess_array = array(
-                    'ID' => $row->id_user,
-                    'username' => $row->username,
-                    'PASS'=>$row->password,
-                    'login_status'=>true,
-                );
-                //set session with value from database
+        if(isset($_POST['btn_log'])){
+            $this->Model_app->username = $_POST['username'];
+            $this->Model_app->password = $_POST['password'];
+            if($this->Model_app->cek_log()==TRUE){
                 $this->session->set_userdata('username', $this->Model_app->username);
-               // echo "benar";
-                redirect('DataBarang','refresh');
+                redirect('DataBarang');
+            }else{
+                redirect('Login');
             }
-            return TRUE;
-        } else {
-            //if form validate false
-            $this->session->set_flashdata('notif', 'password atau username salah');
-            redirect('Welcome','refresh');
-      //echo "salah";
-            return FALSE;
+        }else{
+            $data=array(
+                    'title'=>'Login Page'
+                );
+              $this->load->view('element/css',$data);
+              $this->load->view('v_login');
+              $this->load->view('element/v_footer');
         }
     }
 
     public function Logout(){
-      if ($this->session->has_userdata('username')) {
         $this->session->sess_destroy();
         redirect('Login');
-    }
+    
   } 
 		
 }

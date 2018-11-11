@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="<?= base_url('Welcome/cek_login')?>" method="post">
+                            <form action="<?= base_url('Login/cek_login')?>" method="post">
 
                                 <!-- NOTIF -->
                                 <?php
@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required="">
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Masuk</button>                             
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="btn_log">Masuk</button>                             
                             </form>
                         </div>
                     </div>

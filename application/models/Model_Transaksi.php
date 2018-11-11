@@ -18,12 +18,22 @@ class Model_Transaksi extends CI_Model{
     return $query->result();
   }
 
-	function search($title){
+	function search1($title){
         $this->db->like('nama_barang', $title , 'both');
         $this->db->order_by('nama_barang', 'ASC');
         $this->db->limit(10);
         return $this->db->get('barang')->result();
+        return $this->db->get()->result();       
     }
+
+  function search2($title){
+        $this->db->like('jenis_tenda', $title, 'both');
+        $this->db->order_by('jenis_tenda', 'ASC');
+        $this->db->limit(20);
+        $this->db->from('paket_tenda');
+        $this->db->join('tenda', 'tenda.id_tenda=paket_tenda.id_tenda');
+        return $this->db->get()->result();
+  }
    
    function get_notrans(){
     $this->db->select('RIGHT(sewa.id_sewa,4) as kode', FALSE);
@@ -48,5 +58,14 @@ class Model_Transaksi extends CI_Model{
     $this->db->insert($table,$data);
 
   }
+
+  function tampil_transaksi(){
+    $this->db->select('sewa.*, pelanggan.nama_pelanggan, pelanggan.alamat_pelanggan');
+    $this->db->from('sewa');
+    $this->db->join('pelanggan', 'pelanggan.id_sewa = sewa.id_sewa');
+    $query = $this->db->get();
+    return $result = $query->result_array();
+  }
+
 }
 ?>
