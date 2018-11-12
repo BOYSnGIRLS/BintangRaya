@@ -104,10 +104,9 @@
                                                         <div class="row form-group">
                                                             <div class="col col-md-10">
                                                                 <select name="pemasangan[]" id="select" class="form-control">
-                                                                    <option value="0">Nama Pegawai</option>
-                                                                    <option value="1">Option #1</option>
-                                                                    <option value="2">Option #2</option>
-                                                                    <option value="3">Option #3</option>
+                                                                    
+																	<option value="0">Nama Pegawai</option>
+                                                                    
                                                                 </select>
                                                             </div>
                                                         </div>

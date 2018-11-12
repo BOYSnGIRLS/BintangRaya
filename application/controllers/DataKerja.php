@@ -26,5 +26,6 @@ class DataKerja extends CI_Controller {
         }else{
             redirect('Login');
         }
+		
 	}
 }
