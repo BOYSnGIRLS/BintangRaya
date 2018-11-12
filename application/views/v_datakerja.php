@@ -98,6 +98,7 @@
                                                     
                                                 </div>
                                             </div>
+											<div class="row form-group">
                                             <div class="col col-md-4">
                                                     <label class=" form-control-label">Pemasangan</label>
                                             </div>
@@ -105,24 +106,32 @@
                                                     <div class="form-group">
                                                         <div class="row form-group">
                                                             <div class="col col-md-10">
-                                                                <select name="pemasangan[]" id="select" class="form-control">
-                                                                    
-																	<option value="0">Nama Pegawai</option>
-                                                                    
-                                                                </select>
+                                                             <select class="form-control" name="nama pegawai" id="nama_pegawai">
+																
+																<?php
+																foreach ($dropdown->result() as $row) {
+ 
+																echo "<option value='".$row->nama."'>".$row->nama."</option>";
+																}
+																?>
+																</select>
+																
                                                             </div>
                                                         </div>
 															<input id="idf" value="1" type="hidden" />
                                                                 <button type="button" onclick="tambah(); return false;">+ Tambah</button>
+																
 																<div class="row form-group">
 															<div class="col col-md-10">
 																<div id="divTambah"></div>
                                                         
-														
+														</div>
 														</div>
                                                         </div>
                                                     </div>
                                                 </div>
+											
+											<div class="row form-group">
                                             <div class="col col-md-4">
                                                     <label class=" form-control-label">Pembongkaran</label>
                                             </div>
@@ -130,11 +139,16 @@
                                                     <div class="form-group">
                                                         <div class="row form-group">
                                                             <div class="col col-md-10">
-                                                                <select name="pembongkaran" id="select" class="form-control">
-                                                                    <option value="0">Nama Pegawai</option>
-                                                                    <option value="1">Option #1</option>
-                                                                    <option value="2">Option #2</option>
-                                                                    <option value="3">Option #3</option>
+                                                                <select class="form-control" name="nama pegawai" id="nama_pegawai">
+																
+																<?php
+																foreach ($dropdown->result() as $row) {
+ 
+																echo "<option value='".$row->nama."'>".$row->nama."</option>";
+																}
+																?>
+																
+                                                                    
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -144,6 +158,7 @@
 															<div class="col col-md-10">
 																<div  id="divTambah2"></div>
 															</div>
+														</div>
 														</div>
                                                     </div>
                                                     </div>
@@ -195,7 +210,6 @@
 </script>
 
 <script src="<?php echo base_url();?>assets/js/main.js"></script>
-
 <script type="text/javascript">
 
    function tambah2() {
