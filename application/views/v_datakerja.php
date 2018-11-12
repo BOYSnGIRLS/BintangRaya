@@ -1,4 +1,4 @@
- MAIN CONTENT-->
+<!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -10,8 +10,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
                                 <div class="card-header">Transaksi</div>
                                     <div class="card-body">
+
                                             <h3 class="text-center title-2">Pilih Transaksi</h3>
                                         <hr>
                                             <div class="form-group">
@@ -37,9 +40,9 @@
                                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                 </button>
                                             </div>
-                                        
+                                      </div>  
                                     </div>
-                                
+                                </div>
                             </div> 
                             <div class="col-lg-6">
                                 <div class="card">
@@ -183,7 +186,7 @@
             });
         </script>       
         <!-- Jquery JS-->
-    <!-- <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script> -->
+    
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -209,4 +212,4 @@
 </body>
 
 </html>
-<!-- end document
+<!-- end document-->
