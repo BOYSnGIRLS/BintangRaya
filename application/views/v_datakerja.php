@@ -1,39 +1,36 @@
-            <!-- MAIN CONTENT-->
+<!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                                    <h2 class="title-1">Data Kerja Pegawai</h2>
-                                                     </div>					
-									<br>
+                                                     </div>                 
+                                    <br>
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="card">
-                                    <div class="card-header">Transaksi</div>
+                                    <div class="card-header">
+                                <div class="card-header">Transaksi</div>
                                     <div class="card-body">
-                                        <div class="card-title">
+
                                             <h3 class="text-center title-2">Pilih Transaksi</h3>
-                                        </div>
                                         <hr>
-                                        <form action="" method="post" novalidate="novalidate">
                                             <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Tanggal</label>
-                                                <input id="cc-pament" name="cc-payment" type="date" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+                                                <label for="tanggal" class="control-label mb-1">Tanggal</label>
+                                                <input id="tanggal" name="tanggal" type="date" class="form-control" >
                                             </div>
+                                            <form id="form_search" action="<?php echo site_url('DataKerja/get_autocomplete');?>" method="GET">
                                             <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Nama</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                                                <label for="nama" class="control-label mb-1">Nama</label>
+                                                <input id="title" name="title" type="text"  class="form-control">
                                             </div>
+                                            </form>
                                             <div class="form-group">
-                                                <label for="cc-number" class="control-label mb-1">Alamat</label>
-                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number">
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                                <label for="alamat" class="control-label mb-1">Alamat</label>
+                                                <input id="alamat" name="alamat" type="text" class="form-control ">
+                                                   
                                             </div>
                                             
                                             <div>
@@ -43,7 +40,7 @@
                                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                 </button>
                                             </div>
-                                        </form>
+                                      </div>  
                                     </div>
                                 </div>
                             </div> 
@@ -159,6 +156,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
 
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -176,6 +174,9 @@
     </script>
 
 
+=======
+            </div>            
+>>>>>>> 6c51c52041530ae9c38482fda48de68fcd31c1cd
 <script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script language="javascript">
    function tambah() {
@@ -190,4 +191,50 @@
      $(idf).remove();
    }
 </script>
-        
+        <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+        <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+        <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#title').autocomplete({
+                source: "<?php echo site_url('DataKerja/get_autocomplete');?>",
+      
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+                    $('[name="id_roti"]').val(ui.item.id_roti);
+                    $('[name="nama_roti"]').val(ui.item.label);
+                    $('[name="harga"]').val(ui.item.harga);
+                
+
+                }
+            });
+            });
+        </script>       
+        <!-- Jquery JS-->
+    
+    <!-- Bootstrap JS-->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
