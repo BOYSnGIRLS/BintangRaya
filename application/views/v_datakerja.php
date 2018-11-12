@@ -61,6 +61,9 @@
                                                             <input type="text" id="text-input" name="text-input" placeholder="Total" class="form-control">
                                                             </div>
                                                         </div>
+
+                                                        
+
                                                     <div class="row form-group">
                                                         <div class="col-md-7">
                                                             <select name="select" id="select" class="form-control">
@@ -71,6 +74,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div id="form-input">
                                                     <div class="row form-group">
                                                         <div class="col-md-7">
                                                             <select name="select" id="select" class="form-control">
@@ -81,12 +85,13 @@
                                                             </select>
                                                         </div>
                                                     </div>
+
+                                                    </div>
+
                                                     <div class="row form-group">
                                                         <div class="col-md-7">
-                                                           <div class="checkbox">
-                                                            <label for="checkbox3" class="form-check-label ">
-                                                                <input type="checkbox" id="checkbox3" name="checkbox3" value="option3" class="form-check-input"> Pulang - Pergi
-                                                            </label>
+                                                            <td width="40%">
+                                                                <input type="checkbox" name="alamat" value="berbeda" class="detail">Pulang - Pergi</td>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -158,7 +163,22 @@
                     </div>
                 </div>
 
-            </div>            
+            </div>
+
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $("#form-input").css("display"); //Menghilangkan form-input ketika pertama kali dijalankan
+        $(".detail").click(function(){ //Memberikan even ketika class detail di klik (class detail ialah class radio button)
+        if ($("input[name='alamat']:checked").val() == "berbeda" ) { //Jika radio button "berbeda" dipilih maka tampilkan form-inputan
+        $("#form-input").slideUp("fast"); //Efek Slide Down (Menampilkan Form Input)
+            } else {
+            $("#form-input").slideDown("fast"); //Efek Slide Up (Menghilangkan Form Input)
+            }
+         });
+    });
+    </script>
+
 <script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script language="javascript">
    function tambah() {
@@ -240,4 +260,3 @@
 
 </html>
 <!-- end document-->
->>>>>>> 6c51c52041530ae9c38482fda48de68fcd31c1cd
