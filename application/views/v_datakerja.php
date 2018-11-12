@@ -1,34 +1,32 @@
-            <!-- MAIN CONTENT-->
+ MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                                    <h2 class="title-1">Data Kerja Pegawai</h2>
-                                                     </div>					
-									<br>
+                                                     </div>                 
+                                    <br>
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-header">Transaksi</div>
+                                <div class="card-header">Transaksi</div>
                                     <div class="card-body">
-                                        <div class="card-title">
                                             <h3 class="text-center title-2">Pilih Transaksi</h3>
-                                        </div>
                                         <hr>
-                                        <form id="form_search" action="<?php echo site_url('DataKerja/get_autocomplete');?>" method="GET">
                                             <div class="form-group">
                                                 <label for="tanggal" class="control-label mb-1">Tanggal</label>
                                                 <input id="tanggal" name="tanggal" type="date" class="form-control" >
                                             </div>
+                                            <form id="form_search" action="<?php echo site_url('DataKerja/get_autocomplete');?>" method="GET">
                                             <div class="form-group has-success">
                                                 <label for="nama" class="control-label mb-1">Nama</label>
-                                                <input id="title" name="nama" type="text"  class="form-control">
+                                                <input id="title" name="title" type="text"  class="form-control">
                                             </div>
+                                            </form>
                                             <div class="form-group">
-                                                <label for="cc-number" class="control-label mb-1">Alamat</label>
-                                                <input id="cc-number" name="cc-number" type="tel" class="form-control ">
+                                                <label for="alamat" class="control-label mb-1">Alamat</label>
+                                                <input id="alamat" name="alamat" type="text" class="form-control ">
                                                    
                                             </div>
                                             
@@ -39,9 +37,9 @@
                                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                 </button>
                                             </div>
-                                        </form>
+                                        
                                     </div>
-                                </div>
+                                
                             </div> 
                             <div class="col-lg-6">
                                 <div class="card">
@@ -150,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
 <script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script language="javascript">
    function tambah() {
@@ -184,3 +182,31 @@
             });
             });
         </script>       
+        <!-- Jquery JS-->
+    <!-- <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script> -->
+    <!-- Bootstrap JS-->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document

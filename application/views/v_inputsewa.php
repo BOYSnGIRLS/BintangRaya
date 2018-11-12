@@ -2,12 +2,12 @@
 <div class="main-content">
 <div class="section__content section__content--p30">
     <div class="container-fluid">
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
                     <div class="au-card-inner">
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
-        <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
                     <!-- input data penyewa -->
                     <div class="form-group row">
                          <div class="col-sm-4" >
@@ -20,7 +20,7 @@
 
                       <div class="col-sm-4" >
                         <label  for="nama">Nama Penyewa:</label>
-                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pemesan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
+                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
                       </div>
                       
                       <div class="col-sm-4">
@@ -36,8 +36,8 @@
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="Pesan">Tanggal Pakai:</label>
-                        <input class="form-control" type="date" name="tgl_ambil" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                        <label for="Pesan">Tanggal Acara:</label>
+                        <input class="form-control" type="date" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
                       </div>
                     </div>
 
@@ -99,7 +99,7 @@
                           <label for="nomor">Jumlah Sewa: </label>
                             <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
                             <span class="input-group-btn">
-                                    <button class="btn btn-info" type="submit">Submit</button>
+                                    <button class="btn btn-info" type="submit">Submit&nbsp;</button>
                                 </span>
                             </div>
                         </div>
@@ -113,30 +113,30 @@
                                 <th>Jumlah Sewa</th>
                                 <th>Biaya Sewa</th>
                                 <th>Total</th>
+                                <th>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($detail_sewa as $items): ?>
+                                <?php ?>
+                                <?php  $no = 1; 
+                                foreach ($detail_sewa as $items): ?>
                                 
                                 <tr>
-                                    <td><? echo $i ;?></td>
+                                    <td><?php echo $no ;?></td>
                                      <td><?=$items->id_barang;?></td>
                                      <td><?=$items->nama_barang;?></td>
-                                     <td style="text-align:right;"><?php echo number_format($items->harga);?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
                                      <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                                 </tr>
                                 
-                                <?php $i++; ?>
-                                <?php endforeach; ?>
+                                <?php $no++;
+                                endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
                     <hr>
-                    <form action="<?php echo base_url().'InputSewa'?>" method="post">
+        <form action="<?php echo base_url().'InputSewa'?>" method="post">
             <table>
                 <tr>
                     <td style="width:760px;" rowspan="2"></td>
@@ -183,6 +183,18 @@
 </div>
 
 <script type="text/javascript">
+        $(function(){
+            $('#jml_uang').on("input",function(){
+                var total=$('#total').val();
+                var jumuang=$('#jml_uang').val();
+                var hsl=jumuang.replace(/[^\d]/g,"");
+                $('#jml_uang2').val(hsl);
+                $('#kembalian').val(hsl-total);
+            })
+            
+        });
+    </script>
+<script type="text/javascript">
         function hanyaAngka(evt) {
           var charCode = (evt.which) ? evt.which : event.keyCode
            if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -192,7 +204,8 @@
         }
     </script>
 
- <!-- Bootstrap JS-->
+<!-- Jquery JS-->
+    <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
@@ -217,3 +230,4 @@
 </body>
 
 </html>
+<!-- end document-->

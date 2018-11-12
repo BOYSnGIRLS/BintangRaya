@@ -2,6 +2,9 @@
 
 
 class Model_app extends CI_Model{
+    public $username;
+    public $password;
+
     function __construct(){
         parent::__construct();
     }
@@ -34,23 +37,14 @@ class Model_app extends CI_Model{
         return $this->session->userdata('username');
     }
     
-    function login($username, $password) {
-        //create query to connect user login database
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('username', $username);
-        $this->db->where('password', $password);
-        $this->db->limit(1);
-
-        //get query and processing
-        $query = $this->db->get();
-        if($query->num_rows() == 1) {
-            return $query->result(); //if data is true
-        } else {
-            return false; //if data is wrong
-            redirect('login');
-        }
+    function cek_log(){
+        $sql = sprintf("SELECT COUNT(*) AS hitung FROM user WHERE username='%s' AND password='%s'",
+            $this->username,
+            $this->password);
+        $query = $this->db->query($sql);
+        $row  = $query->row_array();
+        return $row['hitung'] == 1;
     }
-
+    
     
 }
