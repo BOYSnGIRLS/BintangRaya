@@ -156,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
+
             </div>
 
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -174,9 +174,6 @@
     </script>
 
 
-=======
-            </div>            
->>>>>>> 6c51c52041530ae9c38482fda48de68fcd31c1cd
 <script type="text/javascript" src="assets/js/jquery-1.8.2.min.js"></script>
 <script language="javascript">
    function tambah() {
