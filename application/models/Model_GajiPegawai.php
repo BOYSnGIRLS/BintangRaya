@@ -14,6 +14,13 @@ class Model_GajiPegawai extends CI_Model
         $this->db->join('pelanggan','sewa.id_sewa=pelanggan.id_sewa');
         return $this->db->get('sewa')->result();
         return $this->db->get()->result(); 
-    }
+	}
+	
+    public function tampil_data()
+	{
+		$query = $this->db->get('pegawai');
+		return $query;
+	}
+	
 }
 ?>

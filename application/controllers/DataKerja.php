@@ -14,18 +14,21 @@ class DataKerja extends CI_Controller {
         }
     }
 
-	public function index(){	
+	public function index(){
+		$data1['dropdown'] = $this->Model_GajiPegawai->tampil_data();
+			
         if($this->session->userdata('username')){
 		$data=array(
             'title'=>'Data Kerja'
         );
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_datakerja');
+        $this->load->view('v_datakerja',$data1);
         // $this->load->view('element/v_footer');
         }else{
             redirect('Login');
         }
+		
 	}
     public function get_autocomplete(){   //auto complete nama + alamat
         if (isset($_GET['term'])) {
@@ -56,5 +59,5 @@ class DataKerja extends CI_Controller {
                 echo json_encode($arr_result);
             }
     }
-
+	
 }
