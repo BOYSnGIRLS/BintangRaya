@@ -9,6 +9,7 @@ class GajiPegawai extends CI_Controller {
             redirect('');
         };
         $this->load->model('Model_app');
+        $this->load->model('GajiPegawai');
     }
 
 	public function index()
@@ -21,4 +22,5 @@ class GajiPegawai extends CI_Controller {
         $this->load->view('v_gajipegawai');
         $this->load->view('element/v_footer');
 	}
-}
+
+    }

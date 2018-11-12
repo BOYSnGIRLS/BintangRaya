@@ -17,23 +17,19 @@
                                             <h3 class="text-center title-2">Pilih Transaksi</h3>
                                         </div>
                                         <hr>
-                                        <form action="" method="post" novalidate="novalidate">
+                                        <form id="form_search" action="<?php echo site_url('DataKerja/get_autocomplete');?>" method="GET">
                                             <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Tanggal</label>
-                                                <input id="cc-pament" name="cc-payment" type="date" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+                                                <label for="tanggal" class="control-label mb-1">Tanggal</label>
+                                                <input id="tanggal" name="tanggal" type="date" class="form-control" >
                                             </div>
                                             <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Nama</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                                                <label for="nama" class="control-label mb-1">Nama</label>
+                                                <input id="title" name="nama" type="text"  class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-number" class="control-label mb-1">Alamat</label>
-                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number">
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                                <input id="cc-number" name="cc-number" type="tel" class="form-control ">
+                                                   
                                             </div>
                                             
                                             <div>
@@ -169,4 +165,22 @@
      $(idf).remove();
    }
 </script>
-        
+        <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+        <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+        <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#title').autocomplete({
+                source: "<?php echo site_url('DataKerja/get_autocomplete');?>",
+      
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+                    $('[name="id_roti"]').val(ui.item.id_roti);
+                    $('[name="nama_roti"]').val(ui.item.label);
+                    $('[name="harga"]').val(ui.item.harga);
+                
+
+                }
+            });
+            });
+        </script>       

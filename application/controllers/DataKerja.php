@@ -9,6 +9,7 @@ class DataKerja extends CI_Controller {
             redirect('');
         };
         $this->load->model('Model_app');
+        $this->load->model('Model_GajiPegawai');
     }
 
 	public function index()
@@ -21,4 +22,20 @@ class DataKerja extends CI_Controller {
         $this->load->view('v_datakerja');
         $this->load->view('element/v_footer');
 	}
+    public function get_autocomplete(){   //auto complete nama + alamat
+        if (isset($_GET['term'])) {
+            $result = $this->GajiPegawai->search($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = array(
+                    'label'=> $row->nama_pelanggan,
+                    'alamat'=>$row->alamat_pelanggan,
+                    'tgl_acara'=>$row->harga_sewa,
+                    'id_sewa' => $row->id_sewa
+                );
+                echo json_encode($arr_result);
+            }
+        }
+    }
+
 }
