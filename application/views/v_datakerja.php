@@ -66,23 +66,33 @@
 
                                                     <div class="row form-group">
                                                         <div class="col-md-7">
-                                                            <select name="select" id="select" class="form-control">
+                                                            <select class="form-control" name="nama pegawai" id="nama_pegawai">
                                                                 <option value="0">Berangkat</option>
-                                                                <option value="1">Option #1</option>
-                                                                <option value="2">Option #2</option>
-                                                                <option value="3">Option #3</option>
-                                                            </select>
+                                                                <?php
+                                                                foreach ($dropdown->result() as $row) {
+ 
+                                                                echo "<option value='".$row->nama."'>".$row->nama."</option>";
+                                                                }
+                                                                ?>
+                                                                </select>
+                                                                
                                                         </div>
                                                     </div>
+
                                                     <div id="form-input">
+                                                    
                                                     <div class="row form-group">
-                                                        <div class="col-md-7">
-                                                            <select name="select" id="select" class="form-control">
+                                                        <div class="col-md-7"> 
+                                                            <select class="form-control" name="nama pegawai" id="nama_pegawai">
                                                                 <option value="0">Pulang</option>
-                                                                <option value="1">Option #1</option>
-                                                                <option value="2">Option #2</option>
-                                                                <option value="3">Option #3</option>
-                                                            </select>
+                                                                <?php
+                                                                foreach ($dropdown->result() as $row) {
+ 
+                                                                echo "<option value='".$row->nama."'>".$row->nama."</option>";
+                                                                }
+                                                                ?>
+                                                                </select>
+                                                                
                                                         </div>
                                                     </div>
 
@@ -177,8 +187,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
 
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript">
