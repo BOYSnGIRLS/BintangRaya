@@ -66,10 +66,8 @@ class InputSewa extends CI_Controller {
             
             redirect('InputSewa');
         }else{
+
             $x =$this->Model_Transaksi->get_barang();
-            // $data = array(
-            //     'roti'=>$this->Model_Transaksi->get_barang()
-            //     );
             $title=array(
                 'title'=>'InputSewa',
                 'active_inputsewa'=>'active'

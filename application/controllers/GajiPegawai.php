@@ -5,7 +5,7 @@ class GajiPegawai extends CI_Controller {
 	function __construct(){
         parent::__construct();
         $this->load->model('Model_app');
-
+        $this->load->model('Model_GajiPegawai');
         $this->load->library('session');
         $this->load->helper('url');
 
@@ -23,8 +23,13 @@ class GajiPegawai extends CI_Controller {
         $this->load->view('element/v_header');
         $this->load->view('v_gajipegawai');
         $this->load->view('element/v_footer');
-	   }else{
+
+	}
+    else{
         redirect('Login');
+
+	   }
+       
        }
     }
-}
+

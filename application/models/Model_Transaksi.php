@@ -1,7 +1,4 @@
 <?php
-/**
- * 
- */
 class Model_Transaksi extends CI_Model{
 	
 	function get_barang(){
