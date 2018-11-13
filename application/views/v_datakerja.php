@@ -199,7 +199,12 @@
    function tambah() {
      var idf = document.getElementById("idf").value;
      var stre;
-     stre="<p id='srow" + idf + "'> <select name='pemasangan[]'  class='form-control'> <option>Nama Pegawai</option></select> <a href='#' style=\"color:#3399FD;\" onclick='hapus(\"#srow" + idf + "\"); return false;'>Hapus</a></p> ";
+     stre="<p id='srow" + idf + "'> <select name='pemasangan[]'  class='form-control'> <?php
+																foreach ($dropdown->result() as $row) {
+ 
+																echo "<option value='".$row->nama."'>".$row->nama."</option>";
+																}
+																?></select> <a href='#' style=\"color:#3399FD;\" onclick='hapus(\"#srow" + idf + "\"); return false;'>Hapus</a></p> ";
      $("#divTambah").append(stre);
      idf = (idf-1) + 2;
      document.getElementById("idf").value = idf;
@@ -215,7 +220,12 @@
    function tambah2() {
      var idf2 = document.getElementById("idf2").value;
      var stre2;
-     stre2="<p id='srow2" + idf2 + "'><select name='pembongkaran[]' class='form-control'> <option>Nama Pegawai</option></select> <a href='#' style=\"color:#3399FD;\" onclick='hapus2(\"#srow2" + idf2 + "\"); return false;'>Hapus</a></p>";
+     stre2="<p id='srow2" + idf2 + "'><select name='pembongkaran[]' class='form-control'> <?php
+																foreach ($dropdown->result() as $row) {
+ 
+																echo "<option value='".$row->nama."'>".$row->nama."</option>";
+																}
+																?></select> <a href='#' style=\"color:#3399FD;\" onclick='hapus2(\"#srow2" + idf2 + "\"); return false;'>Hapus</a></p>";
      $("#divTambah2").append(stre2);
      idf2 = (idf2-1) + 2;
      document.getElementById("idf2").value = idf2;
