@@ -70,7 +70,7 @@
                                 $('[name="nama_barang"]').val(ui.item.label);
                                 $('[name="stok_barang"]').val(ui.item.stok);
                                 $('[name="harga_sewa"]').val(ui.item.harga);
-                            
+                                $('[name="harga_jasa"]').val(ui.item.jasa);                            
                             }
                         });
                         });
@@ -93,7 +93,9 @@
                           <div class="col-sm-3" >
                             <label  for="nama">Biaya Sewa:</label>
                             <input class="form-control" type="text" name="harga_sewa" readonly >
+                            <input type="hidden" name="jasa" readonly="">
                           </div>
+
                           
                           <div class="col-sm-3">
                           <label for="nomor">Jumlah Sewa: </label>
@@ -117,13 +119,27 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <?php ?>
                                 <?php  $no = 1; 
-                                foreach ($detail_sewa as $items): ?>
+                                foreach ($detail_sewa2 as $items): ?>
                                 
                                 <tr>
                                     <td><?php echo $no ;?></td>
-                                     <td><?=$items->id_barang;?></td>
+                                     <td><?=$items->id_hargatenda ;?></td>
+                                     <td><?=$items->jenis_tenda;?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                                     <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
+                                     <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
+                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                                </tr>
+                                
+                                <?php $no++;
+                                endforeach; ?>
+                                <?php 
+                                foreach ($detail_sewa1 as $items): ?>
+                                
+                                <tr>
+                                    <td><?php echo $no ;?></td>
+                                     <td><?=$items->id_barang ;?></td>
                                      <td><?=$items->nama_barang;?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
@@ -131,7 +147,7 @@
                                      <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                                 </tr>
                                 
-                                <?php $no++;
+                                <?php
                                 endforeach; ?>
                             </tbody>
                         </table>
@@ -156,7 +172,8 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <th><input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
+                    <th><input class="form-control" type="hidden" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                        <input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
                     <th><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></th>
                 </tr>
             </table>

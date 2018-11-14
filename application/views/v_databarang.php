@@ -43,9 +43,15 @@
                                 <td><?php echo $row->harga_sewa;?></td>
                                  <td><?php echo $row->harga_jasa;?></td>
                                
-                                  <td><div class="rs-select2--light rs-select2--md">
-                                    <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang">EDIT</button>
-                                  </div> </td>
+                                  <td>
+                                    <div class="rs-select2--light rs-select2--md">
+                                      <a href="javascript:;"
+                                        data-id="<?php echo $row->id_barang; ?>"
+                                        data-nama="<?php echo $row->nama_barang; ?>"
+                                        data-toggle="modal" data-target="#editBarang"
+                                    >
+                                    <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang" >EDIT</button>
+                                  </div></a></td>
 
                                 <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td> -->
 
@@ -148,46 +154,35 @@
                   </div>
                   <div class="modal-body">
                     <form class="form-horizontal" action="<?php echo base_url('DataBarang/update')?>" method="post" enctype="multipart/form-data" role="form">
-
-
-        <!-- Modal Tambah -->
-          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tambah-data" class="modal fade">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                          <h4 class="modal-title">Tambah Data</h4>
-                      </div>
-                      <form class="form-horizontal" action="<?php echo base_url('DataBarang/input')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Kode Barang</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="id_barang" value="<?php echo @$user[0]['id_barang']; ?>">
+                                        <input type="text" class="form-control" name="id_barang" id="id">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Nama Barang</label>
                                     <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="nama_barang" placeholder="Tuliskan Nama">
+                                      <input type="text" class="form-control" name="nama_barang" id="nama_barang">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Stok Barang</label>
                                     <div class="col-lg-10">
-                                      <input type="number" class="form-control" name="harga_jasa" placeholder="Tuliskan Harga">
+                                      <input type="number" class="form-control" name="harga_jasa" id="stok_barang">
                                     </div>
                                 </div>
                                  <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Harga Sewa</label>
                                     <div class="col-lg-10">
-                                      <input type="number" class="form-control" name="harga_jasa" placeholder="Tuliskan Harga">
+                                      <input type="number" class="form-control" name="harga_jasa" id="harga_sewa">
                                     </div>
                                 </div>
                                  <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Harga Jasa</label>
                                     <div class="col-lg-10">
-                                      <input type="number" class="form-control" name="harga_jasa" placeholder="Tuliskan Harga">
+                                      <input type="number" class="form-control" name="harga_jasa" id="harga_jasa">
                                     </div>
                                 </div>
                           </div>
@@ -221,5 +216,43 @@
               modal.find('#stok_barang').html(div.data('stok_barang'));
           });
       });
+  </script>
+
+  <!-- EDIT BARANG -->
+   <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+    <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+    <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+    <!-- <script>
+      $(document).ready(function() {
+          // Untuk sunting
+          $('#editBarang').on('show.bs.modal', function (event) {
+              var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+              var modal          = $(this)
+ 
+              // Isi nilai pada field
+              modal.find('#id_kategori').html(div.data('id_kategori'));
+              modal.find('#id').attr("value",div.data('id_barang'));
+              modal.find('#nama').attr("value",div.data('nama_barang'));
+              modal.find('#harga_sewa').html(div.data('harga_sewa'));
+              modal.find('#harga_jasa').html(div.data('harga_jasa'));
+              modal.find('#stok_barang').html(div.data('stok_barang'));
+          });
+      });
+  </script> -->
+  <script>
+    $(document).ready(function(){
+        $('#editbarang').on('show.bs.modal', function (e) {
+            var idx = $(e.relatedTarget).data('id_barang');
+            //menggunakan fungsi ajax untuk pengambilan data
+            $.ajax({
+                type : 'post',
+                url : 'DataBarang.php',
+                data :  'id='+ id,
+                success : function(data){
+                $('.editbarang').html(data);//menampilkan data ke dalam modal
+                }
+            });
+         });
+    });
   </script>
   

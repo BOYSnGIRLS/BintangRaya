@@ -20,12 +20,12 @@ class Model_Barang extends CI_Model {
 		return $query->result();
 	}
     
-	function get_data2(){
+	function get_am(){
 		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.nama_kategori='Alat Makan'");
 		return $query->result();
 	}
 
-	function get_data3(){
+	function get_barang(){
 		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.nama_kategori='Perkakas'");
 		return $query->result();
 	}
@@ -64,7 +64,12 @@ class Model_Barang extends CI_Model {
 		return $this->db->update('paket_tenda',$data);
 	}
 
-	function update2($data = array(),$id){
+	// function update_barang($kobar,$nabar,$harga){
+ //        $hasil=$this->db->query("UPDATE tbl_barang SET barang_nama='$nabar',barang_harga='$harga' WHERE barang_kode='$kobar'");
+ //        return $hasil;
+ //    }
+
+	function update_barang($data = array(),$id){
 		$this->db->where('id_barang',$id);
 		return $this->db->update('barang',$data);
 	}
