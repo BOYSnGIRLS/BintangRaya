@@ -164,7 +164,7 @@ class DataBarang extends CI_Controller {
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
-            'data'=>$this->Model_Barang->get_data3()
+            'data'=>$this->Model_Barang->get_barang()
         );
         $kode['kode'] = $this->Model_Barang->get_id();
         $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();

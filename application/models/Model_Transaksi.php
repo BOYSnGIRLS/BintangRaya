@@ -72,5 +72,19 @@ class Model_Transaksi extends CI_Model{
     return $result = $query->result_array();
   }
 
+  function get_pelanggan(){
+    $query = $this->db->query("SELECT * FROM pelanggan");
+    return $query->result();
+  }
+
+  function surat_jalan($id){
+    $this->db->select('sewa.*, pelanggan.nama_pelanggan, pelanggan.alamat_pelanggan');
+    $this->db->from('sewa');
+    $this->db->join('pelanggan', 'pelanggan.id_sewa = sewa.id_sewa');
+    $this->db->where('sewa.id_sewa = $id');
+    $query = $this->db->get();
+    return $result = $query->result_array();
+  }
+
 }
 ?>
