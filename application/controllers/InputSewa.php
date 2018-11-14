@@ -23,6 +23,7 @@ class InputSewa extends CI_Controller {
                         'label'=> $row->nama_barang,
                         'stok'=>$row->stok_barang,
                         'harga'=>$row->harga_sewa,
+                        'jasa'=>$row->harga_jasa,
                         'id_barang' => $row->id_barang,
                     );
                     echo json_encode($arr_result);            
@@ -34,7 +35,8 @@ class InputSewa extends CI_Controller {
                             'label'=> $row->jenis_tenda,
                             'stok'=>$row->stok_tenda,
                             'harga'=>$row->harga_sewa,
-                            'id_hargatenda' => $row->id_hargatenda
+                            'jasa'=>$row->harga_jasa,
+                            'id_barang' => $row->id_hargatenda
                         );
                         echo json_encode($arr_result); 
                 }
@@ -54,15 +56,7 @@ class InputSewa extends CI_Controller {
             $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl)));
             $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl)));
 
-            // $data = $this->Model_Transaksi->input(array (
-            // 'id_sewa' => $this->input->post('id_sewa'),
-            // 'tgl_acara' => $this->input->post('tgl_acara')
-            // ));
-
-            // $this->db->query("INSERT INTO sewa (id_pesan, tgl_pasang, tgl_acara, tgl_bongkar, ) SELECT id_pesan,nama_pemesan,no_telp,tgl_ambil,jam_ambil,alamat_antar FROM tabel_detail_pemesan WHERE id_pesan='".$kode['kode']."'");
-            // $this->db->query("UPDATE `tabel_pesanan` SET `grand_total`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_pesan='".$kode['kode']."'");
-
-            $this->db->query("INSERT INTO `sewa`(`id_sewa`,  `tgl_pasang`, `tgl_acara`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`) VALUES ('".$kode['kode']."', '".$tgl_pasang."', '".$tgl."', '".$tgl_bongkar."', '".$total."','".$dp."','".$pelunasan."')");
+            $this->db->query("INSERT INTO `sewa`(`id_sewa`,  `tgl_pasang`, `tgl_acara`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`) VALUES ('".$kode['kode']."', '".$tgl_pasang."', '".$tgl."', '".$tgl_bongkar."', '".$total."','".$dp."','".$pelunasan."') ");
             
             redirect('InputSewa');
         }else{
@@ -75,7 +69,8 @@ class InputSewa extends CI_Controller {
             $kode['kode'] = $this->Model_Transaksi->get_notrans();
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header');
-            $detail_sewa['detail_sewa'] = $this->Model_Transaksi->get_sewa($kode['kode']);
+            $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
+            $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
             $cek = $this->db->query("SELECT * FROM `pelanggan` WHERE id_sewa='".$kode['kode']."'")->num_rows();
             if ($cek >=1 ){
                 $pelanggan['data'] = $this->db->query("SELECT * FROM `pelanggan` WHERE id_sewa='".$kode['kode']."'")->result();
@@ -87,9 +82,6 @@ class InputSewa extends CI_Controller {
             $this->load->view('v_inputsewa', $data+$kode+$detail_sewa);
             }
 
-            //$data['total'] = $this->db->query("SELECT SUM(total) as total FROM `tabel_detail_pesan` WHERE id_pesan='".$kode['kode']."'")->result();
-            //$this->load->view('CreatePesanan_view', $data+$kode+$pemesan+$tabel_detail_pesan);
-            // $this->load->view('element/footer');
         }
     }
 
@@ -108,7 +100,7 @@ class InputSewa extends CI_Controller {
             $this->db->query("UPDATE `pelanggan` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_acara`='$tgl' WHERE id_sewa='$id_sewa'");
         }
         elseif ($ceklagi == 0) {
-                $this->db->query("INSERT INTO `pelanggan`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp')");
+                $this->db->query("INSERT INTO `pelanggan`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_acara`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp', '$tgl')");
         }
         $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id_sewa."' AND id='".$id_barang."'")->num_rows();
         if($cek >= 1){
