@@ -69,7 +69,7 @@ class Model_Barang extends CI_Model {
  //        return $hasil;
  //    }
 
-	function update_brg($data = array(),$id){
+	function update_barang($data = array(),$id){
 		$this->db->where('id_barang',$id);
 		return $this->db->update('barang',$data);
 	}
