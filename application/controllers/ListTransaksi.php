@@ -56,9 +56,16 @@ class ListTransaksi extends CI_Controller {
             $this->load->view('element/css',$data);
             $this->load->view('element/v_header');
             $this->load->view('v_listtransaksi', $tampil+$data);
-            // $this->load->view('element/v_footer');
-	   
+            // $this->load->view('element/v_footer'); 
+    }
 
-    
+    function suratjalan(){
+        $data=array(
+                'title'=>'Surat Jalan'
+            );
+            $this->load->view('element/css',$data);
+            $this->load->view('element/v_header');
+            $this->load->view('v_suratjalan', $data);
+            $this->load->view('element/v_footer'); 
     }
 }
