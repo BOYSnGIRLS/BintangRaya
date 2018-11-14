@@ -9,18 +9,20 @@
                                 <h3 class="title-5 m-b-35">List Transaksi</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
+                                    <form method="get" action="">
                                         Status :
                                         <div class="rs-select2--light rs-select2--sm">
                                             <select class="js-select2" name="time">
                                                 <option selected="selected">All</option>
-                                                <option value="">Akan</option>
-                                                <option value="">Proses</option>
-                                                <option>Selesai</option>
+                                                <option value="1">Akan</option>
+                                                <option value="2">Proses</option>
+                                                <option value="3">Selesai</option>
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
                                         <button class="au-btn-filter">
                                             <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                    </form>
                                     </div>
 
                                     <!-- <div class="table-data__tool-right"> -->

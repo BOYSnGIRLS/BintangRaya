@@ -44,6 +44,13 @@ class ListTransaksi extends CI_Controller {
                 $transaksi = $this->Model_Laporan->view_all();
                 // Panggil fungsi view_all yang ada di TransaksiModel
             }
+
+            if(isset($_GET['time']) && ! empty($_GET['time'])){
+                $time = $_GET['time'];
+                if ($time == '1') {
+                    $akan = $_GET['']
+                }
+            }
             
             $data['ket'] = $ket;
             $tampil['trans'] = $transaksi;

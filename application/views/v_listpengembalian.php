@@ -57,24 +57,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($kembali as $row):
+                                            ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>TR_05</td>
-                                                <td>Rizky</td>
-                                                <td>Jember</td>
-                                                <td>2018-09-26</td>
-                                                <td>Selesai</td>
-                                                <td class="process">Detail</td>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $row->id_sewa ?></td>
+                                                <td><?php echo $row->nama_pelanggan ?></td>
+                                                <td><?php echo $row->alamat_pelanggan?></td>
+                                                <td><?php echo $row->tgl_bongkar?></td>
+                                                <td>status</td>
+                                                 <td><a href="<?php echo base_url(); ?>ListPengembalian/edit/<?php echo $row->id_sewa ;?>">Edit</a></td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>TR_06</td>
-                                                <td>Aulia</td>
-                                                <td>Jember</td>
-                                                <td>2018-09-25</td>
-                                                <td>Selesai</td>
-                                                <td class="denied">Detail</td>
-                                            </tr>
+                                            <?php $no++;
+                                    endforeach;  ?>
                                         </tbody>
                                     </table>
                                 </div>
