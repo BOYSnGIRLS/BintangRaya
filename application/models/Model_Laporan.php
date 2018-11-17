@@ -63,5 +63,10 @@ public function view_by_date($date){
         return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
     }
 
+    function surat_jalan($id){
+    $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa JOIN pelanggan WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa=pelanggan.id_sewa AND sewa.id_sewa='$id' ");
+    return $query->result();
+    }
+
   }
 ?>

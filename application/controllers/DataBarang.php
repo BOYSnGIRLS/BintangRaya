@@ -121,7 +121,7 @@ class DataBarang extends CI_Controller {
         $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_databarang',$data+$kode+$option_kategori);    
+        $this->load->view('v_datamakan',$data+$kode+$option_kategori);    
         $this->load->view('element/v_footer');
     }
 
@@ -140,6 +140,19 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/alatmakan');
     }
 
+    function edit_am(){
+        $id2 = $this->uri->segment(3);
+        $data = array(
+            'user' => $this->Model_Barang->get_edit_barang($id2),
+        );
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view("v_editbarang", $data);
+         $this->load->view('element/v_footer');
+    
+        
+    }
+
      function update_am(){
         $data = array(
             'id_barang' => $this->input->post('id_barang'),
@@ -150,7 +163,7 @@ class DataBarang extends CI_Controller {
             'id_kategori' => $this->input->post('id_kategori')
 
         );
-        $this->Model_Barang->update_barang($data);
+        $this->Model_Barang->update_barang($data,$id2);
         echo json_encode($data);
     }
 

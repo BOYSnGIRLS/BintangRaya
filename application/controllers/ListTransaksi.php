@@ -60,21 +60,12 @@ class ListTransaksi extends CI_Controller {
     }
 
     function suratjalan(){
-        // $data=array(
-        //         'title'=>'Surat Jalan',
-        //         'active_dashboard'=>'active',
-        //         'data'=>$this->Model_Barang->surat_jalan()
-        //     );
-        //     $this->load->view('element/css',$data);
-        //     $this->load->view('element/v_header');
-        //     $this->load->view('v_suratjalan', $data);
-        //     $this->load->view('element/v_footer'); 
-
         $id = $this->uri->segment(3);
+        // $kode['kode'] = $this->Model_Laporan->get_notrans();
         $data = array(
             'title'=>'Surat Jalan',
             'active_dashboard'=>'active',
-            // 'data'=>$this->Model_Barang->surat_jalan($id),
+            'data'=>$this->Model_Laporan->surat_jalan($id)
         );
             
         $this->load->view('element/css',$data);

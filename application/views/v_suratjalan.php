@@ -1,4 +1,5 @@
-<!-- MAIN CONTENT-->
+ <!-- MAIN CONTENT -->
+ <?php if(isset($data)){ ?>
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -14,7 +15,9 @@
 									</center>
                                         <br>
 
-                                    <div class="row">
+                                
+                                
+                                    <div class="row">          
                                          <div class="col-sm-3">
                                             <label  for="no">Nomor Surat</label><br/>
                                             <label  for="tgl">Tanggal Pasang</label><br/>
@@ -24,16 +27,20 @@
                                             <label  for="alamat">Alamat</label><br/>
                                             <label  for="telp">Telp</label><br/>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" placeholder="Nomor surat" type="text" name="no">
-                                            <input class="form-control" placeholder="" type="date" name="tgl">
-                                            <input class="form-control" placeholder="" type="date" name="tgl2">
-                                            <input class="form-control" placeholder="" type="date" name="tgl3">
-                                            <input class="form-control" placeholder="" type="text" name="nama">
-                                            <input class="form-control" placeholder="" type="text" name="alamat">
-                                            <input class="form-control" placeholder="" type="text" name="telp">
+                                       <div class="col-lg-6">
+                            
+                                            <label><?php echo $data[0]->id_sewa;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_acara;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
+                                            <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
+                                            <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
+                                            <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
+                        
                                         </div>
+                                        
                                     </div>
+
 									
                                         <div class="table-responsive table--no-card m-b-30">
 										<table class="table table-borderless table-striped table-earning">
@@ -45,26 +52,16 @@
 											</tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            foreach ($data as $row):
+                                            ?>
                                             <tr>
-                                                <td>100</td>
-                                                <td>Kursi</td>
+                                                <td><?php echo $row->jumlah_barang ?></td>
+                                                <td>nama</td>
                                                 <td>Lengkap</td>
                                             </tr>
-											<tr>
-                                                <td>100</td>
-                                                <td>Mangkok</td>
-                                                <td>Lengkap</td>
-                                            </tr>
-											<tr>
-                                                <td>200</td>
-                                                <td>Sendok</td>
-                                                <td>Lengkap</td>
-                                            </tr>
-											<tr>
-                                                <td>5</td>
-                                                <td>Pemanas</td>
-                                                <td>Lengkap</td>
-                                            </tr>
+                                        <?php endforeach;  ?>
+                                        </tbody>
 											
                                         </table>
 										</div>
@@ -88,4 +85,5 @@
                     </div>
                 </div>
             </div>
-            <!-- END MAIN CONTENT-->
+        <?php }?>
+            <!-- END MAIN CONTENT
