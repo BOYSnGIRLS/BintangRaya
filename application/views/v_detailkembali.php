@@ -81,8 +81,25 @@
                                      <td><input type="text" name="jumlah_kembali" class="form-control"></td>
                                      <td><input type="text" name="hilang" class="form-control"></td>
                                 </tr>
-                                
                                 <?php
                                 endforeach; ?>
+                                <tr>
+                                <tr>
+                                  <td colspan="5"><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></td>
+                                </tr>
                             </tbody>
                         </table>
+
+                    
+<script type="text/javascript">
+        $(function(){
+            $('#jml_kembali').on("input",function(){
+                var jml_sewa=$('#jumlah_barang').val();
+                var jml_kembali=$('#jml_kembali').val();
+                var hsl=jml_kembali.replace(/[^\d]/g,"");
+                $('#jml_kembali2').val(hsl);
+                $('#sisa').val(hsl-jml_sewa);
+            })
+            
+        });
+    </script>
