@@ -64,13 +64,14 @@ class ListTransaksi extends CI_Controller {
         $data = array(
             'title'=>'Surat Jalan',
             'active_suratjalan'=>'active',
-            'data'=>$this->Model_Laporan->surat_jalan($id)
+            'data'=>$this->Model_Laporan->surat_jalan($id),
+            'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
+            'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
         );
-        $detail_sewa['detail_sewa1'] = $this->Model_Laporan->get_sewa1($kode['id_sewa']);
-        $detail_sewa['detail_sewa2'] = $this->Model_Laporan->get_sewa2($kode['id_sewa']);
+        
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_suratjalan', $data + $detail_sewa +$kode);
+        $this->load->view('v_suratjalan', $data);
         $this->load->view('element/v_footer'); 
         
     }
