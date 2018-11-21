@@ -52,7 +52,7 @@
 											</tr>
                                         </thead>
                                         <tbody>
-                                            <?php
+                                           <!--  <?php
                                             foreach ($data as $row):
                                             ?>
                                             <tr>
@@ -60,7 +60,34 @@
                                                 <td>nama</td>
                                                 <td>Lengkap</td>
                                             </tr>
-                                        <?php endforeach;  ?>
+                                        <?php endforeach;  ?> -->
+
+                                        <?php foreach ($detail_sewa2 as $items): ?>
+                                
+                                <tr>
+                                     <td><?=$items->id_hargatenda ;?></td>
+                                     <td><?=$items->jenis_tenda;?></td>
+                                     <td style="text-align:center;"><?php echo $detail_sewa2 ;?></td>
+                                     <td style="text-align:center;">Lengkap</td>
+                                     
+                                </tr>
+                                
+                                <?php $no++;
+                                endforeach; ?>
+                                <?php 
+                                foreach ($detail_sewa1 as $items): ?>
+                                
+                                <tr>
+                                    <td><?=$items->id_barang ;?></td>
+                                     <td><?=$items->nama_barang;?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                                     <td style="text-align:right;">Lengkap</td>
+                                     
+                                </tr>
+                                
+                                <?php
+                                endforeach; ?>
+
                                         </tbody>
 											
                                         </table>
