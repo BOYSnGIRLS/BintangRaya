@@ -23,7 +23,6 @@ class ListPengembalian extends CI_Controller {
             $this->load->view('element/css',$data);
             $this->load->view('element/v_header');
             $this->load->view('v_listpengembalian', $data);
-            $this->load->view('element/v_footer');
     	   }else{
             redirect('Login');
            }

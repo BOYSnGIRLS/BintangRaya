@@ -124,3 +124,56 @@
         </div>
 
     </div>
+
+     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+    <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+    <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+
+    <script>
+    $(document).ready(function(){ // Ketika halaman selesai di load
+        $('.input-tanggal').datepicker({
+            dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
+        });
+        $('#form-tanggal, #form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+        $('#filter').change(function(){ // Ketika user memilih filter
+            if($(this).val() == '1'){ // Jika filter nya 1 (per tanggal)
+                $('#form-bulan, #form-tahun').hide(); // Sembunyikan form bulan dan tahun
+                $('#form-tanggal').show(); // Tampilkan form tanggal
+            }else if($(this).val() == '2'){ // Jika filter nya 2 (per bulan)
+                $('#form-tanggal').hide(); // Sembunyikan form tanggal
+                $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
+            }else{ // Jika filternya 3 (per tahun)
+                $('#form-tanggal, #form-bulan').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tahun').show(); // Tampilkan form tahun
+            }
+            $('#form-tanggal input, #form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+        })
+    })     
+   </script>
+
+   <!-- Jquery JS-->
+    <!-- Bootstrap JS-->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+</body>
+
+</html>
