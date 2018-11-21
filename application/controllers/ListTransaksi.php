@@ -61,7 +61,6 @@ class ListTransaksi extends CI_Controller {
 
     function suratjalan(){
         $id = $this->uri->segment(3);
-        // $kode['kode'] = $this->Model_Laporan->get_notrans();
         $data = array(
             'title'=>'Surat Jalan',
             'active_suratjalan'=>'active',
