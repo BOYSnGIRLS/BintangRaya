@@ -48,7 +48,7 @@ class ListTransaksi extends CI_Controller {
             if(isset($_GET['time']) && ! empty($_GET['time'])){
                 $time = $_GET['time'];
                 if ($time == '1') {
-                    $akan = $_GET['']
+                    $akan = $_GET[''];
                 }
             }
             
@@ -67,7 +67,7 @@ class ListTransaksi extends CI_Controller {
     }
 
     function suratjalan(){
-<<<<<<< HEAD
+
         $id = $this->uri->segment(3);
         $data = array(
             'title'=>'Surat Jalan',
@@ -82,7 +82,6 @@ class ListTransaksi extends CI_Controller {
         $this->load->view('v_suratjalan', $data);
         $this->load->view('element/v_footer'); 
         
-=======
         $data=array(
                 'title'=>'Surat Jalan'
             );
@@ -90,6 +89,6 @@ class ListTransaksi extends CI_Controller {
             $this->load->view('element/v_header');
             $this->load->view('v_suratjalan', $data);
             $this->load->view('element/v_footer'); 
->>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
+
     }
 }

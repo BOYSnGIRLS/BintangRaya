@@ -54,8 +54,8 @@ class Model_Barang extends CI_Model {
 		return $query->result_array();
 	}
 
-	function get_data_edit2($id){
-		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND barang.id_barang = '$id'");
+	function get_edit_am($id2){
+		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND barang.id_barang = '$id2'");
 		return $query->result_array();
 	}
 

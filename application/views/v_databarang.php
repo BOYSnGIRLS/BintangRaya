@@ -19,24 +19,22 @@
 
             <!-- Tabel Tampil Barang -->
             <div class="table-responsive table--no-card m-b-30">
-<<<<<<< HEAD
+
                     <table class="table table-borderless table-striped table-striped table-earning">
-=======
+
                     <table class=" table-striped table-earning">
->>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
+
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
         												<th>Stok Barang</th>
-<<<<<<< HEAD
+
         												<th colspan="3">Aksi</th>
-=======
-        												<th>Harga Sewa</th>
-        												<th>Harga Jasa</th>
-        												<th colspan="2" width="35%">Aksi</th>
->>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
+
+        												
+
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +48,7 @@
                                 <td><?php echo $row->stok_barang;?></td>
                                 
                                
-<<<<<<< HEAD
+
                               
                                    <td>
                                     <a href="">DETAIL</a> </td>
@@ -65,28 +63,9 @@
                     </table>
             </div>
           </div>
-=======
-                                  <td>
-                                    <div class="rs-select2--light rs-select2--md">
-                                      <a href="javascript:;"
-                                        data-id="<?php echo $row->id_barang; ?>"
-                                        data-nama="<?php echo $row->nama_barang; ?>"
-                                        data-toggle="modal" data-target="#editBarang"
-                                    >
-                                    <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang" >EDIT</button>
-                                  </div></a></td>
 
-                                <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_barang;?>">Edit</a></td> -->
+                                  
 
-                      <td><a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a></td>
-                  </tr>
-                  <?php $no++;
-                  endforeach;?>
-              </tbody>
-          </table>
-      </div>
-        </div>
->>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
                 </div>
                 <div class="row">
                             <div class="col-md-12">

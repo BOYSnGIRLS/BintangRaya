@@ -3,7 +3,6 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-<<<<<<< HEAD
                             <div class="col-lg-12">
                                 <div class="au-card m-b-30">
                                 <div class="au-card-inner">
@@ -41,7 +40,7 @@
                                     </form>
                          </div>
                     </div>
-=======
+
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">Edit Data Barang</h2>
@@ -72,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
->>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
+
                            
                 </div>
                         <div class="row">
