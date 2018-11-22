@@ -25,9 +25,7 @@
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
         												<th>Stok Barang</th>
-        												<th>Harga Sewa</th>
-        												<th>Harga Jasa</th>
-        												<th colspan="2">Aksi</th>
+        												<th colspan="3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,20 +37,11 @@
                                 <td><?php echo $row->id_barang;?></td>
                                 <td><?php echo $row->nama_barang;?></td>
                                 <td><?php echo $row->stok_barang;?></td>
-                                <td><?php echo $row->harga_sewa;?></td>
-                                 <td><?php echo $row->harga_jasa;?></td>
-                               
-                                  <!-- <td>
-                                    <div class="rs-select2--light rs-select2--md"> -->
-                                     <!--  <a href="javascript:;"
-                                        data-id="<?php echo $row->id_barang; ?>"
-                                        data-nama="<?php echo $row->nama_barang; ?>"
-                                        data-toggle="modal" data-target="#editBarang"
-                                    > -->
-                                   <!--  <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang" >EDIT</button>
-                                  </div></a></td> -->
+                                
+                                  
                                   <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/edit_am/<?php echo $row->id_barang;?>">EDIT</a> </td>
+                                    <a href="">DETAIL</a> </td>
+                                  <td><a href="<?php echo base_url(); ?>DataBarang/edit_am/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
                                   <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a> </td>
                             </tr>
@@ -92,8 +81,8 @@
                                        <select name="id_kategori">
                                         <option value="" class="form-control">Pilih</option>
                                         <?php
-                                        foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->id_kategori.'">'.$data->nama_kategori.'</option>';
+                                        foreach($option_kategori as $user){ // Ambil data tahun dari model yang dikirim dari controller
+                                            echo '<option value="'.$user->id_kategori.'">'.$user->nama_kategori.'</option>';
                                         }
                                         ?>
                                     </select>

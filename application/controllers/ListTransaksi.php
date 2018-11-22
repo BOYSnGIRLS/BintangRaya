@@ -63,7 +63,7 @@ class ListTransaksi extends CI_Controller {
         $id = $this->uri->segment(3);
         $data = array(
             'title'=>'Surat Jalan',
-            'active_suratjalan'=>'active',
+            'active_listtransaksi'=>'active',
             'data'=>$this->Model_Laporan->surat_jalan($id),
             'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
             'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)

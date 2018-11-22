@@ -44,7 +44,7 @@
 									
                                         <div class="table-responsive table--no-card m-b-30">
 										<table class="table table-borderless table-striped table-earning">
-                                            <thead>
+                                        <thead>
                                             <tr>
                                                 <th>Kode Barang</th>
                                                 <th>Nama Barang</th>
@@ -52,36 +52,30 @@
 											</tr>
                                         </thead>
                                         <tbody>
-                                          
+                                            <?php
+                                            foreach ($detail_sewa2 as $items): ?>
+                                        <tr>
+                                             <td><?=$items->id_hargatenda ;?></td>
+                                             <td><?=$items->jenis_tenda;?></td>
+                                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                                         </tr>
+                                            <?php
+                                            endforeach; ?>
 
-                                       <?php
-                                foreach ($detail_sewa2 as $items): ?>
+                                            <?php 
+                                            foreach ($detail_sewa1 as $items): ?>
+                                        <tr>
+                                             <td><?=$items->id_barang ;?></td>
+                                             <td><?=$items->nama_barang;?></td>
+                                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                                             
+                                        </tr>
                                 
-                                <tr>
-                                     <td><?=$items->id_hargatenda ;?></td>
-                                     <td><?=$items->jenis_tenda;?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                    
-                                </tr>
-                                
-                                <?php
-                                endforeach; ?>
-                                <?php 
-                                foreach ($detail_sewa1 as $items): ?>
-                                
-                                <tr>
-                                     <td><?=$items->id_barang ;?></td>
-                                     <td><?=$items->nama_barang;?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                     
-                                </tr>
-                                
-                                <?php
-                                endforeach; ?>
+                                            <?php
+                                            endforeach; ?>
                                         </tbody>
-											
                                         </table>
-										</div>
+							             </div>
                                     </div>
                                     <hr>
                                     <br>

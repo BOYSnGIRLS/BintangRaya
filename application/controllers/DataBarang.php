@@ -33,27 +33,6 @@ class DataBarang extends CI_Controller {
        }
 	}
 
-    // function input(){
-    //     if (isset($_POST['btnTambah'])){
-    //         $data = $this->Model_Barang->input(array (
-    //         'id_barang' => $this->input->post('kodeBarang'),
-    //         'nama_barang' => $this->input->post('namaBarang'),
-    //         'stok_barang' => $this->input->post('stokBarang'),
-    //         'sewa_barang' => $this->input->post('sewaBarang'),
-    //         'jasa_barang' => $this->input->post('jasaBarang')));
-    //         redirect('DataBarang/home');
-    //     }else{
-    //         $data=array(
-    //         'title'=>'Data Barang',
-    //         'active_dashboard'=>'active'
-    //     );
-    //         $this->load->view('element/css',$data);
-    //         $this->load->view('element/v_header');
-    //         $this->load->view('v_inputBarang');
-    //         $this->load->view('element/v_footer');
-    //     }
-    // }
-
     // ===========================TENDA TENDA TENDA TENDA========================================
 
     function tenda(){
@@ -154,17 +133,28 @@ class DataBarang extends CI_Controller {
     }
 
      function update_am(){
-        $data = array(
-            'id_barang' => $this->input->post('id_barang'),
-            'nama_barang' => $this->input->post('nama_barang'),
-            'harga_sewa' => $this->input->post('harga_sewa'),
-            'harga_jasa' => $this->input->post('harga_jasa'),
-            'stok_barang' => $this->input->post('stok_barang'),
-            'id_kategori' => $this->input->post('id_kategori')
+        // $data = array(
+        //     'id_barang' => $this->input->post('id_barang'),
+        //     'nama_barang' => $this->input->post('nama_barang'),
+        //     'harga_sewa' => $this->input->post('harga_sewa'),
+        //     'harga_jasa' => $this->input->post('harga_jasa'),
+        //     'stok_barang' => $this->input->post('stok_barang'),
+        //     'id_kategori' => $this->input->post('id_kategori')
 
-        );
-        $this->Model_Barang->update_barang($data,$id2);
-        echo json_encode($data);
+        // );
+        // $this->Model_Barang->update_barang($data,$id2);
+        // echo json_encode($data);
+
+        $id2 = $this->input->post('id_barang');
+        $insert = $this->Model_Barang->update_barang(array(
+                'id_barang' => $this->input->post('id_barang'),
+                'nama_barang' => $this->input->post('nama_barang'),
+                'harga_sewa' => $this->input->post('harga_sewa'),
+                'harga_jasa' => $this->input->post('harga_jasa'),
+                'stok_barang' => $this->input->post('stok_barang')
+                
+            ), $id2);
+        redirect('DataBarang/alatmakan');
     }
 
     function delete_am($id){
