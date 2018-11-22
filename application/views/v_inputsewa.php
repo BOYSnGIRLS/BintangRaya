@@ -36,14 +36,9 @@
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 1:</label>
-                       <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
+                        <label for="Pesan">Tanggal Acara:</label>
+                        <input class="form-control" type="date" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
                       </div>
-
-                      <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 2:</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
-                      </div></span>
                     </div>
 
                     </div>
@@ -177,10 +172,8 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <th>
-                    <input class="form-control" type="hidden" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
-                    <input class="form-control" type="hidden" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
-                    <input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
+                    <th><input class="form-control" type="hidden" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                        <input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
                     <th><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></th>
                 </tr>
             </table>

@@ -100,7 +100,7 @@ class DataBarang extends CI_Controller {
         $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_datamakan',$data+$kode+$option_kategori);    
+        $this->load->view('v_databarang',$data+$kode+$option_kategori);    
         $this->load->view('element/v_footer');
     }
 
@@ -119,20 +119,8 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/alatmakan');
     }
 
-    function edit_am(){
-        $id2 = $this->uri->segment(3);
-        $data = array(
-            'user' => $this->Model_Barang->get_edit_barang($id2),
-        );
-        $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
-        $this->load->view("v_editbarang", $data);
-         $this->load->view('element/v_footer');
-    
-        
-    }
-
      function update_am(){
+<<<<<<< HEAD
         // $data = array(
         //     'id_barang' => $this->input->post('id_barang'),
         //     'nama_barang' => $this->input->post('nama_barang'),
@@ -155,6 +143,19 @@ class DataBarang extends CI_Controller {
                 
             ), $id2);
         redirect('DataBarang/alatmakan');
+=======
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'nama_barang' => $this->input->post('nama_barang'),
+            'harga_sewa' => $this->input->post('harga_sewa'),
+            'harga_jasa' => $this->input->post('harga_jasa'),
+            'stok_barang' => $this->input->post('stok_barang'),
+            'id_kategori' => $this->input->post('id_kategori')
+
+        );
+        $this->Model_Barang->update_barang($data);
+        echo json_encode($data);
+>>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
     }
 
     function delete_am($id){
@@ -167,7 +168,7 @@ class DataBarang extends CI_Controller {
         $data=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
-            'data'=>$this->Model_Barang->get_barang()
+            'data'=>$this->Model_Barang->get_data3()
         );
         $kode['kode'] = $this->Model_Barang->get_id();
         $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();

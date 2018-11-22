@@ -9,6 +9,7 @@
                                 <i class="zmdi zmdi-plus"></i>Tambah Data</button>
                     </div>
                 </div>
+				
                     <div class="table-responsive table--no-card m-b-30">
                             <table class="table table-borderless table-striped table-striped table-earning">
                                 <thead>
@@ -16,8 +17,8 @@
                                         <th>No</th>
                                         <th>Kode Tenda</th>
                                         <th>Ukuran Tenda</th>
-                    										<th>Stok Tenda</th>
-                    										<th colspan="2">Aksi</th>
+										<th>Stok Tenda</th>
+										<th colspan="2">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,7 +37,7 @@
                                     endforeach;?>
                                 </tbody>
                             </table>
-                      </div>
+                    </div>
                 </div>
             </div>
 

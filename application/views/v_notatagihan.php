@@ -11,11 +11,14 @@
 										<h2>Bintang Raya</h2>
                                         <p >Jl. Singosari No.1 Sumber Pakem Kebonsari Jember</p>
 										<p >Telp. (0331) 323204, 0831 044 055 05</p>
+                                        <h4>BON PEMESANAN</h4>
 									</center>
                                         <br>
 
                                     <div class="row">
                                          <div class="col-sm-3">
+                                            <label>NPWP</label><br/>
+                                            <label>SIUP</label><br/>
                                             <label  for="no">Nomor Surat</label><br/>
                                             <label  for="tgl">Tanggal Pasang</label><br/>
                                             <label  for="tgl2">Tanggal Acara</label><br/>
@@ -25,74 +28,57 @@
                                             <label  for="telp">Telp</label><br/>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input class="form-control" placeholder="Nomor surat" type="text" name="no">
-                                            <input class="form-control" placeholder="" type="date" name="tgl">
-                                            <input class="form-control" placeholder="" type="date" name="tgl2">
-                                            <input class="form-control" placeholder="" type="date" name="tgl3">
-                                            <input class="form-control" placeholder="" type="text" name="nama">
-                                            <input class="form-control" placeholder="" type="text" name="alamat">
-                                            <input class="form-control" placeholder="" type="text" name="telp">
+                                            <label>80.370.340.4-626.000</label><br/>
+                                            <label>503/0629/411/2016</label><br/>
+                                            <label>206</label><br/>
+                                            <label>20-11-2018</label><br/>
+                                            <label>21-11-2018 s/d 23-11-2018</label><br/>
+                                            <label>24-11-2018</label><br/>
+                                            <label>Diana</label><br/>
+                                            <label>Jember</label><br/>
+                                            <label>0853478632487</label><br/>
+                                            
                                         </div>
                                     </div>
 									
                                         <div class="table-responsive table--no-card m-b-30">
 										<table class="table table-borderless table-striped table-earning">
-                                        <thead>
+                                            <thead>
                                             <tr>
-                                                <th>Jumlah</th>
+                                                <th>Satuan</th>
                                                 <th>Nama Barang</th>
-												<th>Keterangan</th>
+												<th>Harga</th>
+                                                <th>Jumlah</th>
 											</tr>
                                         </thead>
                                         <tbody>
-<<<<<<< HEAD
-                                            <?php
-                                            foreach ($detail_sewa2 as $items): ?>
-                                        <tr>
-                                             <td><?=$items->id_hargatenda ;?></td>
-                                             <td><?=$items->jenis_tenda;?></td>
-                                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                         </tr>
-                                            <?php
-                                            endforeach; ?>
-
-                                            <?php 
-                                            foreach ($detail_sewa1 as $items): ?>
-                                        <tr>
-                                             <td><?=$items->id_barang ;?></td>
-                                             <td><?=$items->nama_barang;?></td>
-                                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                             
-                                        </tr>
-                                
-                                            <?php
-                                            endforeach; ?>
-                                        </tbody>
-=======
                                             <tr>
                                                 <td>100</td>
                                                 <td>Kursi</td>
-                                                <td>Lengkap</td>
+                                                <td>1000</td>
+                                                <td>10000</td>
                                             </tr>
 											<tr>
                                                 <td>100</td>
                                                 <td>Mangkok</td>
-                                                <td>Lengkap</td>
+                                                <td>500</td>
+                                                <td>50000</td>
                                             </tr>
 											<tr>
                                                 <td>200</td>
                                                 <td>Sendok</td>
-                                                <td>Lengkap</td>
+                                                <td>300</td>
+                                                <td>60000</td>
                                             </tr>
 											<tr>
                                                 <td>5</td>
                                                 <td>Pemanas</td>
-                                                <td>Lengkap</td>
+                                                <td>10000</td>
+                                                <td>50000</td>
                                             </tr>
 											
->>>>>>> 173b57f8ce2f1a618f8d7408a38ae7585e84ce3b
                                         </table>
-							             </div>
+										</div>
                                     </div>
                                     <hr>
                                     <br>

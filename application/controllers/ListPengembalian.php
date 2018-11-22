@@ -15,31 +15,14 @@ class ListPengembalian extends CI_Controller {
     }
 
 	public function index(){	
-        if($this->session->userdata('username')){
-    		$data=array(
-                'title'=>'List Pengembalian',
-                'data' => $this->Model_Pengembalian->tampil_semua()
-            );
-            $this->load->view('element/css',$data);
-            $this->load->view('element/v_header');
-            $this->load->view('v_listpengembalian', $data);
-    	   }else{
-            redirect('Login');
-           }
-        }
-
-    public function detail(){
-        $id = $this->uri->segment(3);
-        $title['title']='List Pengembalian';
-        $data=array(
-                'data' => $this->Model_Pengembalian->tampil($id),
-                'detail_sewa1' => $this->Model_Pengembalian->get_sewa1($id),
-                'detail_sewa2' =>$this->Model_Pengembalian->get_sewa2($id)
-            );
-        $this->load->view('element/css',$title);
+        $tampil['kembali'] = $this->Model_Pengembalian->tampil_kembalian();
+		$data=array(
+            'title'=>'List Pengembalian'
+        );
+        $this->load->view('element/css',$data);
         $this->load->view('element/v_header');
-        $this->load->view('v_detailkembali', $data);
+        $this->load->view('v_listpengembalian', $tampil);
         $this->load->view('element/v_footer');
-
+	   
     }
 }
