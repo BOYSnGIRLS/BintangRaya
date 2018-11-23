@@ -9,15 +9,16 @@
                                 <i class="zmdi zmdi-plus"></i>Tambah Data</button>
                     </div>
                 </div>
+				
                     <div class="table-responsive table--no-card m-b-30">
-                            <table class="table table-borderless table-striped">
+                            <table class="table table-borderless table-striped table-striped table-earning">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Kode Tenda</th>
                                         <th>Ukuran Tenda</th>
-                    										<th>Stok Tenda</th>
-                    										<th colspan="2">Aksi</th>
+										<th>Stok Tenda</th>
+										<th colspan="2">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -29,20 +30,14 @@
                                         <td><?php echo $row->id_tenda;?></td>
                                         <td><?php echo $row->ukuran_tenda;?></td>
                                         <td><?php echo $row->stok_tenda;?></td>
-                                        <td><a href="javascript:;"
-                                            data-id_tenda="<?php echo $row->id_tenda ?>"
-                                            data-ukuran_tenda="<?php echo $row->ukuran_tenda ?>"
-                                            data-stok_tenda="<?php echo $row->stok_tenda ?>"
-                                            data-toggle="modal" data-target="#edit-tenda">
-                                            <button  data-toggle="modal" data-target="#ubah-tenda" class="btn btn-info">Edit</button></a></a>
-                                        </td>
+                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
                                         <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td>
                                     </tr>
                                     <?php $no++;
                                     endforeach;?>
                                 </tbody>
                             </table>
-                      </div>
+                    </div>
                 </div>
             </div>
 
@@ -56,14 +51,13 @@
                     </div>
                 </div>
             <div class="table-responsive table--no-card m-b-30">
-                    <table class="table table-borderless table-striped">
+                    <table class="table table-borderless table-striped table-striped table-earning">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Jenis</th>
                                 <th>Ukuran Tenda</th>
                                 <th>Harga Sewa</th>
-                                <th>Harga Jasa</th>
                                 <th colspan="2">Aksi</th>
                             </tr>
                         </thead>
@@ -76,11 +70,9 @@
                                 <td><?php echo $row->jenis_tenda;?></td>
                                 <td><?php echo $row->ukuran_tenda;?></td>
                                 <td><?php echo $row->harga_sewa;?></td>
-                                <td><?php echo $row->harga_jasa;?></td>
-                                 <!-- <td>EDIT</td> -->
+                                <!-- <td>EDIT</td> -->
                                  <!-- <td>HAPUS</td> -->
-
-                                <td><a href="<?php echo base_url(); ?>DataBarang/edit/<?php echo $row->id_hargatenda;?>">Edit</a></td>
+                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
 
                                 <td><a href="<?php echo base_url(); ?>DataBarang/delete_paket/<?php echo $row->id_hargatenda;?>">Hapus</a></td>
                             </tr>

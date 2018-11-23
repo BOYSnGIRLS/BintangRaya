@@ -49,23 +49,28 @@ class Model_Barang extends CI_Model {
         return $this->db->delete('paket_tenda');
 	}
 	
-	function get_edit_tenda($id1){
-		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda AND paket_tenda.id_hargatenda = '$id1'");
+	function get_data_edit($id){
+		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda AND paket_tenda.id_hargatenda = '$id'");
 		return $query->result_array();
 	}
 
-	function get_edit_barang($id2){
+	function get_edit_am($id2){
 		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND barang.id_barang = '$id2'");
 		return $query->result_array();
 	}
 
-	function update_tenda($data = array(),$id1){
-		$this->db->where('id_hargatenda',$id1);
+	function update($data = array(),$id){
+		$this->db->where('id_hargatenda',$id);
 		return $this->db->update('paket_tenda',$data);
 	}
 
-	function update_barang($data = array(),$id2){
-		$this->db->where('id_barang',$id2);
+	// function update_barang($kobar,$nabar,$harga){
+ //        $hasil=$this->db->query("UPDATE tbl_barang SET barang_nama='$nabar',barang_harga='$harga' WHERE barang_kode='$kobar'");
+ //        return $hasil;
+ //    }
+
+	function update_barang($data = array(),$id){
+		$this->db->where('id_barang',$id);
 		return $this->db->update('barang',$data);
 	}
 

@@ -36,6 +36,7 @@
                       </div>
 
                       <div class="col-sm-3">
+<<<<<<< HEAD
                         <label for="tgl">Tanggal Acara Mulai:</label>
                        <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
                       </div>
@@ -44,6 +45,11 @@
                         <label for="tgl">Selesai :</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
                       </div></span>
+=======
+                        <label for="Pesan">Tanggal Acara:</label>
+                        <input class="form-control" type="date" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                      </div>
+>>>>>>> a23ea304202e151f93d5caa2257c5fb1e3488a96
                     </div>
 
                     </div>
@@ -162,14 +168,12 @@
                 <tr>
                     <td style="width:760px;" rowspan="2"></td>
                     <th style="width:140px;">Total (Rp)</th>
-                    <th style="text-align:right;width:140px;">
-                    <input type="text" name="total2" value="<?php echo number_format($total[0]->total);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
+                    <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($total[0]->total);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
                     <input type="hidden" id="total" name="total" value="<?php echo $total[0]->total;?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                 </tr>
                 <tr>
                     <th>DP (Rp)</th>
-                    <th style="text-align:right;">
-                    <input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
+                    <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
                     <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                 </tr>
                 <tr>
@@ -179,10 +183,8 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <th>
-                    <input class="form-control" type="hidden" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
-                    <input class="form-control" type="hidden" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
-                    <input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
+                    <th><input class="form-control" type="hidden" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                        <input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
                     <th><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></th>
                 </tr>
             </table>

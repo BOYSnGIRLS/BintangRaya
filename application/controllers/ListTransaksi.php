@@ -44,6 +44,13 @@ class ListTransaksi extends CI_Controller {
                 $transaksi = $this->Model_Laporan->view_all();
                 // Panggil fungsi view_all yang ada di TransaksiModel
             }
+
+            if(isset($_GET['time']) && ! empty($_GET['time'])){
+                $time = $_GET['time'];
+                if ($time == '1') {
+                    $akan = $_GET[''];
+                }
+            }
             
             $data['ket'] = $ket;
             $tampil['trans'] = $transaksi;
@@ -60,10 +67,11 @@ class ListTransaksi extends CI_Controller {
     }
 
     function suratjalan(){
+
         $id = $this->uri->segment(3);
         $data = array(
             'title'=>'Surat Jalan',
-            'active_suratjalan'=>'active',
+            'active_listtransaksi'=>'active',
             'data'=>$this->Model_Laporan->surat_jalan($id),
             'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
             'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
@@ -74,6 +82,13 @@ class ListTransaksi extends CI_Controller {
         $this->load->view('v_suratjalan', $data);
         $this->load->view('element/v_footer'); 
         
-    }
+        $data=array(
+                'title'=>'Surat Jalan'
+            );
+            $this->load->view('element/css',$data);
+            $this->load->view('element/v_header');
+            $this->load->view('v_suratjalan', $data);
+            $this->load->view('element/v_footer'); 
 
+    }
 }
