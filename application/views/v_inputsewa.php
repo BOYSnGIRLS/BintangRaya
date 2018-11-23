@@ -36,12 +36,12 @@
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 1:</label>
+                        <label for="tgl">Tanggal Acara Mulai:</label>
                        <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 2:</label>
+                        <label for="tgl">Selesai :</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
                       </div></span>
                     </div>
