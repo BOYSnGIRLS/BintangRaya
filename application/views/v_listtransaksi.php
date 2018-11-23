@@ -111,7 +111,10 @@
                                                 <td><?php echo $row->nama_pelanggan ?></td>
                                                 <td><?php echo $row->tgl_pasang?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
-                                                <td>akan</td>
+
+                                                <td><a href=""><button type="submit" class="btn btn-warning">Akan</button></a></td> 
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/suratjalan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> 
+                                                <td><a href=""><button type="submit" class="btn btn-info">Detail</button></a></td> 
                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/suratjalan/<?php echo $row->id_sewa;?>">detail</a></td> 
                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>">detail</a></td> </td>
                                                  <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>">Edit</a></td>

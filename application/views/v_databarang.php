@@ -18,7 +18,10 @@
 						<div class="row">
             <!-- Tabel Tampil Barang -->
             <div class="table-responsive table--no-card m-b-30">
-                    <table class="table table-borderless table-striped">
+
+                    <table class="table table-borderless table-striped table-striped table-earning">
+
+                    <table class=" table-striped table-earning">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -28,6 +31,9 @@
         												<th>Harga Sewa</th>
         												<th>Harga Jasa</th>
         												<th colspan="2">Aksi</th>
+
+        												<th colspan="3">Aksi</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -39,9 +45,8 @@
                                 <td><?php echo $row->id_barang;?></td>
                                 <td><?php echo $row->nama_barang;?></td>
                                 <td><?php echo $row->stok_barang;?></td>
-                                <td><?php echo $row->harga_sewa;?></td>
-                                 <td><?php echo $row->harga_jasa;?></td>
-                               
+                                
+            
                                  <!--  <td>
                                     <div class="rs-select2--light rs-select2--md"> -->
                                      <!--  <a href="javascript:;"
@@ -53,6 +58,12 @@
                                   </div></a></td> -->
                                    <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>">EDIT</a> </td>
+
+                              
+                                   <td>
+                                    <a href="">DETAIL</a> </td>
+                                   
+                                    <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
                                   <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a> </td>
                             </tr>
@@ -62,6 +73,8 @@
                     </table>
             </div>
           </div>
+
+                                
                 </div>
                 <div class="row">
                             <div class="col-md-12">

@@ -36,6 +36,7 @@
                       </div>
 
                       <div class="col-sm-3">
+<<<<<<< HEAD
                         <label for="tgl">Tanggal Acara 1:</label>
                        <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
                       </div>
@@ -44,6 +45,17 @@
                         <label for="tgl">Tanggal Acara 2:</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
                       </div></span>
+                        <label for="tgl">Tanggal Acara Mulai:</label>
+                       <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
+                      </div>
+
+                      <div class="col-sm-3">
+                        <label for="tgl">Selesai :</label>
+                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
+                      </div></span>
+                        <label for="Pesan">Tanggal Acara:</label>
+                        <input class="form-control" type="date" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
+                      </div>
                     </div>
 
                     </div>

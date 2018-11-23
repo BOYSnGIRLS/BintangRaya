@@ -46,11 +46,14 @@
                       </div></span>
                     </div>
                     </div>
+                                <th>Nama Barang</th>
+
 
                     <table class="table table-borderless table-data3">
                             <thead>
                             <tr>
                                 <th>ID Barang</th>
+
                                 <th>Nama Barang</th>
                                 <th>Jumlah Sewa</th>
                                 <th>Jumlah Kembali</th>
@@ -65,7 +68,12 @@
                                      <td><?=$items->id_hargatenda ;?></td>
                                      <td><?=$items->jenis_tenda;?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+
                                      <td><input type="text" name="jumlah_kembali" class="form-control"></td>
+
+                                     <td><input type="text" name="jumlah_kembali" class="form-control" required onkeypress="return hanyaAngka(event)">
+                                         <input type="hidden" name="jumlah_kembali2" class="form-control"></td>
+
                                      <td><input type="text" name="hilang" class="form-control"></td>
                                 </tr>
                                 
@@ -78,7 +86,8 @@
                                      <td><?=$items->id_barang ;?></td>
                                      <td><?=$items->nama_barang;?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                     <td><input type="text" name="jumlah_kembali" class="form-control"></td>
+                                     <td><input type="text" name="jumlah_kembali" class="form-control" required onkeypress="return hanyaAngka(event)">
+                                      <input type="hidden" name="jumlah_kembali2" class="form-control"></td>
                                      <td><input type="text" name="hilang" class="form-control"></td>
                                 </tr>
                                 <?php
@@ -90,7 +99,10 @@
                             </tbody>
                         </table>
 
-                    
+<script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+<script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+<script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+
 <script type="text/javascript">
         $(function(){
             $('#jml_kembali').on("input",function(){
@@ -103,3 +115,16 @@
             
         });
     </script>
+      
+        });
+    </script>
+    <script type="text/javascript">
+        function hanyaAngka(evt) {
+          var charCode = (evt.which) ? evt.which : event.keyCode
+           if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+            return false;
+          return true;
+        }
+    </script>
+    

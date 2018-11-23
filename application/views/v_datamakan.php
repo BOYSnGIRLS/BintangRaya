@@ -28,6 +28,7 @@
         												<th>Harga Sewa</th>
         												<th>Harga Jasa</th>
         												<th colspan="2">Aksi</th>
+        												<th colspan="3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,11 @@
                                   </div></a></td> -->
                                   <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/edit_am/<?php echo $row->id_barang;?>">EDIT</a> </td>
+                                
+                                  
+                                  <td>
+                                    <a href="">DETAIL</a> </td>
+                                  <td><a href="<?php echo base_url(); ?>DataBarang/edit_am/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
                                   <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a> </td>
                             </tr>
@@ -92,8 +98,8 @@
                                        <select name="id_kategori">
                                         <option value="" class="form-control">Pilih</option>
                                         <?php
-                                        foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->id_kategori.'">'.$data->nama_kategori.'</option>';
+                                        foreach($option_kategori as $user){ // Ambil data tahun dari model yang dikirim dari controller
+                                            echo '<option value="'.$user->id_kategori.'">'.$user->nama_kategori.'</option>';
                                         }
                                         ?>
                                     </select>
