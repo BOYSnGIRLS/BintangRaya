@@ -1,4 +1,4 @@
- MAIN CONTENT-->
+
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -78,18 +78,6 @@
                                     </form>
                                     <hr />
                                     </div>    
-                                    <!-- <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <select class="js-select2" name="type">
-                                                <option selected="selected">Export</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div> -->
                                 </div>
 
                             </div>
@@ -101,7 +89,7 @@
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
+                                                <!-- <th>No</th> -->
                                                 <th>Kode Transaksi</th>
                                                 <th>Nama Pelanggan</th>
                                                 <th>Tgl Pasang</th>
@@ -114,21 +102,22 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $no = 1;
+                                            // $no = 1;
                                             foreach ($trans as $row):
                                             ?>
                                             <tr>
-                                                <td><?php echo $no++; ?></td>
+                                                <!-- <td><?php echo $no++; ?></td> -->
                                                 <td><?php echo $row->id_sewa ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
                                                 <td><?php echo $row->tgl_pasang?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
                                                 <td>akan</td>
-                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/suratjalan">detail</a></td>
-                                                <td>detail</td>
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/suratjalan/<?php echo $row->id_sewa;?>">detail</a></td> 
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>">detail</a></td> </td>
                                                  <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>">Edit</a></td>
                                             </tr>
-                                            <?php $no++;
+                                            <?php 
+                                            // $no++;
                                     endforeach;  ?>
                                         </tbody>
                                     </table>

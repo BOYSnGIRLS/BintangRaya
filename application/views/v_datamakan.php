@@ -4,7 +4,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="title-5 m-b-35">DATA BARANG LAIN-LAIN</h3>
+                                <h3 class="title-5 m-b-35">DATA ALAT MAKAN</h3>
                                 <div class="table-data__tool">
                                   <div class="table-data__tool-left">
                                       <div class="rs-select2--light rs-select2--md">
@@ -18,7 +18,7 @@
 						<div class="row">
             <!-- Tabel Tampil Barang -->
             <div class="table-responsive table--no-card m-b-30">
-                    <table class="table table-borderless table-striped">
+                    <table class="table table-borderless table-striped table-striped table-earning">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -42,17 +42,17 @@
                                 <td><?php echo $row->harga_sewa;?></td>
                                  <td><?php echo $row->harga_jasa;?></td>
                                
-                                 <!--  <td>
+                                  <!-- <td>
                                     <div class="rs-select2--light rs-select2--md"> -->
                                      <!--  <a href="javascript:;"
                                         data-id="<?php echo $row->id_barang; ?>"
                                         data-nama="<?php echo $row->nama_barang; ?>"
                                         data-toggle="modal" data-target="#editBarang"
                                     > -->
-                                    <!-- <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang" >EDIT</button>
+                                   <!--  <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang" >EDIT</button>
                                   </div></a></td> -->
-                                   <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>">EDIT</a> </td>
+                                  <td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/edit_am/<?php echo $row->id_barang;?>">EDIT</a> </td>
                                   <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a> </td>
                             </tr>
@@ -84,7 +84,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah_barang')?>" method="post" enctype="multipart/form-data" role="form">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah_am')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>

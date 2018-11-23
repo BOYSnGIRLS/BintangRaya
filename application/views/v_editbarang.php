@@ -10,7 +10,7 @@
                             </div>
                         </div>
 						<div class="row">
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <p>
 										<form method="post" action="<?php echo base_url()?>DataBarang/update">
@@ -31,7 +31,29 @@
 							    </form>
 									</p>
                                 </div>
+                            </div> -->
+
+                            <div class="col-md-12">
+                            <div class="overview-wrap">
+                            <form method="post" action="<?php echo base_url()?>DataBarang/update">
+                            <div class="col-sm-3">
+                                            Kode Barang<br/>
+                                            Nama Barang<br/>
+                                            Stok Barang<br/>
+                                        </div>
+                                       <div class="col-lg-6">
+                        
+                                            <input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>"><br/>
+                                            <input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['nama_barang']; ?>"><br/>
+                                            <input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['stok_barang']; ?>"><br/>
+                                            
+                        
+                                           
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
+
                         </div>
                            
                 </div>

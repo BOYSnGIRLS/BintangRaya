@@ -1,4 +1,5 @@
 <!-- MAIN CONTENT-->
+<?php if(isset($data)){ ?>
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -30,13 +31,13 @@
                                         <div class="col-lg-6">
                                             <label>80.370.340.4-626.000</label><br/>
                                             <label>503/0629/411/2016</label><br/>
-                                            <label>206</label><br/>
-                                            <label>20-11-2018</label><br/>
-                                            <label>21-11-2018 s/d 23-11-2018</label><br/>
-                                            <label>24-11-2018</label><br/>
-                                            <label>Diana</label><br/>
-                                            <label>Jember</label><br/>
-                                            <label>0853478632487</label><br/>
+                                            <label><?php echo $data[0]->id_sewa;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_acara;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
+                                            <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
+                                            <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
+                                            <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
                                             
                                         </div>
                                     </div>
