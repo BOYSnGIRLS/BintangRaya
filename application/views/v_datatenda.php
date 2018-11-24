@@ -29,8 +29,12 @@
                                         <td><?php echo $row->id_tenda;?></td>
                                         <td><?php echo $row->ukuran_tenda;?></td>
                                         <td><?php echo $row->stok_tenda;?></td>
-                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
-                                        <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td>
+                                        <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                        <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td> -->
+
+                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                <td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
                                     </tr>
                                     <?php $no++;
                                     endforeach;?>

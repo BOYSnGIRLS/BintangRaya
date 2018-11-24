@@ -20,13 +20,13 @@ class Model_Barang extends CI_Model {
 		return $query->result();
 	}
     
-	function get_am(){
-		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.nama_kategori='Alat Makan'");
-		return $query->result();
-	}
+	// function get_am(){
+	// 	$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.nama_kategori='Alat Makan'");
+	// 	return $query->result();
+	// }
 
 	function get_barang(){
-		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.nama_kategori='Perkakas'");
+		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori");
 		return $query->result();
 	}
 	
@@ -34,10 +34,6 @@ class Model_Barang extends CI_Model {
 		return $this->db->insert('barang',$data);
 	}
 	
-	function delete($id){
-		$this->db->where('id_barang', $id);
-        return $this->db->delete('barang');
-	}
 
 	function delete_tenda($id){
 		$this->db->where('id_tenda', $id);
@@ -48,13 +44,23 @@ class Model_Barang extends CI_Model {
 		$this->db->where('id_hargatenda', $id);
         return $this->db->delete('paket_tenda');
 	}
-	
-	function get_edit_tenda($id1){
+
+	function delete($id){
+		$this->db->where('id_barang', $id);
+        return $this->db->delete('barang');
+	}
+
+	function get_edit_tenda($id){
+		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda AND tenda.id_tenda = '$id'");
+		return $query->result_array();
+	}
+
+	function get_edit_pakettenda($id1){
 		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda AND paket_tenda.id_hargatenda = '$id1'");
 		return $query->result_array();
 	}
 
-	function get_edit_am($id2){
+	function get_edit_barang($id2){
 		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND barang.id_barang = '$id2'");
 		return $query->result_array();
 	}

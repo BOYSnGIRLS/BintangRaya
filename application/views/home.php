@@ -25,14 +25,14 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="assets/images/alat makan.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="assets/images/barang.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-3">ALAT MAKAN</h4>
-                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/alatmakan">Lihat</a></p>
+                                        <h4 class="card-title mb-3">BARANG</h4>
+                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/barang">Lihat</a></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="card">
                                     <img class="card-img-top" src="assets/images/barang.jpg" alt="Card image cap">
                                     <div class="card-body">
@@ -40,7 +40,7 @@
                                         <p class="card-text"><a href="<?php echo base_url()?>DataBarang/barang">Lihat</a></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                        </div>
                             
                         </div>

@@ -6,9 +6,13 @@
                             <div class="col-lg-12">
                                 <div class="au-card m-b-30">
                                 <div class="au-card-inner">
-                                       <h2 class="title-5 m-b-35">EDIT DATA BARANG</h2>
-                                    <form method="post" action="<?php echo base_url()?>DataBarang/update_am">
+                                       <h2 class="title-5 m-b-35">EDIT ALAT MAKAN</h2>
+                                    <form method="post" action="<?php echo base_url()?>DataBarang/update_barang">
                                         <table>
+                                            <tr>
+                                                <td width="200" height="50" >Kategori Barang</td>
+                                                <td><input class="form-control" type="text" name="kategori" maxlength="15" value="<?php echo @$user[0]['nama_kategori']; ?>"></td>
+                                            </tr>
                                             <tr>
                                                 <td width="200" height="50" >Kode Barang</td>
                                                 <td><input class="form-control" type="text" name="id_barang" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>"></td>
@@ -32,8 +36,13 @@
                                         </table><br>
                                         <table>
                                             <tr>
-                                                <td width="410"></td>
-                                                <td><span class="input-group-btn"><button class="au-btn au-btn-icon au-btn--blue" type="submit">Simpan</button></span></td>
+                                                <td width="310"></td>
+                                                <td><a href="<?php echo base_url()?>DataBarang/barang"><button type="button" class=" btn btn-secondary btn-lg">Kembali</button></a></td>
+
+                                                <td width="10"></td>
+                                                <td>
+                                                    <span class="input-group-btn"><button class=" btn btn-primary btn-lg" type="submit">Simpan</button></span>
+                                                </td>
                                             </tr>
                                         </table>
                                         
@@ -41,60 +50,7 @@
                          </div>
                     </div>
 
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">Edit Data Barang</h2>
-                                </div>
-                            </div>
                         </div>
-						<div class="row">
-                            <!-- <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <p>
-										<form method="post" action="<?php echo base_url()?>DataBarang/update">
-							        Kode Barang<br/><input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>"><br/><br/>
-									
-							        Nama<br/><input type="text" name="nama_barang" size="30" maxlength="25" value="<?php echo @$user[0]['nama_barang']; ?>"><br/><br/>
-									
-							        Stok Barang<br/><input type="number" name="stok_barang" size="5" maxlength="5" value="<?php echo @$user[0]['stok_barang']; ?>"><br/><br/>
-
-							        Harga Sewa<br/><input type="number" name="harga_sewa" size="5" maxlength="5" value="<?php echo @$user[0]['harga_sewa']; ?>"><br/><br/>
-
-							        Harga Jasa<br/><input type="number" name="harga_jasa" size="5" maxlength="5" value="<?php echo @$user[0]['harga_jasa']; ?>"><br/><br/>
-
-
-									<br/><br/>
-							        <input type="submit" name="btnSimpan" value="Simpan"/>
-							        <a href="<?php echo base_url()?>DataBarang/home">Kembali</a>
-							    </form>
-									</p>
-                                </div>
-                            </div> -->
-
-                            <div class="col-md-12">
-                            <div class="overview-wrap">
-                            <form method="post" action="<?php echo base_url()?>DataBarang/update">
-                            <div class="col-sm-3">
-                                            Kode Barang<br/>
-                                            Nama Barang<br/>
-                                            Stok Barang<br/>
-                                        </div>
-                                       <div class="col-lg-6">
-                        
-                                            <input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>"><br/>
-                                            <input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['nama_barang']; ?>"><br/>
-                                            <input type="text" name="id_barang" size="5" maxlength="5" value="<?php echo @$user[0]['stok_barang']; ?>"><br/>
-                                            
-                        
-                                           
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-
-                           
                 </div>
                         <div class="row">
                             <div class="col-md-12">

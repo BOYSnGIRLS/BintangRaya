@@ -64,6 +64,19 @@ class DataBarang extends CI_Controller {
         $this->Model_Barang->tambah_tenda($data);
         redirect('DataBarang/tenda');
     }
+    
+    function edit_tenda(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'title'=> 'Edit Tenda',
+            'active_dashboard'=>'active',
+            'user' => $this->Model_Barang->get_edit_tenda($id),
+        );
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view("v_edittenda", $data);
+         $this->load->view('element/v_footer');
+    }
 
     function delete_tenda($id){
         $this->Model_Barang->delete_tenda($id);
@@ -82,6 +95,7 @@ class DataBarang extends CI_Controller {
         $this->Model_Barang->tambah_paket($data);
         redirect('DataBarang/tenda');
     }
+    
 
     function delete_paket($id){
         $this->Model_Barang->delete_paket($id);
@@ -90,80 +104,71 @@ class DataBarang extends CI_Controller {
 
     //======================== BARANG ALAT MAKAN ======================================
 
-    function alatmakan(){
-        $data=array(
-            'title'=>'Data Barang',
-            'active_dashboard'=>'active',
-            'data'=>$this->Model_Barang->get_am()
-        );
-        $kode['kode'] = $this->Model_Barang->get_id();
-        $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
-        $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
-        $this->load->view('v_datamakan',$data+$kode+$option_kategori);    
-        $this->load->view('element/v_footer');
-    }
+    // function alatmakan(){
+    //     $data=array(
+    //         'title'=>'Data Barang',
+    //         'active_dashboard'=>'active',
+    //         'data'=>$this->Model_Barang->get_barang()
+    //     );
+    //     $kode['kode'] = $this->Model_Barang->get_id();
+    //     $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
+    //     $this->load->view('element/css',$data);
+    //     $this->load->view('element/v_header');
+    //     $this->load->view('v_datamakan',$data+$kode+$option_kategori);    
+    //     $this->load->view('element/v_footer');
+    // }
 
-    public function tambah_am(){
-        $data = array(
-            'id_barang' => $this->input->post('id_barang'),
-            'nama_barang' => $this->input->post('nama_barang'),
-            'harga_sewa' => $this->input->post('harga_sewa'),
-            'harga_jasa' => $this->input->post('harga_jasa'),
-            'stok_barang' => $this->input->post('stok_barang'),
-            'id_kategori' => $this->input->post('id_kategori')
+    // public function tambah_am(){
+    //     $data = array(
+    //         'id_barang' => $this->input->post('id_barang'),
+    //         'nama_barang' => $this->input->post('nama_barang'),
+    //         'harga_sewa' => $this->input->post('harga_sewa'),
+    //         'harga_jasa' => $this->input->post('harga_jasa'),
+    //         'stok_barang' => $this->input->post('stok_barang'),
+    //         'id_kategori' => $this->input->post('id_kategori')
 
-        );
-        $this->Model_Barang->tambah($data);
-        $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        redirect('DataBarang/alatmakan');
-    }
+    //     );
+    //     $this->Model_Barang->tambah($data);
+    //     $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    //     redirect('DataBarang/alatmakan');
+    // }
 
-    function edit_am(){
-        $id2 = $this->uri->segment(3);
-        $data = array(
-            'user' => $this->Model_Barang->get_edit_barang($id2),
-        );
-        $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
-        $this->load->view("v_editbarang", $data);
-         $this->load->view('element/v_footer');
+    // function edit_am(){
+    //     $id2 = $this->uri->segment(3);
+    //     $data = array(
+    //         'title'=> 'Edit Data',
+    //         'active_dashboard'=>'active',
+    //         'user' => $this->Model_Barang->get_edit_barang($id2),
+    //     );
+    //     $this->load->view('element/css',$data);
+    //     $this->load->view('element/v_header');
+    //     $this->load->view("v_editbarang", $data);
+    //      $this->load->view('element/v_footer');
     
         
-    }
+    // }
         
 
-     function update_am(){
+    //  function update_am(){
 
-        $id2 = $this->input->post('id_barang');
-        $insert = $this->Model_Barang->update_barang(array(
-                'id_barang' => $this->input->post('id_barang'),
-                'nama_barang' => $this->input->post('nama_barang'),
-                'harga_sewa' => $this->input->post('harga_sewa'),
-                'harga_jasa' => $this->input->post('harga_jasa'),
-                'stok_barang' => $this->input->post('stok_barang')
+    //     $id2 = $this->input->post('id_barang');
+    //     $insert = $this->Model_Barang->update_barang(array(
+    //             'id_barang' => $this->input->post('id_barang'),
+    //             'nama_barang' => $this->input->post('nama_barang'),
+    //             'harga_sewa' => $this->input->post('harga_sewa'),
+    //             'harga_jasa' => $this->input->post('harga_jasa'),
+    //             'stok_barang' => $this->input->post('stok_barang')
                 
-            ), $id2);
-        redirect('DataBarang/alatmakan');
+    //         ), $id2);
+    //     redirect('DataBarang/alatmakan');
+    // }
 
-        // $data = array(
-        //     'id_barang' => $this->input->post('id_barang'),
-        //     'nama_barang' => $this->input->post('nama_barang'),
-        //     'harga_sewa' => $this->input->post('harga_sewa'),
-        //     'harga_jasa' => $this->input->post('harga_jasa'),
-        //     'stok_barang' => $this->input->post('stok_barang'),
-        //     'id_kategori' => $this->input->post('id_kategori')
+    // function delete_am($id){
+    //     $this->Model_Barang->delete($id);
+    //     redirect('DataBarang/alatmakan');
+    // }
 
-        // );
-        // $this->Model_Barang->update_barang($data);
-        // echo json_encode($data);
 
-    }
-
-    function delete_am($id){
-        $this->Model_Barang->delete($id);
-        redirect('DataBarang/barang');
-    }
     // =========================== BARANG BARANG =========================
 
     function barang(){
@@ -195,9 +200,37 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/barang');
     }
 
+
+    function edit_barang(){
+        $id2 = $this->uri->segment(3);
+        $data = array(
+            'title'=> 'Edit Data Barang',
+            'active_dashboard'=>'active',
+            'user' => $this->Model_Barang->get_edit_barang($id2),
+        );
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view("v_editbarang", $data);
+         $this->load->view('element/v_footer');
+    }
+
+    function update_barang(){
+
+        $id2 = $this->input->post('id_barang');
+        $insert = $this->Model_Barang->update_barang(array(
+                'id_barang' => $this->input->post('id_barang'),
+                'nama_barang' => $this->input->post('nama_barang'),
+                'harga_sewa' => $this->input->post('harga_sewa'),
+                'harga_jasa' => $this->input->post('harga_jasa'),
+                'stok_barang' => $this->input->post('stok_barang')
+                
+            ), $id2);
+        redirect('DataBarang/barang');
+    }
+
     function delete_barang($id){
         $this->Model_Barang->delete($id);
-        redirect('DataBarang/alatmakan');
+        redirect('DataBarang/barang');
     }
 
     

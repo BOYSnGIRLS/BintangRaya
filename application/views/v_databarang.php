@@ -4,7 +4,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="title-5 m-b-35">DATA BARANG LAIN-LAIN</h3>
+                                <h3 class="title-5 m-b-35">DATA Barang</h3>
                                 <div class="table-data__tool">
                                   <div class="table-data__tool-left">
                                       <div class="rs-select2--light rs-select2--md">
@@ -18,10 +18,7 @@
 						<div class="row">
             <!-- Tabel Tampil Barang -->
             <div class="table-responsive table--no-card m-b-30">
-
                     <table class="table table-borderless table-striped table-striped table-earning">
-
-                    <table class=" table-striped table-earning">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -30,10 +27,9 @@
         												<th>Stok Barang</th>
         												<th>Harga Sewa</th>
         												<th>Harga Jasa</th>
+                                <th>Kategori</th>
         												<th colspan="2">Aksi</th>
-
-        												<th colspan="3">Aksi</th>
-
+        												
                             </tr>
                         </thead>
                         <tbody>
@@ -45,27 +41,12 @@
                                 <td><?php echo $row->id_barang;?></td>
                                 <td><?php echo $row->nama_barang;?></td>
                                 <td><?php echo $row->stok_barang;?></td>
-                                
-            
-                                 <!--  <td>
-                                    <div class="rs-select2--light rs-select2--md"> -->
-                                     <!--  <a href="javascript:;"
-                                        data-id="<?php echo $row->id_barang; ?>"
-                                        data-nama="<?php echo $row->nama_barang; ?>"
-                                        data-toggle="modal" data-target="#editBarang"
-                                    > -->
-                                    <!-- <button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#editBarang" >EDIT</button>
-                                  </div></a></td> -->
-                                   <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>">EDIT</a> </td>
-
-                              
-                                   <td>
-                                    <a href="">DETAIL</a> </td>
-                                   
-                                    <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
-                                  <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>">Hapus</a> </td>
+                                <td><?php echo $row->harga_sewa;?></td>
+                                <td><?php echo $row->harga_jasa;?></td>
+                                <td><?php echo $row->nama_kategori;?></td>
+                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                <td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
                             </tr>
                             <?php $no++;
                             endforeach;?>
@@ -73,8 +54,6 @@
                     </table>
             </div>
           </div>
-
-                                
                 </div>
                 <div class="row">
                             <div class="col-md-12">
@@ -105,8 +84,8 @@
                                        <select name="id_kategori">
                                         <option value="" class="form-control">Pilih</option>
                                         <?php
-                                        foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->id_kategori.'">'.$data->nama_kategori.'</option>';
+                                        foreach($option_kategori as $user){ // Ambil data tahun dari model yang dikirim dari controller
+                                            echo '<option value="'.$user->id_kategori.'">'.$user->nama_kategori.'</option>';
                                         }
                                         ?>
                                     </select>
@@ -154,61 +133,6 @@
             </div>
       <!-- end modal large -->
 
-       <!-- modal edit Barang -->
-            <div class="modal fade" id="editBarang" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Edit Data Barang</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/update')?>" method="post" enctype="multipart/form-data" role="form">
-                        <div class="modal-body">
-                                <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Kode Barang</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="id_barang" id="id">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Nama Barang</label>
-                                    <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="nama_barang" id="nama_barang">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Stok Barang</label>
-                                    <div class="col-lg-10">
-                                      <input type="number" class="form-control" name="harga_jasa" id="stok_barang">
-                                    </div>
-                                </div>
-                                 <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Harga Sewa</label>
-                                    <div class="col-lg-10">
-                                      <input type="number" class="form-control" name="harga_jasa" id="harga_sewa">
-                                    </div>
-                                </div>
-                                 <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Harga Jasa</label>
-                                    <div class="col-lg-10">
-                                      <input type="number" class="form-control" name="harga_jasa" id="harga_jasa">
-                                    </div>
-                                </div>
-                          </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" type="submit" name="btnTambah">Simpan</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-      <!-- end modal -->
-     
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
@@ -230,41 +154,4 @@
       });
   </script>
 
-  <!-- EDIT BARANG -->
-   <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
-    <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
-    <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
-    <!-- <script>
-      $(document).ready(function() {
-          // Untuk sunting
-          $('#editBarang').on('show.bs.modal', function (event) {
-              var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-              var modal          = $(this)
- 
-              // Isi nilai pada field
-              modal.find('#id_kategori').html(div.data('id_kategori'));
-              modal.find('#id').attr("value",div.data('id_barang'));
-              modal.find('#nama').attr("value",div.data('nama_barang'));
-              modal.find('#harga_sewa').html(div.data('harga_sewa'));
-              modal.find('#harga_jasa').html(div.data('harga_jasa'));
-              modal.find('#stok_barang').html(div.data('stok_barang'));
-          });
-      });
-  </script> -->
-  <script>
-    $(document).ready(function(){
-        $('#editbarang').on('show.bs.modal', function (e) {
-            var idx = $(e.relatedTarget).data('id_barang');
-            //menggunakan fungsi ajax untuk pengambilan data
-            $.ajax({
-                type : 'post',
-                url : 'DataBarang.php',
-                data :  'id='+ id,
-                success : function(data){
-                $('.editbarang').html(data);//menampilkan data ke dalam modal
-                }
-            });
-         });
-    });
-  </script>
   
