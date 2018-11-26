@@ -78,6 +78,19 @@ class DataBarang extends CI_Controller {
          $this->load->view('element/v_footer');
     }
 
+    function update_tenda(){
+
+        $id = $this->input->post('id_tenda');
+        $insert = $this->Model_Barang->update_tenda(array(
+                'id_tenda' => $this->input->post('id_tenda'),
+                'ukuran_tenda' => $this->input->post('ukuran_tenda'),
+                'stok_tenda' => $this->input->post('stok_tenda')
+                
+            ), $id);
+        redirect('DataBarang/tenda');
+    }
+
+
     function delete_tenda($id){
         $this->Model_Barang->delete_tenda($id);
         redirect('DataBarang/tenda');
@@ -95,10 +108,36 @@ class DataBarang extends CI_Controller {
         $this->Model_Barang->tambah_paket($data);
         redirect('DataBarang/tenda');
     }
+
+    function edit_pakettenda(){
+        $id1 = $this->uri->segment(3);
+        $data = array(
+            'title'=> 'Edit Tenda',
+            'active_dashboard'=>'active',
+            'user' => $this->Model_Barang->get_edit_pakettenda($id1),
+        );
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view("v_editpakettenda", $data);
+         $this->load->view('element/v_footer');
+    }
+
+    function update_pakettenda(){
+
+        $id = $this->input->post('id_pakettenda');
+        $insert = $this->Model_Barang->update_tenda(array(
+                'id_hargatenda' => $this->input->post('id_hargatenda'),
+                'jenis_tenda' => $this->input->post('jenis_tenda'),
+                'harga_sewa' => $this->input->post('harga_sewa'),
+                'harga_jasa' => $this->input->post('harga_jasa')
+                
+            ), $id);
+        redirect('DataBarang/tenda');
+    }
     
 
     function delete_paket($id){
-        $this->Model_Barang->delete_paket($id);
+        $this->Model_Barang->delete_paket($id1);
         redirect('DataBarang/tenda');
     }
 

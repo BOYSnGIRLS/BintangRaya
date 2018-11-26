@@ -65,8 +65,13 @@ class Model_Barang extends CI_Model {
 		return $query->result_array();
 	}
 
-	function update_tenda($data = array(),$id1){
-		$this->db->where('id_hargatenda',$id1);
+	function update_tenda($data = array(),$id){
+		$this->db->where('id_tenda',$id);
+		return $this->db->update('tenda',$data);
+	}
+
+	function update_pakettenda($data = array(),$id1){
+		$this->db->where('id_pakettenda',$id1);
 		return $this->db->update('paket_tenda',$data);
 	}
 
