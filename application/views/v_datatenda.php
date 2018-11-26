@@ -49,10 +49,15 @@
             <div class="row">
                     <div class="col-md-12">
                          <h3 class="title-5 m-b-10">DATA PAKET TENDA</h3>
-                                <button class="btn au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#tambah-paket-tenda">
-                                <i class="zmdi zmdi-plus"></i>Tambah Data</button>
+                            <div class="table-data__tool-left">
+                                <div class="rs-select2--light rs-select2--md">
+                                    <button class="btn au-btn au-btn-icon au-btn--green au-btn-medium" data-toggle="modal" data-target="#tambah-paket-tenda">
+                                    <i class="zmdi zmdi-plus"></i>Tambah Data</button>
+                                </div>
+                            </div>
                     </div>
                 </div>
+            <div class="row">
             <div class="table-responsive table--no-card m-b-30">
                     <table class="table table-borderless table-striped table-striped table-earning">
                         <thead>
@@ -75,15 +80,15 @@
                                 <td><?php echo $row->harga_sewa;?></td>
                                 <!-- <td>EDIT</td> -->
                                  <!-- <td>HAPUS</td> -->
-                                <td><a href="<?php echo base_url();/<?p ?>DataBarang/edit_pakettendahp echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
 
-                                <td><a href="<?php echo base_url(); ?>DataBarang/delete_paket/<?php echo $row->id_hargatenda;?>">Hapus</a></td>
+                                <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
                             <?php $no++;
                             endforeach;?>
                         </tbody>
                     </table>
-        </div>
+        </div></div>
     </div>
 
 
@@ -111,7 +116,7 @@
           <div class="modal-body">
             <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah_tenda')?>" method="post" enctype="multipart/form-data" role="form">
                 <div class="modal-body">
-                        <div class="form-group">
+                       <!--  <div class="form-group">
                           <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>
                                     <div class="col-lg-10">
                                        <select name="id_kategori">
@@ -123,7 +128,7 @@
                                         ?>
                                     </select>
                                     </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label class="col-lg-4 col-sm-2 control-label">Id Tenda</label>
                             <div class="col-lg-10">
@@ -214,36 +219,6 @@
       </div>
     </div>
 <!-- end modal large -->
-
-
-<!-- Modal Edit -->
-    <div class="modal fade" id="edit-tenda" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-                      <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                      <h4 class="modal-title">Ubah Data</h4>
-                  </div>
-                  <form class="form-horizontal" action="<?php echo base_url('Dashboard/ubah_tenda')?>" method="post" enctype="multipart/form-data" role="form">
-                    <div class="modal-body">
-                            <div class="form-group">
-                                <label class="col-lg-4 col-sm-2 control-label">Ukuran Tenda</label>
-                                <div class="col-lg-10">
-                                  <!-- <input type="hidden" id="id_roti" name="id_roti"> -->
-                                  <input class="form-control" id="ukuran_tenda" name="ukuran_tenda"></input>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-4 col-sm-2 control-label">Stok Tenda</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="stok_tenda" name="stok_tenda">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
-                            <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
-                          </div></form></div></div></div>
 
 <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
