@@ -5,8 +5,6 @@ function tampil_semua(){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
-    $this->db->join('detail_kembali_barang','pengembalian.id_kembali=detail_kembali_barang.id_kembali');
-    $this->db->join('detail_kembali_tenda','pengembalian.id_kembali=detail_kembali_tenda.id_kembali');
     $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -15,7 +13,7 @@ function tampil_semua(){
   }
 
 function get_notrans(){
-    $this->db->select('RIGHT(pengembalian.id_kembali,4) as kode', FALSE);
+    $this->db->select('RIGHT(pengembalian.id_kembali,3) as kode', FALSE);
     $this->db->order_by('id_kembali','DESC');    
     $this->db->limit(1);    
     $query = $this->db->get('pengembalian');     
@@ -29,7 +27,7 @@ function get_notrans(){
      $kode = 1;    
     }
     $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); 
-    $kodejadi = "KM".$kodemax;  
+    $kodejadi = "KB".$kodemax;  
     return $kodejadi;
   }
 
@@ -38,15 +36,6 @@ function get_sewa1($kode){
     $this->db->from('detail_sewa');
     $this->db->join('barang','barang.id_barang=detail_sewa.id');
     $this->db->where('id_sewa', $kode);
-    $query = $this->db->get();
-    return $query->result();
-  }
-
-function get_kembali1($kode){
-    $this->db->select('*');
-    $this->db->from('detail_kembali_barang');
-    $this->db->join('barang','barang.id_barang=detail_kembali.id_barang');
-    $this->db->where('id_kembali', $kode);
     $query = $this->db->get();
     return $query->result();
   }
@@ -60,10 +49,20 @@ function get_sewa2($kode){
     return $query->result();
   }
 
-  function get_kembali2($kode){
+function get_kembali1($kode){
     $this->db->select('*');
     $this->db->from('detail_kembali_barang');
-    $this->db->join('tenda', 'paket_tenda.id_tenda=detail_kembali.id_tenda');
+    $this->db->join('barang','barang.id_barang=detail_kembali_barang.id_barang');
+    $this->db->where('id_kembali', $kode);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+
+  function get_kembali2($kode){
+    $this->db->select('*');
+    $this->db->from('detail_kembali_tenda');
+    $this->db->join('paket_tenda', 'paket_tenda.id_hargatenda=detail_kembali_tenda.id_tenda');
     $this->db->where('id_kembali', $kode);
     $query = $this->db->get();
     return $query->result();
@@ -84,7 +83,8 @@ function get_sewa2($kode){
   function tampilkembali($id){
     $this->db->select('*');
     $this->db->from('pengembalian');
-    $this->db->join('detail_kembali', 'detail_kembali.id_kembali=pengembalian.id_kembali');
+    // $this->db->join('detail_kembali_barang', 'detail_kembali_barang.id_kembali=pengembalian.id_kembali');
+    // $this->db->join('detail_kembali_tenda', 'detail_kembali_tenda.id_kembali=pengembalian.id_kembali');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
     $this->db->join('pelanggan', 'pelanggan.id_sewa=sewa.id_sewa');
     $this->db->where('pengembalian.id_kembali', $id);
@@ -96,13 +96,17 @@ function get_sewa2($kode){
   function search($title){
         $this->db->like('id_sewa', $title , 'both');
         $this->db->order_by('id_sewa', 'ASC');
+        $this->db->where('status', '0');
         $this->db->limit(10);
         return $this->db->get('sewa')->result(); 
     }
 
     function search2($title){
         $this->db->like('id_sewa', $title , 'both');
+        $THIS->db->from('pelanggan');
         $this->db->order_by('id_sewa', 'ASC');
+        $this->db->join('sewa', 'sewa.id_sewa=pelanggan.id_sewa');
+        $this->db->where('status', '0');
         $this->db->limit(10);
         return $this->db->get('pelanggan')->result(); 
     }
