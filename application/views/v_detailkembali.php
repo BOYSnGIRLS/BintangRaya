@@ -10,8 +10,12 @@
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
                     <!-- input data penyewa -->
                     <div class="form-group row">
+                        <div class="col-sm-4" >
+                          <label>No Transaksi Kembali</label>
+                          <input type="text" class="form-control" id="id_kembali" name="id_kembali"  style="width:200px;" value="<?php echo $data[0]->id_kembali;?>" readonly>
+                      </div>
                          <div class="col-sm-4" >
-                        <label>No Pesanan</label>
+                        <label>No Transaksi Sewa</label>
                         <input type="text" class="form-control" id="id_sewa" name="id_sewa"  style="width:200px;" value="<?php echo $data[0]->id_sewa;?>" readonly>
                     </div>
                     </div>
@@ -46,14 +50,11 @@
                       </div></span>
                     </div>
                     </div>
-                                <th>Nama Barang</th>
-
 
                     <table class="table table-borderless table-data3">
                             <thead>
                             <tr>
                                 <th>ID Barang</th>
-
                                 <th>Nama Barang</th>
                                 <th>Jumlah Sewa</th>
                                 <th>Jumlah Kembali</th>
@@ -62,39 +63,33 @@
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($detail_sewa2 as $items): ?>
+                                foreach ($detail_kembali2 as $items): ?>
                                 
                                 <tr>
                                      <td><?=$items->id_hargatenda ;?></td>
                                      <td><?=$items->jenis_tenda;?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-
-                                     <td><input type="text" name="jumlah_kembali" class="form-control"></td>
-
-                                     <td><input type="text" name="jumlah_kembali" class="form-control" required onkeypress="return hanyaAngka(event)">
-                                         <input type="hidden" name="jumlah_kembali2" class="form-control"></td>
-
-                                     <td><input type="text" name="hilang" class="form-control"></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_kembali);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->hilangrusak);?></td>
                                 </tr>
                                 
                                 <?php
                                 endforeach; ?>
                                 <?php 
-                                foreach ($detail_sewa1 as $items): ?>
+                                foreach ($detail_kembali1 as $items): ?>
                                 
                                 <tr>
                                      <td><?=$items->id_barang ;?></td>
                                      <td><?=$items->nama_barang;?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                     <td><input type="text" name="jumlah_kembali" class="form-control" required onkeypress="return hanyaAngka(event)">
-                                      <input type="hidden" name="jumlah_kembali2" class="form-control"></td>
-                                     <td><input type="text" name="hilang" class="form-control"></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_kembali);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->hilangrusak);?></td>
                                 </tr>
                                 <?php
                                 endforeach; ?>
                                 <tr>
                                 <tr>
-                                  <td colspan="5"><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></td>
+                                  <td colspan="5"><button  name="btnSimpan" class="btn btn-info btn-lg"> Simpan</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -105,19 +100,17 @@
 
 <script type="text/javascript">
         $(function(){
-            $('#jml_kembali').on("input",function(){
-                var jml_sewa=$('#jumlah_barang').val();
-                var jml_kembali=$('#jml_kembali').val();
+            $('#jumlah_kembali').on("input",function(){
+                var jml_sewa=$('#jumlah_barang2').val();
+                var jml_kembali=$('#jumlah_kembali').val();
                 var hsl=jml_kembali.replace(/[^\d]/g,"");
-                $('#jml_kembali2').val(hsl);
-                $('#sisa').val(hsl-jml_sewa);
+                $('#jumlah_kembali2').val(hsl);
+                $('#hilang').val(hsl-jml_sewa);
             })
             
         });
     </script>
-      
-        });
-    </script>
+    
     <script type="text/javascript">
         function hanyaAngka(evt) {
           var charCode = (evt.which) ? evt.which : event.keyCode
