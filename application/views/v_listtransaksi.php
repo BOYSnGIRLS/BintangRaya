@@ -91,8 +91,8 @@
                                             <tr>
                                                 <!-- <th>No</th> -->
                                                 <th>Kode Transaksi</th>
-                                                <th>Nama Pelanggan</th>
-                                                <th>Tgl Pasang</th>
+                                                <th>Nama </th>
+                                                <th width="100%">Tgl Pasang</th>
                                                 <th>Alamat</th>
                                                 <th>Status</th>
                                                 <th>Surat Jalan</th>

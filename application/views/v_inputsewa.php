@@ -1,3 +1,6 @@
+
+<?php echo $this->session->flashdata('message');?>
+
 <!-- MAIN CONTENT-->
 <div class="main-content">
 <div class="section__content section__content--p30">
@@ -36,25 +39,13 @@
                       </div>
 
                       <div class="col-sm-3">
-<<<<<<< HEAD
-                        <label for="tgl">Tanggal Acara 1:</label>
-                       <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
-                      </div>
-
-                      <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 2:</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
-                      </div></span>
                         <label for="tgl">Tanggal Acara Mulai:</label>
-                       <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
+                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Selesai :</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
-                      </div></span>
-                        <label for="Pesan">Tanggal Acara:</label>
-                        <input class="form-control" type="date" name="tgl_acara" value="<?php if(isset($data)) { echo $data[0]->tgl_acara; } ?>">
                       </div>
                     </div>
 
@@ -82,7 +73,7 @@
                             source: "<?php echo site_url('InputSewa/get_autocomplete');?>",
                   
                             select: function (event, ui) {
-                                $(this).val(ui.item.label);
+                                $(this).val(ui.item.harga);
                                 $('[name="id_barang"]').val(ui.item.id_barang);
                                 $('[name="nama_barang"]').val(ui.item.label);
                                 $('[name="stok_barang"]').val(ui.item.stok);
@@ -175,13 +166,17 @@
                     <td style="width:760px;" rowspan="2"></td>
                     <th style="width:140px;">Total (Rp)</th>
                     <th style="text-align:right;width:140px;">
+
                     <input type="text" name="total2" value="<?php echo number_format($total[0]->total);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
+
                     <input type="hidden" id="total" name="total" value="<?php echo $total[0]->total;?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                 </tr>
                 <tr>
                     <th>DP (Rp)</th>
                     <th style="text-align:right;">
+
                     <input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
+                    
                     <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                 </tr>
                 <tr>
@@ -194,7 +189,7 @@
                     <th>
                     <input class="form-control" type="hidden" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
                     <input class="form-control" type="hidden" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
-                    <input type="hidden" class="form-control" id="id_pesan" name="id_pesan" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
+                    <input type="hidden" class="form-control" id="id_sewa" name="id_sewa" placeholder="transaksi" style="width:200px;" value="<?php echo $kode;?>" readonly></th>
                     <th><button  name="btnTambah" class="btn btn-info btn-lg"> Simpan</button></th>
                 </tr>
             </table>

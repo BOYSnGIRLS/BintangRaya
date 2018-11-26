@@ -58,7 +58,7 @@ class InputSewa extends CI_Controller {
             $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
 
             $this->db->query("INSERT INTO `sewa`(`id_sewa`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`) VALUES ('".$kode['kode']."', '".$tgl_pasang."', '".$tgl1."',  '".$tgl2."', '".$tgl_bongkar."', '".$total."','".$dp."','".$pelunasan."') ");
-            
+            $this->session->set_flashdata('message', 'anda berhasil menginput data');
             redirect('InputSewa');
         }else{
 
@@ -79,7 +79,7 @@ class InputSewa extends CI_Controller {
             $this->load->view('v_inputsewa', $data+$kode+$pelanggan+$detail_sewa);
             }
             elseif ($cek == 0){
-                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
+                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa`  WHERE id_sewa='".$kode['kode']."'")->result();
             $this->load->view('v_inputsewa', $data+$kode+$detail_sewa);
             }
 
