@@ -88,7 +88,8 @@ class ListPengembalian extends CI_Controller {
 
     public function inputkembali(){
         if (isset($_POST['btnSimpan'])) {
-            $kode=$this->input->post('id_kembali');
+            // $kode=$this->input->post('id_kembali');
+            $kode=$this->Model_Pengembalian->get_notrans();
             $id_sewa=$this->input->post('id_sewa');
             $idT = $this->input->post('idhargaTenda');
             $idB = $this->input->post('idBarang');
@@ -113,7 +114,8 @@ class ListPengembalian extends CI_Controller {
             }
 
             $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`) VALUES ('$kode', '$id_sewa') ");
-            redirect('ListPengembalian/detail');   
+            $this->db->query("UPDATE `sewa` SET `status`='1' WHERE `id_sewa`='$id_sewa'");
+            redirect('ListPengembalian');   
         }
     }
 }

@@ -2,7 +2,6 @@
 <div class="main-content">
 <div class="section__content section__content--p30">
     <div class="container-fluid">
-     <form id="form_input_detail" action="<?php echo site_url('ListPengembalian/inputdetail');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
@@ -66,7 +65,7 @@
                                 foreach ($detail_kembali2 as $items): ?>
                                 
                                 <tr>
-                                     <td><?=$items->id_hargatenda ;?></td>
+                                     <td><?=$items->id_tenda ;?></td>
                                      <td><?=$items->jenis_tenda;?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_kembali);?></td>
@@ -89,7 +88,7 @@
                                 endforeach; ?>
                                 <tr>
                                 <tr>
-                                  <td colspan="5"><button  name="btnSimpan" class="btn btn-info btn-lg"> Simpan</button></td>
+                                  <td colspan="5"><a href="<?php echo base_url('ListPengembalian');?>"><button  name="btnSimpan" class="btn btn-info btn-lg"> Selesai</button></a></td>
                                 </tr>
                             </tbody>
                         </table>
