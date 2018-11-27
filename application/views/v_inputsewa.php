@@ -15,12 +15,12 @@
                     <div class="form-group row">
                          <div class="col-sm-4" >
                         <label>No Pesanan</label>
-                        <input type="text" class="form-control" id="id_sewa" name="id_sewa"  style="width:200px;" value="<?php echo $kode;?>" readonly>
+                        <input type="text" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo $kode;?>" readonly>
                     </div>
-                    </div>
+                    <!-- </div>
 
                     <div class="form-group row">
-
+ -->
                       <div class="col-sm-4" >
                         <label  for="nama">Nama Penyewa:</label>
                         <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
@@ -164,6 +164,13 @@
             <table>
                 <tr>
                     <td style="width:760px;" rowspan="2"></td>
+                    <th style="width:140px;">Lama Acara </th>
+                    <th style="text-align:right;width:140px;">
+                    <input type="text" name="lama" value="<?php echo number_format($lama[0]->lama);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
+
+                </tr>
+                <tr>
+                    <!-- <td style="width:760px;" rowspan="2"></td> -->
                     <th style="width:140px;">Total (Rp)</th>
                     <th style="text-align:right;width:140px;">
 
@@ -172,6 +179,7 @@
                     <input type="hidden" id="total" name="total" value="<?php echo $total[0]->total;?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                 </tr>
                 <tr>
+                    <td></td>
                     <th>DP (Rp)</th>
                     <th style="text-align:right;">
 

@@ -70,12 +70,14 @@ class InputSewa extends CI_Controller {
             $kode['kode'] = $this->Model_Transaksi->get_notrans();
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header');
+            $lama=$this->input->post('lama');
             $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
             $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
             $cek = $this->db->query("SELECT * FROM `pelanggan` WHERE id_sewa='".$kode['kode']."'")->num_rows();
             if ($cek >=1 ){
                 $pelanggan['data'] = $this->db->query("SELECT * FROM `pelanggan` WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
+                $total = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
+                $data['total'] = $total*$lama;
             $this->load->view('v_inputsewa', $data+$kode+$pelanggan+$detail_sewa);
             }
             elseif ($cek == 0){
@@ -96,6 +98,7 @@ class InputSewa extends CI_Controller {
         $id_barang = $this->input->post('id_barang');
         $harga=$this->input->post('harga_sewa');
         $jumlah = $this->input->post('jumlah_sewa');
+        
         $total = $harga*$jumlah;
         $ceklagi = $this->db->query("SELECT * FROM `pelanggan` WHERE id_sewa='$id_sewa'")->num_rows();
         if($ceklagi >= 1){

@@ -18,10 +18,11 @@ class ListPengembalian extends CI_Controller {
         if($this->session->userdata('username')){
     		$data=array(
                 'title'=>'List Pengembalian',
+                'active_listkembali'=>'active',
                 'data' => $this->Model_Pengembalian->tampil_semua()
             );
             $this->load->view('element/css',$data);
-            $this->load->view('element/v_header');
+            $this->load->view('element/v_header',$data);
             $this->load->view('v_listpengembalian', $data);
     	   }else{
             redirect('Login');
@@ -30,14 +31,17 @@ class ListPengembalian extends CI_Controller {
 
     public function detail(){
         $id = $this->uri->segment(3);
-        $title['title']='List Pengembalian';
+        $title=array(
+            'title'=>'List Pengembalian',
+            'active_listkembali'=>'active'
+        );
         $data=array(
                 'data' => $this->Model_Pengembalian->tampilkembali($id),
                 'detail_kembali1' => $this->Model_Pengembalian->get_kembali1($id),
                 'detail_kembali2' =>$this->Model_Pengembalian->get_kembali2($id)
             );
         $this->load->view('element/css',$title);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $title);
         $this->load->view('v_detailkembali', $data);
         $this->load->view('element/v_footer');
 
@@ -64,9 +68,12 @@ class ListPengembalian extends CI_Controller {
     }
 
     public function inputdetail(){
-        $title['title']='List Pengembalian';
+        $title=array(
+            'title'=>'List Pengembalian',
+            'active_listkembali'=>'active'
+        );
         $this->load->view('element/css', $title);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $title);
         $this->load->view('v_inputkembali');
         // $this->load->view('element/v_footer');
     }
@@ -79,9 +86,12 @@ class ListPengembalian extends CI_Controller {
             'detail_sewa1' => $this->Model_Pengembalian->get_sewa1($id),
             'detail_sewa2' =>$this->Model_Pengembalian->get_sewa2($id)
         );
-        $title['title']='List Pengembalian';
+        $title=array(
+            'title'=>'List Pengembalian',
+            'active_listkembali'=>'active'
+        );
         $this->load->view('element/css', $title);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $title);
         $this->load->view('v_inputkembali', $data+$kode);
 
     }
