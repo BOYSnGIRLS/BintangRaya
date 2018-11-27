@@ -192,19 +192,12 @@ class DataBarang extends CI_Controller {
             'active_dashboard'=>'active',
         );
         $kode['kode'] = $this->Model_Barang->get_id();
-<<<<<<< HEAD
         $option_kategori ['option_kategori'] = $this->Model_Barang->get_kategori();
         $kategori['kategori'] = $this->Model_Barang->get_kategori();
         $data['data'] = $this->Model_Barang->get_barang();
         $this->load->view('element/css',$title);
         $this->load->view('element/v_header');
-        $this->load->view('v_databarang',$kode+$data+$kategori+$option_kategori);    
-=======
-        $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
-        $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
-        $this->load->view('v_databarang',$data+$kode+$option_kategori);    
->>>>>>> e56c5663546a137276d0e96a1eb720e37c4a80dc
+        $this->load->view('v_databarang',$kode+$data+$kategori+$option_kategori);       
         $this->load->view('element/v_footer');
     }
 

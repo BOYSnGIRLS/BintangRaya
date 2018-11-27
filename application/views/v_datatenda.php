@@ -78,10 +78,7 @@
                                 <td><?php echo $row->jenis_tenda;?></td>
                                 <td><?php echo $row->ukuran_tenda;?></td>
                                 <td><?php echo $row->harga_sewa;?></td>
-                                <!-- <td>EDIT</td> -->
-                                 <!-- <td>HAPUS</td> -->
-                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettendahp echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
-                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                               <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
 
                                 <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-danger">Hapus</button></a></td>
                             </tr>
