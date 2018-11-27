@@ -164,31 +164,34 @@
             <table>
                 <tr>
                     <td style="width:760px;" rowspan="2"></td>
-                    <th style="width:140px;">Lama Acara </th>
+                    <th style="width:200px;">Lama Acara (hari) </th>
                     <th style="text-align:right;width:140px;">
-                    <input type="text" name="lama" value="<?php echo number_format($lama[0]->lama);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
+                    <input type="text" name="lama" value="<?php echo number_format($data[0]->lama);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
 
-                </tr>
-                <tr>
-                    <!-- <td style="width:760px;" rowspan="2"></td> -->
                     <th style="width:140px;">Total (Rp)</th>
-                    <th style="text-align:right;width:140px;">
+                    <th style="text-align:right;width:250px;">
 
                     <input type="text" name="total2" value="<?php echo number_format($total[0]->total);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
-
                     <input type="hidden" id="total" name="total" value="<?php echo $total[0]->total;?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td></td><td></td>
+                    <th>DP (Rp)</th>
+                    <th style="text-align:right;">
+
+                    <input type="text" id="total_tagih" name="total_tagih" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
+                    <input type="hidden" id="total_tagih2" name="total_tagih2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td>
                     <th>DP (Rp)</th>
                     <th style="text-align:right;">
 
                     <input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
-                    
                     <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td></td><td></td><td></td>
                     <th>Pelunasan (Rp)</th>
                     <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
                 </tr>
@@ -231,6 +234,16 @@
                 var hsl=jumuang.replace(/[^\d]/g,"");
                 $('#jml_uang2').val(hsl);
                 $('#kembalian').val(hsl-total);
+            })
+            
+        });
+        $(function(){
+            $('#total_tagih').on("input",function(){
+                var total=$('#total').val();
+                var lama=$('#lama').val();
+                // var hsl=jumuang.replace(/[^\d]/g,"");
+                // $('#jml_uang2').val(hsl);
+                $('#total_tagih').val(total*lama);
             })
             
         });
