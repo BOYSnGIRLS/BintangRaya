@@ -25,7 +25,7 @@ class DataBarang extends CI_Controller {
         );
         $kode['kode'] = $this->Model_Barang->get_id();
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $data);
         $this->load->view('home', $kode);   
         $this->load->view('element/v_footer');
        }else{
@@ -49,7 +49,7 @@ class DataBarang extends CI_Controller {
             'option_ukuran' => $this->Model_Barang->get_tenda()
         ); 
         $this->load->view('element/css',$title);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $data);
         $this->load->view('v_datatenda',$data+$datapaket+$kode+$option_kategori);    
         $this->load->view('element/v_footer');
     }
@@ -72,7 +72,7 @@ class DataBarang extends CI_Controller {
             'user' => $this->Model_Barang->get_edit_tenda($id),
         );
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $data);
         $this->load->view("v_edittenda", $data);
          $this->load->view('element/v_footer');
     }
@@ -116,7 +116,7 @@ class DataBarang extends CI_Controller {
             'user' => $this->Model_Barang->get_edit_pakettenda($id1),
         );
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $data);
         $this->load->view("v_editpakettenda", $data);
          $this->load->view('element/v_footer');
     }
@@ -192,12 +192,19 @@ class DataBarang extends CI_Controller {
             'active_dashboard'=>'active',
         );
         $kode['kode'] = $this->Model_Barang->get_id();
+<<<<<<< HEAD
         $option_kategori ['option_kategori'] = $this->Model_Barang->get_kategori();
         $kategori['kategori'] = $this->Model_Barang->get_kategori();
         $data['data'] = $this->Model_Barang->get_barang();
         $this->load->view('element/css',$title);
         $this->load->view('element/v_header');
         $this->load->view('v_databarang',$kode+$data+$kategori+$option_kategori);    
+=======
+        $option_kategori['option_kategori'] = $this->Model_Barang->get_kategori();
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header', $data);
+        $this->load->view('v_databarang',$data+$kode+$option_kategori);    
+>>>>>>> e56c5663546a137276d0e96a1eb720e37c4a80dc
         $this->load->view('element/v_footer');
     }
 
@@ -225,7 +232,7 @@ class DataBarang extends CI_Controller {
             'user' => $this->Model_Barang->get_edit_barang($id2),
         );
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header');
+        $this->load->view('element/v_header', $data);
         $this->load->view("v_editbarang", $data);
          $this->load->view('element/v_footer');
     }
