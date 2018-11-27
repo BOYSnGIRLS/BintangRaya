@@ -85,6 +85,7 @@
                                     <br>
                                         <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
                                     <br>
+                                    <?php echo anchor('ListTransaksi/suratjalan','PRINT', array('target' => '_blank')); ?> 
                                 </div>
                             </div>
 

@@ -16,8 +16,8 @@
                                         <th>No</th>
                                         <th>Kode Tenda</th>
                                         <th>Ukuran Tenda</th>
-                    										<th>Stok Tenda</th>
-                    										<th colspan="2">Aksi</th>
+                    					<th>Stok Tenda</th>
+                    					<th colspan="2">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -116,19 +116,7 @@
           <div class="modal-body">
             <form class="form-horizontal" action="<?php echo base_url('DataBarang/tambah_tenda')?>" method="post" enctype="multipart/form-data" role="form">
                 <div class="modal-body">
-                       <!--  <div class="form-group">
-                          <label class=" col-lg-4 col-sm-2 control-label">Kategori Barang</label>
-                                    <div class="col-lg-10">
-                                       <select name="id_kategori">
-                                        <option value="" class="form-control">Pilih</option>
-                                        <?php
-                                        foreach($option_kategori as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->id_kategori.'">'.$data->nama_kategori.'</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                    </div>
-                        </div> -->
+                       
                         <div class="form-group">
                             <label class="col-lg-4 col-sm-2 control-label">Id Tenda</label>
                             <div class="col-lg-10">
@@ -144,7 +132,7 @@
                         <div class="form-group">
                             <label class="col-lg-4 col-sm-2 control-label">Stok Tenda</label>
                             <div class="col-lg-10">
-                              <input type="number" class="form-control" name="stok_tenda" placeholder="Tuliskan Jumlah Tenda"></textarea>
+                              <input type="number" class="form-control" name="stok_tenda" placeholder="Tuliskan Jumlah Tenda">
                             </div>
                         </div>
                     </div>

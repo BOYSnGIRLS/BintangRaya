@@ -19,22 +19,19 @@ class Model_Barang extends CI_Model {
     	$query = $this->db->get();
 		return $query->result();
 	}
-    
-	// function get_am(){
-	// 	$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.nama_kategori='Alat Makan'");
-	// 	return $query->result();
-	// }
+
+	function get_kategori(){
+		$this->db->select('*');
+		$this->db->from('kategori_barang');
+	    $data = $this->db->get();
+	    return $data->result();
+	}
 
 	function get_barang(){
 		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori");
 		return $query->result();
 	}
 	
-	function input($data = array()){
-		return $this->db->insert('barang',$data);
-	}
-	
-
 	function delete_tenda($id){
 		$this->db->where('id_tenda', $id);
         return $this->db->delete('tenda');
@@ -48,6 +45,11 @@ class Model_Barang extends CI_Model {
 	function delete($id){
 		$this->db->where('id_barang', $id);
         return $this->db->delete('barang');
+	}
+
+	function delete_kategori($id3){
+		$this->db->where('id_kategori', $id3);
+        return $this->db->delete('kategori_barang');
 	}
 
 	function get_edit_tenda($id){
@@ -65,6 +67,11 @@ class Model_Barang extends CI_Model {
 		return $query->result_array();
 	}
 
+	function get_edit_kategori($id3){
+		$query = $this->db->query("SELECT * FROM kategori_barang JOIN barang WHERE barang.id_kategori=kategori_barang.id_kategori AND kategori_barang.id_kategori = '$id3'");
+		return $query->result_array();
+	}
+
 	function update_tenda($data = array(),$id){
 		$this->db->where('id_tenda',$id);
 		return $this->db->update('tenda',$data);
@@ -77,6 +84,11 @@ class Model_Barang extends CI_Model {
 
 	function update_barang($data = array(),$id2){
 		$this->db->where('id_barang',$id2);
+		return $this->db->update('barang',$data);
+	}
+
+	function update_kategori($data = array(),$id3){
+		$this->db->where('id_barang',$id3);
 		return $this->db->update('barang',$data);
 	}
 
@@ -137,17 +149,15 @@ class Model_Barang extends CI_Model {
 	    return $kodejadi;
 	  }
 
-	function get_kategori(){
-		$this->db->select('*');
-		$this->db->from('kategori_barang');
-	    $data = $this->db->get();
-	    return $data->result();
-	}
-
 	function inputdetail($data,$table) {
 	    $this->db->insert($table,$data);
 
 	  }
+
+	function tambah_kategori($data){
+	    $this->db->insert('kategori_barang', $data);
+	    return TRUE;
+	}
 
 	function tambah($data){
 	    $this->db->insert('barang', $data);
@@ -163,4 +173,5 @@ class Model_Barang extends CI_Model {
 	    $this->db->insert('paket_tenda', $data);
 	    return TRUE;
 	}
+
 }

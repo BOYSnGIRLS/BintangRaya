@@ -6,23 +6,14 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h1 class="title-4">DATA TENDA DAN BARANG
-                                        </h1>
+                                        <center><h1 class="title-4"><b>DATA TENDA DAN BARANG</b></h1></center><br>
+                                        
                                         <hr class="line-seprate">
                                     </div>
                                 </div>
                             </div>
                         </section>
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <img class="card-img-top" src="assets/images/tenda.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3">TENDA</h4>
-                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/tenda">Lihat</a></p>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
@@ -30,14 +21,29 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
+                            
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <img class="card-img-top" src="assets/images/tenda.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h3 class="card-title mb-3">TENDA</h3>
+                                        <a href="<?php echo base_url()?>DataBarang/tenda"><button type="button" class="btn btn-info" data-dismiss="modal"> Lihat</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
                                 <div class="card">
                                     <img class="card-img-top" src="assets/images/barang.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-3">BARANG</h4>
-                                        <p class="card-text"><a href="<?php echo base_url()?>DataBarang/barang">Lihat</a></p>
+                                        <h3 class="card-title mb-3">BARANG</h3>
+                                        <a href="<?php echo base_url()?>DataBarang/barang"><button type="button" class="btn btn-info" data-dismiss="modal"> Lihat</button></a>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-3">
+                            
                             </div>
                        </div>
                             
