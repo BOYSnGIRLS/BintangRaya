@@ -82,13 +82,8 @@ public function view_by_date($date){
   }
 
   function nota_tagihan($id){
-        $this->db->select('*');
-        $this->db->from('sewa');
-        $this->db->join('detail_sewa', 'detail_sewa.id_sewa=sewa.id_sewa');
-        $this->db->join('pelanggan', 'pelanggan.id_sewa=sewa.id_sewa');
-        $this->db->where('id_sewa', $id);
-        $query = $this->db->get();
-        return $query->result();
+    $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa JOIN pelanggan WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa=pelanggan.id_sewa AND sewa.id_sewa='$id' ");
+    return $query->result();
     }
 
 }

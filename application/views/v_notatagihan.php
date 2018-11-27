@@ -1,5 +1,4 @@
 <!-- MAIN CONTENT-->
-<?php if(isset($data)){ ?>
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -33,7 +32,7 @@
                                             <label>503/0629/411/2016</label><br/>
                                             <label><?php echo $data[0]->id_sewa;?></label><br/>
                                             <label><?php echo $data[0]->tgl_pasang;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_acara;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_acara1;?></label> s/d <label><?php echo $data[0]->tgl_acara2;?></label><br/> 
                                             <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
                                             <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
                                             <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
@@ -52,33 +51,49 @@
                                                 <th>Jumlah</th>
 											</tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>100</td>
-                                                <td>Kursi</td>
-                                                <td>1000</td>
-                                                <td>10000</td>
-                                            </tr>
-											<tr>
-                                                <td>100</td>
-                                                <td>Mangkok</td>
-                                                <td>500</td>
-                                                <td>50000</td>
-                                            </tr>
-											<tr>
-                                                <td>200</td>
-                                                <td>Sendok</td>
-                                                <td>300</td>
-                                                <td>60000</td>
-                                            </tr>
-											<tr>
-                                                <td>5</td>
-                                                <td>Pemanas</td>
-                                                <td>10000</td>
-                                                <td>50000</td>
-                                            </tr>
-											
+                                            <tbody>
+                                            <?php
+                                            foreach ($detail_sewa2 as $items): ?>
+                                        <tr>
+                                            <td><?php echo number_format($items->jumlah_barang);?></td>
+                                            <td><?=$items->nama_barang;?></td>
+                                            <td><?php echo number_format($items->harga_sewa);?></td>
+                                            <td><?php echo number_format($items->harga_total);?></td>
+                                        </tr>
+                                            <?php
+                                            endforeach; ?>
+
+                                            <?php 
+                                            foreach ($detail_sewa1 as $items): ?>
+                                        <tr>
+                                            <td><?php echo number_format($items->jumlah_barang);?></td>
+                                            <td><?=$items->nama_barang;?></td>
+                                            <td><?php echo number_format($items->harga_sewa);?></td>
+                                            <td><?php echo number_format($items->harga_total);?></td>
+                                        </tr>
+                                
+                                            <?php
+                                            endforeach; ?>
+                                            </tbody>
                                         </table>
+                                        <hr>
+            <table>
+                <tr>
+                    <td style="width:760px;" rowspan="2"></td>
+                    <th style="width:140px;">Total (Rp) :</th>
+                    <th><label><?php echo $data[0]->total_tagihan;?></label><br/></th>
+                </tr>
+                <tr>
+                    <th>DP (Rp) :</th>
+                    <th><label><?php echo $data[0]->dp;?></label><br/></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>pelunasan (Rp)  :</th>
+                    <th><label><?php echo $data[0]->pelunasan;?></label><br/></th>
+                </tr>
+            </table>
+            <hr/>
 										</div>
                                     </div>
                                     <hr>
@@ -100,4 +115,5 @@
                     </div>
                 </div>
             </div>
+
             <!-- END MAIN CONTENT-->
