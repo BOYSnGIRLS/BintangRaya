@@ -98,7 +98,7 @@ class ListTransaksi extends CI_Controller {
         
         $this->load->view('element/css',$data);
         $this->load->view('element/v_header', $data);
-        $this->load->view('v_suratjalan', $data);
+        $this->load->view('v_notatagihan', $data);
         $this->load->view('element/v_footer'); 
         
     }
