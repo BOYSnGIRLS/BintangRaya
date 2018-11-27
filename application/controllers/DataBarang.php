@@ -33,6 +33,18 @@ class DataBarang extends CI_Controller {
        }
 	}
 
+    function kategoribarang(){
+        $data=array(
+            'title'=>'Kategori Barang',
+            'active_dashboard'=>'active', 
+            'data'=> $this->Model_Barang->get_kategori()
+        );
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header');
+        $this->load->view('v_kategoribarang',$data);    
+        $this->load->view('element/v_footer');
+    }
+
     // ===========================TENDA TENDA TENDA TENDA========================================
 
     function tenda(){
@@ -57,9 +69,8 @@ class DataBarang extends CI_Controller {
     public function tambah_tenda(){
         $data = array(
             'id_tenda' => $this->input->post('id_tenda'),
-            'ukuran_tenda'     => $this->input->post('ukuran_tenda'),
+            'ukuran_tenda' => $this->input->post('ukuran_tenda'),
             'stok_tenda' => $this->input->post('stok_tenda'),
-            'id_kategori' => $this->input->post('id_kategori')
         );
         $this->Model_Barang->tambah_tenda($data);
         redirect('DataBarang/tenda');
@@ -124,19 +135,19 @@ class DataBarang extends CI_Controller {
 
     function update_pakettenda(){
 
-        $id = $this->input->post('id_pakettenda');
-        $insert = $this->Model_Barang->update_tenda(array(
+        $id1 = $this->input->post('id_hargatenda');
+        $insert = $this->Model_Barang->update_pakettenda(array(
                 'id_hargatenda' => $this->input->post('id_hargatenda'),
                 'jenis_tenda' => $this->input->post('jenis_tenda'),
                 'harga_sewa' => $this->input->post('harga_sewa'),
                 'harga_jasa' => $this->input->post('harga_jasa')
                 
-            ), $id);
+            ), $id1);
         redirect('DataBarang/tenda');
     }
     
 
-    function delete_paket($id){
+    function delete_pakettenda($id1){
         $this->Model_Barang->delete_paket($id1);
         redirect('DataBarang/tenda');
     }

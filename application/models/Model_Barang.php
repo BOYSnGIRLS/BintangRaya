@@ -40,8 +40,8 @@ class Model_Barang extends CI_Model {
         return $this->db->delete('tenda');
 	}
 
-	function delete_paket($id){
-		$this->db->where('id_hargatenda', $id);
+	function delete_paket($id1){
+		$this->db->where('id_hargatenda', $id1);
         return $this->db->delete('paket_tenda');
 	}
 
@@ -51,7 +51,7 @@ class Model_Barang extends CI_Model {
 	}
 
 	function get_edit_tenda($id){
-		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda AND tenda.id_tenda = '$id'");
+		$query = $this->db->query("SELECT * FROM  tenda JOIN paket_tenda WHERE tenda.id_tenda=paket_tenda.id_tenda AND tenda.id_tenda = '$id'");
 		return $query->result_array();
 	}
 
@@ -71,7 +71,7 @@ class Model_Barang extends CI_Model {
 	}
 
 	function update_pakettenda($data = array(),$id1){
-		$this->db->where('id_pakettenda',$id1);
+		$this->db->where('id_hargatenda',$id1);
 		return $this->db->update('paket_tenda',$data);
 	}
 
