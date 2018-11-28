@@ -38,6 +38,7 @@
                         <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>">
                       </div>
 
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa/tanggalstok');?>" method="POST">
                       <div class="col-sm-3">
                         <label for="tgl">Tanggal Acara Mulai:</label>
                        <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
@@ -47,6 +48,8 @@
                         <label for="tgl">Selesai :</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
                       </div>
+                      <button class="btn btn-info" name="btnTgl" >Submit</button>
+                  </form>
                     </div>
 
                     </div>

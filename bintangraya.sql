@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2018 at 02:15 PM
+-- Generation Time: Nov 28, 2018 at 10:07 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -37,6 +37,13 @@ CREATE TABLE `barang` (
   `stok_barang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_jasa`, `harga_sewa`, `stok_barang`) VALUES
+('BR001', 'MK', 'Piring', 2000, 500, 1000);
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +58,13 @@ CREATE TABLE `detail_kembali_barang` (
   `hilangrusak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `detail_kembali_barang`
+--
+
+INSERT INTO `detail_kembali_barang` (`id_kembali`, `id_barang`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
+('KB0001', 'BR001', 300, 300, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +78,13 @@ CREATE TABLE `detail_kembali_tenda` (
   `jumlah_kembali` int(11) NOT NULL,
   `hilangrusak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_kembali_tenda`
+--
+
+INSERT INTO `detail_kembali_tenda` (`id_kembali`, `id_tenda`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
+('KB0001', 'HT001', 2, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -84,7 +105,15 @@ CREATE TABLE `detail_sewa` (
 --
 
 INSERT INTO `detail_sewa` (`id_sewa`, `id`, `jumlah_barang`, `harga_sewa`, `harga_total`) VALUES
-('1', '1', 1, 1, 1);
+('1', '1', 1, 1, 1),
+('TS0001', 'HT001', 2, 150000, 300000),
+('TS0001', 'BR001', 300, 500, 150000),
+('TS0002', 'BR001', 200, 500, 100000),
+('TS0003', '', 0, 0, 0),
+('TS0003', 'BR001', 15, 500, 7500),
+('TS0003', 'HT001', 1, 150000, 150000),
+('TS0004', 'HT001', 1, 150000, 150000),
+('TS0005', 'BR001', 175, 500, 87500);
 
 -- --------------------------------------------------------
 
@@ -96,6 +125,14 @@ CREATE TABLE `kategori_barang` (
   `id_kategori` varchar(2) NOT NULL,
   `nama_kategori` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori_barang`
+--
+
+INSERT INTO `kategori_barang` (`id_kategori`, `nama_kategori`) VALUES
+('BK', 'Barang'),
+('MK', 'Alat Makan');
 
 -- --------------------------------------------------------
 
@@ -111,6 +148,13 @@ CREATE TABLE `paket_tenda` (
   `harga_jasa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `paket_tenda`
+--
+
+INSERT INTO `paket_tenda` (`id_hargatenda`, `id_tenda`, `jenis_tenda`, `harga_sewa`, `harga_jasa`) VALUES
+('HT001', 'TD001', 'Plafon', 150000, 50000);
+
 -- --------------------------------------------------------
 
 --
@@ -123,8 +167,20 @@ CREATE TABLE `pelanggan` (
   `alamat_pelanggan` text NOT NULL,
   `telp_pelanggan` varchar(15) NOT NULL,
   `tgl_acara1` date NOT NULL,
-  `tgl_acara2` date NOT NULL
+  `tgl_acara2` date NOT NULL,
+  `lama` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_acara1`, `tgl_acara2`, `lama`) VALUES
+('TS0001', 'Aulia', 'Perum Mastrip', '082236685263', '2018-11-28', '2018-11-28', 0),
+('TS0002', 'Diana ', 'Mastrip', '086564239876', '2018-11-29', '2018-11-29', 0),
+('TS0003', 'ana', 'Mastrip', '08236685263', '2018-11-28', '2018-11-29', 2),
+('TS0004', 'Sinta', 'Kaliurang', '08236685263', '2018-12-04', '2018-12-07', 4),
+('TS0005', '', '', '', '0000-00-00', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -138,6 +194,13 @@ CREATE TABLE `pengembalian` (
   `tgl_kembali` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pengembalian`
+--
+
+INSERT INTO `pengembalian` (`id_kembali`, `id_sewa`, `tgl_kembali`) VALUES
+('KB0001', 'TS0001', '2018-11-26 16:10:54');
+
 -- --------------------------------------------------------
 
 --
@@ -150,12 +213,23 @@ CREATE TABLE `sewa` (
   `tgl_pasang` date NOT NULL,
   `tgl_acara1` date NOT NULL,
   `tgl_acara2` date NOT NULL,
+  `lama` int(11) NOT NULL,
   `tgl_bongkar` date NOT NULL,
   `total_tagihan` int(11) NOT NULL,
   `dp` int(11) NOT NULL,
   `pelunasan` int(11) NOT NULL,
   `status` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sewa`
+--
+
+INSERT INTO `sewa` (`id_sewa`, `tgl_sekarang`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`, `status`) VALUES
+('TS0001', '2018-11-26 15:24:39', '2018-11-27', '2018-11-28', '2018-11-28', 0, '2018-11-29', 450000, 250000, -200000, 1),
+('TS0002', '2018-11-26 16:13:59', '2018-11-28', '2018-11-29', '2018-11-29', 0, '2018-11-30', 100000, 50000, -50000, NULL),
+('TS0003', '2018-11-28 12:51:11', '2018-11-27', '2018-11-28', '2018-11-29', 0, '2018-11-30', 315000, 115000, -200000, NULL),
+('TS0004', '2018-11-28 20:56:28', '2018-12-03', '2018-12-04', '2018-12-07', 0, '2018-12-08', 600000, 300000, -300000, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,10 +239,16 @@ CREATE TABLE `sewa` (
 
 CREATE TABLE `tenda` (
   `id_tenda` varchar(5) NOT NULL,
-  `id_kategori` varchar(2) NOT NULL,
   `ukuran_tenda` varchar(5) NOT NULL,
   `stok_tenda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tenda`
+--
+
+INSERT INTO `tenda` (`id_tenda`, `ukuran_tenda`, `stok_tenda`) VALUES
+('TD001', '6x6', 15);
 
 -- --------------------------------------------------------
 
@@ -181,6 +261,13 @@ CREATE TABLE `user` (
   `username` varchar(15) NOT NULL,
   `password` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -251,8 +338,7 @@ ALTER TABLE `sewa`
 -- Indexes for table `tenda`
 --
 ALTER TABLE `tenda`
-  ADD PRIMARY KEY (`id_tenda`),
-  ADD KEY `id_kategori` (`id_kategori`);
+  ADD PRIMARY KEY (`id_tenda`);
 
 --
 -- Indexes for table `user`
@@ -268,7 +354,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
