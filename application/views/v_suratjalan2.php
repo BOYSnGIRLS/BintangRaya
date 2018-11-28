@@ -29,16 +29,16 @@
                                         </div>
                                        <div class="col-lg-6">
                             
-                                            <label><?php echo $data[0]->id_sewa;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_acara1;?></label>
+                                            <label><?php echo $data->id_sewa;?></label><br/>
+                                            <label><?php echo $data->tgl_pasang;?></label><br/>
+                                            <label><?php echo $data->tgl_acara1;?></label>
                                             <label>s/d </label>
-                                            <label><?php echo $data[0]->tgl_acara2;?></label>
+                                            <label><?php echo $data->tgl_acara2;?></label>
                                             <br/>
-                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
-                                            <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
+                                            <label><?php echo $data->tgl_bongkar;?></label><br/>
+                                            <label><?php echo $data->nama_pelanggan;?></label><br/>
+                                            <label><?php echo $data->alamat_pelanggan;?></label><br/>
+                                            <label><?php echo $data->telp_pelanggan;?></label><br/>
                         
                                         </div>
                                         
@@ -85,7 +85,7 @@
                                     <br>
                                         <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
                                     <br>
-                                    <?php echo anchor('ListTransaksi/suratjalan2','PRINT', array('target' => '_blank')); ?> 
+                                    <?php echo anchor('ListTransaksi/suratjalan','PRINT', array('target' => '_blank')); ?> 
                                 </div>
                             </div>
 
