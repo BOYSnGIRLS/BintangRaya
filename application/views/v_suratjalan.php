@@ -85,8 +85,8 @@
                                     <br>
                                         <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
                                     <br>
-                                    <?php echo anchor('ListTransaksi/suratjalan2/'.$data[0]->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?> 
-                                   
+                                    <!-- <?php echo anchor('ListTransaksi/suratjalan2/'.$data[0]->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?> 
+                                    -->
                                 </div>
                             </div>
 
