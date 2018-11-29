@@ -67,7 +67,7 @@ class ListTransaksi extends CI_Controller {
             // $this->load->view('element/v_footer'); 
     }
 
-    function suratjalan(){
+    function suratjalan($id){
 
 
         $id = $this->uri->segment(3);
@@ -80,16 +80,16 @@ class ListTransaksi extends CI_Controller {
         );
         
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
+        // $this->load->view('element/v_header', $data);
         $this->load->view('v_suratjalan', $data);
         $this->load->view('element/v_footer'); 
         
     }
 
-    function suratjalan2(){
+    function suratjalan2($id){
 
 
-        $id = $this->uri->segment(3);
+        // $id = $this->uri->segment(3);
         $data = array(
             'title'=>'Surat Jalan',
             'active_listtransaksi'=>'active',
@@ -99,7 +99,6 @@ class ListTransaksi extends CI_Controller {
         );
         
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
         $this->load->view('v_suratjalan2', $data);
         $this->load->view('element/v_footer'); 
         
