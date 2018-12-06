@@ -11,20 +11,22 @@
                     <!-- input data penyewa -->
                     <div class="form-group row">
                       <div class="col-sm-4" >
-                      <form id="form_search" action="<?php echo site_url('listPengembalian/get_autocomplete');?>" method="GET">
+
+                      <form id="form_search" action="<?php echo site_url('ListPengembalian/get_autocomplete');?>" method="GET">
                           <label>Cari Transaksi</label>
                           <div class="input-group">
                               <input type="text" name="title" class="form-control" id="title" placeholder="No Transaksi" style="width:200px;">
                            </div>
                       </form>
+                    </div>
 
-                      <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
-                      <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
-                      <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+                    <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+                    <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+                    <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
                       <script type="text/javascript">
                           $(document).ready(function(){
                               $('#title').autocomplete({
-                              source: "<?php echo site_url('listPengembalian/get_autocomplete');?>",
+                              source: "<?php echo site_url('ListPengembalian/get_autocomplete');?>",
                     
                               select: function (event, ui) {
                                   $(this).val(ui.item.label);
@@ -38,7 +40,6 @@
                           });
                           });
                       </script> 
-                    </div>
                   </div>
 
 
@@ -138,7 +139,7 @@
                       </form>
 <?php }
 ?>
-    <!-- Jquery JS-->
+ <!-- Jquery JS-->
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>

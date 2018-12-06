@@ -81,7 +81,6 @@ class InputSewa extends CI_Controller {
             $this->load->view('v_inputsewa', $data+$lama+$kode+$pelanggan+$detail_sewa);
             }
             elseif ($cek == 0){
-                $lama['lama']=$this->db->query("SELECT lama FROM `pelanggan` WHERE id_sewa='".$kode['kode']."'")->result();
                 $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa`  WHERE id_sewa='".$kode['kode']."'")->result();
                 $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
             $this->load->view('v_inputsewa', $data+$kode+$detail_sewa);

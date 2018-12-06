@@ -96,17 +96,15 @@ function get_kembali1($kode){
   function search($title){
         $this->db->like('id_sewa', $title , 'both');
         $this->db->order_by('id_sewa', 'ASC');
-        $this->db->where('status', '0');
         $this->db->limit(10);
         return $this->db->get('sewa')->result(); 
     }
 
     function search2($title){
         $this->db->like('id_sewa', $title , 'both');
-        $THIS->db->from('pelanggan');
-        $this->db->order_by('id_sewa', 'ASC');
-        $this->db->join('sewa', 'sewa.id_sewa=pelanggan.id_sewa');
-        $this->db->where('status', '0');
+        // $THIS->db->from('pelanggan');
+        $this->db->order_by('id_sewa', 'DESC');
+        // $this->db->join('sewa', 'sewa.id_sewa=pelanggan.id_sewa');
         $this->db->limit(10);
         return $this->db->get('pelanggan')->result(); 
     }

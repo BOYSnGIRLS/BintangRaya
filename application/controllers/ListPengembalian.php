@@ -49,9 +49,7 @@ class ListPengembalian extends CI_Controller {
 
      public function get_autocomplete(){    //membuat dropdown pilihan di search box
         if (isset($_GET['term'])) {
-                $result = $this->Model_Pengembalian->search($_GET['term']);
                 $result = $this->Model_Pengembalian->search2($_GET['term']);
-                // $result = $this->Model_Pengembalian->search3($_GET['term']);
                 if (count($result) > 0) {
                 foreach ($result as $row)
                     $arr_result[] = array(
@@ -60,7 +58,7 @@ class ListPengembalian extends CI_Controller {
                         'no_telp'=>$row->telp_pelanggan,
                         'alamat'=>$row->alamat_pelanggan,
                         'tgl_acara1' => $row->tgl_acara1,
-                        'tgl_acara2' => $row->tgl_acara2,
+                        'tgl_acara2' => $row->tgl_acara2
                     );
                     echo json_encode($arr_result);            
                 }
@@ -75,7 +73,6 @@ class ListPengembalian extends CI_Controller {
         $this->load->view('element/css', $title);
         $this->load->view('element/v_header', $title);
         $this->load->view('v_inputkembali');
-        // $this->load->view('element/v_footer');
     }
 
     public function inputtampil(){
@@ -107,8 +104,8 @@ class ListPengembalian extends CI_Controller {
             $jumlah_sewaB = $this->input->post('barangSewa');
             $jumlah_kembaliT = $this->input->post('tenda_kembali');
             $jumlah_kembaliB = $this->input->post('barang_kembali');
+            
             $indexT = 0;
-
             foreach ($idT as $row) {
                 $hilangrusak = $jumlah_sewaT[$indexT]-$jumlah_kembaliT[$indexT];
                 $this->db->query("INSERT INTO `detail_kembali_tenda`(`id_kembali`,  `id_tenda`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaT[$indexT]."',  '".$jumlah_kembaliT[$indexT]."', '".$hilangrusak."') ");
