@@ -86,10 +86,7 @@ public function view_by_date($date){
     return $query->result();
     }
 
-    function edit_status($id){
-        $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa JOIN pelanggan WHEREsewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa=pelanggan.id_sewa AND sewa.status='Proses' ");
-        return $query->result_array();
-    }
+    
     function update_status($data = array(),$id){
         $this->db->where('id_sewa',$id);
         return $this->db->update('sewa',$data);
