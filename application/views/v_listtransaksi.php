@@ -113,11 +113,13 @@
                                                 <td><?php echo $row->alamat_pelanggan?></td>
 
                                                 <td>
-
+                                                   <?php echo $row->status?><br>
                                                     <input type="button" value="Akan" class="au-btn au-btn-icon au-btn--green au-btn--small" id="testBtn" onclick="doOnClick();">
 
-                                                   <!--  <a href=""><button type="submit" class="btn btn-warning">Akan</button></a></td>  -->
-                                               <!--  <td><a href="<?php echo base_url(); ?>ListTransaksi/suratjalan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td>  -->
+                                                    <form method="post" action="<?php echo base_url()?>DataBarang/update_barang">
+                                                         <span class="input-group-btn"><button class=" btn btn-primary btn-lg" type="submit">Update</button></span>
+                                                     </form>
+                                            
                                               <td><label class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
                                               </td>
