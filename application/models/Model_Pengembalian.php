@@ -5,7 +5,6 @@ function tampil_semua(){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
-    $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();
@@ -72,7 +71,6 @@ function get_kembali1($kode){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $this->db->where('sewa.id_sewa', $id);
@@ -86,7 +84,6 @@ function get_kembali1($kode){
     // $this->db->join('detail_kembali_barang', 'detail_kembali_barang.id_kembali=pengembalian.id_kembali');
     // $this->db->join('detail_kembali_tenda', 'detail_kembali_tenda.id_kembali=pengembalian.id_kembali');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
-    $this->db->join('pelanggan', 'pelanggan.id_sewa=sewa.id_sewa');
     $this->db->where('pengembalian.id_kembali', $id);
     $query = $this->db->get();
     return $query->result();
@@ -96,19 +93,15 @@ function get_kembali1($kode){
   function search($title){
         $this->db->like('id_sewa', $title , 'both');
         $this->db->order_by('id_sewa', 'ASC');
-        $this->db->where('status', '0');
         $this->db->limit(10);
         return $this->db->get('sewa')->result(); 
     }
 
     function search2($title){
         $this->db->like('id_sewa', $title , 'both');
-        $THIS->db->from('pelanggan');
-        $this->db->order_by('id_sewa', 'ASC');
-        $this->db->join('sewa', 'sewa.id_sewa=pelanggan.id_sewa');
-        $this->db->where('status', '0');
+        $this->db->order_by('id_sewa', 'DESC');
         $this->db->limit(10);
-        return $this->db->get('pelanggan')->result(); 
+        return $this->db->get('sewa')->result(); 
     }
 
     function search3($title){
