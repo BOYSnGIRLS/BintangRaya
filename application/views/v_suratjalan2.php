@@ -1,5 +1,5 @@
  <!-- MAIN CONTENT -->
- <?php if(isset($data)){ ?>
+ <!-- <?php if(isset($data)){ ?> -->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
@@ -27,19 +27,20 @@
                                             <label  for="alamat">Alamat</label><br/>
                                             <label  for="telp">Telp</label><br/>
                                         </div>
+
                                        <div class="col-lg-6">
-                            
-                                            <label><?php echo $data[0]->id_sewa;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_acara1;?></label>
+                                            <?php foreach ($data as $row): ?>
+                                            <label><?php echo $row->id_sewa;?></label><br/>
+                                            <label><?php echo $row->tgl_pasang;?></label><br/>
+                                            <label><?php echo $row->tgl_acara1;?></label>
                                             <label>s/d </label>
-                                            <label><?php echo $data[0]->tgl_acara2;?></label>
+                                            <label><?php echo $row->tgl_acara2;?></label>
                                             <br/>
-                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
-                                            <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
-                        
+                                            <label><?php echo $row->tgl_bongkar;?></label><br/>
+                                            <label><?php echo $row->nama_pelanggan;?></label><br/>
+                                            <label><?php echo $row->alamat_pelanggan;?></label><br/>
+                                            <label><?php echo $row->telp_pelanggan;?></label><br/>
+                                            <?php endforeach;?>
                                         </div>
                                         
                                     </div>
@@ -84,9 +85,6 @@
                                     <hr>
                                     <br>
                                         <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
-                                    <br>
-                                    <!-- <?php echo anchor('ListTransaksi/suratjalan2/'.$data[0]->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?> 
-                                    -->
                                 </div>
                             </div>
 
@@ -102,5 +100,5 @@
                     </div>
                 </div>
             </div>
-        <?php }?>
+      <!--   <?php }?> -->
             <!-- END MAIN CONTENT

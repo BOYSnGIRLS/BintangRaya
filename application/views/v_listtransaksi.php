@@ -112,8 +112,26 @@
                                                 <td><?php echo $row->tgl_pasang?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
 
-                                                <td><a href=""><button type="submit" class="btn btn-warning">Akan</button></a></td> 
-                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/suratjalan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> 
+                                                <td>
+                                                  <!--  <?php echo $row->status?><br> -->
+                                                   
+                                                   <?php if($row->status == "Menunggu Proses"){ ?>
+                                                         <span class="input-group-btn"><a class=" btn btn-warning btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Update</a></span>
+                                                    <?php }else if($row->status == "Proses"){ ?>
+                                                    <span class="input-group-btn"><a class=" btn btn-primary btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Proses</a></span>
+
+                                                   <?php }else if($row->status == "Selesai"){ ?>
+                                                    <span class="input-group-btn"><a class=" btn btn-success btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Selesai</a></span>
+
+                                                   <?php };?>
+                                                        
+                                                    
+                                            
+                                              <td><label class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
+
+                                              </td>
+
+                                               
                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
                                                  <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>"><a href=""><button type="submit" class="btn btn-info">Edit</button></a></td>
                                                 </tr>
@@ -132,6 +150,14 @@
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+
+   <!--  <script>
+        function doOnClick(){
+            // alert('webpage finished loading');
+            document.getElementById('testBtn').value='on Proses';
+            return false;
+        }
+    </script> -->
 
     <script>
     $(document).ready(function(){ // Ketika halaman selesai di load

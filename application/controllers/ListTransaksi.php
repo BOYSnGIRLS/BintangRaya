@@ -67,7 +67,7 @@ class ListTransaksi extends CI_Controller {
             // $this->load->view('element/v_footer'); 
     }
 
-    function suratjalan(){
+    function suratjalan($id){
 
 
         $id = $this->uri->segment(3);
@@ -80,11 +80,12 @@ class ListTransaksi extends CI_Controller {
         );
         
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
+        // $this->load->view('element/v_header', $data);
         $this->load->view('v_suratjalan', $data);
         $this->load->view('element/v_footer'); 
         
     }
+
 
     function notatagihan(){
         $id = $this->uri->segment(3);
@@ -102,5 +103,20 @@ class ListTransaksi extends CI_Controller {
         $this->load->view('element/v_footer'); 
         
     }
+
+    function update_status($id){
+        if($_GET['id'] == "Menunggu Proses"){
+        $status = "Proses";
+    }else{
+        $status = "Selesai";
+    }
+        $insert = $this->Model_Laporan->update_status(array(
+                'id_sewa' => $id,
+                'status' => $status
+                
+            ), $id);
+        redirect('ListTransaksi/index');
+    }
+
 
 }
