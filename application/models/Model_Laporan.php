@@ -6,7 +6,7 @@ public function view_by_date($date){
 		$this->db->select('*');
  		$this->db->from('sewa');
  		$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
+    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('DATE(tgl_pasang)', $date);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -18,7 +18,7 @@ public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
+    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('MONTH(tgl_pasang)', $month); // Tambahkan where bulan
     $this->db->where('YEAR(tgl_pasang)', $year); // Tambahkan where tahun
@@ -31,7 +31,7 @@ public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
+    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('YEAR(tgl_pasang)', $year);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -43,7 +43,7 @@ public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
+    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();
@@ -59,7 +59,7 @@ public function view_by_date($date){
     }
 
     function surat_jalan($id){
-    $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa JOIN pelanggan WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa=pelanggan.id_sewa AND sewa.id_sewa='$id' ");
+    $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa  WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa='$id' ");
     return $query->result();
     }
 
@@ -82,12 +82,12 @@ public function view_by_date($date){
   }
 
   function nota_tagihan($id){
-    $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa JOIN pelanggan WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa=pelanggan.id_sewa AND sewa.id_sewa='$id' ");
+    $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa  WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa='$id' ");
     return $query->result();
     }
 
     function edit_status($id){
-        $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa JOIN pelanggan WHEREsewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa=pelanggan.id_sewa AND sewa.status='Proses' ");
+        $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.status='Proses' ");
         return $query->result_array();
     }
     function update_status($data = array(),$id){
