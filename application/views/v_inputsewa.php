@@ -7,7 +7,16 @@
     <div class="container-fluid">
      <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
         <div class="row">
+
             <div class="col-lg-12">
+                <div class="au-card-m-b-30">
+                    <div class="au-card-inner">
+                    <?php echo $this->session->flashdata('message');?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                
                 <div class="au-card m-b-30">
                     <div class="au-card-inner">
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>

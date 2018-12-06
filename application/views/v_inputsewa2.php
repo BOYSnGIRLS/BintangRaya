@@ -1,11 +1,9 @@
-
-<?php echo $this->session->flashdata('message');?>
-
 <!-- MAIN CONTENT-->
 <div class="main-content">
 <div class="section__content section__content--p30">
-    <div class="container-fluid">
-     <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
+    <div class="container-fluid"> 
+
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa2/inputdetail');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
@@ -17,36 +15,32 @@
                         <label>No Pesanan</label>
                         <input type="text" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo $kode;?>" readonly>
                     </div>
-                    <!-- </div>
 
-                    <div class="form-group row">
- -->
                       <div class="col-sm-4" >
                         <label  for="nama">Nama Penyewa:</label>
-                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">
+                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>" required>
                       </div>
                       
                       <div class="col-sm-4">
                       <label for="nomor">Nomor Telepon: </label>
-                        <input class="form-control" placeholder="Masukan Nomor" type="text" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>">
+                        <input class="form-control" placeholder="Masukan Nomor" type="text" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-4">
                         <label for="alamat">Alamat Lengkap:</label>
-                        <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>">
+                        <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>" required>
                       </div>
 
-     <form id="form_input_detail" action="<?php echo site_url('InputSewa/tanggalstok');?>" method="POST">
                       <div class="col-sm-3">
                         <label for="tgl">Tanggal Acara Mulai:</label>
-                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>">
+                       <input class="form-control" type="text" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" required>
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Selesai :</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>">
+                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" required>
                       </div>
                       <button class="btn btn-info" name="btnTgl" >Submit</button>
                   </form>
@@ -58,10 +52,10 @@
                     <div class="form-group row">
                         <div class="col-lg-9">
                         
-                        <form id="form_search" action="<?php echo site_url('InputSewa/get_autocomplete');?>" method="GET">
+                        <form id="form_search" action="<?php echo site_url('InputSewa2/get_autocomplete');?>" method="GET">
                             <label>Cari Barang</label>
                             <div class="input-group">
-                                <input type="text" name="title" class="form-control" id="title" placeholder="nama_barang" style="width:200px;">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="nama_barang" style="width:200px;" required="">
                                 
                              </div>
                         </form>
@@ -73,7 +67,7 @@
                     <script type="text/javascript">
                         $(document).ready(function(){
                             $('#title').autocomplete({
-                            source: "<?php echo site_url('InputSewa/get_autocomplete');?>",
+                            source: "<?php echo site_url('InputSewa2/get_autocomplete');?>",
                   
                             select: function (event, ui) {
                                 $(this).val(ui.item.harga);
@@ -102,7 +96,7 @@
                           </div>
 
                           <div class="col-sm-3" >
-                            <label  for="nama">Biaya Sewa:</label>
+                            <label  for="nama">Biaya Sewa (Rp):</label>
                             <input class="form-control" type="text" name="harga_sewa" readonly >
                             <input type="hidden" name="jasa" readonly="">
                           </div>
@@ -140,7 +134,7 @@
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                                 </tr>
                                 
                                 <?php $no++;
@@ -155,7 +149,7 @@
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                                      <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                                 </tr>
                                 
                                 <?php
@@ -163,7 +157,7 @@
                             </tbody>
                         </table>
                     <hr>
-        <form action="<?php echo base_url().'InputSewa'?>" method="post">
+        <form action="<?php echo base_url().'InputSewa2'?>" method="post">
             <table>
                 <tr>
                     <?php if (isset($lama)) {
@@ -257,6 +251,12 @@
         }
     </script>
 
+<script>
+    $(document).ready(function(){ // Ketika halaman selesai di load
+        $('.input-tanggal').datepicker({
+            dateFormat: 'dd-mm-yy' // Set format tanggalnya jadi yyyy-mm-dd
+        });
+   </script>
 <!-- Jquery JS-->
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
