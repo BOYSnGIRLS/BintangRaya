@@ -113,12 +113,19 @@
                                                 <td><?php echo $row->alamat_pelanggan?></td>
 
                                                 <td>
-                                                   <?php echo $row->status?><br>
-                                                    <input type="button" value="Akan" class="au-btn au-btn-icon au-btn--green au-btn--small" id="testBtn" onclick="doOnClick();">
+                                                  <!--  <?php echo $row->status?><br> -->
+                                                   
+                                                   <?php if($row->status == "Menunggu Proses"){ ?>
+                                                         <span class="input-group-btn"><a class=" btn btn-warning btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Update</a></span>
+                                                    <?php }else if($row->status == "Proses"){ ?>
+                                                    <span class="input-group-btn"><a class=" btn btn-primary btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Proses</a></span>
 
-                                                    <form method="post" action="<?php echo base_url()?>DataBarang/update_barang">
-                                                         <span class="input-group-btn"><button class=" btn btn-primary btn-lg" type="submit">Update</button></span>
-                                                     </form>
+                                                   <?php }else if($row->status == "Selesai"){ ?>
+                                                    <span class="input-group-btn"><a class=" btn btn-success btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Selesai</a></span>
+
+                                                   <?php };?>
+                                                        
+                                                    
                                             
                                               <td><label class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
@@ -144,13 +151,13 @@
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
 
-    <script>
+   <!--  <script>
         function doOnClick(){
             // alert('webpage finished loading');
             document.getElementById('testBtn').value='on Proses';
             return false;
         }
-    </script>
+    </script> -->
 
     <script>
     $(document).ready(function(){ // Ketika halaman selesai di load
