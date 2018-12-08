@@ -20,23 +20,25 @@
                                             <label>NPWP</label><br/>
                                             <label>SIUP</label><br/>
                                             <label  for="no">Nomor Surat</label><br/>
-                                            <label  for="tgl">Tanggal Pasang</label><br/>
-                                            <label  for="tgl2">Tanggal Acara</label><br/>
-                                            <label  for="tgl3">Tanggal Bongkar</label><br/>
                                             <label  for="nama">Nama </label><br/>
                                             <label  for="alamat">Alamat</label><br/>
                                             <label  for="telp">Telp</label><br/>
+                                            <label  for="tgl">Tanggal Pasang</label><br/>
+                                            <label  for="tgl2">Tanggal Acara</label><br/>
+                                            <label  for="tgl2">Lama Acara</label><br/>
+                                            <label  for="tgl3">Tanggal Bongkar</label><br/>
                                         </div>
                                         <div class="col-lg-6">
                                             <label>80.370.340.4-626.000</label><br/>
                                             <label>503/0629/411/2016</label><br/>
                                             <label><?php echo $data[0]->id_sewa;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_acara1;?></label> s/d <label><?php echo $data[0]->tgl_acara2;?></label><br/> 
-                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
                                             <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
                                             <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
                                             <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
+                                            <label><?php echo $data[0]->tgl_acara1;?></label> s/d <label><?php echo $data[0]->tgl_acara2;?></label><br/> 
+                                            <label><?php echo $data[0]->lama;?> Hari</label><br/>
+                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
                                             
                                         </div>
                                     </div>
@@ -56,7 +58,7 @@
                                             foreach ($detail_sewa2 as $items): ?>
                                         <tr>
                                             <td><?php echo number_format($items->jumlah_barang);?></td>
-                                            <td><?=$items->nama_barang;?></td>
+                                            <td><?=$items->jenis_tenda;?></td>
                                             <td><?php echo number_format($items->harga_sewa);?></td>
                                             <td><?php echo number_format($items->harga_total);?></td>
                                         </tr>
@@ -77,29 +79,38 @@
                                             </tbody>
                                         </table>
                                         <hr>
-            <table>
+            <table style="">
                 <tr>
-                    <td style="width:760px;" rowspan="2"></td>
-                    <th style="width:140px;">Total (Rp) :</th>
-                    <th><label><?php echo $data[0]->total_tagihan;?></label><br/></th>
+                    <th>Total (Rp) : </th>
+                    <th style="text-align:right;"><input type="text" name="total" value="<?php echo number_format($data[0]->total_tagihan) ;?>" style="text-align:right;"></th>
                 </tr>
                 <tr>
-                    <th>DP (Rp) :</th>
-                    <th><label><?php echo $data[0]->dp;?></label><br/></th>
+                    <th>DP (Rp)         : </th>
+                    <th style="text-align:right;"><input type="text" name="dp" value="<?php echo number_format($data[0]->dp) ;?>" style="text-align:right;"></th>
                 </tr>
                 <tr>
-                    <td></td>
-                    <th>pelunasan (Rp)  :</th>
-                    <th><label><?php echo $data[0]->pelunasan;?></label><br/></th>
+                    <th>pelunasan (Rp)  : </th>
+                    <th style="text-align:right;"><input type="text" name="dp" value="<?php echo number_format($data[0]->pelunasan) ;?>" style="text-align:right;"></th>
                 </tr>
             </table>
             <hr/>
-										</div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-4" >
+                                <label>Pembayaran</label>
+                                <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control" name="bayar" style="width:200px;">
+                            </div>
+                            <div class="col-sm-4" >
+                                <label>Kembalian</label>
+                                <input type="number" min="0" oninput="validity.valid||(value='');"class="form-control" name="kembali" style="width:200px;">
+                            </div>
+                        </div>
+                        <div >
+                                <button name="btnTambah" class="btn btn-info btn-lg">Simpan</button>
+                        </div>
+
                                     </div>
-                                    <hr>
-                                    <br>
-                                        <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
-                                    <br>
                                 </div>
                             </div>
 
@@ -117,3 +128,40 @@
             </div>
 
             <!-- END MAIN CONTENT-->
+
+    <script type="text/javascript">
+        $(function(){
+            $('#jml_uang').on("input",function(){
+                var bayar=$('#bayar').val();
+                var kembali=$('#kembali').val();
+                var hsl=jumuang.replace(/[^\d]/g,"");
+                $('#bayar2').val(hsl);
+                $('#kembalian').val(hsl-total);
+            })
+            
+        });
+    </script>
+
+
+    <!-- Jquery JS-->
+    <!-- Bootstrap JS-->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="<?php echo base_url();?>assets/vendor/slick/slick.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/wow/wow.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/animsition/animsition.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="<?php echo base_url();?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="<?php echo base_url();?>assets/js/main.js"></script>
