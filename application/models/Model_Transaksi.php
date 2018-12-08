@@ -1,6 +1,7 @@
 <?php
 class Model_Transaksi extends CI_Model{
-	
+	    public $tanggal;
+
 	function get_barang(){
 	    $query = $this->db->query("SELECT * FROM barang");
 	    return $query->result();
@@ -23,6 +24,7 @@ class Model_Transaksi extends CI_Model{
     $query = $this->db->get();
     return $query->result();
   }
+  
 	function search1($title){
         $this->db->like('nama_barang', $title , 'both');
         $this->db->order_by('nama_barang', 'ASC');
@@ -57,6 +59,15 @@ class Model_Transaksi extends CI_Model{
     $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); 
     $kodejadi = "TS".$kodemax;  
     return $kodejadi;
+  }
+
+  function cariTotal($tgl){
+    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_acara1 FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.tgl_acara1 = '$tgl'");
+            // $papa = $this->db->query($sql);
+            // foreach($papa->result() as $hasil){
+            //     $this->tanggal = $hasil->total;
+            // }
+    return $sql=$query->result();
   }
 
   function inputdetail($data,$table) {

@@ -1,9 +1,9 @@
-<!-- MAIN CONTENT-->
+ <!-- MAIN CONTENT -->
 <div class="main-content">
 <div class="section__content section__content--p30">
     <div class="container-fluid"> 
 
-     <form id="form_input_detail" action="<?php echo site_url('InputSewa2/inputdetail');?>" method="POST">
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa2/inputket');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
@@ -33,9 +33,9 @@
                         <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>" required>
                       </div>
 
-                      <div class="col-sm-3">
+                      <div class="col-sm-3">value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>"
                         <label for="tgl">Tanggal Acara Mulai:</label>
-                       <input class="form-control" type="text" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" required>
+                       <input class="form-control" type="date" name="tgl_acara1"  required>
                       </div>
 
                       <div class="col-sm-3">
@@ -55,6 +55,8 @@
                         <form id="form_search" action="<?php echo site_url('InputSewa2/get_autocomplete');?>" method="GET">
                             <label>Cari Barang</label>
                             <div class="input-group">
+                                <input type="hidden" name="id_sewa" value="<?php echo $kode;?>" readonly >
+                                <input type="hidden" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" readonly="">
                                 <input type="text" name="title" class="form-control" id="title" placeholder="nama_barang" style="width:200px;" required="">
                                 
                              </div>
@@ -64,13 +66,25 @@
                     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+                    
                     <script type="text/javascript">
+                       // function a(){
+                       //  var stok = 0;
+                       //  $.ajax(){
+                       //      type:'GET', 
+                       //      url : '<?php echo base_url('InputSewa/getStokBarang') ; ?>/'+$('[name = tgl_acara1]').val(),
+                       //      succes: function(data){
+                       //          stok = data ;
+                       //          }
+                       //      }
+                       //  return stok;
+                       //  }
                         $(document).ready(function(){
                             $('#title').autocomplete({
                             source: "<?php echo site_url('InputSewa2/get_autocomplete');?>",
                   
                             select: function (event, ui) {
-                                $(this).val(ui.item.harga);
+                                $(this).val(ui.item.label);
                                 $('[name="id_barang"]').val(ui.item.id_barang);
                                 $('[name="nama_barang"]').val(ui.item.label);
                                 $('[name="stok_barang"]').val(ui.item.stok);
@@ -82,81 +96,87 @@
                     </script> 
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-sm-3" >
-                            <label  for="nama">Nama Barang:</label>
-                            <input class="form-control" type="text" name="nama_barang" readonly>
-                            <input class="form-control" type="hidden" name="id_barang" readonly>
-                            <input type="hidden" class="form-control" id="nama_barang" name="nama_barang" style="width:200px;" value="<?php echo $kode;?>" readonly>
-                          </div>
 
-                          <div class="col-sm-3" >
-                            <label  for="nama">Stok Barang:</label>
-                            <input class="form-control" type="text" name="stok_barang" readonly >
-                          </div>
+        <form id="form_search" action="<?php echo site_url('InputSewa2/inputdetail');?>" method="POST">
+            <div class="form-group row">
+                <div class="col-sm-3" >
+                    <label  for="nama">Nama Barang:</label>
+                    <input class="form-control" type="text" name="nama_barang" readonly>
+                    <input class="form-control" type="hidden" name="id_barang" readonly>
+                    <input type="hidden" class="form-control" id="id_sewa" name="id_sewa" style="width:200px;" value="<?php echo $kode;?>" readonly>
+                  </div>
 
-                          <div class="col-sm-3" >
-                            <label  for="nama">Biaya Sewa (Rp):</label>
-                            <input class="form-control" type="text" name="harga_sewa" readonly >
-                            <input type="hidden" name="jasa" readonly="">
-                          </div>
+                  <div class="col-sm-3" >
+                    <label  for="nama">Stok Barang:</label>
+                    <input class="form-control" type="text" name="stok_barang" readonly >
+                  </div>
 
-                          
-                          <div class="col-sm-3">
-                          <label for="nomor">Jumlah Sewa: </label>
-                            <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
-                            <span class="input-group-btn">
-                                    <button class="btn btn-info" type="submit">Submit&nbsp;</button>
-                                </span>
-                            </div>
-                        </div>
-                </form>
-                        <table class="table table-borderless table-data3">
-                            <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>ID Barang</th>
-                                <th>Nama Barang</th>
-                                <th>Jumlah Sewa</th>
-                                <th>Biaya Sewa</th>
-                                <th>Total</th>
-                                <th>Aksi</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <?php  $no = 1; 
-                                foreach ($detail_sewa2 as $items): ?>
-                                
-                                <tr>
-                                    <td><?php echo $no ;?></td>
-                                     <td><?=$items->id_hargatenda ;?></td>
-                                     <td><?=$items->jenis_tenda;?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                     <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
-                                     <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
-                                </tr>
-                                
-                                <?php $no++;
-                                endforeach; ?>
-                                <?php 
-                                foreach ($detail_sewa1 as $items): ?>
-                                
-                                <tr>
-                                    <td><?php echo $no ;?></td>
-                                     <td><?=$items->id_barang ;?></td>
-                                     <td><?=$items->nama_barang;?></td>
-                                     <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
-                                     <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
-                                     <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                                     <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
-                                </tr>
-                                
-                                <?php
-                                endforeach; ?>
-                            </tbody>
-                        </table>
-                    <hr>
+                  <div class="col-sm-3" >
+                    <label  for="nama">Biaya Sewa (Rp):</label>
+                    <input class="form-control" type="text" name="harga_sewa" readonly >
+                    <input type="hidden" name="jasa" readonly="">
+                  </div>
+                  
+                  <div class="col-sm-3">
+                  <label for="nomor">Jumlah Sewa: </label>
+                    <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
+                    <span class="input-group-btn">
+                            <button class="btn btn-info" type="submit">Submit&nbsp;</button>
+                        </span>
+                    </div>
+                </div>
+        </form>
+
+
+                <!-- Tampil barang yang disewa -->
+
+                <table class="table table-borderless table-data3">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>ID Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Jumlah Sewa</th>
+                        <th>Biaya Sewa</th>
+                        <th>Total</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php  $no = 1; 
+                        foreach ($detail_sewa2 as $items): ?>
+                        
+                        <tr>
+                            <td><?php echo $no ;?></td>
+                             <td><?=$items->id_hargatenda ;?></td>
+                             <td><?=$items->jenis_tenda;?></td>
+                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                             <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
+                             <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                        </tr>
+                        
+                        <?php $no++;
+                        endforeach; ?>
+                        <?php 
+                        foreach ($detail_sewa1 as $items): ?>
+                        
+                        <tr>
+                            <td><?php echo $no ;?></td>
+                             <td><?=$items->id_barang ;?></td>
+                             <td><?=$items->nama_barang;?></td>
+                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                             <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
+                             <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                        </tr>
+                        
+                        <?php
+                        endforeach; ?>
+                    </tbody>
+                </table>
+            <hr>
+
         <form action="<?php echo base_url().'InputSewa2'?>" method="post">
             <table>
                 <tr>
@@ -180,8 +200,7 @@
                     <th>Total Tagihan (Rp)</th>
                     <th style="text-align:right;">
 
-                    <input type="text" name="total_tagih2" value="<?php echo number_format(($total[0]->total)*($lama[0]->lama));?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;"></th>
-                    <input type="hidden" id="total_tagih" name="total_tagih" value="<?php echo ($total[0]->total)*($lama[0]->lama); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                    <input type="text" name="total_tagih2" value="<?php echo number_format(($total[0]->total)*($lama[0]->lama));?>" class="form-control input-sm" stye="hidden" id="total_tagih" name="total_tagih" value="<?php echo ($total[0]->total)*($lama[0]->lama); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                 </tr>
 
                 <tr>
@@ -257,6 +276,7 @@
             dateFormat: 'dd-mm-yy' // Set format tanggalnya jadi yyyy-mm-dd
         });
    </script>
+
 <!-- Jquery JS-->
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
@@ -283,4 +303,4 @@
 </body>
 
 </html>
-<!-- end document-->
+<!-- end document

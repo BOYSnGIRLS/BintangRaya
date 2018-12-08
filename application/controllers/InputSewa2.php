@@ -5,7 +5,7 @@ class InputSewa2 extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('Model_Transaksi');
-
+        $this->model = $this->Model_Transaksi;
         $this->load->library('session');
         $this->load->helper('url');
 
@@ -33,7 +33,7 @@ class InputSewa2 extends CI_Controller {
                     foreach ($result as $row)
                         $arr_result[] = array(
                             'label'=> $row->jenis_tenda,
-                            'stok'=>$row->stok_tenda,
+                            'stok'=>$row->stok_barang,
                             'harga'=>$row->harga_sewa,
                             'jasa'=>$row->harga_jasa,
                             'id_barang' => $row->id_hargatenda
@@ -65,7 +65,7 @@ class InputSewa2 extends CI_Controller {
             );
             $kode['kode'] = $this->Model_Transaksi->get_notrans();
             $this->load->view('element/css',$title);
-            $this->load->view('element/v_header');
+            // $this->load->view('element/v_header');
             $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
             $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
             $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
@@ -85,6 +85,34 @@ class InputSewa2 extends CI_Controller {
         }
     }
 
+    function inputdetail(){
+            $id_sewa = $this->input->post('id_sewa');
+            $id_barang = $this->input->post('id_barang');
+            $harga=$this->input->post('harga_sewa');
+            $jumlah = $this->input->post('jumlah_sewa');
+            $total = $harga*$jumlah;
+            $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id_sewa."' AND id='".$id_barang."'")->num_rows();
+            if($cek >= 1){
+                    $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`=jumlah_barang+'$jumlah',`harga_total`=harga_total+'$total' WHERE id_sewa='$id_sewa' AND id='$id_barang'");
+                    redirect('InputSewa2/index');
+                }
+                
+                
+            
+            elseif ($cek == 0){
+                $data = array(
+                    'id_sewa' => $id_sewa,
+                    'id' => $id_barang,
+                    'harga_sewa' => $harga,
+                    'jumlah_barang' => $jumlah,
+                    'harga_total' => $total,
+                );
+                    
+                $this->Model_Transaksi->inputdetail($data,'detail_sewa');
+                redirect('InputSewa2/index');
+            }
+        }
+
     function inputket(){
         $id_sewa = $this->input->post('id_sewa');
         $nama_pelanggan = $this->input->post('nama_pelanggan');
@@ -103,58 +131,25 @@ class InputSewa2 extends CI_Controller {
         elseif ($ceklagi == 0) {
                 $this->db->query("INSERT INTO `sementara`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,`tgl_pasang`, `tgl_acara1`, `tgl_acara2`,`tgl_bongkar`, `lama`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp','$tgl_pasang', '$tgl1', '$tgl2', 'tgl_bongkar', '$lama')");
         }
-            redirect('InputSewa2');
-        }
-    }
-
-    function inputdetail(){
-        $id_sewa = $this->input->post('id_sewa');
-        $nama_pelanggan = $this->input->post('nama_pelanggan');
-        $no_telp = $this->input->post('no_telp');
-        $alamat = $this->input->post('alamat');
-        $tgl1 = $this->input->post('tgl_acara1');
-        $tgl2 = $this->input->post('tgl_acara2');
-        $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
-        $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
-        $id_barang = $this->input->post('id_barang');
-        $harga=$this->input->post('harga_sewa');
-        $jumlah = $this->input->post('jumlah_sewa');
-        $lama=((strtotime($tgl2)-strtotime($tgl1))/(60*60*24))+1;
-        $total = $harga*$jumlah;
-        $ceklagi = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='$id_sewa'")->num_rows();
-        if($ceklagi >= 1){
-            $this->db->query("UPDATE `sementara` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_pasang`='$tgl_pasang', `tgl_acara1`='$tgl1', `tgl_acara2`='$tgl2', `tgl_bongkar`='$tgl_bongkar', `lama`='$lama' WHERE id_sewa='$id_sewa'");
-        }
-        elseif ($ceklagi == 0) {
-                $this->db->query("INSERT INTO `sementara`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,`tgl_pasang`, `tgl_acara1`, `tgl_acara2`,`tgl_bongkar`, `lama`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp','$tgl_pasang', '$tgl1', '$tgl2', 'tgl_bongkar', '$lama')");
-        }
-        $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id_sewa."' AND id='".$id_barang."'")->num_rows();
-        if($cek >= 1){
-                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`=jumlah_barang+'$jumlah',`harga_total`=harga_total+'$total' WHERE id_sewa='$id_sewa' AND id='$id_barang'");
-                redirect('InputSewa2/index');
-            }
-            
-            
+            // $this->model->cariTotal($tgl1);
+            // echo $this->model->tanggal;
+            // $this->index();
         
-        elseif ($cek == 0){
-            $data = array(
-                'id_sewa' => $id_sewa,
-                'id' => $id_barang,
-                'harga_sewa' => $harga,
-                'jumlah_barang' => $jumlah,
-                'harga_total' => $total,
-            );
-                
-            $this->Model_Transaksi->inputdetail($data,'detail_sewa');
-            redirect('InputSewa2/index');
-        }
     }
 
+    
     function remove(){
         $id_barang = $this->uri->segment(3);
         $id_sewa = $this->Model_Transaksi->get_notrans();
         $this->db->query("DELETE FROM `detail_sewa` WHERE id_sewa='$id_sewa' AND id='$id_barang'");
         redirect('InputSewa2');
 
+    }
+
+    function getStokBarang(){
+        $tgl = $this->uri->segment(3);
+        $data['data'] = $this->Model_Transaksi->cariTotal($tgl);
+        var_dump($data['data']);
+        echo $data['data'];
     }
 }
