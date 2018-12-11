@@ -24,16 +24,33 @@ class Model_Transaksi extends CI_Model{
     $query = $this->db->get();
     return $query->result();
   }
-  
+
 	function search1($title){
         $this->db->like('nama_barang', $title , 'both');
         $this->db->order_by('nama_barang', 'ASC');
         $this->db->limit(10);
         return $this->db->get('barang')->result();
-        return $this->db->get()->result();       
+        // return $this->db->get()->result();       
     }
 
   function search2($title){
+        $this->db->like('jenis_tenda', $title, 'both');
+        $this->db->order_by('jenis_tenda', 'ASC');
+        $this->db->limit(20);
+        $this->db->from('paket_tenda');
+        $this->db->join('tenda', 'tenda.id_tenda=paket_tenda.id_tenda');
+        return $this->db->get()->result();
+  }
+
+  function search3($title){
+        $this->db->like('nama_barang', $title , 'both');
+        $this->db->order_by('nama_barang', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('stok_temp_barang')->result();
+        return $this->db->get()->result();    
+    }
+
+  function search4($title){
         $this->db->like('jenis_tenda', $title, 'both');
         $this->db->order_by('jenis_tenda', 'ASC');
         $this->db->limit(20);
@@ -61,13 +78,15 @@ class Model_Transaksi extends CI_Model{
     return $kodejadi;
   }
 
-  function cariTotal($tgl){
-    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_acara1 FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.tgl_acara1 = '$tgl'");
+  function cariTotal($id,$tgl1,$tgl2,$tglpasang,$tglbongkar){
+    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND ahay.tgl_pasang='$tglpasang' OR ahay.tgl_acara1 = '$tgl1' OR ahay.tgl_acara2 = '$tgl2' OR ahay.tgl_bongkar = '$tglbongkar' ");
+    $data = $this->db->query($sql);
+
+    return $data->row();
             // $papa = $this->db->query($sql);
             // foreach($papa->result() as $hasil){
             //     $this->tanggal = $hasil->total;
             // }
-    return $sql=$query->result();
   }
 
   function inputdetail($data,$table) {
@@ -82,5 +101,18 @@ class Model_Transaksi extends CI_Model{
     return $result = $query->result_array();
   }
 
+  function cekTanggal(){
+    $tgl1 = $this->db->query("SELECT tgl_acara1 FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+    $cektgl=$this->db->query("SELECT tgl_acara1 FROM `sewa`")->result();
+    foreach ($cektgl as $row) {
+        if ($row == $tgl1) {
+            $auto['auto']="1";
+
+        }else{
+            $auto['auto']="0";
+        }
+    }
+
+  }
 }
 ?>

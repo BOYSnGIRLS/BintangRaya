@@ -33,7 +33,7 @@ class InputSewa2 extends CI_Controller {
                     foreach ($result as $row)
                         $arr_result[] = array(
                             'label'=> $row->jenis_tenda,
-                            'stok'=>$row->stok_barang,
+                            'stok'=>$row->stok_tenda,
                             'harga'=>$row->harga_sewa,
                             'jasa'=>$row->harga_jasa,
                             'id_barang' => $row->id_hargatenda
@@ -43,6 +43,22 @@ class InputSewa2 extends CI_Controller {
             }
         }
     }
+
+    // public function get_autocomplete2(){    //membuat dropdown pilihan di search box
+    //     if (isset($_GET['term'])) {
+
+    //             $result = $this->Model_Transaksi->search3($_GET['term']);
+    //             if (count($result) > 0) {
+    //             foreach ($result as $row)
+    //                 $arr_result[] = array(
+    //                     'label'=> $row->nama_barang,
+    //                     'stok'=>$row->sisa_stok,
+    //                     'id_barang' => $row->id_barang,
+    //                 );
+    //                 echo json_encode($arr_result);            
+    //             }
+    //     }
+    // }
 
     function index(){
          
@@ -54,6 +70,7 @@ class InputSewa2 extends CI_Controller {
 
             $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
             $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+
             $this->session->set_flashdata('message', 'anda berhasil menginput data');
             redirect('InputSewa2');
         }else{
@@ -68,6 +85,18 @@ class InputSewa2 extends CI_Controller {
             // $this->load->view('element/v_header');
             $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
             $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
+
+            // $tgl1 = $this->db->query("SELECT tgl_acara1 FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result_array();
+            // $cektgl = $this->db->query("SELECT tgl_acara1 FROM `sewa`")->result_array();
+            
+            //     if ($cektgl == $tgl1) {
+            //         echo $auto['auto']="1";
+            //     }else{
+            //         echo $auto['auto']="0";
+            //     }
+                
+        //$stok['stok'] = $this->Model_Transaksi->cariTotal('2018-12-05');
+
             $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
             if ($cek >=1 ){
                 $sementara['data'] = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
@@ -79,7 +108,7 @@ class InputSewa2 extends CI_Controller {
             elseif ($cek == 0){
                 $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa`  WHERE id_sewa='".$kode['kode']."'")->result();
                 $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
-            $this->load->view('v_inputsewa2', $data+$kode+$detail_sewa);
+            $this->load->view('v_inputsewa2', $data+$kode+$detail_sewa+$stok);
             }
 
         }
@@ -131,9 +160,11 @@ class InputSewa2 extends CI_Controller {
         elseif ($ceklagi == 0) {
                 $this->db->query("INSERT INTO `sementara`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,`tgl_pasang`, `tgl_acara1`, `tgl_acara2`,`tgl_bongkar`, `lama`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp','$tgl_pasang', '$tgl1', '$tgl2', 'tgl_bongkar', '$lama')");
         }
-            // $this->model->cariTotal($tgl1);
-            // echo $this->model->tanggal;
+           // $this->model->cariTotal($tgl1);
+            //$_SESSION['stok'] = $this->model->tanggal;
             // $this->index();
+
+        redirect('InputSewa2');
         
     }
 
@@ -147,9 +178,12 @@ class InputSewa2 extends CI_Controller {
     }
 
     function getStokBarang(){
-        $tgl = $this->uri->segment(3);
-        $data['data'] = $this->Model_Transaksi->cariTotal($tgl);
-        var_dump($data['data']);
-        echo $data['data'];
+         $tgl1 = $this->input->post('tgl1');
+         $tgl2 = $this->input->post('tgl2');
+         $tglpasang = $this->input->post('tglpasang');
+         $tglbongkar = $this->input->post('tglbongkar');
+         $id  = $this->input->post('id');
+        $data = $this->Model_Transaksi->cariTotal($id,$tgl1,$tgl2,$tglpasang,$tglbongkar);
+        echo $data->total;
     }
 }

@@ -6,7 +6,6 @@ public function view_by_date($date){
 		$this->db->select('*');
  		$this->db->from('sewa');
  		$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('DATE(tgl_pasang)', $date);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -18,7 +17,6 @@ public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('MONTH(tgl_pasang)', $month); // Tambahkan where bulan
     $this->db->where('YEAR(tgl_pasang)', $year); // Tambahkan where tahun
@@ -31,7 +29,6 @@ public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('YEAR(tgl_pasang)', $year);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -43,7 +40,6 @@ public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    // $this->db->join('pelanggan', 'sewa.id_sewa=pelanggan.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();

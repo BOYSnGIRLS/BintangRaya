@@ -33,14 +33,16 @@
                         <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>" required>
                       </div>
 
-                      <div class="col-sm-3">value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>"
+                      <div class="col-sm-3">
                         <label for="tgl">Tanggal Acara Mulai:</label>
-                       <input class="form-control" type="date" name="tgl_acara1"  required>
+                        <input type="date" name="tgl_pasang" value="<?php if(isset($data)) { echo $data[0]->tgl_pasang; } ?>" readonly >
+                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" required>
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Selesai :</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" required>
+                        <input type="date" name="tgl_bongkar" value="<?php if(isset($data)) { echo $data[0]->tgl_bongkar; } ?>" readonly>
                       </div>
                       <button class="btn btn-info" name="btnTgl" >Submit</button>
                   </form>
@@ -52,49 +54,57 @@
                     <div class="form-group row">
                         <div class="col-lg-9">
                         
-                        <form id="form_search" action="<?php echo site_url('InputSewa2/get_autocomplete');?>" method="GET">
+                        <form id="form_search" action="" method="GET">
                             <label>Cari Barang</label>
                             <div class="input-group">
                                 <input type="hidden" name="id_sewa" value="<?php echo $kode;?>" readonly >
-                                <input type="hidden" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" readonly="">
                                 <input type="text" name="title" class="form-control" id="title" placeholder="nama_barang" style="width:200px;" required="">
                                 
                              </div>
+
+
                         </form>
+                        <!-- <button class="btn btn-info" onclick="a()">test</button> -->
                     </div>
 
                     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
-                    
                     <script type="text/javascript">
-                       // function a(){
-                       //  var stok = 0;
-                       //  $.ajax(){
-                       //      type:'GET', 
-                       //      url : '<?php echo base_url('InputSewa/getStokBarang') ; ?>/'+$('[name = tgl_acara1]').val(),
-                       //      succes: function(data){
-                       //          stok = data ;
-                       //          }
-                       //      }
-                       //  return stok;
-                       //  }
+                        function a(id){
+                        var stok = "asas";
+                        var link = '<?php echo base_url('InputSewa2/getStokBarang') ; ?>';
+                        //var id = $('[name = "id_barang"]').val();
+                        $.ajax({
+                            type : "POST",
+                            url : link,
+                            async : false,
+                            data : {'tgl1':$('[name = tgl_acara1]').val(), 'tgl2':$('[name = tgl_acara2]').val(), 'tglpasang':$('[name = tgl_pasang]').val(), 'tglbongkar':$('[name = tgl_bongkar]').val(),'id' :id},
+                            success : function(data){ stok = data }
+                        }
+
+                            )
+                        return stok;
+                        }
+
+                    </script>
+                    <script type="text/javascript">
+                                              
                         $(document).ready(function(){
                             $('#title').autocomplete({
-                            source: "<?php echo site_url('InputSewa2/get_autocomplete');?>",
+                            source: "<?php echo site_url().'InputSewa2/get_autocomplete/';?>",
                   
                             select: function (event, ui) {
                                 $(this).val(ui.item.label);
                                 $('[name="id_barang"]').val(ui.item.id_barang);
                                 $('[name="nama_barang"]').val(ui.item.label);
-                                $('[name="stok_barang"]').val(ui.item.stok);
+                                $('[name="stok_barang"]').val(ui.item.stok - a(ui.item.id_barang));
                                 $('[name="harga_sewa"]').val(ui.item.harga);
                                 $('[name="harga_jasa"]').val(ui.item.jasa);                            
                             }
                         });
                         });
-                    </script> 
-                    </div>
+                    </script>
 
 
         <form id="form_search" action="<?php echo site_url('InputSewa2/inputdetail');?>" method="POST">
