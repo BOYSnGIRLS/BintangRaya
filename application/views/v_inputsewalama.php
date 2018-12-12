@@ -26,10 +26,7 @@
                         <label>No Pesanan</label>
                         <input type="text" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo $kode;?>" readonly>
                     </div>
-                    <!-- </div>
-
-                    <div class="form-group row">
- -->
+                    
                       <div class="col-sm-4" >
                         <label  for="nama">Nama Penyewa:</label>
                         <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>">

@@ -3,7 +3,7 @@
 <div class="section__content section__content--p30">
     <div class="container-fluid"> 
 
-     <form id="form_input_detail" action="<?php echo site_url('InputSewa2/inputket');?>" method="POST">
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputket');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
@@ -35,14 +35,13 @@
 
                       <div class="col-sm-3">
                         <label for="tgl">Tanggal Acara Mulai:</label>
-                        <input type="date" name="tgl_pasang" value="<?php if(isset($data)) { echo $data[0]->tgl_pasang; } ?>" readonly >
+                        <input type="hidden" name="tgl_pasang" value="<?php if(isset($data)) { echo $data[0]->tgl_pasang; } ?>" readonly >
                        <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" required>
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Selesai :</label>
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" required>
-                        <input type="date" name="tgl_bongkar" value="<?php if(isset($data)) { echo $data[0]->tgl_bongkar; } ?>" readonly>
                       </div>
                       <button class="btn btn-info" name="btnTgl" >Submit</button>
                   </form>
@@ -73,13 +72,13 @@
                     <script type="text/javascript">
                         function a(id){
                         var stok = "asas";
-                        var link = '<?php echo base_url('InputSewa2/getStokBarang') ; ?>';
+                        var link = '<?php echo base_url('InputSewa/getStokBarang') ; ?>';
                         //var id = $('[name = "id_barang"]').val();
                         $.ajax({
                             type : "POST",
                             url : link,
                             async : false,
-                            data : {'tgl1':$('[name = tgl_acara1]').val(), 'tgl2':$('[name = tgl_acara2]').val(), 'tglpasang':$('[name = tgl_pasang]').val(), 'tglbongkar':$('[name = tgl_bongkar]').val(),'id' :id},
+                            data : {'tgl':$('[name = tgl_acara1]').val(), 'id' :id},
                             success : function(data){ stok = data }
                         }
 
@@ -92,7 +91,7 @@
                                               
                         $(document).ready(function(){
                             $('#title').autocomplete({
-                            source: "<?php echo site_url().'InputSewa2/get_autocomplete/';?>",
+                            source: "<?php echo site_url().'InputSewa/get_autocomplete/';?>",
                   
                             select: function (event, ui) {
                                 $(this).val(ui.item.label);
@@ -107,7 +106,7 @@
                     </script>
 
 
-        <form id="form_search" action="<?php echo site_url('InputSewa2/inputdetail');?>" method="POST">
+        <form id="form_search" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
             <div class="form-group row">
                 <div class="col-sm-3" >
                     <label  for="nama">Nama Barang:</label>
@@ -163,7 +162,7 @@
                              <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                         </tr>
                         
                         <?php $no++;
@@ -187,7 +186,7 @@
                 </table>
             <hr>
 
-        <form action="<?php echo base_url().'InputSewa2'?>" method="post">
+        <form action="<?php echo base_url().'InputSewa'?>" method="post">
             <table>
                 <tr>
                     <?php if (isset($lama)) {

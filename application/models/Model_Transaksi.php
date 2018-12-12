@@ -78,8 +78,8 @@ class Model_Transaksi extends CI_Model{
     return $kodejadi;
   }
 
-  function cariTotal($id,$tgl1,$tgl2,$tglpasang,$tglbongkar){
-    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND ahay.tgl_pasang='$tglpasang' OR ahay.tgl_acara1 = '$tgl1' OR ahay.tgl_acara2 = '$tgl2' OR ahay.tgl_bongkar = '$tglbongkar' ");
+  function cariTotal($id,$tgl){
+    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND ahay.tgl_pasang='$tgl' OR ahay.tgl_acara1 = '$tgl' OR ahay.tgl_acara2 = '$tgl' OR ahay.tgl_bongkar = '$tgl' ");
     $data = $this->db->query($sql);
 
     return $data->row();
