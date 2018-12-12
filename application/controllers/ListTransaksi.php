@@ -5,6 +5,7 @@ class ListTransaksi extends CI_Controller {
 	function __construct(){
         parent::__construct();
         $this->load->model('Model_Laporan');
+        $this->load->model('Model_Transaksi');
 
         $this->load->library('session');
         $this->load->helper('url');
@@ -117,6 +118,105 @@ class ListTransaksi extends CI_Controller {
             ), $id);
         redirect('ListTransaksi/index');
     }
+
+    public function edit_transaksi(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'title'=>'Edit Transaksi',
+            'active_listtransaksi'=>'active',
+            'trans'=>$this->Model_Laporan->get_edit_transaksi($id),
+            'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
+            'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
+
+        );
+        
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header', $data);
+        $this->load->view('v_edittransaksi',$data);
+
+    }
+
+    function update_transaksi(){
+        $id= $this->input->post('id_sewa');
+        $id_barang = $this->input->post('id_barang');
+        $harga=$this->input->post('harga_sewa');
+        $jumlah = $this->input->post('jumlah_sewa');
+        $total = $harga*$jumlah;
+        $tgl1 = $this->input->post('tgl_acara1');
+        $tgl2 = $this->input->post('tgl_acara2');
+        
+        // $insert = $this->Model_Laporan->update_transaksi(array(
+        //         'id_sewa' => $this->input->post('id_sewa'),
+        //         'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+        //         'telp_pelanggan' => $this->input->post('telp_pelanggan'),
+        //         'alamat_pelanggan' => $this->input->post('alamat_pelanggan'),
+        //         'tgl_acara1' => $this->input->post('tgl_acara1'),
+        //         'tgl_acara2' => $this->input->post('tgl_acara2')
+
+        //     ), $id);
+        $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
+        $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
+        $id_barang = $this->input->post('id_barang');
+        $harga=$this->input->post('harga_sewa');
+        $jumlah = $this->input->post('jumlah_sewa');
+        $lama=((strtotime($tgl2)-strtotime($tgl1))/(60*60*24))+1;
+        $total = $harga*$jumlah;
+        $ceklagi = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='$id'")->num_rows();
+        if($ceklagi >= 1){
+            $this->db->query("UPDATE `sementara` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_pasang`='$tgl_pasang', `tgl_acara1`='$tgl1', `tgl_acara2`='$tgl2', `tgl_bongkar`='$tgl_bongkar', `lama`='$lama' WHERE id_sewa='$id_sewa'");
+        }
+
+        $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id."' AND id='".$id_barang."'")->num_rows();
+        if($cek >= 1){
+                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah' WHERE id_sewa='$id' AND id='$id_barang'");
+                redirect('ListTransaksi/update_transaksi');
+            }
+
+        elseif ($cek == 0){
+            $data = array(
+                'id_sewa' => $id,
+                'id' => $id_barang,
+                'harga_sewa' => $harga,
+                'jumlah_barang' => $jumlah,
+                'harga_total' => $total,
+            );
+                
+            $this->Model_Transaksi->inputdetail($data,'detail_sewa');
+
+        redirect('ListTransaksi/update_transaksi');
+    }
+
+}
+    public function get_autocomplete(){    //membuat dropdown pilihan di search box
+        if (isset($_GET['term'])) {
+                $result = $this->Model_Transaksi->search1($_GET['term']);
+                if (count($result) > 0) {
+                foreach ($result as $row)
+                    $arr_result[] = array(
+                        'label'=> $row->nama_barang,
+                        'stok'=>$row->stok_barang,
+                        'harga'=>$row->harga_sewa,
+                        'jasa'=>$row->harga_jasa,
+                        'id_barang' => $row->id_barang,
+                    );
+                    echo json_encode($arr_result);            
+                }else{
+                    $result = $this->Model_Transaksi->search2($_GET['term']);
+                    if (count($result) > 0) {
+                    foreach ($result as $row)
+                        $arr_result[] = array(
+                            'label'=> $row->jenis_tenda,
+                            'stok'=>$row->stok_tenda,
+                            'harga'=>$row->harga_sewa,
+                            'jasa'=>$row->harga_jasa,
+                            'id_barang' => $row->id_hargatenda
+                        );
+                        echo json_encode($arr_result); 
+                }
+            }
+        }
+    }
+
 
 
 }

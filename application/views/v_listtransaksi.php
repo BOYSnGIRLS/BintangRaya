@@ -116,9 +116,13 @@
                                                   <!--  <?php echo $row->status?><br> -->
                                                    
                                                    <?php if($row->status == "Menunggu Proses"){ ?>
-                                                         <span class="input-group-btn"><a class=" btn btn-warning btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Menunggu</a></span>
+                                                         <span class="input-group-btn" ><a class=" btn btn-warning btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Menunggu</a></span>
+
+                                                         
+
                                                     <?php }else if($row->status == "Proses"){ ?>
                                                     <span class="input-group-btn"><a class=" btn btn-primary btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Proses</a></span>
+                                                    
 
                                                    <?php }else if($row->status == "Selesai"){ ?>
                                                     <span class="input-group-btn"><a class=" btn btn-success btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Selesai</a></span>
@@ -133,7 +137,7 @@
 
                                                
                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
-                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>"><a href=""><button type="submit" class="btn btn-info">Edit</button></a></td>
+                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
                                                 </tr>
                                             <?php endforeach;  ?>
                                         </tbody>

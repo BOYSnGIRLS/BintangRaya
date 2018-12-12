@@ -244,8 +244,9 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/barang');
     }
 
-    function delete_barang($id){
-        $this->Model_Barang->delete($id);
+    function delete_barang($id2){
+          $this->Model_Barang->delete($id2);
+         $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('DataBarang/barang');
     }
 

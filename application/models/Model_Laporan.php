@@ -90,7 +90,35 @@ public function view_by_date($date){
     function update_status($data = array(),$id){
         $this->db->where('id_sewa',$id);
         return $this->db->update('sewa',$data);
+        
     }
+
+    function get_edit_transaksi($id){
+        $query = $this->db->query("SELECT * FROM  sewa JOIN detail_sewa WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa='$id' ");
+        return $query->result_array();
+    }
+
+     function update_transaksi($data = array(),$id){
+        $this->db->where('id_sewa',$id);
+        return $this->db->update('sewa',$data);
+    }
+
+    function search1($title){
+        $this->db->like('nama_barang', $title , 'both');
+        $this->db->order_by('nama_barang', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('barang')->result();
+        return $this->db->get()->result();       
+    }
+
+  function search2($title){
+        $this->db->like('jenis_tenda', $title, 'both');
+        $this->db->order_by('jenis_tenda', 'ASC');
+        $this->db->limit(20);
+        $this->db->from('paket_tenda');
+        $this->db->join('tenda', 'tenda.id_tenda=paket_tenda.id_tenda');
+        return $this->db->get()->result();
+  }
 
 }
 ?>

@@ -42,8 +42,8 @@ class Model_Barang extends CI_Model {
         return $this->db->delete('paket_tenda');
 	}
 
-	function delete($id){
-		$this->db->where('id_barang', $id);
+	function delete($id2){
+		$this->db->where('id_barang', $id2);
         return $this->db->delete('barang');
 	}
 

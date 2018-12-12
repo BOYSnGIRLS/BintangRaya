@@ -36,9 +36,13 @@
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $row->id_kategori;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
-                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-info">Edit</button></a><br> 
+
+                      
+                                </td> 
                                 <td>
                                     <a href="<?php echo base_url(); ?>DataBarang/delete_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
+
                             </tr>
                             <?php $no++;
                             endforeach;?>
@@ -91,7 +95,11 @@
                                 <td><?php echo $row->nama_kategori;?></td>
                                 <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
                                 <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> 
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--medium" data-toggle="modal" data-target="#hapus-data">
+                                        <i class="zmdi zmdi-plus"></i>hapus</button>
+                                   
+                                </td>
                             </tr>
                             <?php $no++;
                             endforeach;?>
@@ -215,6 +223,38 @@
             </div>
       <!-- end modal  -->
 
+<!-- Delete Modal-->
+      <div class="modal fade" id="hapus-data" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="hapus-data">Konfirmasi Hapus Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/delete_barang')?>" method="post" enctype="multipart/form-data" role="form">
+                        <div class="modal-body">
+                                
+                                <div class="form-group">
+                                    <p class="error-text"><i class="fa fa-warning modal-icon"></i>Apakah anda yakin ingin menghapus data tersebut?
+                    <br>Data tidak dapat dikembalikan lagi</p>
+                                </div>
+                            </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
+                </div></form>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <!-- end modal  -->
+
+
+
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
@@ -236,21 +276,8 @@
       });
   </script>
 
-  <!-- untuk tambah kategori -->
-  <!-- <script>
-      $(document).ready(function() {
-          // Untuk sunting
-          $('#tambah-kategori').on('show.bs.modal', function (event) {
-              var div = $(event.relatedTarget) 
-              var modal          = $(this)
- 
-              // Isi nilai pada field
-              modal.find('#id_kategori').html(div.data('id_kategori'));
-              modal.find('#nama_kategori').attr("value",div.data('nama_kategori'));
-             
-          });
-      });
-  </script> -->
+  
 
+  
 
   

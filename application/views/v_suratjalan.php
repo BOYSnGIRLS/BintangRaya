@@ -45,8 +45,7 @@
                                     </div>
 
 									
-                                        <div class="table-responsive table--no-card m-b-30">
-										<table class="table table-borderless table-striped table-earning">
+                                        <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
                                                 <th>Kode Barang</th>
@@ -79,7 +78,7 @@
                                             endforeach; ?>
                                         </tbody>
                                         </table>
-							             </div>
+							             
                                     </div>
                                     <hr>
                                     <br>
