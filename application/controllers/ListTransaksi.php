@@ -90,6 +90,35 @@ class ListTransaksi extends CI_Controller {
 
     function notatagihan(){
         $id = $this->uri->segment(3);
+        if (isset($_POST['btnTambah'])){
+            $kode['kode'] = $this->input->post('id_sewa');
+            $bayar = $this->input->post('bayar');
+            $kembalian = $this->input->post('kembalian');
+
+            $this->db->query("UPDATE `sewa` SET `bayar`='".$bayar."',`kembalian`='".$kembalian."' WHERE id_sewa='".$kode['kode']."'");
+
+        redirect(base_url('ListTransaksi'));
+
+
+        }else{
+            $data = array(
+            'title'=>'Nota Tagihan',
+            'active_listtransaksi'=>'active',
+            'data'=>$this->Model_Laporan->nota_tagihan($id),
+            'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
+            'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
+        );
+        }
+        
+        $this->load->view('element/css',$data);
+        $this->load->view('element/v_header', $data);
+        $this->load->view('v_notatagihan', $data);
+        $this->load->view('element/v_footer'); 
+        
+    }
+
+    function notatagihan2(){
+        $id = $this->uri->segment(3);
         $data = array(
             'title'=>'Nota Tagihan',
             'active_listtransaksi'=>'active',
@@ -99,8 +128,7 @@ class ListTransaksi extends CI_Controller {
         );
         
         $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
-        $this->load->view('v_notatagihan', $data);
+        $this->load->view('v_notatagihan2', $data);
         $this->load->view('element/v_footer'); 
         
     }

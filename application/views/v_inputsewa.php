@@ -7,7 +7,16 @@
     <div class="container-fluid">
      <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
         <div class="row">
+
             <div class="col-lg-12">
+                <div class="au-card-m-b-30">
+                    <div class="au-card-inner">
+                    <?php echo $this->session->flashdata('message');?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                
                 <div class="au-card m-b-30">
                     <div class="au-card-inner">
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
@@ -67,13 +76,14 @@
                     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
                     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+                
                     <script type="text/javascript">
                         $(document).ready(function(){
                             $('#title').autocomplete({
-                            source: "<?php echo site_url('InputSewa/get_autocomplete');?>",
+                            source: "<?php echo site_url('InputSewa2/get_autocomplete');?>",
                   
                             select: function (event, ui) {
-                                $(this).val(ui.item.harga);
+                                $(this).val(ui.item.label);
                                 $('[name="id_barang"]').val(ui.item.id_barang);
                                 $('[name="nama_barang"]').val(ui.item.label);
                                 $('[name="stok_barang"]').val(ui.item.stok);
@@ -83,6 +93,7 @@
                         });
                         });
                     </script> 
+                   
                     </div>
 
                     <div class="form-group row">

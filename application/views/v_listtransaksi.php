@@ -9,7 +9,7 @@
                                 <h3 class="title-5 m-b-35">List Transaksi</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
-                                    <form method="get" action="">
+                                    <form method="get" action="" >
                                         Status :
                                         <div class="rs-select2--light rs-select2--sm">
                                             <select class="js-select2" name="time">
@@ -28,17 +28,19 @@
                                     <!-- <div class="table-data__tool-right"> -->
                                         <!-- Tanggal Pasang : <input type="table-data__tool-left"></input> -->
                                         <form method="get" action="">
-                                        <label>Filter Berdasarkan Tanggal Pasang</label><br>
-                                        <!-- <div class="rs-select2--light rs-select2--sm"> -->
+                                        <label>Filter Berdasarkan </label><br>
+                                        <label>Tanggal Pasang</label> &nbsp;&nbsp;
                                         <select class="js-select2" name="filter" id="filter">
                                             <option value="">Pilih</option>
                                             <option value="1">Per Tanggal</option>
                                             <option value="2">Per Bulan</option>
                                             <option value="3">Per Tahun</option>
-                                        </select><div class="dropDownSelect2"></div>
+                                        </select>
+                                        <!-- <div class="rs-select2--light rs-select2--sm"> -->
+                                        <div class="dropDownSelect2"></div>
                                         <br />
                                         <div id="form-tanggal">
-                                            <label>Tanggal</label><br>
+                                            <label>Tanggal</label>&nbsp;
                                             <input type="text" name="tanggal" class="input-tanggal" />
                                             <br />
                                         </div>
@@ -73,7 +75,7 @@
                                             </select>
                                             <br />
                                         </div>
-                                        <button type="submit" class="btn btn-info">Tampilkan</button>
+                                        <button type="submit" class="btn btn-info">Tampilkan</button>&nbsp;&nbsp;
                                         <a href="<?php echo base_url('ListTransaksi'); ?>">Reset Filter</a>
                                     </form>
                                     <hr />
@@ -95,9 +97,9 @@
                                                 <th width="100%">Tgl Pasang</th>
                                                 <th>Alamat</th>
                                                 <th>Status</th>
+                                                <th>Pesanan Tambahan</th>
                                                 <th>Surat Jalan</th>
                                                 <th>Nota Tagihan</th>
-                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -128,16 +130,25 @@
                                                     <span class="input-group-btn"><a class=" btn btn-success btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Selesai</a></span>
 
                                                    <?php };?>
-                                                        
-                                                    
-                                            
-                                              <td><label class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
-                                              </td>
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>"><a href=""><button type="submit" class="btn btn-info">Edit</button></a>
+                                                </td>
 
+                                                <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
+
+<<<<<<< HEAD
                                                
                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
                                                  <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
+=======
+                                                </td>
+
+                                                <td>
+                                                    <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
+                                                    <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
+                                                </td>
+                                                
+>>>>>>> dc7d533d4a0f4d68dc8764d7cb1a0aca7aa67eec
                                                 </tr>
                                             <?php endforeach;  ?>
                                         </tbody>
@@ -166,7 +177,7 @@
     <script>
     $(document).ready(function(){ // Ketika halaman selesai di load
         $('.input-tanggal').datepicker({
-            dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
+            dateFormat: 'dd-mm-yy' // Set format tanggalnya jadi yyyy-mm-dd
         });
         $('#form-tanggal, #form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
         $('#filter').change(function(){ // Ketika user memilih filter
