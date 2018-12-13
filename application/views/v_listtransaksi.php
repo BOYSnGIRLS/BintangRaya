@@ -86,6 +86,7 @@
 
                         <div class="row m-t-30">
                             <div class="col-md-12">
+
                                 <!-- DATA TABLE-->
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
@@ -115,40 +116,28 @@
                                                 <td><?php echo $row->alamat_pelanggan?></td>
 
                                                 <td>
-                                                  <!--  <?php echo $row->status?><br> -->
-                                                   
-                                                   <?php if($row->status == "Menunggu Proses"){ ?>
-                                                         <span class="input-group-btn" ><a class=" btn btn-warning btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Menunggu</a></span>
 
-                                                         
+                                                    <?php if($row->status == "Menunggu Proses"){ ?>
+                                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#konfirmasi">Menunggu</button>
 
                                                     <?php }else if($row->status == "Proses"){ ?>
-                                                    <span class="input-group-btn"><a class=" btn btn-primary btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Proses</a></span>
+                                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#konfirmasi">Proses</button>
                                                     
 
                                                    <?php }else if($row->status == "Selesai"){ ?>
-                                                    <span class="input-group-btn"><a class=" btn btn-success btn-lg" href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" >Selesai</a></span>
+                                                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#selesai">Selesai</button>
+                                                    
 
                                                    <?php };?>
 
-                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>"><a href=""><button type="submit" class="btn btn-info">Edit</button></a>
-                                                </td>
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
 
-                                                <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
-
-<<<<<<< HEAD
-                                               
-                                               <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
-                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
-=======
-                                                </td>
-
+                                                <td>
+                                                    <label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
                                                 <td>
                                                     <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
                                                     <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
                                                 </td>
-                                                
->>>>>>> dc7d533d4a0f4d68dc8764d7cb1a0aca7aa67eec
                                                 </tr>
                                             <?php endforeach;  ?>
                                         </tbody>
@@ -161,6 +150,55 @@
                 </div>
             </div>
         </div>
+
+    
+      <!-- modal konfirmasi -->
+            <div class="modal fade" id="konfirmasi" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+             data-backdrop="static">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Konfirmasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Yakin mengganti status ini?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                            <a href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" ><button type="button" class="btn btn-primary" >Ya</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal  -->
+
+            <!-- modal selesai -->
+            <div class="modal fade" id="selesai" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+             data-backdrop="static">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Konfirmasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Pemesanan telah selesai dilakukan</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal -->
+
     
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
@@ -197,7 +235,7 @@
    </script>
 
    <!-- Jquery JS-->
-    <!-- <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script> -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery-3.2.1.min.js"></script>
 
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
