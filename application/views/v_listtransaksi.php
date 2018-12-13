@@ -40,7 +40,7 @@
                                         <div class="dropDownSelect2"></div>
                                         <br />
                                         <div id="form-tanggal">
-                                            <label>Tanggal</label>&nbsp;
+                                            <label>Tanggal</label>
                                             <input type="text" name="tanggal" class="input-tanggal" />
                                             <br />
                                         </div>
@@ -130,7 +130,18 @@
 
                                                    <?php };?>
 
+<<<<<<< HEAD
                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
+=======
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>"><a href=""><button type="submit" class="btn btn-info">Edit</button></a>
+                                                </td>
+
+                                                <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
+
+                                               
+                                               <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
+                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>              </td>
+>>>>>>> b945afa888fb957f4d739a0b23416f59ecaa027e
 
                                                 <td>
                                                     <label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
