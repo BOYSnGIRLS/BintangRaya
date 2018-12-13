@@ -197,7 +197,7 @@ class ListTransaksi extends CI_Controller {
         $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id."' AND id='".$id_barang."'")->num_rows();
         if($cek >= 1){
                 $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah' WHERE id_sewa='$id' AND id='$id_barang'");
-                redirect('ListTransaksi/update_transaksi');
+                redirect('ListTransaksi/edit_transaksi/'.$id);
             }
 
         elseif ($cek == 0){
@@ -211,13 +211,13 @@ class ListTransaksi extends CI_Controller {
                 
             $this->Model_Transaksi->inputdetail($data,'detail_sewa');
 
-        redirect('ListTransaksi/update_transaksi');
+        redirect('ListTransaksi/edit_transaksi/'.$id);
     }
 
 }
     public function get_autocomplete(){    //membuat dropdown pilihan di search box
         if (isset($_GET['term'])) {
-                $result = $this->Model_Transaksi->search1($_GET['term']);
+                $result = $this->Model_Laporan->search1($_GET['term']);
                 if (count($result) > 0) {
                 foreach ($result as $row)
                     $arr_result[] = array(
@@ -229,7 +229,7 @@ class ListTransaksi extends CI_Controller {
                     );
                     echo json_encode($arr_result);            
                 }else{
-                    $result = $this->Model_Transaksi->search2($_GET['term']);
+                    $result = $this->Model_Laporan->search2($_GET['term']);
                     if (count($result) > 0) {
                     foreach ($result as $row)
                         $arr_result[] = array(
