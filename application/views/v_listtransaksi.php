@@ -40,7 +40,7 @@
                                         <div class="dropDownSelect2"></div>
                                         <br />
                                         <div id="form-tanggal">
-                                            <label>Tanggal</label>&nbsp;
+                                            <label>Tanggal</label>
                                             <input type="text" name="tanggal" class="input-tanggal" />
                                             <br />
                                         </div>
@@ -136,19 +136,14 @@
 
                                                 <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
-<<<<<<< HEAD
                                                
                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
-                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
-=======
-                                                </td>
+                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>              </td>
 
                                                 <td>
                                                     <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
                                                     <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
                                                 </td>
-                                                
->>>>>>> dc7d533d4a0f4d68dc8764d7cb1a0aca7aa67eec
                                                 </tr>
                                             <?php endforeach;  ?>
                                         </tbody>

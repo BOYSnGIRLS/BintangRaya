@@ -79,14 +79,10 @@ class Model_Transaksi extends CI_Model{
   }
 
   function cariTotal($id,$tgl){
-    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND ahay.tgl_pasang='$tgl' OR ahay.tgl_acara1 = '$tgl' OR ahay.tgl_acara2 = '$tgl' OR ahay.tgl_bongkar = '$tgl' ");
+    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND ahay.tgl_pasang='$tgl' OR ahay.tgl_acara1 = '$tgl' OR ahay.tgl_acara2 = '$tgl'  ");
     $data = $this->db->query($sql);
 
     return $data->row();
-            // $papa = $this->db->query($sql);
-            // foreach($papa->result() as $hasil){
-            //     $this->tanggal = $hasil->total;
-            // }
   }
 
   function inputdetail($data,$table) {

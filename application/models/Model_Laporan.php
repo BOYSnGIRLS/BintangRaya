@@ -8,7 +8,7 @@ public function view_by_date($date){
  		$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
  		$this->db->where('DATE(tgl_pasang)', $date);
-    $this->db->order_by('sewa.tgl_bongkar', 'DESC');
+    $this->db->order_by('sewa.tgl_pasang', 'DESC');
  		$query = $this->db->get();
 		return $query->result();
   }
