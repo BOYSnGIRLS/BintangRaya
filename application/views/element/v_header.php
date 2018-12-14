@@ -37,6 +37,10 @@
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
+                        <li>
+                            <a href="<?= base_url('LaporanPenyewaan')?>">
+                                <i class="fas fa-table"></i>Laporan Penyewaan</a>
+                        </li>
                         <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages</a>
@@ -84,6 +88,10 @@
                         <li class="<?php if(isset($active_listkembali)){echo $active_listkembali ;}?> has-sub">
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
+                        </li>
+                        <li class="<?php if(isset($active_laporanpenyewaan)){echo $active_laporanpenyewaan;}?> has-sub">
+                            <a href="<?= base_url('LaporanPenyewaan')?>">
+                                <i class="fas fa-table"></i>Laporan Penyewaan</a>
                         </li>
                         <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">

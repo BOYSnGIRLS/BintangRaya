@@ -3,7 +3,7 @@ class Model_Laporan extends CI_Model{
 
 public function view_by_date($date){
 
-		$this->db->select('*');
+		$this->db->select('*,SUM(sewa.total_tagihan) AS totals');
  		$this->db->from('sewa');
  		$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
@@ -30,17 +30,17 @@ public function view_by_date($date){
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
- 		$this->db->where('YEAR(tgl_pasang)', $year);
+ 	$this->db->where('YEAR(tgl_pasang)', $year);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
  		$query = $this->db->get();
 		return $query->result();
   }
    
   public function view_all(){
-    $this->db->select('*');
+    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    $this->db->group_by('sewa.id_sewa');
+    // $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();
     return $query->result();
@@ -52,6 +52,9 @@ public function view_by_date($date){
         $this->db->order_by('YEAR(tgl_pasang)'); // Urutkan berdasarkan tahun secara Ascending (ASC)
         $this->db->group_by('YEAR(tgl_pasang)'); // Group berdasarkan tahun pada field tgl
         return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
+        // $sql = sprintf("SELECT YEAR(tgl_pasang) AS tahun FROM `sewa` ORDER BY YEAR(tgl_pasang)");
+        // $data = $this->db->query($sql);
+        // return $data->result();
     }
 
     function surat_jalan($id){
