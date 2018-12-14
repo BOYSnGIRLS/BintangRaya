@@ -20,14 +20,14 @@
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                        <!-- <button class="au-btn-filter">
+                                            <i class="zmdi zmdi-filter-list"></i>filters</button> -->
                                     </form>
                                     </div>
 
                                     <!-- <div class="table-data__tool-right"> -->
                                         <!-- Tanggal Pasang : <input type="table-data__tool-left"></input> -->
-                                        <form method="get" action="">
+                                        <!-- <form method="get" action="">
                                         <label>Filter Berdasarkan </label><br>
                                         <label>Tanggal Pasang</label> &nbsp;&nbsp;
                                         <select class="js-select2" name="filter" id="filter">
@@ -35,9 +35,9 @@
                                             <option value="1">Per Tanggal</option>
                                             <option value="2">Per Bulan</option>
                                             <option value="3">Per Tahun</option>
-                                        </select>
+                                        </select> -->
                                         <!-- <div class="rs-select2--light rs-select2--sm"> -->
-                                        <div class="dropDownSelect2"></div>
+                                        <!-- <div class="dropDownSelect2"></div>
                                         <br />
                                         <div id="form-tanggal">
                                             <label>Tanggal</label>
@@ -71,7 +71,7 @@
                                                 foreach($option_tahun as $data){ // Ambil data tahun dari model yang dikirim dari controller
                                                     echo '<option value="'.$data->tahun.'">'.$data->tahun.'</option>';
                                                 }
-                                                ?>
+                                                ?>  
                                             </select>
                                             <br />
                                         </div>
@@ -79,7 +79,7 @@
                                         <a href="<?php echo base_url('ListTransaksi'); ?>">Reset Filter</a>
                                     </form>
                                     <hr />
-                                    </div>    
+                                    </div>      -->
                                 </div>
 
                             </div>
@@ -130,24 +130,13 @@
 
                                                    <?php };?>
 
-<<<<<<< HEAD
                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
-=======
-                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit/<?php echo $row->id_sewa ;?>"><a href=""><button type="submit" class="btn btn-info">Edit</button></a>
-                                                </td>
 
                                                 <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
-                                               
-                                               <td><a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa;?>"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
-                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>              </td>
->>>>>>> b945afa888fb957f4d739a0b23416f59ecaa027e
-
                                                 <td>
-                                                    <label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
-                                                <td>
-                                                    <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
-                                                    <label class="btn" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
+                                                    <label class="btn btn-warning" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
+                                                    <label class="btn btn-warning" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
                                                 </td>
                                                 </tr>
                                             <?php endforeach;  ?>
