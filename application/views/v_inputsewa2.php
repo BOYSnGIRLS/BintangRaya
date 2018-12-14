@@ -208,8 +208,7 @@
                     <td></td><td></td>
                     <th>Total Tagihan (Rp)</th>
                     <th style="text-align:right;">
-
-                    <input type="text" name="total_tagih2" value="<?php echo number_format(($total[0]->total)*($lama[0]->lama));?>" class="form-control input-sm" stye="hidden" id="total_tagih" name="total_tagih" value="<?php echo ($total[0]->total)*($lama[0]->lama); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                    <input stye="text" id="total_tagih" name="total_tagih" value="<?php echo ($total[0]->total)*($lama[0]->lama); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                 </tr>
 
                 <tr>
