@@ -22,7 +22,7 @@
                                         <!-- <div class="rs-select2--light rs-select2--sm"> -->
                                         <br />
                                         <div id="form-tanggal">
-                                            <label>Tanggal</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <label>Tanggal</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <input type="text" name="tanggal" class="input-tanggal" />
                                             <br />
                                         </div>

@@ -1,16 +1,17 @@
 <?php
 class Model_Laporan extends CI_Model{
 
-public function view_by_date($date){
 
-		$this->db->select('*,SUM(sewa.total_tagihan) AS totals');
- 		$this->db->from('sewa');
- 		$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
+//Model List Transaksi
+public function view_by_date($date){
+	$this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+	$this->db->from('sewa');
+	$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
- 		$this->db->where('DATE(tgl_pasang)', $date);
+	$this->db->where('DATE(tgl_pasang)', $date);
     $this->db->order_by('sewa.tgl_pasang', 'DESC');
- 		$query = $this->db->get();
-		return $query->result();
+	$query = $this->db->get();
+	return $query->result();
   }
     
   public function view_by_month($month, $year){
@@ -18,7 +19,7 @@ public function view_by_date($date){
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
- 		$this->db->where('MONTH(tgl_pasang)', $month); // Tambahkan where bulan
+ 	$this->db->where('MONTH(tgl_pasang)', $month); // Tambahkan where bulan
     $this->db->where('YEAR(tgl_pasang)', $year); // Tambahkan where tahun
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
  		$query = $this->db->get();
@@ -52,12 +53,9 @@ public function view_by_date($date){
         $this->db->order_by('YEAR(tgl_pasang)'); // Urutkan berdasarkan tahun secara Ascending (ASC)
         $this->db->group_by('YEAR(tgl_pasang)'); // Group berdasarkan tahun pada field tgl
         return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
-        // $sql = sprintf("SELECT YEAR(tgl_pasang) AS tahun FROM `sewa` ORDER BY YEAR(tgl_pasang)");
-        // $data = $this->db->query($sql);
-        // return $data->result();
     }
 
-    function surat_jalan($id){
+function surat_jalan($id){
     $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa  WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa='$id' ");
     return $query->result();
     }
@@ -119,5 +117,59 @@ public function view_by_date($date){
         return $this->db->get()->result();
   }
 
+//Model Laporan
+public function view_by_date2($date){
+    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+    $this->db->from('sewa');
+    $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
+    $this->db->group_by('sewa.id_sewa');
+    $this->db->where('DATE(tgl_acara1)', $date);
+    $this->db->order_by('sewa.tgl_acara1', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+}
+    
+public function view_by_month2($month, $year){
+    $this->db->select('*');
+    $this->db->from('sewa');
+    $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
+    $this->db->group_by('sewa.id_sewa');
+    $this->db->where('MONTH(tgl_acara1)', $month); // Tambahkan where bulan
+    $this->db->where('YEAR(tgl_acara1)', $year); // Tambahkan where tahun
+    $this->db->order_by('sewa.tgl_acara1', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+}
+
+public function view_by_year2($year){
+    $this->db->select('*');
+    $this->db->from('sewa');
+    $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
+    $this->db->group_by('sewa.id_sewa');
+    $this->db->where('YEAR(tgl_acara1)', $year);
+    $this->db->order_by('sewa.tgl_acara1', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+}
+
+public function view_all2(){
+    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+    $this->db->from('sewa');
+    $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
+    $this->db->group_by('sewa.id_sewa');
+    $this->db->order_by('sewa.tgl_acara1', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+}
+
+public function option_tahun2(){
+    $this->db->select('YEAR(tgl_acara1) AS tahun'); // Ambil Tahun dari field tgl
+    $this->db->from('sewa'); // select ke tabel transaksi
+    $this->db->order_by('YEAR(tgl_acara1)'); // Urutkan berdasarkan tahun secara Ascending (ASC)
+    $this->db->group_by('YEAR(tgl_acara1)'); // Group berdasarkan tahun pada field tgl
+    return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
+}
+
+    
 }
 ?>
