@@ -27,7 +27,7 @@
 
                                     <!-- <div class="table-data__tool-right"> -->
                                         <!-- Tanggal Pasang : <input type="table-data__tool-left"></input> -->
-                                        <!-- <form method="get" action="">
+                                        <form method="get" action="">
                                         <label>Filter Berdasarkan </label><br>
                                         <label>Tanggal Pasang</label> &nbsp;&nbsp;
                                         <select class="js-select2" name="filter" id="filter">
@@ -35,7 +35,7 @@
                                             <option value="1">Per Tanggal</option>
                                             <option value="2">Per Bulan</option>
                                             <option value="3">Per Tahun</option>
-                                        </select> -->
+                                        </select>
                                         <!-- <div class="rs-select2--light rs-select2--sm"> -->
                                         <!-- <div class="dropDownSelect2"></div>
                                         <br />
@@ -88,8 +88,8 @@
                             <div class="col-md-12">
 
                                 <!-- DATA TABLE-->
-                                <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-striped table-earning">
                                         <thead>
                                             <tr>
                                                 <!-- <th>No</th> -->

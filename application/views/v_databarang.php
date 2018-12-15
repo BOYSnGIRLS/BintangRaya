@@ -36,12 +36,12 @@
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $row->id_kategori;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
-                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-info">Edit</button></a><br> 
+                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a><br> 
 
                       
                                 </td> 
                                 <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> </td>
 
                             </tr>
                             <?php $no++;
@@ -93,11 +93,9 @@
                                 <td><?php echo $row->harga_sewa;?></td>
                                 <td><?php echo $row->harga_jasa;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
-                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
                                 <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> 
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--medium" data-toggle="modal" data-target="#hapus-data">
-                                        <i class="zmdi zmdi-plus"></i>hapus</button>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> 
                                    
                                 </td>
                             </tr>

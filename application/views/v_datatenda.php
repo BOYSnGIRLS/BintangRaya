@@ -5,8 +5,14 @@
                 <div class="row">
                     <div class="col-md-12">
                          <h3 class="title-5 m-b-10">DATA TENDA</h3>
-                                <button class="btn au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#tambah-tenda">
-                                <i class="zmdi zmdi-plus"></i>Tambah Data</button>
+                            <div class="table-data__tool">
+                                  <div class="table-data__tool-left">
+                                      <div class="rs-select2--light rs-select2--md">
+                                        <button class="btn au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#tambah-tenda">
+                                        <i class="zmdi zmdi-plus"></i>Tambah Data</button>
+                                      </div>
+                                  </div>
+                                </div>
                     </div>
                 </div>
                     <div class="table-responsive table--no-card m-b-30">
@@ -32,9 +38,11 @@
                                         <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
                                         <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td> -->
 
-                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a>
+                                           
+                                        </td> 
                                 <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> </td>
                                     </tr>
                                     <?php $no++;
                                     endforeach;?>
@@ -49,12 +57,14 @@
             <div class="row">
                     <div class="col-md-12">
                          <h3 class="title-5 m-b-10">DATA PAKET TENDA</h3>
-                            <div class="table-data__tool-left">
-                                <div class="rs-select2--light rs-select2--md">
-                                    <button class="btn au-btn au-btn-icon au-btn--green au-btn-medium" data-toggle="modal" data-target="#tambah-paket-tenda">
+                             <div class="table-data__tool">
+                                  <div class="table-data__tool-left">
+                                      <div class="rs-select2--light rs-select2--md">
+                                        <button class="btn au-btn au-btn-icon au-btn--green au-btn-medium" data-toggle="modal" data-target="#tambah-paket-tenda">
                                     <i class="zmdi zmdi-plus"></i>Tambah Data</button>
+                                      </div>
+                                  </div>
                                 </div>
-                            </div>
                     </div>
                 </div>
             <div class="row">
@@ -78,9 +88,9 @@
                                 <td><?php echo $row->jenis_tenda;?></td>
                                 <td><?php echo $row->ukuran_tenda;?></td>
                                 <td><?php echo $row->harga_sewa;?></td>
-                               <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                               <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit"class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
 
-                                <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="btn btn-danger">Hapus</button></a></td>
+                                <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a></td>
                             </tr>
                             <?php $no++;
                             endforeach;?>
