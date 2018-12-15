@@ -3,8 +3,9 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="title-5 m-b-35"><b>Kategori Barang</b></h3>
+                            <div class="col-lg-6">
+                                <h3 class="title-5 m-b-35"><b>Kategori Barang</b></h3> 
+
                                 <div class="table-data__tool">
                                   <div class="table-data__tool-left">
                                       <div class="rs-select2--light rs-select2--md">
@@ -14,6 +15,10 @@
                                   </div>
                                 </div>
                             </div>
+                            <div class="col-lg-6"><input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn btn-primary" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button></div>
                         </div>
             <div class="row">
             <!-- Tabel Tampil Barang -->
