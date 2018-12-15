@@ -106,21 +106,6 @@ function get_kembali1($kode){
     return $query->result();
 
   }
-
-  function search($title){
-        $this->db->like('id_sewa', $title , 'both');
-        $this->db->order_by('id_sewa', 'ASC');
-        $this->db->limit(10);
-        return $this->db->get('sewa')->result(); 
-    }
-
-    function search2($title){
-        $this->db->like('id_sewa', $title , 'both');
-        $this->db->order_by('id_sewa', 'DESC');
-        $this->db->limit(10);
-        return $this->db->get('sewa')->result(); 
-    }
-
     function search3($title){
         $this->db->like('id_sewa', $title , 'both');
         $this->db->order_by('id_sewa', 'ASC');

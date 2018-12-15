@@ -37,6 +37,10 @@
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
+                        <li>
+                            <a href="<?= base_url('LaporanPenyewaan')?>">
+                                <i class="fas fa-table"></i>Laporan Penyewaan</a>
+                        </li>
                         <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages</a>
@@ -85,7 +89,29 @@
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
+<<<<<<< HEAD
                         
+=======
+                        <li class="<?php if(isset($active_laporanpenyewaan)){echo $active_laporanpenyewaan;}?> has-sub">
+                            <a href="<?= base_url('LaporanPenyewaan')?>">
+                                <i class="fas fa-table"></i>Laporan Penyewaan</a>
+                        </li>
+                        <!-- <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Pages</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="login.html">Login</a>
+                                </li>
+                                <li>
+                                    <a href="register.html">Register</a>
+                                </li>
+                                <li>
+                                    <a href="forget-pass.html">Forget Password</a>
+                                </li>
+                            </ul>
+                        </li> -->
+>>>>>>> da3c6b3647d6c3fbf7d6609874b4a10b7537f3b4
                     </ul>
                 </nav>
             </div>

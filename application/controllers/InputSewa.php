@@ -55,6 +55,7 @@ class InputSewa extends CI_Controller {
 
             $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
             $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+            $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
 
             $this->session->set_flashdata('message', 'anda berhasil menginput data');
             redirect('InputSewa');
@@ -132,7 +133,7 @@ class InputSewa extends CI_Controller {
             $this->db->query("UPDATE `sementara` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_pasang`='$tgl_pasang', `tgl_acara1`='$tgl1', `tgl_acara2`='$tgl2', `tgl_bongkar`='$tgl_bongkar', `lama`='$lama' WHERE id_sewa='$id_sewa'");
         }
         elseif ($ceklagi == 0) {
-                $this->db->query("INSERT INTO `sementara`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,`tgl_pasang`, `tgl_acara1`, `tgl_acara2`,`tgl_bongkar`, `lama`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp','$tgl_pasang', '$tgl1', '$tgl2', 'tgl_bongkar', '$lama')");
+                $this->db->query("INSERT INTO `sementara`(`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,`tgl_pasang`, `tgl_acara1`, `tgl_acara2`,`tgl_bongkar`, `lama`) VALUES ('$id_sewa','$nama_pelanggan','$alamat','$no_telp','$tgl_pasang', '$tgl1', '$tgl2', '$tgl_bongkar', '$lama')");
         }
         redirect('InputSewa');
         
