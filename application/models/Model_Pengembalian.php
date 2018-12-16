@@ -30,20 +30,11 @@ function get_notrans(){
     return $kodejadi;
   }
 
-function search1($title){
-        $this->db->like('nama_barang', $title , 'both');
-        $this->db->order_by('nama_barang', 'ASC');
-        $this->db->limit(10);
-        return $this->db->get('barang')->result();
-        // return $this->db->get()->result();       
-    }
-
-  function search2($title){
-        $this->db->like('jenis_tenda', $title, 'both');
-        $this->db->order_by('jenis_tenda', 'ASC');
+  function search($title){
+        $this->db->like('id_sewa', $title, 'both');
+        $this->db->order_by('id_sewa', 'ASC');
         $this->db->limit(20);
-        $this->db->from('paket_tenda');
-        $this->db->join('tenda', 'tenda.id_tenda=paket_tenda.id_tenda');
+        $this->db->from('sewa');
         return $this->db->get()->result();
   }
   
@@ -106,12 +97,6 @@ function get_kembali1($kode){
     return $query->result();
 
   }
-    function search3($title){
-        $this->db->like('id_sewa', $title , 'both');
-        $this->db->order_by('id_sewa', 'ASC');
-        $this->db->limit(10);
-        return $this->db->get('detail_sewa')->result(); 
-    }
 
     public function view_by_date($date){
     $this->db->select('*');

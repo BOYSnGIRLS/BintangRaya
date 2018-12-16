@@ -9,7 +9,7 @@
                                 <h3 class="title-5 m-b-35">List Pengembalian</h3>
                                 <p><a class="btn btn-primary" href="<?php echo base_url()?>listPengembalian/inputdetail">Tambah Pengembalian</a></p>
                                 <br>
-                                <form method="get" action="">
+                                <form method="GET" action="<?php echo base_url('listPengembalian/index')?>">
                                 <label>Filter Berdasarkan Tanggal Pasang</label><br>
                                 <!-- <div class="rs-select2--light rs-select2--sm"> -->
                                 <select class="js-select2" name="filter" id="filter">
@@ -80,11 +80,9 @@
                                         </thead>
                                          <tbody>
                                             <?php
-                                            // $no = 1;
                                             foreach ($data as $row):
                                             ?>
                                             <tr>
-                                                <!-- <td><?php echo $no++; ?></td> -->
                                                 <td><?php echo $row->id_kembali ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>

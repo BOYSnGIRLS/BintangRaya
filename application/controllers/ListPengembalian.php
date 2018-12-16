@@ -60,7 +60,7 @@ class ListPengembalian extends CI_Controller {
                 }
             }
             
-            $data['ket'] = $ket;
+            // $data['ket'] = $ket;
             $tampil['data'] = $transaksi;
             $data['option_tahun'] = $this->Model_Pengembalian->option_tahun();
 
@@ -97,7 +97,7 @@ class ListPengembalian extends CI_Controller {
 
      public function get_autocomplete(){    //membuat dropdown pilihan di search box
         if (isset($_GET['term'])) {
-                $result = $this->Model_Pengembalian->search2($_GET['term']);
+                $result = $this->Model_Pengembalian->search($_GET['term']);
                 if (count($result) > 0) {
                 foreach ($result as $row)
                     $arr_result[] = array(
