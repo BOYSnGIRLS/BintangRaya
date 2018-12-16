@@ -33,7 +33,8 @@ public function view_by_date($date){
     $this->db->group_by('sewa.id_sewa');
  	$this->db->where('YEAR(tgl_pasang)', $year);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
- 		$query = $this->db->get();
+ 		
+        $query = $this->db->get();
 		return $query->result();
   }
    
@@ -41,7 +42,7 @@ public function view_by_date($date){
     $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-    // $this->db->group_by('sewa.id_sewa');
+    $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();
     return $query->result();
