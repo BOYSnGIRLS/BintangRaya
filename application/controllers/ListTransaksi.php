@@ -164,47 +164,46 @@ class ListTransaksi extends CI_Controller {
 
     }
 
-    function update_transaksi(){
-        $id= $this->input->post('id_sewa');
-        $id_barang = $this->input->post('id_barang');
-        $harga=$this->input->post('harga_sewa');
-        $jumlah = $this->input->post('jumlah_sewa');
-        // $total = $harga*$jumlah;
-        $tgl1 = $this->input->post('tgl_acara1');
-        $tgl2 = $this->input->post('tgl_acara2');
-        $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
-        $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
-        $id_barang = $this->input->post('id_barang');
-        $harga=$this->input->post('harga_sewa');
-        $jumlah = $this->input->post('jumlah_sewa');
-        $lama=((strtotime($tgl2)-strtotime($tgl1))/(60*60*24))+1;
-        $total = $harga*$jumlah;
-        $ceklagi = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='$id'")->num_rows();
-        if($ceklagi >= 1){
-            $this->db->query("UPDATE `sementara` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_pasang`='$tgl_pasang', `tgl_acara1`='$tgl1', `tgl_acara2`='$tgl2', `tgl_bongkar`='$tgl_bongkar', `lama`='$lama' WHERE id_sewa='$id_sewa'");
-        }
-
-        $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id."' AND id='".$id_barang."'")->num_rows();
-        if($cek >= 1){
-                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah' WHERE id_sewa='$id' AND id='$id_barang'");
-                redirect('ListTransaksi/edit_transaksi/'.$id);
-            }
-
-        elseif ($cek == 0){
-            $data = array(
-                'id_sewa' => $id,
-                'id' => $id_barang,
-                'harga_sewa' => $harga,
-                'jumlah_barang' => $jumlah,
-                'harga_total' => $total,
-            );
-                
-            $this->Model_Transaksi->inputdetail($data,'detail_sewa');
-
-        redirect('ListTransaksi/edit_transaksi/'.$id);
+    function update_transaksi2(){
+        $id = $this->input->post('id_sewa');
+        $insert = $this->Model_Laporan->update_transaksi(array(
+                'id_sewa' => $this->input->post('id_sewa'),
+                'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+                'alamat_pelanggan' => $this->input->post('alamat_pelanggan')
+            ), $id);
+        $insert2 = $this->Model_Laporan->update_transaksi(array(
+                'id_sewa' => $this->input->post('id_sewa'),
+                'id' => $this->input->post('id'),
+                'jumlah_barang' => $this->input->post('jumlah_barang')
+            ), $id);
+        redirect('ListTransaksi/index');
     }
 
-}
+    function update_transaksi(){
+        if (isset($_POST['btnUpdate'])) {
+            $kode=$this->Model_Transaksi->get_notrans();
+            $id_sewa=$this->input->post('id_sewa');
+            $idT = $this->input->post('idhargaTenda');
+            $idB = $this->input->post('idBarang');
+            $jumlah_sewaT = $this->input->post('tendaSewa');
+            $jumlah_sewaB = $this->input->post('barangSewa');
+           
+            $indexT = 0;
+            // foreach ($idT as $row) {
+                $this->db->query("UPDATE `detail_sewa` SET 'jumlah_sewa'='$jumlah_sewaT' WHERE `id_sewa`= '$id_sewa' AND `id_tenda`='$idT'");
+            // }
+
+            $indexB = 0; 
+            // foreach ($idB as $row) {
+                 $this->db->query("UPDATE `detail_sewa` SET 'jumlah_sewa'='$jumlah_sewaB' WHERE `id_sewa`= '$id_sewa' AND `id_tenda`='$idB'");
+            // }
+
+            $this->db->query("UPDATE `sewa` WHERE `id_sewa`='$id_sewa'");
+            $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
+            redirect('ListTransaksi');   
+        }
+    }
+
     public function get_autocomplete(){    //membuat dropdown pilihan di search box
         if (isset($_GET['term'])) {
                 $result = $this->Model_Laporan->search1($_GET['term']);

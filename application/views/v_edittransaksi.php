@@ -2,7 +2,7 @@
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
-          <form id="form_input_detail" action="<?php echo site_url('ListTransaksi/update_transaksi');?>" method="POST">
+          <form id="form_input_detail" action="<?php echo site_url('ListTransaksi/update_transaksi2');?>" method="POST">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="au-card m-b-30">

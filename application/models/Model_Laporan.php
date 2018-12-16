@@ -99,6 +99,8 @@ function surat_jalan($id){
      function update_transaksi($data = array(),$id){
         $this->db->where('id_sewa',$id);
         return $this->db->update('sewa',$data);
+        $this->db->where('id_sewa',$id);
+        return $this->db->update('detail_sewa',$data);
     }
 
     function search1($title){
