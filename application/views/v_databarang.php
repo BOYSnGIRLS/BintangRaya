@@ -3,8 +3,9 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="title-5 m-b-35"><b>Kategori Barang</b></h3>
+                            <div class="col-lg-6">
+                                <h3 class="title-5 m-b-35"><b>Kategori Barang</b></h3> 
+
                                 <div class="table-data__tool">
                                   <div class="table-data__tool-left">
                                       <div class="rs-select2--light rs-select2--md">
@@ -14,6 +15,10 @@
                                   </div>
                                 </div>
                             </div>
+                            <div class="col-lg-6"><input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn btn-primary" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button></div>
                         </div>
             <div class="row">
             <!-- Tabel Tampil Barang -->
@@ -36,12 +41,12 @@
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $row->id_kategori;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
-                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-info">Edit</button></a><br> 
+                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a><br> 
 
                       
                                 </td> 
                                 <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> </td>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> </td>
 
                             </tr>
                             <?php $no++;
@@ -93,11 +98,9 @@
                                 <td><?php echo $row->harga_sewa;?></td>
                                 <td><?php echo $row->harga_jasa;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
-                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
+                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
                                 <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="btn btn-danger">Hapus</button></a> 
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--medium" data-toggle="modal" data-target="#hapus-data">
-                                        <i class="zmdi zmdi-plus"></i>hapus</button>
+                                    <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> 
                                    
                                 </td>
                             </tr>

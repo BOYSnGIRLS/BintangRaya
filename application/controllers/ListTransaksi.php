@@ -169,19 +169,9 @@ class ListTransaksi extends CI_Controller {
         $id_barang = $this->input->post('id_barang');
         $harga=$this->input->post('harga_sewa');
         $jumlah = $this->input->post('jumlah_sewa');
-        $total = $harga*$jumlah;
+        // $total = $harga*$jumlah;
         $tgl1 = $this->input->post('tgl_acara1');
         $tgl2 = $this->input->post('tgl_acara2');
-        
-        // $insert = $this->Model_Laporan->update_transaksi(array(
-        //         'id_sewa' => $this->input->post('id_sewa'),
-        //         'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-        //         'telp_pelanggan' => $this->input->post('telp_pelanggan'),
-        //         'alamat_pelanggan' => $this->input->post('alamat_pelanggan'),
-        //         'tgl_acara1' => $this->input->post('tgl_acara1'),
-        //         'tgl_acara2' => $this->input->post('tgl_acara2')
-
-        //     ), $id);
         $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
         $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
         $id_barang = $this->input->post('id_barang');

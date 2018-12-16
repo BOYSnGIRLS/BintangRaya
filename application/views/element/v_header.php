@@ -89,25 +89,12 @@
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
+
                         <li class="<?php if(isset($active_laporanpenyewaan)){echo $active_laporanpenyewaan;}?> has-sub">
                             <a href="<?= base_url('LaporanPenyewaan')?>">
                                 <i class="fas fa-table"></i>Laporan Penyewaan</a>
                         </li>
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li> -->
+                       
                     </ul>
                 </nav>
             </div>
@@ -121,39 +108,18 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                            <form class="form-header" action="" method="">
+                                <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
-                                </button>
+                                </button> -->
+                                 <marquee> Persewaan Tenda dan Alat Pesta </marquee>
+                                 
                             </form>
+
+                        
                              
-                                <div class="header-button">
-                                <div class="noti-wrap">
-                                        <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                            <div class="header-button">
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
