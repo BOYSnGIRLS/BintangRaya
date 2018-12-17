@@ -18,10 +18,10 @@
                                                 <option value="2">Proses</option>
                                                 <option value="3">Selesai</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                           <div class="dropDownSelect2"></div>
                                         </div>
-                                        <!-- <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button> -->
+                                        <button class="au-btn-filter">
+                                            <i class="zmdi zmdi-filter-list"></i>Cari</button>
                                     </form>
                                     </div>
 

@@ -49,8 +49,18 @@ class ListTransaksi extends CI_Controller {
             if(isset($_GET['time']) && ! empty($_GET['time'])){
                 $time = $_GET['time'];
                 if ($time == '1') {
-                    $akan = $_GET[''];
+                    $ket = 'Data Status Akan';
+                    $transaksi = $this->Model_Laporan->status_menunggu();
+                }else if ($time == '2') {
+                    $ket = 'Data Status Proses';
+                    $transaksi = $this->Model_Laporan->status_proses();
+                }else{
+                    $ket = 'Data Status Selesai';
+                    $transaksi = $this->Model_Laporan->status_selesai();
                 }
+            }else{
+                $tmpl = 'Semua Status';
+                $pros = $this->Model_Laporan->view_all();
             }
             
             $data['ket'] = $ket;

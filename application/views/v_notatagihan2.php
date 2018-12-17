@@ -103,9 +103,8 @@
 
             </table>
                                     </div>
-                                    <hr>
                                     <br>
-                                        <a href="<?php echo base_url(); ?>ListTransaksi/notatagihan"><button type="submit" class="btn btn-info">Detail</button></a></td> </td>
+                                        <a href="#" onclick="window.print()"> Print </a>
                                     <br>
                                 </div>
                             </div>
@@ -114,9 +113,9 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="copyright">
+                                <!-- <div class="copyright">
                                     <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

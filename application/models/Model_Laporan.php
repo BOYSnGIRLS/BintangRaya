@@ -173,6 +173,32 @@ public function option_tahun2(){
     return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
 }
 
+public function status_menunggu(){
+    $this->db->select('*');
+    $this->db->from('sewa');
+    $this->db->where('status', 'Menunggu Proses');
+    $query = $this->db->get();
+    return $result = $query->result();
+    }
+
+    public function status_proses(){
+        $this->db->select('*');
+        $this->db->from('sewa');
+        $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
+        $this->db->where('status', 'Proses');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function status_selesai(){
+        $this->db->select('*');
+        $this->db->from('sewa');
+        $this->db->where('status', 'Selesai');
+        $query = $this->db->get();
+        return $result = $query->result();
+    }
+
+
     
 }
 ?>
