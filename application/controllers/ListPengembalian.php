@@ -67,7 +67,7 @@ class ListPengembalian extends CI_Controller {
             // $tampil['trans'] =  $this->Model_Transaksi->tampil_transaksi();
             $data=array(
                 'title'=>'List Transaksi',
-                'active_listtransaksi' => 'active'
+                'active_listkembali' => 'active'
             );
             $this->load->view('element/css',$data);
             $this->load->view('element/v_header',$data);

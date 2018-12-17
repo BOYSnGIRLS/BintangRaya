@@ -99,11 +99,11 @@
                                                 <td><?php echo $row->total_tagihan?></td>
                                                 
                                             </tr>
+                                            <?php }}  ?>
                                             <tr>
                                                 <td colspan="4" style="text-align:right;"><b>Total</b></td>
                                                 <td><?php echo $row->totals?></td>
                                             </tr>
-                                            <?php }}  ?>
                                         </tbody>
                                         
                                     </table>
