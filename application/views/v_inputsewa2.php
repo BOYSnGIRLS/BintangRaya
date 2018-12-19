@@ -78,7 +78,7 @@
                             type : "POST",
                             url : link,
                             async : false,
-                            data : {'tgl':$('[name = tgl_acara1]').val(), 'id' :id},
+                            data : {'tglp':$('[name = tgl_pasang]').val(),'tgl1':$('[name = tgl_acara1]').val(), 'tgl2':$('[name = tgl_acara2]').val(), 'tglb':$('[name = tgl_bongkar]').val(), 'id' :id},
                             success : function(data){ stok = data }
                         }
 
