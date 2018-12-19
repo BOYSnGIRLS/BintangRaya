@@ -23,7 +23,7 @@
                       
                       <div class="col-sm-4">
                       <label for="nomor">Nomor Telepon: </label>
-                        <input class="form-control" placeholder="Masukan Nomor" type="text" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
+                        <input class="form-control" placeholder="Masukan Nomor" type="number"  size="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@
                             type : "POST",
                             url : link,
                             async : false,
-                            data : {'tgl':$('[name = tgl_acara1]').val(), 'id' :id},
+                            data : {'tglp':$('[name = tgl_pasang]').val(),'tgl1':$('[name = tgl_acara1]').val(), 'tgl2':$('[name = tgl_acara2]').val(), 'tglb':$('[name = tgl_bongkar]').val(), 'id' :id},
                             success : function(data){ stok = data }
                         }
 
@@ -128,7 +128,7 @@
                   
                   <div class="col-sm-3">
                   <label for="nomor">Jumlah Sewa: </label>
-                    <input class="form-control" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
+                    <input class="form-control" type="number" min="0" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
                     <span class="input-group-btn">
                             <button class="btn btn-info" type="submit">Submit&nbsp;</button>
                         </span>
@@ -177,7 +177,7 @@
                              <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                         </tr>
                         
                         <?php
@@ -216,7 +216,7 @@
                     <th>DP (Rp)</th>
                     <th style="text-align:right;">
 
-                    <input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
+                    <input type="number" min="0" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)"></th>
                     <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                 </tr>
                 <tr>

@@ -35,6 +35,7 @@ function get_notrans(){
         $this->db->order_by('id_sewa', 'ASC');
         $this->db->limit(20);
         $this->db->from('sewa');
+        $this->db->where('status','Menunggu Proses');
         return $this->db->get()->result();
   }
   

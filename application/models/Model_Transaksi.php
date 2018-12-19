@@ -78,8 +78,8 @@ class Model_Transaksi extends CI_Model{
     return $kodejadi;
   }
 
-  function cariTotal($id,$tgl){
-    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND ahay.tgl_pasang='$tgl' OR ahay.tgl_acara1 = '$tgl' OR ahay.tgl_acara2 = '$tgl'  ");
+  function cariTotal($id,$tglp,$tgl1,$tgl2,$tglb){
+    $sql = sprintf("SELECT SUM(jumlah_barang) AS total FROM (SELECT detail_sewa.*, sewa.tgl_pasang, sewa.tgl_acara1, sewa.tgl_acara2, sewa.tgl_bongkar FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay WHERE ahay.id = '$id' AND (ahay.tgl_pasang='$tglp' OR ahay.tgl_acara1 = '$tglp' OR ahay.tgl_acara2 = '$tglp' OR ahay.tgl_bongkar='$tglp' OR ahay.tgl_pasang='$tgl1' OR ahay.tgl_acara1 = '$tgl1' OR ahay.tgl_acara2 = '$tgl1' OR ahay.tgl_bongkar='$tgl1' OR ahay.tgl_pasang='$tgl2' OR ahay.tgl_acara1 = '$tgl2' OR ahay.tgl_acara2 = '$tgl2' OR ahay.tgl_bongkar='$tgl2' OR ahay.tgl_pasang='$tglb' OR ahay.tgl_acara1 = '$tglb' OR ahay.tgl_acara2 = '$tglb'  ) ");
     $data = $this->db->query($sql);
 
     return $data->row();

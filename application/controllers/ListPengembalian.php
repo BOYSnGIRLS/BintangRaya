@@ -16,14 +16,6 @@ class ListPengembalian extends CI_Controller {
 
 	public function index(){
         if($this->session->userdata('username')){
-    		// $data=array(
-      //           'title'=>'List Pengembalian',
-      //           'active_listkembali'=>'active',
-      //           'data' => $this->Model_Pengembalian->tampil_semua()
-      //       );
-      //       $this->load->view('element/css',$data);
-      //       $this->load->view('element/v_header',$data);
-      //       $this->load->view('v_listpengembalian', $data);
             if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
                 $filter = $_GET['filter']; // Ambil data filder yang dipilih user
                 if($filter == '1'){ // Jika filter nya 1 (per tanggal)
@@ -64,10 +56,9 @@ class ListPengembalian extends CI_Controller {
             $tampil['data'] = $transaksi;
             $data['option_tahun'] = $this->Model_Pengembalian->option_tahun();
 
-            // $tampil['trans'] =  $this->Model_Transaksi->tampil_transaksi();
             $data=array(
                 'title'=>'List Transaksi',
-                'active_listtransaksi' => 'active'
+                'active_listkembali' => 'active'
             );
             $this->load->view('element/css',$data);
             $this->load->view('element/v_header',$data);
@@ -169,7 +160,7 @@ class ListPengembalian extends CI_Controller {
             }
 
             $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`) VALUES ('$kode', '$id_sewa') ");
-            $this->db->query("UPDATE `sewa` SET `status`='1' WHERE `id_sewa`='$id_sewa'");
+            $this->db->query("UPDATE `sewa` SET `status`='Kembali' WHERE `id_sewa`='$id_sewa'");
             redirect('ListPengembalian');   
         }
     }

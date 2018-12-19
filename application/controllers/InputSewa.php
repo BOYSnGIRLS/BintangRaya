@@ -144,14 +144,17 @@ class InputSewa extends CI_Controller {
         $id_barang = $this->uri->segment(3);
         $id_sewa = $this->Model_Transaksi->get_notrans();
         $this->db->query("DELETE FROM `detail_sewa` WHERE id_sewa='$id_sewa' AND id='$id_barang'");
-        redirect('InputSewa');
+        redirect('InputSewa/index');
 
     }
 
     function getStokBarang(){
-         $tgl = $this->input->post('tgl');
+         $tglp = $this->input->post('tglp');
+         $tgl1 = $this->input->post('tgl1');
+         $tgl2 = $this->input->post('tgl2');
+         $tglb = $this->input->post('tglb');
          $id  = $this->input->post('id');
-        $data = $this->Model_Transaksi->cariTotal($id,$tgl);
+        $data = $this->Model_Transaksi->cariTotal($id,$tglp,$tgl1,$tgl2,$tglb);
         echo $data->total;
     }
 }
