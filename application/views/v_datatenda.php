@@ -3,7 +3,7 @@
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-6">
                          <h3 class="title-5 m-b-10">DATA TENDA</h3>
                             <div class="table-data__tool">
                                   <div class="table-data__tool-left">
@@ -14,6 +14,12 @@
                                   </div>
                                 </div>
                     </div>
+                    <div class="col-lg-6">
+                              <form  action="cari_tenda" method="post" style="text-align: center;">
+                                <input class="au-input au-input--xl" type="text" name="jenis_tenda" placeholder="Cari tenda " />
+                                <button class="au-btn btn-primary" type="submit" name="btnSubmit2"><i class="zmdi zmdi-search"></i></button>
+                              </form>
+                            </div>
                 </div>
                     <div class="table-responsive table--no-card m-b-30">
                             <table class="table table-borderless table-striped table-striped table-earning">
@@ -29,7 +35,7 @@
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($data as $row): ?>
+                                    foreach ($tenda as $row): ?>
                                     <tr>
                                         <td><?php echo $no;?></td>
                                         <td><?php echo $row->id_tenda;?></td>

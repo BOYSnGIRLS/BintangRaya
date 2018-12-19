@@ -4,7 +4,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h3 class="title-5 m-b-35"><b>Kategori Barang</b></h3> 
+                                <h3 class="title-5 m-b-35"><b>Kategori Alat Pesta</b></h3> 
 
                                 <div class="table-data__tool">
                                   <div class="table-data__tool-left">
@@ -15,10 +15,13 @@
                                   </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6"><input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn btn-primary" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button></div>
+                            <div class="col-lg-6">
+                              <form  action="cari_barang" method="post" style="text-align: center;">
+                                <input class="au-input au-input--xl" type="text" name="nama_barang" placeholder="Cari Alat Pesta " />
+                                <button class="au-btn btn-primary" type="submit" name="btnSubmit"><i class="zmdi zmdi-search"></i></button>
+                              </form>
+                            </div>
+                            
                         </div>
             <div class="row">
             <!-- Tabel Tampil Barang -->
@@ -57,8 +60,8 @@
           </div>
 
                         <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="title-5 m-b-35"><b>DATA Barang</b></h3>
+                            <div class="col-lg-6">
+                                <h3 class="title-5 m-b-35"><b>Data Alat Pesta</b></h3>
                                 <div class="table-data__tool">
                                   <div class="table-data__tool-left">
                                       <div class="rs-select2--light rs-select2--md">
