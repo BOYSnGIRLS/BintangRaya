@@ -127,6 +127,9 @@
                                                    <?php }else if($row->status == "Selesai"){ ?>
                                                     <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#selesai">Selesai</button>
                                                     
+                                                    <?php }else if($row->status == "Kembali"){ ?>
+                                                    <button type="button" class="btn btn-success btn-lg">Kembali</button>
+                                                    
 
                                                    <?php };?>
 
