@@ -6,7 +6,7 @@
                             <div class="col-lg-12">
                                 <div class="au-card m-b-30">
                                 <div class="au-card-inner">
-                                       <h2 class="title-5 m-b-35">EDIT ALAT MAKAN</h2>
+                                       <h2 class="title-5 m-b-35">EDIT ALAT PESTA</h2>
                                     <form method="post" action="<?php echo base_url()?>DataBarang/update_barang">
                                         <table>
                                             <tr>

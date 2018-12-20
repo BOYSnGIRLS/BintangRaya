@@ -174,4 +174,14 @@ class Model_Barang extends CI_Model {
 	    return TRUE;
 	}
 
+	function cari_barang($nama_barang){
+		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori AND barang.nama_barang = '$nama_barang'");
+		return $query->result();
+	}
+	
+	function cari_tenda($jenis_tenda){
+		$query = $this->db->query("SELECT * FROM paket_tenda JOIN tenda WHERE paket_tenda.id_tenda=tenda.id_tenda AND paket_tenda.jenis_tenda = '$jenis_tenda'");
+		return $query->result();
+	}
+
 }
