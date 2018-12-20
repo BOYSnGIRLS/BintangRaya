@@ -56,14 +56,12 @@ class DataBarang extends CI_Controller {
      function cari_tenda(){
         if(isset($_POST['btnSubmit2'])){
             $jenis_tenda = $_POST['jenis_tenda'];
-            $data = array(
-                    'data'=>$this->Model_Barang->cari_tenda($jenis_tenda));
             $title=array(
             'title'=>'Data Tenda',
             'active_dashboard'=>'active'
             );
             $tenda['tenda']=$this->Model_Barang->get_tenda();
-            $datapaket['data_paket']=$this->Model_Barang->get_pkttenda();
+            $datapaket['data_paket']=$this->Model_Barang->cari_tenda($jenis_tenda);
             $kode=array(
                 'kode'=>$this->Model_Barang->get_idtenda(),
                 'kode2'=> $this->Model_Barang->get_idpkttenda(),
@@ -71,7 +69,7 @@ class DataBarang extends CI_Controller {
             );
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header');
-            $this->load->view('v_datatenda',$tenda+$datapaket+$kode+$data);    
+            $this->load->view('v_datatenda',$tenda+$datapaket+$kode);    
             $this->load->view('element/v_footer');
         } else{
         
@@ -173,32 +171,6 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/tenda');
     }
 
-   
-
-    function cari_tenda2(){
-        if(isset($_POST['btnCari'])){
-
-            $jenis_tenda = $_POST['jenis_tenda'];
-            $datapaket['data_paket']=$this->Model_Barang->get_pkttenda();
-            $kode['kode']=$this->Model_Barang->get_idtenda();
-            $data2 = array(
-                    'data'=>$this->Model_Barang->cari_tenda($jenis_tenda));
-            $title=array(
-                'title'=>'Data Tenda',
-                'active_dashboard'=>'active',
-            );
-            $this->load->view('element/css',$title);
-            $this->load->view('element/v_header');
-            $this->load->view('v_datatenda',$datapaket+$kode+$data2);    
-            $this->load->view('element/v_footer');
-
-        } else{
-        
-        $this->load->view('home',$data);
-        }
-    }
-
-
     // =================== KATEGORI =======================
 
     public function tambah_kategori(){
@@ -267,17 +239,14 @@ class DataBarang extends CI_Controller {
             $kode['kode'] = $this->Model_Barang->get_id();
             $option_kategori ['option_kategori'] = $this->Model_Barang->get_kategori();
             $kategori['kategori'] = $this->Model_Barang->get_kategori();
-            $data['data'] = $this->Model_Barang->get_barang();
-            $data2 = array(
-                    'data'=>$this->Model_Barang->cari_barang($nama_barang));
-            
+            $data['data'] = $this->Model_Barang->cari_barang($nama_barang);
             $title=array(
             'title'=>'Data Barang',
             'active_dashboard'=>'active',
             );
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header');
-            $this->load->view('v_databarang',$kode+$data2+$kategori+$option_kategori+$data);       
+            $this->load->view('v_databarang',$kode+$kategori+$option_kategori+$data);       
             $this->load->view('element/v_footer');
 
            
