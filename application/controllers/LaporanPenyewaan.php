@@ -52,17 +52,17 @@ class LaporanPenyewaan extends CI_Controller {
             //         $akan = $_GET[''];
             //     }
             // }
-            $tampil['trans'] = $transaksi;
-            $tahun['option_tahun'] = $this->Model_Laporan->option_tahun2();
+            $data['trans'] = $transaksi;
+            $data['option_tahun'] = $this->Model_Laporan->option_tahun2();
 
             // $tampil['trans'] =  $this->Model_Transaksi->tampil_transaksi();
-            $data=array(
+            $title=array(
                 'title'=>'Laporan Penyewaan',
                 'active_laporanpenyewaan' => 'active'
             );
-            $this->load->view('element/css',$data);
-            $this->load->view('element/v_header',$data);
-            $this->load->view('v_laporan', $tampil+$tahun);
+            $this->load->view('element/css',$title);
+            $this->load->view('element/v_header',$title);
+            $this->load->view('v_laporan', $data);
             // $this->load->view('element/v_footer'); 
     }
 

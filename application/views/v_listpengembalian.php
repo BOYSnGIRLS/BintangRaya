@@ -4,64 +4,69 @@
                     <div class="container-fluid">
                         
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">List Pengembalian</h3>
+                                <center><h2>List Pengembalian</h2></center><br>
                                 <p><a class="btn btn-primary" href="<?php echo base_url()?>listPengembalian/inputdetail">Tambah Pengembalian</a></p>
                                 <br>
-                                <form method="GET" action="<?php echo base_url('listPengembalian/index')?>">
-                                <label>Filter Berdasarkan Tanggal Pasang</label><br>
-                                <!-- <div class="rs-select2--light rs-select2--sm"> -->
-                                <select class="js-select2" name="filter" id="filter">
-                                    <option value="">Pilih</option>
-                                    <option value="1">Per Tanggal</option>
-                                    <option value="2">Per Bulan</option>
-                                    <option value="3">Per Tahun</option>
-                                </select><div class="dropDownSelect2"></div>
-                                <br />
-                                <div id="form-tanggal">
-                                    <label>Tanggal</label><br>
-                                    <input type="text" name="tanggal" class="input-tanggal" />
-                                    <br />
+                               <form method="get" action="<?php echo base_url('ListPengembalian')?>">
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-left">
+                                        <h4>Filter Berdasarkan :</h4>
+                                        <label>Tanggal Pasang</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <select name="filter" id="filter" >
+                                            <option value="">Pilih</option>
+                                            <option value="1">Per Tanggal</option>
+                                            <option value="2">Per Bulan</option>
+                                            <option value="3">Per Tahun</option>
+                                        </select>
+                                        
+                                        <!-- <div class="rs-select2--light rs-select2--sm"> -->
+                                        <br />
+                                        <div id="form-tanggal">
+                                            <label>Tanggal</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="text" name="tanggal" class="input-tanggal" />
+                                            <br />
+                                        </div>
+                                        <div id="form-bulan">
+                                            <label>Bulan</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <select name="bulan">
+                                                <option value="">Pilih</option>
+                                                <option value="1">Januari</option>
+                                                <option value="2">Februari</option>
+                                                <option value="3">Maret</option>
+                                                <option value="4">April</option>
+                                                <option value="5">Mei</option>
+                                                <option value="6">Juni</option>
+                                                <option value="7">Juli</option>
+                                                <option value="8">Agustus</option>
+                                                <option value="9">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">Desember</option>
+                                            </select>
+                                            <br />
+                                        </div>
+                                        <div id="form-tahun">
+                                            <label>Tahun</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <select name="tahun">
+                                                <option value="">Pilih</option>
+                                                <?php
+                                                foreach($option_tahun as $data){ // Ambil data tahun dari model yang dikirim dari controller
+                                                    echo '<option value="'.$data->tahun.'">'.$data->tahun.'</option>';
+                                                }
+                                                ?>  
+                                            </select>
+                                            <br />
+                                        </div>
+                                        <button type="submit" class="btn btn-info">Tampilkan</button>&nbsp;&nbsp;
+                                        <a href="<?php echo base_url('ListPengembalian'); ?>">Reset Filter</a>
+                                    </form>
+                                    <hr />
+                                    </div>     
                                 </div>
-                                <div id="form-bulan">
-                                    <label>Bulan</label><br>
-                                    <select name="bulan">
-                                        <option value="">Pilih</option>
-                                        <option value="1">Januari</option>
-                                        <option value="2">Februari</option>
-                                        <option value="3">Maret</option>
-                                        <option value="4">April</option>
-                                        <option value="5">Mei</option>
-                                        <option value="6">Juni</option>
-                                        <option value="7">Juli</option>
-                                        <option value="8">Agustus</option>
-                                        <option value="9">September</option>
-                                        <option value="10">Oktober</option>
-                                        <option value="11">November</option>
-                                        <option value="12">Desember</option>
-                                    </select>
-                                    <br />
-                                </div>
-                                <div id="form-tahun">
-                                    <label>Tahun</label><br>
-                                    <select name="tahun">
-                                        <option value="">Pilih</option>
-                                        <?php
-                                        foreach($option_tahun as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->tahun.'">'.$data->tahun.'</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                    <br />
-                                </div>
-                                <button type="submit" class="btn btn-info">Tampilkan</button>
-                                <a href="<?php echo base_url('listPengembalian'); ?>">Reset Filter</a>
-                            </form>
-                            <hr />
-                            </div>  
-                    </div>
-                    </div>
+</div>
+                            </div>
 
                         <div class="row m-t-30">
                             <div class="col-md-12">
@@ -80,7 +85,7 @@
                                         </thead>
                                          <tbody>
                                             <?php
-                                            foreach ($data as $row):
+                                            foreach ($trans as $row):
                                             ?>
                                             <tr>
                                                 <td><?php echo $row->id_kembali ?></td>

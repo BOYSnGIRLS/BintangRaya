@@ -122,7 +122,7 @@ function surat_jalan($id){
 
 //Model Laporan
 public function view_by_date2($date){
-    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+    $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
@@ -156,13 +156,17 @@ public function view_by_year2($year){
 }
 
 public function view_all2(){
-    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+    $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
     $query = $this->db->get();
     return $query->result();
+
+    // $query = $this->db->query("SELECT SUM(ahay.harga_total) AS total FROM (SELECT detail_sewa.harga_total, sewa.* FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay");
+    // return $query->result();
+
 }
 
 public function option_tahun2(){

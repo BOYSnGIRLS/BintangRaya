@@ -8,10 +8,10 @@
                                 <!-- DATA TABLE -->
 
                             <form method="get" action="<?php echo base_url('LaporanPenyewaan')?>">
-                                <h3 class="title-5 m-b-35">List Transaksi</h3>
+                                <center><h2>List Transaksi</h2></center><br>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
-                                        <h4>Filter Berdasarkan </h4><br>
+                                        <h4>Filter Berdasarkan :</h4>
                                         <label>Tanggal Pasang</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <select name="filter" id="filter" >
                                             <option value="">Pilih</option>
@@ -19,6 +19,7 @@
                                             <option value="2">Per Bulan</option>
                                             <option value="3">Per Tahun</option>
                                         </select>
+                                        
                                         <!-- <div class="rs-select2--light rs-select2--sm"> -->
                                         <br />
                                         <div id="form-tanggal">
@@ -100,10 +101,13 @@
                                                 
                                             </tr>
                                             <?php }}  ?>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td colspan="4" style="text-align:right;"><b>Total</b></td>
-                                                <td><?php echo $row->totals?></td>
-                                            </tr>
+                                                <td>
+                                                    <?php echo $row->total?>
+                                                    
+                                                </td>
+                                            </tr> -->
                                         </tbody>
                                         
                                     </table>
