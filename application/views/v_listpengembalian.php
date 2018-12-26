@@ -65,7 +65,7 @@
                                     <hr />
                                     </div>     
                                 </div>
-</div>
+                            </div>
                             </div>
 
                         <div class="row m-t-30">

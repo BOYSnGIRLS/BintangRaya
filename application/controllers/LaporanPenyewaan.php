@@ -46,24 +46,16 @@ class LaporanPenyewaan extends CI_Controller {
                 // Panggil fungsi view_all yang ada di TransaksiModel
             }
 
-            // if(isset($_GET['time']) && ! empty($_GET['time'])){
-            //     $time = $_GET['time'];
-            //     if ($time == '1') {
-            //         $akan = $_GET[''];
-            //     }
-            // }
             $data['trans'] = $transaksi;
             $data['option_tahun'] = $this->Model_Laporan->option_tahun2();
 
-            // $tampil['trans'] =  $this->Model_Transaksi->tampil_transaksi();
             $title=array(
                 'title'=>'Laporan Penyewaan',
                 'active_laporanpenyewaan' => 'active'
             );
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header',$title);
-            $this->load->view('v_laporan', $data);
-            // $this->load->view('element/v_footer'); 
+            $this->load->view('v_laporan', $data); 
     }
 
     
