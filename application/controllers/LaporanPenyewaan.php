@@ -46,6 +46,7 @@ class LaporanPenyewaan extends CI_Controller {
                 // Panggil fungsi view_all yang ada di TransaksiModel
             }
 
+            $data['ket']=$ket;
             $data['trans'] = $transaksi;
             $data['option_tahun'] = $this->Model_Laporan->option_tahun2();
 

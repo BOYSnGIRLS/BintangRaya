@@ -8,7 +8,7 @@
                                 <!-- DATA TABLE -->
 
                             <form method="get" action="<?php echo base_url('LaporanPenyewaan')?>">
-                                <center><h2>List Transaksi</h2></center><br>
+                                <center><h2>Laporan Penyewaan</h2></center><br>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
                                         <h4>Filter Berdasarkan :</h4>
@@ -67,10 +67,11 @@
 
                             </div>
 
-                        <div class="row m-t-30">
+                        <!-- <div class="row m-t-30"> -->
                             <div class="col-md-12">
 
                                 <!-- DATA TABLE-->
+                                <b><?php echo $ket; ?></b><br /><br />
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>

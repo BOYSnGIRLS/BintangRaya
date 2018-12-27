@@ -3,7 +3,6 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         
-                        <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <center><h2>List Pengembalian</h2></center><br>
@@ -66,11 +65,11 @@
                                     </div>     
                                 </div>
                             </div>
-                            </div>
 
-                        <div class="row m-t-30">
+                        <!-- <div class="row m-t-30"> -->
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
+                                <b><?php echo $ket; ?></b><br /><br />
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
