@@ -143,17 +143,24 @@ class ListTransaksi extends CI_Controller {
         
     }
 
-    function update_status($id){
-        if($_GET['id'] == "Menunggu Proses"){
-            $status = "Proses";
+    function update_status(){
+        $id=$this->input->post('id_sewa');
+        $status=$this->input->post('status');
+        // $index=0;
+        // foreach ($id as $row) {
+        // if($_GET['id'] == "Menunggu Proses"){
+        if($status == "Menunggu Proses"){
+            $status= "Proses";
+
         }else{
-            $status = "Selesai";
+                $status = "Selesai";
         }
         $insert = $this->Model_Laporan->update_status(array(
-           'id_sewa' => $id,
-           'status' => $status
+               'id_sewa' => $id,
+               'status' => $status
         ), $id);
         redirect('ListTransaksi/index');
+            // $index++;
     }
 
     public function edit_transaksi(){

@@ -121,10 +121,17 @@ class DataBarang extends CI_Controller {
     }
 
 
-    function delete_tenda($id){
+    // function delete_tenda($id){
+    //     $this->Model_Barang->delete_tenda($id);
+    //     redirect('DataBarang/tenda');
+    // }
+
+    function delete_tenda(){
+        $id = $this->input->post('id_tenda');
         $this->Model_Barang->delete_tenda($id);
         redirect('DataBarang/tenda');
     }
+
 
 // ===========================PAKET TENDA TENDA========================================
     public function tambah_paket(){
@@ -166,7 +173,13 @@ class DataBarang extends CI_Controller {
     }
     
 
-    function delete_pakettenda($id1){
+    // function delete_pakettenda($id1){
+    //     $this->Model_Barang->delete_paket($id1);
+    //     redirect('DataBarang/tenda');
+    // }
+
+    function delete_pakettenda(){
+        $id = $this->input->post('id_hargatenda');
         $this->Model_Barang->delete_paket($id1);
         redirect('DataBarang/tenda');
     }
@@ -207,8 +220,14 @@ class DataBarang extends CI_Controller {
     }
     
 
-    function delete_kategori($id3){
-        $this->Model_Barang->delete_kategori($id3);
+    // function delete_kategori($id3){
+    //     $this->Model_Barang->delete_kategori($id3);
+    //     redirect('DataBarang/barang');
+    // }
+    
+    function delete_kategori(){
+        $id3 = $this->input->post('id_kategori');
+        $this->Model_Barang->delete_tenda($id3);
         redirect('DataBarang/barang');
     }
 
@@ -299,9 +318,14 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/barang');
     }
 
-    function delete_barang($id2){
-          $this->Model_Barang->delete($id2);
-         $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    // function delete_barang($id2){
+    //     $this->Model_Barang->delete($id2);
+    //     redirect('DataBarang/barang');
+    // }
+
+    function delete_barang(){
+        $id2 = $this->input->post('id_barang');
+        $this->Model_Barang->delete($id2);
         redirect('DataBarang/barang');
     }
 

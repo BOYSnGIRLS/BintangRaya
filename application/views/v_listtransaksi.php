@@ -118,10 +118,10 @@
                                                 <td>
 
                                                     <?php if($row->status == "Menunggu Proses"){ ?>
-                                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#konfirmasi">Menunggu</button>
+                                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#konfirmasi<?php echo $row->id_sewa; ?>">Menunggu</button>
 
                                                     <?php }else if($row->status == "Proses"){ ?>
-                                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#konfirmasi">Proses</button>
+                                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#konfirmasi2<?php echo $row->id_sewa;?>">Proses</button>
                                                     
 
                                                    <?php }else if($row->status == "Selesai"){ ?>
@@ -156,7 +156,8 @@
 
     
       <!-- modal konfirmasi -->
-            <div class="modal fade" id="konfirmasi" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+    <?php foreach ($trans as $row): ?>
+        <div class="modal fade" id="konfirmasi<?php echo $row->id_sewa; ?>" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
              data-backdrop="static">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
@@ -166,17 +167,58 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <form action="<?php echo base_url('ListTransaksi/update_status')?>" method="post" enctype="multipart/form-data" role="form">  
                         <div class="modal-body">
-                            <p>Yakin mengganti status ini?</p>
+                          
+                                <p>Yakin mengganti status ini?</p>
                         </div>
+                        
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                            <a href="<?php echo base_url()?>ListTransaksi/update_status/<?php echo $row->id_sewa?>?id=<?php echo $row->status ?>" ><button type="button" class="btn btn-primary" >Ya</button></a>
-
-                        </div>
+                                
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                <input type="hidden" name="id_sewa" value="<?php echo $row->id_sewa; ?>">
+                                <input type="hidden" name="status" value="<?php echo $row->status; ?>">
+                                <button type="submit" class="btn btn-primary" >Ya</button></a>
+                        </div> 
+                        </form>
                     </div>
                 </div>
             </div>
+        <?php endforeach; ?>
+            <!-- end modal  -->
+
+            <!-- modal konfirmasi -->
+    <?php foreach ($trans as $row): ?>
+        <div class="modal fade" id="konfirmasi2<?php echo $row->id_sewa; ?>" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+             data-backdrop="static">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Ganti Status</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          
+                                <p>Yakin mengganti status ini?</p>
+                        </div>
+                        
+                        <div class="modal-footer">
+                                
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+
+                                <form action="<?php echo base_url('ListTransaksi/update_status')?>" method="post" enctype="multipart/form-data" role="form">  
+                                <input type="hidden" name="id_sewa" value="<?php echo $row->id_sewa; ?>">
+                                <input type="hidden" name="status" value="<?php echo $row->status; ?>">
+                                <button type="submit" class="btn btn-primary" >Ya</button></a>
+                                 </form>
+                            
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
             <!-- end modal  -->
 
             <!-- modal selesai -->
@@ -194,7 +236,7 @@
                             <p>Pemesanan telah selesai dilakukan</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
                             
                         </div>
                     </div>
@@ -207,13 +249,19 @@
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
 
-   <!--  <script>
-        function doOnClick(){
-            // alert('webpage finished loading');
-            document.getElementById('testBtn').value='on Proses';
-            return false;
-        }
-    </script> -->
+   <script>
+      $(document).ready(function() {
+          // Untuk sunting
+          $('#konfirmasi').on('show.bs.modal', function (event) {
+              var div = $(event.relatedTarget);
+              var id_sewa = button.data("id_sewa");
+              var status = button.data("status");
+              var modal          = $(this);
+              modal.find("#id_sewa").value(id_sewa);
+              modal.find("#status").value(status);
+          });
+      });
+  </script>
 
     <script>
     $(document).ready(function(){ // Ketika halaman selesai di load

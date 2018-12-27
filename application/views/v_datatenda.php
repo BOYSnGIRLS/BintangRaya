@@ -41,14 +41,8 @@
                                         <td><?php echo $row->id_tenda;?></td>
                                         <td><?php echo $row->ukuran_tenda;?></td>
                                         <td><?php echo $row->stok_tenda;?></td>
-                                        <!-- <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="btn btn-info">Edit</button></a></td> 
-                                        <td><a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>">Hapus</a></td> -->
-
-                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a>
-                                           
-                                        </td> 
-                                <td>
-                                    <a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> </td>
+                                        <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
+                                        <td><button type="button" class="fa fa-trash" style="font-size:30px" data-toggle="modal" data-target="#hapus-tenda<?php echo $row->id_tenda;?>"></button></td>
                                     </tr>
                                     <?php $no++;
                                     endforeach;?>
@@ -96,7 +90,10 @@
                                 <td><?php echo $row->harga_sewa;?></td>
                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit"class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
 
-                                <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a></td>
+                                <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a>
+
+                                  <button type="button" class="fa fa-trash" style="font-size:50px" data-toggle="modal" data-target="#hapus-paket<?php echo $row->id_hargatenda;?>"></button>
+                                </td>
                             </tr>
                             <?php $no++;
                             endforeach;?>
@@ -161,6 +158,39 @@
     </div>
 <!-- end modal large -->
 
+<!-- modal hapus tenda -->
+<?php foreach ($tenda as $row):?>
+      <div class="modal fade" id="hapus-tenda<?php echo $row->id_tenda;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="hapus-data">Konfirmasi Hapus Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/delete_tenda')?>" method="post" enctype="multipart/form-data" role="form">
+                        <div class="modal-body">
+                                
+                                <div class="form-group">
+                                    <p class="error-text"><i class="fa fa-warning modal-icon"></i>Apakah anda yakin ingin menghapus data tersebut?
+                    <br>Data tidak dapat dikembalikan lagi</p>
+                                </div>
+                            </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="hidden" name="id_tenda" value="<?php echo $row->id_tenda; ?>">
+                    <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
+                </div></form>
+                  </div>
+                </div>
+              </div>
+            </div>
+<?php endforeach;?>
+<!-- end modal hapus -->
+
 <!-- modal tambah paket tenda -->
     <div class="modal fade" id="tambah-paket-tenda" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -222,6 +252,39 @@
     </div>
 <!-- end modal large -->
 
+<!-- modal hapus harga tenda -->
+<?php foreach ($data_paket as $row):?>
+      <div class="modal fade" id="hapus-paket<?php echo $row->id_hargatenda;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="hapus-data">Konfirmasi Hapus Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/delete_pakettenda')?>" method="post" enctype="multipart/form-data" role="form">
+                        <div class="modal-body">
+                                
+                                <div class="form-group">
+                                    <p class="error-text"><i class="fa fa-warning modal-icon"></i>Apakah anda yakin ingin menghapus data tersebut?
+                    <br>Data tidak dapat dikembalikan lagi</p>
+                                </div>
+                            </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="hidden" name="id_hargatenda" value="<?php echo $row->id_hargatenda; ?>">
+                    <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
+                </div></form>
+                  </div>
+                </div>
+              </div>
+            </div>
+<?php endforeach;?>
+<!-- end modal hapus -->
+
 <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
@@ -238,14 +301,8 @@
       });
       $(document).ready(function() {
           // Untuk sunting
-          $('#edit-data').on('show.bs.modal', function (event) {
+          $('#modal-hapus').on('show.bs.modal', function (event) {
               var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-              var modal          = $(this)
- 
-              // Isi nilai pada field
-              modal.find('#id_tenda').attr("value",div.data('id_tenda'));
-              modal.find('#ukuran_tenda').attr("value",div.data('ukuran_tenda'));
-              modal.find('#stok_tenda').html(div.data('stok_tenda'));
           });
       });
   </script>
