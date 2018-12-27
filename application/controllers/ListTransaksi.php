@@ -48,20 +48,20 @@ class ListTransaksi extends CI_Controller {
 
             if(isset($_GET['time']) && ! empty($_GET['time'])){
                 $time = $_GET['time'];
-                if ($time == '1') {
+                if ($time == 'menunggu') {
                     $ket = 'Data Status Akan';
                     $transaksi = $this->Model_Laporan->status_menunggu();
-                }else if ($time == '2') {
+                }else if ($time == 'proses') {
                     $ket = 'Data Status Proses';
                     $transaksi = $this->Model_Laporan->status_proses();
-                }else{
+                }else if ($time == 'selesai'){
                     $ket = 'Data Status Selesai';
                     $transaksi = $this->Model_Laporan->status_selesai();
+                }else{
+                    $ket = 'Data Status Kembali';
+                    $transaksi = $this->Model_Laporan->status_kembali();
                 }
-            }else{
-                $tmpl = 'Semua Status';
-                $pros = $this->Model_Laporan->view_all();
-            }
+        }
             
             $data['ket'] = $ket;
             $tampil['trans'] = $transaksi;
