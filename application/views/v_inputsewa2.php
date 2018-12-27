@@ -23,7 +23,7 @@
                       
                       <div class="col-sm-4">
                       <label for="nomor">Nomor Telepon: </label>
-                        <input class="form-control" placeholder="Masukan Nomor" type="number"  size="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
+                        <input class="form-control" placeholder="Masukan Nomor" type="number"  maxlength="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
                         </div>
                     </div>
 

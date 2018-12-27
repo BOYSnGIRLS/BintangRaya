@@ -122,7 +122,7 @@ function surat_jalan($id){
 
 //Model Laporan
 public function view_by_date2($date){
-    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+    $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
@@ -156,13 +156,17 @@ public function view_by_year2($year){
 }
 
 public function view_all2(){
-    $this->db->select('*,SUM(sewa.total_tagihan) AS totals');
+    $this->db->select('*');
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
     $query = $this->db->get();
     return $query->result();
+
+    // $query = $this->db->query("SELECT SUM(ahay.harga_total) AS total FROM (SELECT detail_sewa.harga_total, sewa.* FROM `detail_sewa`, `sewa` WHERE sewa.id_sewa=detail_sewa.id_sewa) AS ahay");
+    // return $query->result();
+
 }
 
 public function option_tahun2(){
@@ -173,12 +177,12 @@ public function option_tahun2(){
     return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
 }
 
-public function status_menunggu(){
-    $this->db->select('*');
-    $this->db->from('sewa');
-    $this->db->where('status', 'Menunggu Proses');
-    $query = $this->db->get();
-    return $result = $query->result();
+    public function status_menunggu(){
+        $this->db->select('*');
+        $this->db->from('sewa');
+        $this->db->where('status', 'Menunggu Proses');
+        $query = $this->db->get();
+        return $result = $query->result();
     }
 
     public function status_proses(){
@@ -194,6 +198,14 @@ public function status_menunggu(){
         $this->db->select('*');
         $this->db->from('sewa');
         $this->db->where('status', 'Selesai');
+        $query = $this->db->get();
+        return $result = $query->result();
+    }
+
+    public function status_kembali(){
+        $this->db->select('*');
+        $this->db->from('sewa');
+        $this->db->where('status', 'Kembali');
         $query = $this->db->get();
         return $result = $query->result();
     }

@@ -112,7 +112,7 @@ class Model_Barang extends CI_Model {
 	     $kode = 1;    
 	    }
 	    $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); 
-	    $kodejadi = "MK".$kodemax;  
+	    $kodejadi = "BR".$kodemax;  
 	    return $kodejadi;
 	  }
 

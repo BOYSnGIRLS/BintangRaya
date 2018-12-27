@@ -54,8 +54,13 @@ class InputSewa extends CI_Controller {
             $pelunasan = $this->input->post('kembalian');
 
             $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
+            $this->db->query("INSERT INTO `detail_sewa`(`id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total`) SELECT `id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total` FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
+
             $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+
+
             $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
+            $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
 
             $this->session->set_flashdata('message', 'anda berhasil menginput data');
             redirect('InputSewa');
@@ -76,13 +81,13 @@ class InputSewa extends CI_Controller {
             if ($cek >=1 ){
                 $sementara['data'] = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
                 $lama['lama']=$this->db->query("SELECT lama FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
+                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
             $this->load->view('v_inputsewa2', $data+$lama+$kode+$sementara+$detail_sewa);
             }
             elseif ($cek == 0){
-                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa`  WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sewa` WHERE id_sewa='".$kode['kode']."'")->result();
+                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara`  WHERE id_sewa='".$kode['kode']."'")->result();
+                $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
             $this->load->view('v_inputsewa2', $data+$kode+$detail_sewa);
             }
 
@@ -95,9 +100,9 @@ class InputSewa extends CI_Controller {
             $harga=$this->input->post('harga_sewa');
             $jumlah = $this->input->post('jumlah_sewa');
             $total = $harga*$jumlah;
-            $cek = $this->db->query("SELECT * FROM `detail_sewa` WHERE id_sewa='".$id_sewa."' AND id='".$id_barang."'")->num_rows();
+            $cek = $this->db->query("SELECT * FROM `detail_sementara` WHERE id_sewa='".$id_sewa."' AND id='".$id_barang."'")->num_rows();
             if($cek >= 1){
-                    $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`=jumlah_barang+'$jumlah',`harga_total`=harga_total+'$total' WHERE id_sewa='$id_sewa' AND id='$id_barang'");
+                    $this->db->query("UPDATE `detail_sementara` SET `jumlah_barang`=jumlah_barang+'$jumlah',`harga_total`=harga_total+'$total' WHERE id_sewa='$id_sewa' AND id='$id_barang'");
                     redirect('InputSewa/index');
                 }
                 
@@ -112,7 +117,7 @@ class InputSewa extends CI_Controller {
                     'harga_total' => $total,
                 );
                     
-                $this->Model_Transaksi->inputdetail($data,'detail_sewa');
+                $this->Model_Transaksi->inputdetail($data,'detail_sementara');
                 redirect('InputSewa/index');
             }
         }
