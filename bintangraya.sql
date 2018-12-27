@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2018 at 01:55 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Dec 27, 2018 at 11:02 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -42,31 +40,31 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_jasa`, `harga_sewa`, `stok_barang`) VALUES
-('BR001', 'KR', 'Kursi Lipat', 0, 2000, 299),
-('BR002', 'KR', 'Kursi Plastik', 0, 1000, 300),
-('BR003', 'KR', 'Cover Kursi Lipat', 0, 2000, 0),
+('BR001', 'KR', 'Kursi Lipat', 400, 2000, 299),
+('BR002', 'KR', 'Kursi Plastik', 300, 1000, 300),
+('BR003', 'KR', 'Cover Kursi Lipat', 200, 2000, 0),
 ('BR004', 'KR', 'Cover Kursi Plastik', 0, 0, 0),
-('BR005', 'MJ', 'Meja Prasmanan', 0, 25000, 10),
-('BR006', 'MJ', 'Meja Tamu', 0, 20000, 27),
-('BR007', 'MJ', 'Meja Bulat', 0, 20000, 10),
-('BR008', 'MJ', 'Meja Minum', 0, 17500, 10),
-('BR009', 'MJ', 'Rempel Meja Emas', 0, 10000, 0),
-('BR010', 'MJ', 'Taplak + Rempel', 0, 15000, 0),
+('BR005', 'MJ', 'Meja Prasmanan', 5000, 25000, 10),
+('BR006', 'MJ', 'Meja Tamu', 5000, 20000, 27),
+('BR007', 'MJ', 'Meja Bulat', 4000, 20000, 10),
+('BR008', 'MJ', 'Meja Minum', 4000, 17500, 10),
+('BR009', 'MJ', 'Rempel Meja Emas', 2000, 10000, 0),
+('BR010', 'MJ', 'Taplak + Rempel', 2000, 15000, 0),
 ('BR011', 'GB', 'Piring (Uk 9)', 0, 500, 1000),
 ('BR012', 'GB', 'Mangkok Melamine', 0, 400, 1000),
 ('BR013', 'GB', 'Sendok', 0, 0, 0),
-('BR014', 'GB', 'Mangkok Besar (Bowl)', 0, 15000, 8),
-('BR015', 'GB', 'Rantang Piring', 0, 10000, 0),
+('BR014', 'GB', 'Mangkok Besar (Bowl)', 2250, 15000, 8),
+('BR015', 'GB', 'Rantang Piring', 1500, 10000, 0),
 ('BR016', 'XN', 'Kipas Blower (Pendek)', 0, 0, 0),
-('BR017', 'XN', 'Kipas Blower (Tinggi)', 0, 75000, 0),
-('BR018', 'XN', 'Satir', 0, 20000, 0),
-('BR019', 'XN', 'Dispenser', 0, 45000, 0),
-('BR020', 'XN', 'Tempat Uang', 0, 50000, 0),
-('BR021', 'XN', 'Talam Oval Stainless', 0, 10000, 4),
-('BR022', 'XN', 'Kerucut Dekorasi', 0, 250000, 0),
-('BR023', 'XN', 'Tirai/Tutup Samping (Tend', 0, 18000, 0),
-('BR024', 'XN', 'Tirai/Tutup Samping (Gedu', 0, 22500, 0),
-('BR025', 'XN', 'Dekorasi Tiang', 0, 15000, 0),
+('BR017', 'XN', 'Kipas Blower (Tinggi)', 7500, 75000, 0),
+('BR018', 'XN', 'Satir', 2500, 20000, 0),
+('BR019', 'XN', 'Dispenser', 4500, 45000, 0),
+('BR020', 'XN', 'Tempat Uang', 2500, 50000, 0),
+('BR021', 'XN', 'Talam Oval Stainless', 2250, 10000, 4),
+('BR022', 'XN', 'Kerucut Dekorasi', 50000, 250000, 0),
+('BR023', 'XN', 'Tirai/Tutup Samping (Tend', 3000, 18000, 0),
+('BR024', 'XN', 'Tirai/Tutup Samping (Gedu', 3500, 22500, 0),
+('BR025', 'XN', 'Dekorasi Tiang', 2500, 15000, 0),
 ('BR026', 'XN', 'Panggung (20-50 cm)', 0, 12500, 0),
 ('BR027', 'XN', 'Panggung (100 cm)', 0, 15000, 0),
 ('BR028', 'XN', 'Lampu', 0, 50000, 0),
@@ -198,12 +196,12 @@ CREATE TABLE `paket_tenda` (
 --
 
 INSERT INTO `paket_tenda` (`id_hargatenda`, `id_tenda`, `jenis_tenda`, `harga_sewa`, `harga_jasa`) VALUES
-('PT001', 'TD001', 'Non Plafon 6x6', 125000, 0),
-('PT002', 'TD001', 'Plafon 6x6', 150000, 0),
-('PT003', 'TD001', 'Plafon Warna 6x6', 200000, 0),
-('PT004', 'TD001', 'VIP/Semi 6x6', 250000, 0),
-('PT005', 'TD001', 'VIP Plafon Warna 6x6', 300000, 0),
-('PT006', 'TD001', 'Dekorasi Plafon 6x6', 650000, 0);
+('PT001', 'TD001', 'Non Plafon 6x6', 125000, 35000),
+('PT002', 'TD001', 'Plafon 6x6', 150000, 40000),
+('PT003', 'TD001', 'Plafon Warna 6x6', 200000, 50000),
+('PT004', 'TD001', 'VIP/Semi 6x6', 250000, 50000),
+('PT005', 'TD001', 'VIP Plafon Warna 6x6', 300000, 75000),
+('PT006', 'TD001', 'Dekorasi Plafon 6x6', 650000, 200000);
 
 -- --------------------------------------------------------
 
@@ -430,7 +428,6 @@ ALTER TABLE `paket_tenda`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
