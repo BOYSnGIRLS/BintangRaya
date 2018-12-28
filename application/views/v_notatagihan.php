@@ -89,6 +89,10 @@
                     <th style="text-align:right;"><input type="text" name="dp" value="<?php echo number_format($data[0]->dp) ;?>" style="text-align:right;"></th>
                 </tr>
                 <tr>
+                    <th>Biaya Ganti Rugi : </th>
+                    <th style="text-align:right;"><input type="text" name="ganti_rugi" value="<?php echo number_format($data[0]->biaya_ganti) ;?>" style="text-align:right;"></th>
+                </tr>
+                <tr>
                     <th>Pelunasan (Rp)  : </th>
                     <th style="text-align:right;"><input type="text" class="input-sm" id="pelunasan" name="pelunasan" value="<?php echo number_format($data[0]->pelunasan) ;?>" style="text-align:right;">
                     <input type="hidden" class="input-sm" id="pelunasan2" name="pelunasan2" value="<?php echo $data[0]->pelunasan ;?>" style="text-align:right;">
