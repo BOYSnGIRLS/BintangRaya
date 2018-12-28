@@ -181,6 +181,7 @@ public function option_tahun2(){
         $this->db->select('*');
         $this->db->from('sewa');
         $this->db->where('status', 'Menunggu Proses');
+        $this->db->group_by('id_sewa');
         $query = $this->db->get();
         return $result = $query->result();
     }
@@ -188,8 +189,8 @@ public function option_tahun2(){
     public function status_proses(){
         $this->db->select('*');
         $this->db->from('sewa');
-        $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
         $this->db->where('status', 'Proses');
+        $this->db->group_by('id_sewa');
         $query = $this->db->get();
         return $query->result();
     }
@@ -198,6 +199,7 @@ public function option_tahun2(){
         $this->db->select('*');
         $this->db->from('sewa');
         $this->db->where('status', 'Selesai');
+        $this->db->group_by('id_sewa');
         $query = $this->db->get();
         return $result = $query->result();
     }
@@ -206,6 +208,7 @@ public function option_tahun2(){
         $this->db->select('*');
         $this->db->from('sewa');
         $this->db->where('status', 'Kembali');
+        $this->db->group_by('id_sewa');
         $query = $this->db->get();
         return $result = $query->result();
     }

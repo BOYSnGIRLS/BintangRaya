@@ -21,9 +21,10 @@
                                             </select>
                                            <div class="dropDownSelect2"></div>
                                         </div>
-                                        <button type="submit" class="btn btn-info">Tampilkan</button>
+                                        <button type="submit" class="btn btn-info">Tampilkan</button>&nbsp;&nbsp;
+                                        <a href="<?php echo base_url('ListTransaksi'); ?>">Reset Filter</a>
                                     </form>
-                                    <a href="<?php echo base_url('ListTransaksi'); ?>">Reset Filter</a>
+                                    
                                     </div>
 
                                     <div class="table-data__tool-right">
