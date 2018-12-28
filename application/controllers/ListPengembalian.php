@@ -138,6 +138,9 @@ class ListPengembalian extends CI_Controller {
             $jumlah_kembaliT = $this->input->post('tenda_kembali');
             $jumlah_kembaliB = $this->input->post('barang_kembali');
             
+            $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`) VALUES ('$kode', '$id_sewa') ");
+            $this->db->query("UPDATE `sewa` SET `status`='Kembali' WHERE `id_sewa`='$id_sewa'");
+            
             $indexT = 0;
             foreach ($idT as $row) {
                 $hilangrusak = $jumlah_sewaT[$indexT]-$jumlah_kembaliT[$indexT];
@@ -153,8 +156,6 @@ class ListPengembalian extends CI_Controller {
                 $indexB++;
             }
 
-            $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`) VALUES ('$kode', '$id_sewa') ");
-            $this->db->query("UPDATE `sewa` SET `status`='Kembali' WHERE `id_sewa`='$id_sewa'");
             redirect('ListPengembalian');   
         }
     }
