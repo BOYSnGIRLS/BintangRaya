@@ -128,10 +128,13 @@ class DataBarang extends CI_Controller {
 
 // ===========================PAKET TENDA TENDA========================================
     public function tambah_paket(){
+        $ukuran['ukuran'] = $this->Model_Barang->ukuran($this->input->post('id_tenda'));
+        $jenis_tenda = $this->input->post('jenis_tenda');
+        $nama = $jenis_tenda.' '.$ukuran['ukuran'];
         $data = array(
             'id_hargatenda' => $this->input->post('id_hargatenda'),
             'id_tenda' => $this->input->post('id_tenda'),
-            'jenis_tenda'     => $this->input->post('jenis_tenda'),
+            'jenis_tenda'  => $nama,
             'harga_sewa' => $this->input->post('sewa_tenda'),
             'harga_jasa' => $this->input->post('jasa_tenda')
         );
