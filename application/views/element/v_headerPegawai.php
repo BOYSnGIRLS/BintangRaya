@@ -22,14 +22,6 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="<?= base_url('DataBarang')?>">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url('DataPegawai')?>">
-                                <i class="fas fa-tachometer-alt"></i>Data Pegawai</a>
-                        </li>
-                        <li>
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
                         </li>
@@ -41,25 +33,6 @@
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
-                        <li>
-                            <a href="<?= base_url('LaporanPenyewaan')?>">
-                                <i class="fas fa-table"></i>Laporan Penyewaan</a>
-                        </li>
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -77,14 +50,6 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="<?php if(isset($active_dashboard)){echo $active_dashboard ;}?> has-sub">
-                            <a class="js-arrow" href="<?= base_url('DataBarang')?>">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>
-                        <li class="<?php if(isset($active_datapegawai)){echo $active_datapegawai ;}?> has-sub">
-                            <a href="<?= base_url('DataPegawai')?>">
-                                <i class="fas fa-chart-bar"></i>Data Pegawai</a>
-                        </li>
                         <li class="<?php if(isset($active_inputsewa)){echo $active_inputsewa ;}?> has-sub">
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
@@ -97,12 +62,6 @@
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
-
-                        <li class="<?php if(isset($active_laporanpenyewaan)){echo $active_laporanpenyewaan;}?> has-sub">
-                            <a href="<?= base_url('LaporanPenyewaan')?>">
-                                <i class="fas fa-table"></i>Laporan Penyewaan</a>
-                        </li>
-                       
                     </ul>
                 </nav>
             </div>
@@ -134,7 +93,7 @@
                                             <img src="<?= base_url('assets/images/icon/avatar-01.jpg')?>" alt="Pak Andre" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Pak Andre</a>
+                                            <a class="js-acc-btn" href="#">Pegawai</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -145,7 +104,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">pak andre</a>
+                                                        <a href="#">pegawai</a>
                                                     </h5>
                                                     <span class="email">andre@example.com</span>
                                                 </div>
