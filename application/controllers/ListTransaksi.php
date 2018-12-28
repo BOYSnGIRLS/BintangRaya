@@ -6,6 +6,8 @@ class ListTransaksi extends CI_Controller {
         parent::__construct();
         $this->load->model('Model_Laporan');
         $this->load->model('Model_Transaksi');
+        $this->load->model('Model_app');
+
 
         $this->load->library('session');
         $this->load->helper('url');
@@ -16,6 +18,9 @@ class ListTransaksi extends CI_Controller {
     }
 
 	public function index(){
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
             if(isset($_GET['time']) && ! empty($_GET['time'])){
                 $time = $_GET['time'];
                 if ($time == 'menunggu') {
@@ -47,6 +52,45 @@ class ListTransaksi extends CI_Controller {
             $this->load->view('element/v_header',$title);
             $this->load->view('v_listtransaksi', $title+$data);
             // $this->load->view('element/v_footer'); 
+        }else if($ceklevel == 1) {
+            if(isset($_GET['time']) && ! empty($_GET['time'])){
+                $time = $_GET['time'];
+                if ($time == 'menunggu') {
+                    $ket = 'Data Status Menunggu';
+                    $transaksi = $this->Model_Laporan->status_menunggu();
+                }else if ($time == 'proses') {
+                    $ket = 'Data Status Proses';
+                    $transaksi = $this->Model_Laporan->status_proses();
+                }else if ($time == 'selesai'){
+                    $ket = 'Data Status Selesai';
+                    $transaksi = $this->Model_Laporan->status_selesai();
+                }else{
+                    $ket = 'Data Status Kembali';
+                    $transaksi = $this->Model_Laporan->status_kembali();
+                }
+            }else{ 
+                $ket = 'Semua Data Transaksi';
+                $transaksi = $this->Model_Laporan->view_all();
+            }
+            
+            $data['ket'] = $ket;
+            $data['trans'] = $transaksi;
+
+            $title=array(
+                'title'=>'List Transaksi',
+                'active_listtransaksi' => 'active'
+            );
+            $this->load->view('element/css',$title);
+            $this->load->view('element/v_headerPegawai',$title);
+            $this->load->view('v_listtransaksi', $title+$data);
+            // $this->load->view('element/v_footer'); 
+        }else{
+            $title=array(
+                'title'=>'List Transaksi',
+                'active_listtransaksi' => 'active'
+            );
+            $this->load->view('element/v_headerPegawai',$title);
+        }
     }
 
     function suratjalan($id){
