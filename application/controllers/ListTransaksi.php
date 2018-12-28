@@ -169,30 +169,42 @@ class ListTransaksi extends CI_Controller {
         redirect('ListTransaksi/index');
     }
 
-    // function update_transaksi(){
-    //     if (isset($_POST['btnUpdate'])) {
-    //         $kode=$this->Model_Transaksi->get_notrans();
-    //         $id_sewa=$this->input->post('id_sewa');
-    //         $idT = $this->input->post('idhargaTenda');
-    //         $idB = $this->input->post('idBarang');
-    //         $jumlah_sewaT = $this->input->post('tendaSewa');
-    //         $jumlah_sewaB = $this->input->post('barangSewa');
+    function update_transaksi(){
+        if (isset($_POST['btnUpdate'])) {
+            $kode=$this->Model_Transaksi->get_notrans();
+            $nama_pelanggan = $this->input->post('nama_pelanggan');
+            $no_telp = $this->input->post('telp_pelanggan');
+            $alamat = $this->input->post('alamat_pelanggan');
+            $tgl1 = $this->input->post('tgl_acara1');
+            $tgl2 = $this->input->post('tgl_acara2');
+            $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
+            $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
+            $lama=((strtotime($tgl2)-strtotime($tgl1))/(60*60*24))+1;
+            $id_sewa=$this->input->post('id_sewa');
+            $idT = $this->input->post('idhargaTenda');
+            $idB = $this->input->post('idBarang');
+            $jumlah_sewaT = $this->input->post('stok_tenda');
+            $jumlah_sewaB = $this->input->post('stok_barang');
            
-    //         $indexT = 0;
-    //         foreach ($idT as $row) {
-    //             $this->db->query("UPDATE `detail_sewa` SET 'jumlah_sewa'='$jumlah_sewaT' WHERE `id_sewa`= '$id_sewa' AND `id_tenda`='$idT'");
-    //         }
+           $this->db->query("UPDATE `sewa` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_pasang`='$tgl_pasang', `tgl_acara1`='$tgl1', `tgl_acara2`='$tgl2', `tgl_bongkar`='$tgl_bongkar', `lama`='$lama' WHERE `id_sewa`='$id_sewa'");
 
-    //         $indexB = 0; 
-    //         foreach ($idB as $row) {
-    //              $this->db->query("UPDATE `detail_sewa` SET 'jumlah_sewa'='$jumlah_sewaB' WHERE `id_sewa`= '$id_sewa' AND `id_tenda`='$idB'");
-    //         }
+            $indexT = 0;
+            foreach ($idT as $row) {
+                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah_sewaT[$indexT]' WHERE `id_sewa`= '$id_sewa' AND `id`='$row'");
+            $indexT++;
+            }
 
-    //         $this->db->query("UPDATE `sewa` WHERE `id_sewa`='$id_sewa'");
-    //         $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
-    //         redirect('ListTransaksi');   
-    //     }
-    // }
+            $indexB = 0; 
+            foreach ($idB as $row) {
+                 $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah_sewaB[$indexB]' WHERE `id_sewa`= '$id_sewa' AND `id`='$row'");
+                 $indexB++;
+            }
+
+            
+            // $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
+            redirect('ListTransaksi/index');   
+        }
+    }
 
     public function get_autocomplete(){    //membuat dropdown pilihan di search box
         if (isset($_GET['term'])) {
@@ -248,7 +260,7 @@ class ListTransaksi extends CI_Controller {
                 );
                     
                 $this->Model_Transaksi->inputdetail($data,'detail_sewa');
-                redirect('ListTransaksi/edit_transaksi');
+                redirect('ListTransaksi/edit_transaksi/'.$id_sewa);
             }
         }
 
