@@ -9,10 +9,11 @@
                                 <center><h2>List Transaksi</h2></center><br><br>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
-                                    <form method="get" action="" >
-                                        Status :
+                                    <form method="get" action="<?php echo base_url('ListTransaksi')?>" >
+                                        <b>Status :</b>
                                         <div class="rs-select2--light rs-select2--sm">
                                             <select class="js-select2" name="time">
+                                                <option>Pilih</option>
                                                 <option value="menunggu">Menunggu</option>
                                                 <option value="proses">Proses</option>
                                                 <option value="selesai">Selesai</option>
@@ -20,8 +21,7 @@
                                             </select>
                                            <div class="dropDownSelect2"></div>
                                         </div>
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>Cari</button>
+                                        <button type="submit" class="btn btn-info">Tampilkan</button>
                                     </form>
                                     <a href="<?php echo base_url('ListTransaksi'); ?>">Reset Filter</a>
                                     </div>
@@ -37,6 +37,7 @@
 
                         <div class="row m-t-30">
                             <div class="col-md-12">
+                                <b><?php echo $ket; ?></b><br /><br />
 
                                 <!-- DATA TABLE-->
                                 <div class="table-responsive table--no-card m-b-30">

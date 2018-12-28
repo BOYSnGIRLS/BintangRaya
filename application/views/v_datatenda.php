@@ -42,7 +42,7 @@
                                         <td><?php echo $row->ukuran_tenda;?></td>
                                         <td><?php echo $row->stok_tenda;?></td>
                                         <td><a href="<?php echo base_url(); ?>DataBarang/edit_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
-                                        <td><button type="button" class="fa fa-trash" style="font-size:30px" data-toggle="modal" data-target="#hapus-tenda<?php echo $row->id_tenda;?>"></button></td>
+                                        <td> <a href="<?php echo base_url(); ?>DataBarang/delete_tenda/<?php echo $row->id_tenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> </td>
                                     </tr>
                                     <?php $no++;
                                     endforeach;?>
@@ -91,8 +91,6 @@
                                <td><a href="<?php echo base_url(); ?>DataBarang/edit_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit"class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
 
                                 <td><a href="<?php echo base_url(); ?>DataBarang/delete_pakettenda/<?php echo $row->id_hargatenda;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a>
-
-                                  <button type="button" class="fa fa-trash" style="font-size:50px" data-toggle="modal" data-target="#hapus-paket<?php echo $row->id_hargatenda;?>"></button>
                                 </td>
                             </tr>
                             <?php $no++;

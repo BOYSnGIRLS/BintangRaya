@@ -37,11 +37,6 @@ class Model_Barang extends CI_Model {
         return $this->db->delete('tenda');
 	}
 
-	// function delete_tenda($id){
-	// 	$hasil=$this->db->query("DELETE FROM tenda WHERE id_tenda='$id'");
- //        return $hasil;
-	// }
-
 	function delete_paket($id1){
 		$this->db->where('id_hargatenda', $id1);
         return $this->db->delete('paket_tenda');

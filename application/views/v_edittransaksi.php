@@ -1,4 +1,4 @@
-<!-- MAIN CONTENT-->
+ MAIN CONTENT-->
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -42,6 +42,20 @@
                                     <input class="form-control" type="date" name="tgl_acara2" value="<?php echo @$trans[0]['tgl_acara2']; ?>">
                                   </div>
                               </div>
+                             <!--  <div class="form-group row">
+                                  <div class="col-sm-4">
+                                    
+                                  </div>
+
+                                  <div class="col-sm-4">
+                                    
+                                  </div>
+
+                                  <div class="col-sm-4">
+                                    <button class="btn btn-info" name="btnEdit" >Submit</button>
+                                  </div>
+                              </div> -->
+                              
                         </div>
 
                         <div class="form-group row">
@@ -77,12 +91,14 @@
                                 </script> 
                         </div>
 
+                    <form id="form_search" action="<?php echo site_url('ListTransaksi/inputdetail');?>" method="POST">
                         <div class="form-group row">
                                 <div class="col-sm-3" >
                                     <label  for="nama">Nama Barang:</label>
                                     <input class="form-control" type="text" name="nama_barang" readonly>
                                     <input class="form-control" type="hidden" name="id_barang" readonly>
                                     <input type="hidden" class="form-control" id="nama_barang" name="nama_barang" style="width:200px;" readonly>
+                                    <input type="hidden" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo @$trans[0]['id_sewa']; ?>" readonly>
                                 </div>
 
                                 <div class="col-sm-3" >
@@ -104,6 +120,7 @@
                                       </span>
                                 </div>
                         </div>
+                    </form>
              
 
                                   <table class="table table-borderless table-striped table-earning">
@@ -189,4 +206,4 @@
 </body>
 
 </html>
-<!-- end document-->
+<!-- end document
