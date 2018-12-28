@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2018 at 11:02 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Dec 28, 2018 at 11:15 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -30,8 +32,9 @@ CREATE TABLE `barang` (
   `id_barang` varchar(5) NOT NULL,
   `id_kategori` varchar(2) NOT NULL,
   `nama_barang` varchar(25) NOT NULL,
-  `harga_jasa` int(11) NOT NULL,
   `harga_sewa` int(11) NOT NULL,
+  `harga_ganti_rugi` int(11) NOT NULL,
+  `harga_jasa` int(11) NOT NULL,
   `stok_barang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,38 +42,38 @@ CREATE TABLE `barang` (
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_jasa`, `harga_sewa`, `stok_barang`) VALUES
-('BR001', 'KR', 'Kursi Lipat', 400, 2000, 299),
-('BR002', 'KR', 'Kursi Plastik', 300, 1000, 300),
-('BR003', 'KR', 'Cover Kursi Lipat', 200, 2000, 0),
-('BR004', 'KR', 'Cover Kursi Plastik', 0, 0, 0),
-('BR005', 'MJ', 'Meja Prasmanan', 5000, 25000, 10),
-('BR006', 'MJ', 'Meja Tamu', 5000, 20000, 27),
-('BR007', 'MJ', 'Meja Bulat', 4000, 20000, 10),
-('BR008', 'MJ', 'Meja Minum', 4000, 17500, 10),
-('BR009', 'MJ', 'Rempel Meja Emas', 2000, 10000, 0),
-('BR010', 'MJ', 'Taplak + Rempel', 2000, 15000, 0),
-('BR011', 'GB', 'Piring (Uk 9)', 0, 500, 1000),
-('BR012', 'GB', 'Mangkok Melamine', 0, 400, 1000),
-('BR013', 'GB', 'Sendok', 0, 0, 0),
-('BR014', 'GB', 'Mangkok Besar (Bowl)', 2250, 15000, 8),
-('BR015', 'GB', 'Rantang Piring', 1500, 10000, 0),
-('BR016', 'XN', 'Kipas Blower (Pendek)', 0, 0, 0),
-('BR017', 'XN', 'Kipas Blower (Tinggi)', 7500, 75000, 0),
-('BR018', 'XN', 'Satir', 2500, 20000, 0),
-('BR019', 'XN', 'Dispenser', 4500, 45000, 0),
-('BR020', 'XN', 'Tempat Uang', 2500, 50000, 0),
-('BR021', 'XN', 'Talam Oval Stainless', 2250, 10000, 4),
-('BR022', 'XN', 'Kerucut Dekorasi', 50000, 250000, 0),
-('BR023', 'XN', 'Tirai/Tutup Samping (Tend', 3000, 18000, 0),
-('BR024', 'XN', 'Tirai/Tutup Samping (Gedu', 3500, 22500, 0),
-('BR025', 'XN', 'Dekorasi Tiang', 2500, 15000, 0),
-('BR026', 'XN', 'Panggung (20-50 cm)', 0, 12500, 0),
-('BR027', 'XN', 'Panggung (100 cm)', 0, 15000, 0),
-('BR028', 'XN', 'Lampu', 0, 50000, 0),
-('BR029', 'XN', 'Karpet (2x6 m)', 0, 30000, 0),
-('BR030', 'XN', 'Palet', 0, 6000, 0),
-('BR031', 'XN', 'Bedag + Karpet', 0, 10000, 0);
+INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_sewa`, `harga_ganti_rugi`, `harga_jasa`, `stok_barang`) VALUES
+('BR001', 'KR', 'Kursi Lipat', 2000, 0, 400, 299),
+('BR002', 'KR', 'Kursi Plastik', 1000, 0, 300, 300),
+('BR003', 'KR', 'Cover Kursi Lipat', 2000, 0, 200, 0),
+('BR004', 'KR', 'Cover Kursi Plastik', 0, 0, 0, 0),
+('BR005', 'MJ', 'Meja Prasmanan', 25000, 0, 5000, 10),
+('BR006', 'MJ', 'Meja Tamu', 20000, 0, 5000, 27),
+('BR007', 'MJ', 'Meja Bulat', 20000, 0, 4000, 10),
+('BR008', 'MJ', 'Meja Minum', 17500, 0, 4000, 10),
+('BR009', 'MJ', 'Rempel Meja Emas', 10000, 0, 2000, 0),
+('BR010', 'MJ', 'Taplak + Rempel', 15000, 0, 2000, 0),
+('BR011', 'GB', 'Piring (Uk 9)', 500, 0, 0, 1000),
+('BR012', 'GB', 'Mangkok Melamine', 400, 0, 0, 1000),
+('BR014', 'GB', 'Mangkok Besar (Bowl)', 15000, 0, 2250, 8),
+('BR015', 'GB', 'Rantang Piring', 10000, 0, 1500, 0),
+('BR016', 'XN', 'Kipas Blower (Pendek)', 0, 0, 0, 0),
+('BR017', 'XN', 'Kipas Blower (Tinggi)', 75000, 0, 7500, 0),
+('BR018', 'XN', 'Satir', 20000, 0, 2500, 0),
+('BR019', 'XN', 'Dispenser', 45000, 0, 4500, 0),
+('BR020', 'XN', 'Tempat Uang', 50000, 0, 2500, 0),
+('BR021', 'XN', 'Talam Oval Stainless', 10000, 0, 2250, 4),
+('BR022', 'XN', 'Kerucut Dekorasi', 250000, 0, 50000, 0),
+('BR023', 'XN', 'Tirai/Tutup Samping (Tend', 18000, 0, 3000, 0),
+('BR024', 'XN', 'Tirai/Tutup Samping (Gedu', 22500, 0, 3500, 0),
+('BR025', 'XN', 'Dekorasi Tiang', 15000, 0, 2500, 0),
+('BR026', 'XN', 'Panggung (20-50 cm)', 12500, 0, 0, 0),
+('BR027', 'XN', 'Panggung (100 cm)', 15000, 0, 0, 0),
+('BR028', 'XN', 'Lampu', 50000, 0, 0, 0),
+('BR029', 'XN', 'Karpet (2x6 m)', 30000, 0, 0, 0),
+('BR030', 'XN', 'Palet', 6000, 0, 0, 0),
+('BR031', 'XN', 'Bedag + Karpet', 10000, 0, 0, 0),
+('BR032', 'KR', 'Kursi Tegak', 4500, 0, 500, 100);
 
 -- --------------------------------------------------------
 
@@ -116,7 +119,9 @@ CREATE TABLE `detail_kembali_tenda` (
 
 INSERT INTO `detail_kembali_tenda` (`id_kembali`, `id_tenda`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
 ('KB0001', 'HT001', 2, 2, 0),
-('KB0001', 'HT001', 1, 1, 0);
+('KB0001', 'HT001', 1, 1, 0),
+('KB0001', 'PT002', 1, 1, 0),
+('KB0002', 'PT002', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -154,7 +159,9 @@ INSERT INTO `detail_sewa` (`id_sewa`, `id`, `jumlah_barang`, `harga_sewa`, `harg
 ('TS0001', 'PT002', 1, 150000, 150000),
 ('TS0002', 'PT002', 1, 150000, 150000),
 ('TS0003', 'PT002', 1, 150000, 150000),
-('TS0003', 'BR002', 200, 1000, 200000);
+('TS0003', 'BR002', 200, 1000, 200000),
+('TS0004', 'PT006', 2, 650000, 1300000),
+('TS0004', 'BR011', 1000, 500, 500000);
 
 -- --------------------------------------------------------
 
@@ -215,6 +222,14 @@ CREATE TABLE `pengembalian` (
   `tgl_kembali` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pengembalian`
+--
+
+INSERT INTO `pengembalian` (`id_kembali`, `id_sewa`, `tgl_kembali`) VALUES
+('KB0001', 'TS0001', '2018-12-28 03:14:16'),
+('KB0002', 'TS0002', '2018-12-28 09:06:59');
+
 -- --------------------------------------------------------
 
 --
@@ -232,6 +247,13 @@ CREATE TABLE `sementara` (
   `tgl_bongkar` date NOT NULL,
   `lama` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sementara`
+--
+
+INSERT INTO `sementara` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `tgl_bongkar`, `lama`) VALUES
+('TS0005', 'Diana', 'Mastrip', '08236685263', '2018-12-27', '2018-12-28', '2018-12-28', '2018-12-29', 1);
 
 -- --------------------------------------------------------
 
@@ -254,6 +276,7 @@ CREATE TABLE `sewa` (
   `dp` int(11) NOT NULL,
   `pelunasan` int(11) NOT NULL,
   `bayar` int(11) NOT NULL,
+  `biaya_ganti` int(11) NOT NULL,
   `kembalian` int(11) NOT NULL,
   `status` varchar(25) DEFAULT 'Menunggu Proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -262,10 +285,11 @@ CREATE TABLE `sewa` (
 -- Dumping data for table `sewa`
 --
 
-INSERT INTO `sewa` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_sekarang`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`, `bayar`, `kembalian`, `status`) VALUES
-('TS0001', 'Aulia', 'Mastrip', '089236785245', '2018-12-25 12:21:21', '2018-12-25', '2018-12-26', '2018-12-26', 1, '2018-12-27', 150000, 50000, -100000, 0, 0, 'Menunggu Proses'),
-('TS0002', 'Rizky', 'Kalimantan', '087565765345', '2018-12-25 12:22:52', '2018-12-26', '2018-12-27', '2018-12-27', 1, '2018-12-28', 150000, 75000, -75000, 0, 0, 'Menunggu Proses'),
-('TS0003', 'Mardiana Azizah', 'Jawa 7', '086542345675', '2018-12-25 12:52:22', '2018-12-26', '2018-12-27', '2018-12-27', 1, '2018-12-28', 350000, 150000, -200000, 0, 0, 'Menunggu Proses');
+INSERT INTO `sewa` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_sekarang`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`, `bayar`, `biaya_ganti`, `kembalian`, `status`) VALUES
+('TS0001', 'Aulia', 'Mastrip', '089236785245', '2018-12-25 12:21:21', '2018-12-25', '2018-12-26', '2018-12-26', 1, '2018-12-27', 150000, 50000, -100000, 0, 0, 0, 'Kembali'),
+('TS0002', 'Rizky', 'Kalimantan', '087565765345', '2018-12-25 12:22:52', '2018-12-26', '2018-12-27', '2018-12-27', 1, '2018-12-28', 150000, 75000, -75000, 0, 0, 0, 'Kembali'),
+('TS0003', 'Mardiana Azizah', 'Jawa 7', '086542345675', '2018-12-25 12:52:22', '2018-12-26', '2018-12-27', '2018-12-27', 1, '2018-12-28', 350000, 150000, -200000, 0, 0, 0, 'Proses'),
+('TS0004', 'Aulia', 'Mastrip', '082236685263', '2018-12-28 08:57:38', '2018-12-28', '2018-12-29', '2018-12-29', 1, '2018-12-30', 1800000, 800000, -1000000, 0, 0, 0, 'Menunggu Proses');
 
 -- --------------------------------------------------------
 
@@ -428,6 +452,7 @@ ALTER TABLE `paket_tenda`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
