@@ -32,7 +32,13 @@ class Login extends CI_Controller{
             $this->Model_app->password = $_POST['password'];
             if($this->Model_app->cek_log()==TRUE){
                 $this->session->set_userdata('username', $this->Model_app->username);
-                redirect('DataBarang');
+                $user = $this->Model_app->username;
+                $ceklevel  = $this->Model_app->level($user);
+                if ($ceklevel == 0) {
+                  redirect('DataBarang');
+                }else if($ceklevel == 1) {
+                  redirect('InputSewa');
+                }
             }else{
                 redirect('Login');
             }

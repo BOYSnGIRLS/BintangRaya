@@ -186,7 +186,7 @@ class Model_Barang extends CI_Model {
 
 	function ukuran($id){
 		$query = $this->db->select('ukuran_tenda as ukuran')->from('tenda')->where('id_tenda', $id)->get();
-    return $query->row()->ukuran;
+    	return $query->row()->ukuran;
 	}
 
 }

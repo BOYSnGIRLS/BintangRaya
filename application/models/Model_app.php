@@ -46,5 +46,9 @@ class Model_app extends CI_Model{
         return $row['hitung'] == 1;
     }
     
+    function level($user){
+        $query = $this->db->select('level as level')->from('user')->where('username', $user)->get();
+        return $query->row()->level;
+    }
     
 }

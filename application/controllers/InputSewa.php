@@ -6,12 +6,118 @@ class InputSewa extends CI_Controller {
         parent::__construct();
         $this->load->model('Model_Transaksi');
         $this->model = $this->Model_Transaksi;
+        $this->load->model('Model_app');
         $this->load->library('session');
         $this->load->helper('url');
 
         if(!$this->session->userdata('username')){
             redirect('Login');
         }
+    }
+
+
+    function index(){
+        $user = $this->session->userdata('username');
+        var_dump($user);
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+            if (isset($_POST['btnTambah'])){
+                $kode['kode'] = $this->Model_Transaksi->get_notrans();
+                $total = $this->input->post('total_tagih');
+                $dp = $this->input->post('jml_uang');
+                $pelunasan = $this->input->post('kembalian');
+
+                $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
+                $this->db->query("INSERT INTO `detail_sewa`(`id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total`) SELECT `id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total` FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
+
+                $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+
+
+                $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
+                $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
+
+                $this->session->set_flashdata('message', 'anda berhasil menginput data');
+                redirect('InputSewa');
+            }else{
+
+                $x =$this->Model_Transaksi->get_barang();
+                $title=array(
+                    'title'=>'InputSewa',
+                    'active_inputsewa'=>'active'
+                );
+                $kode['kode'] = $this->Model_Transaksi->get_notrans();
+
+                $this->load->view('element/css',$title);
+                $this->load->view('element/v_header');
+                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
+                $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
+
+                $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
+                if ($cek >=1 ){
+                    $sementara['data'] = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                    $lama['lama']=$this->db->query("SELECT lama FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                    $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                    $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                $this->load->view('v_inputsewa2', $data+$lama+$kode+$sementara+$detail_sewa);
+                }
+                elseif ($cek == 0){
+                    $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara`  WHERE id_sewa='".$kode['kode']."'")->result();
+                    $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                $this->load->view('v_inputsewa2', $data+$kode+$detail_sewa);
+                }
+
+            }
+        }else if($ceklevel == 1) {
+            
+            if (isset($_POST['btnTambah'])){
+                $kode['kode'] = $this->Model_Transaksi->get_notrans();
+                $total = $this->input->post('total_tagih');
+                $dp = $this->input->post('jml_uang');
+                $pelunasan = $this->input->post('kembalian');
+
+                $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
+                $this->db->query("INSERT INTO `detail_sewa`(`id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total`) SELECT `id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total` FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
+
+                $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+
+
+                $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
+                $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
+
+                $this->session->set_flashdata('message', 'anda berhasil menginput data');
+                redirect('InputSewa');
+            }else{
+
+                $x =$this->Model_Transaksi->get_barang();
+                $title=array(
+                    'title'=>'InputSewa',
+                    'active_inputsewa'=>'active'
+                );
+                $kode['kode'] = $this->Model_Transaksi->get_notrans();
+
+                $this->load->view('element/css',$title);
+                $this->load->view('element/v_headerPegawai');
+                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
+                $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
+
+                $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
+                if ($cek >=1 ){
+                    $sementara['data'] = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                    $lama['lama']=$this->db->query("SELECT lama FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                    $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                    $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                $this->load->view('v_inputsewa2', $data+$lama+$kode+$sementara+$detail_sewa);
+                }
+                elseif ($cek == 0){
+                    $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara`  WHERE id_sewa='".$kode['kode']."'")->result();
+                    $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
+                $this->load->view('v_inputsewa2', $data+$kode+$detail_sewa);
+                }
+
+            }
+        }
+
+        
     }
 
     public function get_autocomplete(){    //membuat dropdown pilihan di search box
@@ -41,56 +147,6 @@ class InputSewa extends CI_Controller {
                         echo json_encode($arr_result); 
                 }
             }
-        }
-    }
-
-
-    function index(){
-         
-        if (isset($_POST['btnTambah'])){
-            $kode['kode'] = $this->Model_Transaksi->get_notrans();
-            $total = $this->input->post('total_tagih');
-            $dp = $this->input->post('jml_uang');
-            $pelunasan = $this->input->post('kembalian');
-
-            $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
-            $this->db->query("INSERT INTO `detail_sewa`(`id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total`) SELECT `id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total` FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
-
-            $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
-
-
-            $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
-            $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
-
-            $this->session->set_flashdata('message', 'anda berhasil menginput data');
-            redirect('InputSewa');
-        }else{
-
-            $x =$this->Model_Transaksi->get_barang();
-            $title=array(
-                'title'=>'InputSewa',
-                'active_inputsewa'=>'active'
-            );
-            $kode['kode'] = $this->Model_Transaksi->get_notrans();
-            $this->load->view('element/css',$title);
-            $this->load->view('element/v_header');
-            $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
-            $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
-
-            $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
-            if ($cek >=1 ){
-                $sementara['data'] = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
-                $lama['lama']=$this->db->query("SELECT lama FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
-            $this->load->view('v_inputsewa2', $data+$lama+$kode+$sementara+$detail_sewa);
-            }
-            elseif ($cek == 0){
-                $data['total'] = $this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara`  WHERE id_sewa='".$kode['kode']."'")->result();
-                $data['total2']=$this->db->query("SELECT SUM(harga_total) as total FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."'")->result();
-            $this->load->view('v_inputsewa2', $data+$kode+$detail_sewa);
-            }
-
         }
     }
 
