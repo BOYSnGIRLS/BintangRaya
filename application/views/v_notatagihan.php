@@ -16,33 +16,35 @@
                                         <br>
 
                                     <div class="row">
-                                         <div class="col-sm-3">
+                                         <div class="col-lg-2">
                                             <label>NPWP</label><br/>
                                             <label>SIUP</label><br/>
                                             <label  for="no">Nomor Surat</label><br/>
                                             <label  for="nama">Nama </label><br/>
                                             <label  for="alamat">Alamat</label><br/>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>: 80.370.340.4-626.000</label><br/>
+                                            <label>: 503/0629/411/2016</label><br/>
+                                            <label>: <?php echo $data[0]->id_sewa;?></label><br/>
+                                            <label>: <?php echo $data[0]->nama_pelanggan;?></label><br/>
+                                            <label>: <?php echo $data[0]->alamat_pelanggan;?></label><br/>
+                                        </div>
+                                        <div class="col-lg-3">
                                             <label  for="telp">Telp</label><br/>
                                             <label  for="tgl">Tanggal Pasang</label><br/>
                                             <label  for="tgl2">Tanggal Acara</label><br/>
                                             <label  for="tgl2">Lama Acara</label><br/>
                                             <label  for="tgl3">Tanggal Bongkar</label><br/>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <label>80.370.340.4-626.000</label><br/>
-                                            <label>503/0629/411/2016</label><br/>
-                                            <label><?php echo $data[0]->id_sewa;?></label><br/>
-                                            <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_acara1;?></label> s/d <label><?php echo $data[0]->tgl_acara2;?></label><br/> 
-                                            <label><?php echo $data[0]->lama;?> Hari</label><br/>
-                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
-                                            
+                                        <div class="col-lg-4">
+                                            <label>: <?php echo $data[0]->telp_pelanggan;?></label><br/>
+                                            <label>: <?php echo $data[0]->tgl_pasang;?></label><br/>
+                                            <label>: <?php echo $data[0]->tgl_acara1;?></label> s/d <label><?php echo $data[0]->tgl_acara2;?></label><br/> 
+                                            <label>: <?php echo $data[0]->lama;?> Hari</label><br/>
+                                            <label>: <?php echo $data[0]->tgl_bongkar;?></label><br/>
                                         </div>
-                                    </div>
-									
+                                    </div><br>
                                         <div class="table-responsive table--no-card m-b-30">
 										<table class="table table-borderless table-striped table-earning">
                                             <thead>
@@ -87,6 +89,10 @@
                 <tr>
                     <th>DP (Rp)         : </th>
                     <th style="text-align:right;"><input type="text" name="dp" value="<?php echo number_format($data[0]->dp) ;?>" style="text-align:right;"></th>
+                </tr>
+                <tr>
+                    <th>Biaya Ganti Rugi : </th>
+                    <th style="text-align:right;"><input type="text" name="ganti_rugi" value="<?php echo number_format($data[0]->biaya_ganti) ;?>" style="text-align:right;"></th>
                 </tr>
                 <tr>
                     <th>Pelunasan (Rp)  : </th>

@@ -85,6 +85,7 @@
         												<th>Stok Barang</th>
         												<th>Harga Sewa</th>
         												<th>Harga Jasa</th>
+                                <th>Harga Ganti Rugi</th>
                                 <th>Kategori</th>
         												<th colspan="2">Aksi</th>
         												
@@ -101,6 +102,7 @@
                                 <td><?php echo $row->stok_barang;?></td>
                                 <td><?php echo $row->harga_sewa;?></td>
                                 <td><?php echo $row->harga_jasa;?></td>
+                                <td><?php echo $row->harga_ganti_rugi;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
                                 <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
                                 <td>
