@@ -2,7 +2,7 @@
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
-          <form id="form_input_detail" action="<?php echo site_url('ListTransaksi/update_transaksi2');?>" method="POST">
+          <form id="form_input_detail" action="<?php echo site_url('ListTransaksi/update_transaksi');?>" method="POST">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="au-card m-b-30">
@@ -138,7 +138,8 @@
                                              <td><?=$items->id_hargatenda ;?></td>
                                              <td><?=$items->jenis_tenda;?></td>
                                              <td style="text-align:center;">
-                                              <input class="form-control" type="text" name="stok_tenda" maxlength="15" value="<?php echo number_format($items->jumlah_barang);?>"></td>
+                                              <input class="form-control" type="text" name="stok_tenda[]" maxlength="15" value="<?php echo number_format($items->jumlah_barang);?>"></td>
+                                     <input type="hidden" name="idhargaTenda[]" id="jumlah_kembali" class="form-control" value="<?php echo $items->id_hargatenda; ?>">
                                             <td><button type="submit" class="btn btn-danger">Hapus</button></td>
 
                                         </tr>
@@ -149,7 +150,8 @@
                                              <td><?=$items->id_barang ;?></td>
                                              <td><?=$items->nama_barang;?></td>
                                              <td style="text-align:center;">
-                                              <input class="form-control" type="text" name="stok_tenda" maxlength="15" value="<?php echo number_format($items->jumlah_barang);?>">
+                                     <input type="hidden" name="idBarang[]" class="form-control" value="<?php echo $items->id_barang; ?>">
+                                              <input class="form-control" type="text" name="stok_barang[]" maxlength="15" value="<?php echo number_format($items->jumlah_barang);?>">
                                               </td>
                                               <td><button type="submit" class="btn btn-danger">Hapus</button></td>
                                         </tr>
@@ -161,7 +163,7 @@
                                       <tr>
                                           <td width="800"></td>
                                           <td width="10"></td>
-                                          <td><span class="input-group-btn"><button class=" btn btn-primary btn-lg" type="submit">Simpan</button></span></td>
+                                          <td><span class="input-group-btn"><button class=" btn btn-primary btn-lg" name="btnUpdate" type="submit">Simpan</button></span></td>
                                       </tr>
                                   </table>
 
