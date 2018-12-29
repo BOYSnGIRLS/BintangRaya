@@ -5,6 +5,7 @@ function tampil_semua(){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
+    $this->db->join('sewa', 'sewa.id_user=user.id_user');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();

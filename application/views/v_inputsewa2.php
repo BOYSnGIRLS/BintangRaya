@@ -19,19 +19,18 @@
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
                     <!-- input data penyewa -->
                     <div class="form-group row">
-                         <div class="col-sm-4" >
-                        <label>No Pesanan</label>
-                        <input type="text" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo $kode;?>" readonly>
-                    </div>
-
-                      <div class="col-sm-4" >
-                        <label  for="nama">Nama Penyewa:</label>
-                        <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>" required>
-                      </div>
-                      
-                      <div class="col-sm-4">
-                      <label for="nomor">Nomor Telepon: </label>
-                        <input class="form-control" placeholder="Masukan Nomor" type="number"  maxlength="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
+                      <!--  <input type="text" name="id_user" value="<?php echo $user;?>" readonly> -->
+                        <div class="col-sm-4" >
+                            <label>No Pesanan</label>
+                            <input type="text" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo $kode;?>" readonly>
+                        </div>
+                        <div class="col-sm-4" >
+                            <label  for="nama">Nama Penyewa:</label>
+                            <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="nomor">Nomor Telepon: </label>
+                            <input class="form-control" placeholder="Masukan Nomor" type="number"  maxlength="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
                         </div>
                     </div>
 
