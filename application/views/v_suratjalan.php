@@ -27,19 +27,19 @@
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Pasang</td>
-                                                <td>: <?php echo $data[0]->tgl_pasang;?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_pasang));?></td>
                                                 <td>Alamat</td>
                                                 <td>: <?php echo $data[0]->alamat_pelanggan;?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Acara</td>
-                                                <td>: <?php echo $data[0]->tgl_acara1;?> s/d <?php echo $data[0]->tgl_acara2;?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?> s/d <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara2));?></td>
                                                 <td>No. Telepon</td>
                                                 <td>: <?php echo $data[0]->telp_pelanggan;?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Bongkar</td>
-                                                <td>: <?php echo $data[0]->tgl_bongkar;?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_bongkar));?></td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>

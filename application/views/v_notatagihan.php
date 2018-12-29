@@ -27,13 +27,13 @@
                                                 <td>SIUP</td>
                                                 <td>: 503/0629/411/2016</td>
                                                 <td>Tanggal Pasang</td>
-                                                <td>: <?php echo $data[0]->tgl_pasang;?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_pasang));?></td>
                                             </tr>
                                             <tr>
                                                 <td>Nomor Surat</td>
                                                 <td>: <?php echo $data[0]->id_sewa;?></td>
                                                 <td>Tanggal Acara</td>
-                                                <td>: <?php echo $data[0]->tgl_acara1;?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?></td>
                                             </tr>
                                             <tr>
                                                 <td>Nama</td>
@@ -45,7 +45,7 @@
                                                 <td>Alamat</td>
                                                 <td>: <?php echo $data[0]->alamat_pelanggan;?></td>
                                                 <td>Tanggal Bongkar</td>
-                                                <td>: <?php echo $data[0]->tgl_bongkar;?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_bongkar));?></td>
                                             </tr>
 
                                         </table>
