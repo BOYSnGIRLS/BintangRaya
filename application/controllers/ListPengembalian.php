@@ -114,20 +114,45 @@ class ListPengembalian extends CI_Controller {
     }
 
     public function detail(){
-        $id = $this->uri->segment(3);
-        $title=array(
-            'title'=>'List Pengembalian',
-            'active_listkembali'=>'active'
-        );
-        $data=array(
-                'data' => $this->Model_Pengembalian->tampilkembali($id),
-                'detail_kembali1' => $this->Model_Pengembalian->get_kembali1($id),
-                'detail_kembali2' =>$this->Model_Pengembalian->get_kembali2($id)
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+            $id = $this->uri->segment(3);
+            $title=array(
+                'title'=>'List Pengembalian',
+                'active_listkembali'=>'active'
             );
-        $this->load->view('element/css',$title);
-        $this->load->view('element/v_header', $title);
-        $this->load->view('v_detailkembali', $data);
-        $this->load->view('element/v_footer');
+            $data=array(
+                    'data' => $this->Model_Pengembalian->tampilkembali($id),
+                    'detail_kembali1' => $this->Model_Pengembalian->get_kembali1($id),
+                    'detail_kembali2' =>$this->Model_Pengembalian->get_kembali2($id)
+                );
+            $this->load->view('element/css',$title);
+            $this->load->view('element/v_header', $title);
+            $this->load->view('v_detailkembali', $data);
+            $this->load->view('element/v_footer');
+        }else if($ceklevel == 1){
+            $id = $this->uri->segment(3);
+            $title=array(
+                'title'=>'List Pengembalian',
+                'active_listkembali'=>'active'
+            );
+            $data=array(
+                    'data' => $this->Model_Pengembalian->tampilkembali($id),
+                    'detail_kembali1' => $this->Model_Pengembalian->get_kembali1($id),
+                    'detail_kembali2' =>$this->Model_Pengembalian->get_kembali2($id)
+                );
+            $this->load->view('element/css',$title);
+            $this->load->view('element/v_headerPegawai', $title);
+            $this->load->view('v_detailkembali', $data);
+            $this->load->view('element/v_footer');
+        }else{
+
+            $this->load->view('element/css',$title);
+            $this->load->view('v_login');
+            
+        }
+
 
     }
 
