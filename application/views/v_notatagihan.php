@@ -107,6 +107,12 @@
                     </th>
                 </tr>
                 <tr>
+                    <th>Total Tagihan (Rp)         : </th>
+                    <th style="text-align:right;"><input type="text" id="tagihan" name="tagihan" value="<?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?>" style="text-align:right;">
+                        <input type="hidden" class="input-sm" id="tagihan2" name="tagihan2" value="<?php echo ($data[0]->pelunasan)-($data[0]->biaya_ganti) ;?>" style="text-align:right;">
+                    </th>
+                </tr>
+                <tr>
                     <th>Pembayaran (Rp)         : </th>
                     <th style="text-align:right;"><input type="text" name="pembayaran" value="<?php echo number_format($data[0]->bayar) ;?>" style="text-align:right;"></th>
                 </tr>
@@ -162,7 +168,7 @@
     <script type="text/javascript">
         $(function(){
             $('#bayar').on("input",function(){
-                var kembali=$('#pelunasan2').val();
+                var kembali=$('#tagihan2').val();
                 var bayar=$('#bayar').val();
                 var hsl=kembali.replace(/[^\d]/g,"");
                 $('#bayar2').val(hsl);

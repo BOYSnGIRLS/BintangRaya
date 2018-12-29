@@ -106,6 +106,8 @@
                     <input type="hidden" class="input-sm" id="pelunasan2" name="pelunasan2" value="<?php echo $data[0]->pelunasan ;?>" style="text-align:right;">
                     </th>
                 </tr>
+                <th>Total Tagihan (Rp)         : </th>
+                    <th style="text-align:right;"><input type="text" id="tagihan" name="tagihan" value="<?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?>" style="text-align:right;"></th>
                 <tr>
                     <th>Pembayaran (Rp)         : </th>
                     <th style="text-align:right;"><input type="text" name="pembayaran" value="<?php echo number_format($data[0]->bayar) ;?>" style="text-align:right;"></th>
