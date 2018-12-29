@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2018 at 08:41 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Dec 29, 2018 at 10:29 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -51,9 +53,9 @@ INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_sewa`, `
 ('BR008', 'MJ', 'Meja Minum', 17500, 0, 4000, 10),
 ('BR009', 'MJ', 'Rempel Meja Emas', 10000, 0, 2000, 0),
 ('BR010', 'MJ', 'Taplak + Rempel', 15000, 0, 2000, 0),
-('BR011', 'GB', 'Piring (Uk 9)', 500, 0, 0, 1000),
+('BR011', 'GB', 'Piring (Uk 9)', 500, 10000, 0, 1000),
 ('BR012', 'GB', 'Mangkok Melamine', 400, 0, 0, 1000),
-('BR014', 'GB', 'Mangkok Besar (Bowl)', 15000, 0, 2250, 8),
+('BR014', 'GB', 'Mangkok Besar (Bowl)', 15000, 50000, 2250, 8),
 ('BR015', 'GB', 'Rantang Piring', 10000, 0, 1500, 0),
 ('BR016', 'XN', 'Kipas Blower (Pendek)', 0, 0, 0, 0),
 ('BR017', 'XN', 'Kipas Blower (Tinggi)', 75000, 0, 7500, 0),
@@ -84,18 +86,18 @@ CREATE TABLE `detail_kembali_barang` (
   `id_barang` varchar(6) NOT NULL,
   `jumlah_sewa` int(11) NOT NULL,
   `jumlah_kembali` int(11) NOT NULL,
-  `hilangrusak` int(11) NOT NULL
+  `hilangrusak` int(11) NOT NULL,
+  `harga_ganti` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_kembali_barang`
 --
 
-INSERT INTO `detail_kembali_barang` (`id_kembali`, `id_barang`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
-('KB0001', 'BR001', 500, 499, 1),
-('KB0001', 'MK002', 250, 250, 0),
-('KB0001', 'BR001', 100, 100, 0),
-('KB0002', 'BR001', 300, 300, 0);
+INSERT INTO `detail_kembali_barang` (`id_kembali`, `id_barang`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`, `harga_ganti`) VALUES
+('KB0001', 'BR011', 1000, 995, 5, 50000),
+('KB0002', 'BR011', 1000, 995, 5, 50000),
+('KB0003', 'BR011', 1000, 995, 5, 50000);
 
 -- --------------------------------------------------------
 
@@ -110,16 +112,6 @@ CREATE TABLE `detail_kembali_tenda` (
   `jumlah_kembali` int(11) NOT NULL,
   `hilangrusak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detail_kembali_tenda`
---
-
-INSERT INTO `detail_kembali_tenda` (`id_kembali`, `id_tenda`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
-('KB0001', 'HT001', 2, 2, 0),
-('KB0001', 'HT001', 1, 1, 0),
-('KB0001', 'PT002', 1, 1, 0),
-('KB0002', 'PT002', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -148,6 +140,14 @@ CREATE TABLE `detail_sewa` (
   `harga_sewa` int(11) NOT NULL,
   `harga_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_sewa`
+--
+
+INSERT INTO `detail_sewa` (`id_sewa`, `id`, `jumlah_barang`, `harga_sewa`, `harga_total`) VALUES
+('TS0001', 'BR011', 1000, 500, 500000),
+('TS0002', 'BR014', 5, 15000, 75000);
 
 -- --------------------------------------------------------
 
@@ -205,8 +205,18 @@ INSERT INTO `paket_tenda` (`id_hargatenda`, `id_tenda`, `jenis_tenda`, `harga_se
 CREATE TABLE `pengembalian` (
   `id_kembali` varchar(6) NOT NULL,
   `id_sewa` varchar(6) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `tgl_kembali` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengembalian`
+--
+
+INSERT INTO `pengembalian` (`id_kembali`, `id_sewa`, `id_user`, `tgl_kembali`) VALUES
+('KB0001', 'TS0001', 2, '2018-12-29 09:20:23'),
+('KB0002', 'TS0001', 2, '2018-12-29 09:20:24'),
+('KB0003', 'TS0001', 2, '2018-12-29 09:20:24');
 
 -- --------------------------------------------------------
 
@@ -225,13 +235,6 @@ CREATE TABLE `sementara` (
   `tgl_bongkar` date NOT NULL,
   `lama` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sementara`
---
-
-INSERT INTO `sementara` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `tgl_bongkar`, `lama`) VALUES
-('TS0005', 'Diana', 'Mastrip', '08236685263', '2018-12-27', '2018-12-28', '2018-12-28', '2018-12-29', 1);
 
 -- --------------------------------------------------------
 
@@ -253,12 +256,20 @@ CREATE TABLE `sewa` (
   `tgl_bongkar` date NOT NULL,
   `total_tagihan` int(11) NOT NULL,
   `dp` int(11) NOT NULL,
+  `biaya_ganti` int(11) NOT NULL,
   `pelunasan` int(11) NOT NULL,
   `bayar` int(11) NOT NULL,
-  `biaya_ganti` int(11) NOT NULL,
   `kembalian` int(11) NOT NULL,
   `status` varchar(25) DEFAULT 'Menunggu Proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sewa`
+--
+
+INSERT INTO `sewa` (`id_sewa`, `id_user`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_sekarang`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`, `total_tagihan`, `dp`, `biaya_ganti`, `pelunasan`, `bayar`, `kembalian`, `status`) VALUES
+('TS0001', 2, 'Mardiana ', 'Mastrip', '0897654765342', '2018-12-29 08:17:34', '2018-12-29', '2018-12-30', '2018-12-30', 1, '2018-12-31', 500000, 250000, 50000, -250000, 0, 0, 'Kembali'),
+('TS0002', 2, 'Diana', 'Kalimantan', '089765234678', '2018-12-29 08:22:10', '2018-12-30', '2018-12-31', '2018-12-31', 1, '2019-01-01', 75000, 25000, 50000, -50000, 0, 0, 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -409,6 +420,18 @@ ALTER TABLE `barang`
   ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_barang` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `detail_kembali_barang`
+--
+ALTER TABLE `detail_kembali_barang`
+  ADD CONSTRAINT `detail_kembali_barang_ibfk_1` FOREIGN KEY (`id_kembali`) REFERENCES `pengembalian` (`id_kembali`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `detail_kembali_tenda`
+--
+ALTER TABLE `detail_kembali_tenda`
+  ADD CONSTRAINT `detail_kembali_tenda_ibfk_1` FOREIGN KEY (`id_kembali`) REFERENCES `pengembalian` (`id_kembali`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `detail_sewa`
 --
 ALTER TABLE `detail_sewa`
@@ -425,12 +448,7 @@ ALTER TABLE `paket_tenda`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `sewa`
---
-ALTER TABLE `sewa`
-  ADD CONSTRAINT `sewa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
