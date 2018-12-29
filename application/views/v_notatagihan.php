@@ -33,7 +33,7 @@
                                                 <td>Nomor Surat</td>
                                                 <td>: <?php echo $data[0]->id_sewa;?></td>
                                                 <td>Tanggal Acara</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?></td>
+                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?> s/d <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara2));?></td>
                                             </tr>
                                             <tr>
                                                 <td>Nama</td>
