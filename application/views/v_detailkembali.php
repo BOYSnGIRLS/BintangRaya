@@ -58,6 +58,8 @@
                                 <th>Jumlah Sewa</th>
                                 <th>Jumlah Kembali</th>
                                 <th>Hilang/Rusak</th>
+                                <th>Ganti Rugi</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -78,17 +80,18 @@
                                 foreach ($detail_kembali1 as $items): ?>
                                 
                                 <tr>
-                                     <td><?=$items->id_barang ;?></td>
+                                     <td><?=$items->id_barang;?></td>
                                      <td><?=$items->nama_barang;?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_kembali);?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->hilangrusak);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->harga_ganti);?></td>
                                 </tr>
                                 <?php
                                 endforeach; ?>
                                 <tr>
                                 <tr>
-                                  <td colspan="5"><a href="<?php echo base_url('ListPengembalian');?>"><button  name="btnSimpan" class="btn btn-info btn-lg"> Selesai</button></a></td>
+                                  <td colspan="6"><a href="<?php echo base_url('ListPengembalian');?>"><button  name="btnSimpan" class="btn btn-info btn-lg"> Selesai</button></a></td>
                                 </tr>
                             </tbody>
                         </table>

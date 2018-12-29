@@ -50,5 +50,10 @@ class Model_app extends CI_Model{
         $query = $this->db->select('level as level')->from('user')->where('username', $user)->get();
         return $query->row()->level;
     }
+
+    function iduser($user){
+        $query = $this->db->select('id_user as id')->from('user')->where('username', $user)->get();
+        return $query->row()->id;
+    }
     
 }

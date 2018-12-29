@@ -18,7 +18,6 @@ class InputSewa extends CI_Controller {
 
     function index(){
         $user = $this->session->userdata('username');
-        var_dump($user);
         $ceklevel  = $this->Model_app->level($user);
         if ($ceklevel == 0) {
             if (isset($_POST['btnTambah'])){
@@ -26,11 +25,11 @@ class InputSewa extends CI_Controller {
                 $total = $this->input->post('total_tagih');
                 $dp = $this->input->post('jml_uang');
                 $pelunasan = $this->input->post('kembalian');
-
+                $id_user = $this->Model_app->iduser($user);
                 $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
                 $this->db->query("INSERT INTO `detail_sewa`(`id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total`) SELECT `id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total` FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
 
-                $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+                $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."', `id_user`='".$id_user."' WHERE id_sewa='".$kode['kode']."' ");
 
 
                 $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
@@ -39,7 +38,6 @@ class InputSewa extends CI_Controller {
                 $this->session->set_flashdata('message', 'anda berhasil menginput data');
                 redirect('InputSewa');
             }else{
-
                 $x =$this->Model_Transaksi->get_barang();
                 $title=array(
                     'title'=>'InputSewa',
@@ -74,11 +72,11 @@ class InputSewa extends CI_Controller {
                 $total = $this->input->post('total_tagih');
                 $dp = $this->input->post('jml_uang');
                 $pelunasan = $this->input->post('kembalian');
-
+                $id_user = $this->Model_app->iduser($user);
                 $this->db->query("INSERT INTO `sewa` (`id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`) SELECT `id_sewa`,`nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`,  `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar` FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
                 $this->db->query("INSERT INTO `detail_sewa`(`id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total`) SELECT `id_sewa`,`id`,`jumlah_barang`,`harga_sewa`,`harga_total` FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
 
-                $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."' WHERE id_sewa='".$kode['kode']."'");
+                $this->db->query("UPDATE `sewa` SET `total_tagihan`='".$total."',`dp`='".$dp."',`pelunasan`='".$pelunasan."',`id_user`='".$id_user."' WHERE id_sewa='".$kode['kode']."'");
 
 
                 $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
@@ -87,6 +85,7 @@ class InputSewa extends CI_Controller {
                 $this->session->set_flashdata('message', 'anda berhasil menginput data');
                 redirect('InputSewa');
             }else{
+
 
                 $x =$this->Model_Transaksi->get_barang();
                 $title=array(

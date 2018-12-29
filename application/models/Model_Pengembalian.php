@@ -17,15 +17,14 @@ function get_notrans(){
     $this->db->limit(1);    
     $query = $this->db->get('pengembalian');     
     if($query->num_rows() <> 0){      
-  
-     $data = $query->row();      
-     $kode = intval($data->kode) + 1;    
+         $data = $query->row();      
+         $kode = intval($data->kode) + 1;    
     }
     else {      
      //jika kode belum ada      
      $kode = 1;    
     }
-    $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT); 
+    $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);  
     $kodejadi = "KB".$kodemax;  
     return $kodejadi;
   }
@@ -151,6 +150,11 @@ function get_kembali1($kode){
         $this->db->order_by('YEAR(tgl_pasang)'); // Urutkan berdasarkan tahun secara Ascending (ASC)
         $this->db->group_by('YEAR(tgl_pasang)'); // Group berdasarkan tahun pada field tgl
         return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
+    }
+
+    function biaya($id){
+        $query = $this->db->select('SUM(harga_ganti) as biaya')->from('detail_kembali_barang')->where('id_kembali', $id)->get();
+        return $query->row()->biaya;
     }
 }
 ?>

@@ -249,10 +249,12 @@ class ListPengembalian extends CI_Controller {
             $id_sewa=$this->input->post('id_sewa');
             $idT = $this->input->post('idhargaTenda');
             $idB = $this->input->post('idBarang');
+            $harga_ganti = $this->input->post('hargaGanti');
             $jumlah_sewaT = $this->input->post('tendaSewa');
             $jumlah_sewaB = $this->input->post('barangSewa');
             $jumlah_kembaliT = $this->input->post('tenda_kembali');
             $jumlah_kembaliB = $this->input->post('barang_kembali');
+
             
             $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`) VALUES ('$kode', '$id_sewa') ");
             $this->db->query("UPDATE `sewa` SET `status`='Kembali' WHERE `id_sewa`='$id_sewa'");
@@ -260,7 +262,7 @@ class ListPengembalian extends CI_Controller {
             $indexT = 0;
             foreach ($idT as $row) {
                 $hilangrusak = $jumlah_sewaT[$indexT]-$jumlah_kembaliT[$indexT];
-                $this->db->query("INSERT INTO `detail_kembali_tenda`(`id_kembali`,  `id_tenda`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaT[$indexT]."',  '".$jumlah_kembaliT[$indexT]."', '".$hilangrusak."') ");
+                $this->db->query("INSERT INTO `detail_kembali_tenda`(`id_kembali`,  `id_tenda`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`, `harga_ganti`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaT[$indexT]."',  '".$jumlah_kembaliT[$indexT]."', '".$hilangrusak."') ");
                 $indexT++;
 
             }
@@ -268,9 +270,13 @@ class ListPengembalian extends CI_Controller {
             $indexB = 0;
             foreach ($idB as $row) {
                 $hilangrusak = $jumlah_sewaB[$indexB]-$jumlah_kembaliB[$indexB];
-                $this->db->query("INSERT INTO `detail_kembali_barang`(`id_kembali`,  `id_barang`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaB[$indexB]."',  '".$jumlah_kembaliB[$indexB]."', '".$hilangrusak."') ");
+                $ganti = ($jumlah_sewaB[$indexB]-$jumlah_kembaliB[$indexB])*$harga_ganti[$indexB];
+                $this->db->query("INSERT INTO `detail_kembali_barang`(`id_kembali`,  `id_barang`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`, `harga_ganti`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaB[$indexB]."',  '".$jumlah_kembaliB[$indexB]."', '".$hilangrusak."', '".$ganti."') ");
                 $indexB++;
             }
+
+            $biaya = $this->Model_Pengembalian->biaya($kode);
+            $this->db->query("UPDATE `sewa` SET `biaya_ganti`='$biaya' WHERE `id_sewa`='$id_sewa'");
 
             redirect('ListPengembalian');   
         }

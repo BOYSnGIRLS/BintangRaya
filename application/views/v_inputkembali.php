@@ -106,7 +106,7 @@
                                      <td><?=$items->id_hargatenda ;?></td>
                                      <td><?=$items->jenis_tenda;?></td>
                                      <td style="text-align:left;"><?php echo number_format($items->jumlah_barang);?></td>
-                                     <input type="hidden" name="idhargaTenda[]" id="jumlah_kembali" class="form-control" value="<?php echo $items->id_hargatenda; ?>">
+                                     <input type="hidden" name="idhargaTenda[]" class="form-control" value="<?php echo $items->id_hargatenda; ?>">
                                      <input type="hidden" name="tendaSewa[]" class="form-control" value="<?php echo $items->jumlah_barang; ?>">
                                      <td ><input type="text" name="tenda_kembali[]" id="jumlah_kembali" class="form-control" ></td>
                                 </tr>
@@ -120,6 +120,7 @@
                                      <td><?=$items->nama_barang;?></td>
                                      <td style="text-align:left;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <input type="hidden" name="idBarang[]" class="form-control" value="<?php echo $items->id_barang; ?>">
+                                     <input type="text" name="hargaGanti[]" class="form-control" value="<?php echo $items->harga_ganti_rugi; ?>">
                                      <input type="hidden" name="barangSewa[]" class="form-control" value="<?php echo $items->jumlah_barang; ?>">
                                      <td><input type="text" name="barang_kembali[]" id="jumlah_kembali" class="form-control"></td>
                                 </tr>
