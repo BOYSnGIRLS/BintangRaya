@@ -17,32 +17,36 @@
 
                                 
                                 
-                                    <div class="row">          
-                                         <div class="col-sm-3">
-                                            <label  for="no">Nomor Surat</label><br/>
-                                            <label  for="tgl">Tanggal Pasang</label><br/>
-                                            <label  for="tgl2">Tanggal Acara</label><br/>
-                                            <label  for="tgl3">Tanggal Bongkar</label><br/>
-                                            <label  for="nama">Nama </label><br/>
-                                            <label  for="alamat">Alamat</label><br/>
-                                            <label  for="telp">Telp</label><br/>
-                                        </div>
-                                       <div class="col-lg-6">
-                            
-                                            <label><?php echo $data[0]->id_sewa;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_pasang;?></label><br/>
-                                            <label><?php echo $data[0]->tgl_acara1;?></label>
-                                            <label>s/d </label>
-                                            <label><?php echo $data[0]->tgl_acara2;?></label>
-                                            <br/>
-                                            <label><?php echo $data[0]->tgl_bongkar;?></label><br/>
-                                            <label><?php echo $data[0]->nama_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->alamat_pelanggan;?></label><br/>
-                                            <label><?php echo $data[0]->telp_pelanggan;?></label><br/>
-                        
-                                        </div>
+                                    <div class="row">       
+                                        <table class="table table-borderless">
+                                            <tr>
+                                                <td>Nomor Surat</td>
+                                                <td>: <?php echo $data[0]->id_sewa;?></td>
+                                                <td>Nama Pelanggan</td>
+                                                <td>: <?php echo $data[0]->nama_pelanggan;?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tanggal Pasang</td>
+                                                <td>: <?php echo $data[0]->tgl_pasang;?></td>
+                                                <td>Alamat</td>
+                                                <td>: <?php echo $data[0]->alamat_pelanggan;?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tanggal Acara</td>
+                                                <td>: <?php echo $data[0]->tgl_acara1;?> s/d <?php echo $data[0]->tgl_acara2;?></td>
+                                                <td>No. Telepon</td>
+                                                <td>: <?php echo $data[0]->telp_pelanggan;?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tanggal Bongkar</td>
+                                                <td>: <?php echo $data[0]->tgl_bongkar;?></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
                                         
                                     </div>
+                                        <br>
 
 									
                                         <table class="table table-borderless table-striped table-earning">

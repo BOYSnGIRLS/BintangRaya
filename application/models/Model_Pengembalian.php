@@ -57,6 +57,15 @@ function get_sewa2($kode){
     return $query->result();
   }
 
+function tampilkembali($id){
+    $this->db->select('*');
+    $this->db->from('pengembalian');
+    $this->db->join('sewa', 'pengembalian.id_sewa=sewa.id_sewa');
+    $this->db->where('id_kembali', $id);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
 function get_kembali1($kode){
     $this->db->select('*');
     $this->db->from('detail_kembali_barang');

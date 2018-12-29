@@ -91,7 +91,7 @@
                                                 <td><?php echo $row->id_kembali ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
-                                                <td><?php echo $row->tgl_bongkar?></td>
+                                                <td><?php echo date('d - m - Y', strtotime($row->tgl_bongkar));?></td>
                                                 <td><a href="<?php echo base_url(); ?>listPengembalian/detail/<?php echo $row->id_kembali;?>"><button class="btn btn-info"> detail </button></a></td> 
                                                 <td><?php echo $row->username ?></td>
                                             </tr>

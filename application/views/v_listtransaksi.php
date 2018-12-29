@@ -66,7 +66,7 @@
                                                 <!-- <td><?php echo $no++; ?></td> -->
                                                 <td><?php echo $row->id_sewa ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
-                                                <td><?php echo $row->tgl_pasang?></td>
+                                                <td><?php echo date('d - m - Y', strtotime($row->tgl_pasang));?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
 
                                                 <td>
