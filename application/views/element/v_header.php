@@ -26,7 +26,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="<?= base_url('DataPegawai')?>">
+                            <a href="<?= base_url('DataUser')?>">
                                 <i class="fas fa-tachometer-alt"></i>Data Pegawai</a>
                         </li>
                         <li>
@@ -82,7 +82,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="<?php if(isset($active_datapegawai)){echo $active_datapegawai ;}?> has-sub">
-                            <a href="<?= base_url('DataPegawai')?>">
+                            <a href="<?= base_url('DataUser')?>">
                                 <i class="fas fa-chart-bar"></i>Data Pegawai</a>
                         </li>
                         <li class="<?php if(isset($active_inputsewa)){echo $active_inputsewa ;}?> has-sub">
