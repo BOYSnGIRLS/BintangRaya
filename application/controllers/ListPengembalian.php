@@ -20,33 +20,32 @@ class ListPengembalian extends CI_Controller {
         $ceklevel  = $this->Model_app->level($user);
         if ($ceklevel == 0) {
             if($this->session->userdata('username')){
-                if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
-                        $filter = $_GET['filter']; // Ambil data filder yang dipilih user
-                        if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+                if(isset($_GET['filter']) && ! empty($_GET['filter'])){ 
+                        $filter = $_GET['filter']; 
+                        if($filter == '1'){
                             $tgl = $_GET['tanggal'];
                             
                             $ket = 'Data Transaksi Tanggal '.date('d-m-y', strtotime($tgl));
-                            $transaksi = $this->Model_Pengembalian->view_by_date($tgl); // Panggil fungsi view_by_date yang ada di TransaksiModel
+                            $transaksi = $this->Model_Pengembalian->view_by_date($tgl); 
 
-                        }else if($filter == '2'){ // Jika filter nya 2 (per bulan)
+                        }else if($filter == '2'){
                             $bulan = $_GET['bulan'];
                             $tahun = $_GET['tahun'];
                             $nama_bulan = array('', 'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
                             
                             $ket = 'Data Transaksi Bulan '.$nama_bulan[$bulan].' '.$tahun;
-                            $transaksi = $this->Model_Pengembalian->view_by_month($bulan, $tahun); // Panggil fungsi view_by_month yang ada di TransaksiModel
+                            $transaksi = $this->Model_Pengembalian->view_by_month($bulan, $tahun); 
 
-                        }else{ // Jika filter nya 3 (per tahun)
+                        }else{ 
                             $tahun = $_GET['tahun'];
                             
                             $ket = 'Data Transaksi Tahun '.$tahun;
-                            $transaksi = $this->Model_Pengembalian->view_by_year($tahun); // Panggil fungsi view_by_year yang ada di TransaksiModel
+                            $transaksi = $this->Model_Pengembalian->view_by_year($tahun); 
                         }
                         
-                    }else{ // Jika user tidak mengklik tombol tampilkan
+                    }else{
                         $ket = 'Semua Data Transaksi';
                         $transaksi = $this->Model_Pengembalian->view_all();
-                        // Panggil fungsi view_all yang ada di TransaksiModel
                     }
 
                     $data['ket'] = $ket;
@@ -65,13 +64,13 @@ class ListPengembalian extends CI_Controller {
             }
         }elseif ($ceklevel == 1) {
              if($this->session->userdata('username')){
-                if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
-                        $filter = $_GET['filter']; // Ambil data filder yang dipilih user
-                        if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+                if(isset($_GET['filter']) && ! empty($_GET['filter'])){ 
+                        $filter = $_GET['filter'];
+                        if($filter == '1'){ 
                             $tgl = $_GET['tanggal'];
                             
                             $ket = 'Data Transaksi Tanggal '.date('d-m-y', strtotime($tgl));
-                            $transaksi = $this->Model_Pengembalian->view_by_date($tgl); // Panggil fungsi view_by_date yang ada di TransaksiModel
+                            $transaksi = $this->Model_Pengembalian->view_by_date($tgl); 
 
                         }else if($filter == '2'){ // Jika filter nya 2 (per bulan)
                             $bulan = $_GET['bulan'];
@@ -79,19 +78,18 @@ class ListPengembalian extends CI_Controller {
                             $nama_bulan = array('', 'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
                             
                             $ket = 'Data Transaksi Bulan '.$nama_bulan[$bulan].' '.$tahun;
-                            $transaksi = $this->Model_Pengembalian->view_by_month($bulan, $tahun); // Panggil fungsi view_by_month yang ada di TransaksiModel
+                            $transaksi = $this->Model_Pengembalian->view_by_month($bulan, $tahun); 
 
-                        }else{ // Jika filter nya 3 (per tahun)
+                        }else{
                             $tahun = $_GET['tahun'];
                             
                             $ket = 'Data Transaksi Tahun '.$tahun;
-                            $transaksi = $this->Model_Pengembalian->view_by_year($tahun); // Panggil fungsi view_by_year yang ada di TransaksiModel
+                            $transaksi = $this->Model_Pengembalian->view_by_year($tahun); 
                         }
                         
-                    }else{ // Jika user tidak mengklik tombol tampilkan
+                    }else{
                         $ket = 'Semua Data Transaksi';
                         $transaksi = $this->Model_Pengembalian->view_all();
-                        // Panggil fungsi view_all yang ada di TransaksiModel
                     }
 
                     $data['ket'] = $ket;
@@ -254,9 +252,10 @@ class ListPengembalian extends CI_Controller {
             $jumlah_sewaB = $this->input->post('barangSewa');
             $jumlah_kembaliT = $this->input->post('tenda_kembali');
             $jumlah_kembaliB = $this->input->post('barang_kembali');
-
+            $user = $this->session->userdata('username');
+            $id_user = $this->Model_app->iduser($user);
             
-            $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`) VALUES ('$kode', '$id_sewa') ");
+            $this->db->query("INSERT INTO `pengembalian`(`id_kembali`, `id_sewa`, `id_user`) VALUES ('$kode', '$id_sewa', '$id_user') ");
             $this->db->query("UPDATE `sewa` SET `status`='Kembali' WHERE `id_sewa`='$id_sewa'");
             
             $indexT = 0;

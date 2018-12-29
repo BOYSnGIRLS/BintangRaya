@@ -41,23 +41,6 @@ class Model_Transaksi extends CI_Model{
         $this->db->join('tenda', 'tenda.id_tenda=paket_tenda.id_tenda');
         return $this->db->get()->result();
   }
-
-  // function search3($title){
-  //       $this->db->like('nama_barang', $title , 'both');
-  //       $this->db->order_by('nama_barang', 'ASC');
-  //       $this->db->limit(10);
-  //       return $this->db->get('stok_temp_barang')->result();
-  //       return $this->db->get()->result();    
-  //   }
-
-  // function search4($title){
-  //       $this->db->like('jenis_tenda', $title, 'both');
-  //       $this->db->order_by('jenis_tenda', 'ASC');
-  //       $this->db->limit(20);
-  //       $this->db->from('paket_tenda');
-  //       $this->db->join('tenda', 'tenda.id_tenda=paket_tenda.id_tenda');
-  //       return $this->db->get()->result();
-  // }
    
    function get_notrans(){
     $this->db->select('RIGHT(sewa.id_sewa,4) as kode', FALSE);

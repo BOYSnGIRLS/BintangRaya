@@ -17,9 +17,7 @@
                 <div class="au-card m-b-30">
                     <div class="au-card-inner">
                         <h2 class="title-2 m-b-40">Data Penyewa</h2>
-                    <!-- input data penyewa -->
                     <div class="form-group row">
-                      <!--  <input type="text" name="id_user" value="<?php echo $user;?>" readonly> -->
                         <div class="col-sm-4" >
                             <label>No Pesanan</label>
                             <input type="text" class="form-control" id="id_sewa" name="id_sewa"   value="<?php echo $kode;?>" readonly>
@@ -70,7 +68,6 @@
 
 
                         </form>
-                        <!-- <button class="btn btn-info" onclick="a()">test</button> -->
                     </div>
 
                     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
@@ -80,7 +77,6 @@
                         function a(id){
                         var stok = "asas";
                         var link = '<?php echo base_url('InputSewa/getStokBarang') ; ?>';
-                        //var id = $('[name = "id_barang"]').val();
                         $.ajax({
                             type : "POST",
                             url : link,

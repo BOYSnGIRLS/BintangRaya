@@ -47,13 +47,14 @@
                                             <tr>
                                                 <!-- <th>No</th> -->
                                                 <th>Kode Transaksi</th>
-                                                <th>Nama </th>
+                                                <th>Nama Pelanggan</th>
                                                 <th width="100%">Tgl Pasang</th>
                                                 <th>Alamat</th>
                                                 <th>Status</th>
                                                 <th>Pesanan Tambahan</th>
                                                 <th>Surat Jalan</th>
                                                 <th>Nota Tagihan</th>
+                                                <th>Petugas</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -94,6 +95,7 @@
                                                     <label class="btn btn-warning" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
                                                     <label class="btn btn-warning" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
                                                 </td>
+                                                <td><?php echo $row->username?></td>
                                                 </tr>
                                             <?php endforeach;  ?>
                                         </tbody>

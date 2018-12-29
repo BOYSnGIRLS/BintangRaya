@@ -76,11 +76,11 @@
                                             <tr>
                                                 <!-- <th>No</th> -->
                                                 <th>Kode Transaksi</th>
-                                                <th>Pegawai</th>
                                                 <th>Nama Pelanggan</th>
                                                 <th>Alamat</th>
                                                 <th>Tgl Bongkar</th>
                                                 <th>Aksi</th>
+                                                <th>Pegawai</th>
                                             </tr>
                                         </thead>
                                          <tbody>
@@ -89,11 +89,11 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $row->id_kembali ?></td>
-                                                <td><?php echo $row->username ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
                                                 <td><?php echo $row->tgl_bongkar?></td>
                                                 <td><a href="<?php echo base_url(); ?>listPengembalian/detail/<?php echo $row->id_kembali;?>"><button class="btn btn-info"> detail </button></a></td> 
+                                                <td><?php echo $row->username ?></td>
                                             </tr>
                                             <?php 
                                             // $no++;

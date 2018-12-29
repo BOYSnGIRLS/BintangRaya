@@ -87,22 +87,12 @@ function get_kembali1($kode){
     return $query->result();
   }
 
-  function tampilkembali($id){
-    $this->db->select('*');
-    $this->db->from('pengembalian');
-    // $this->db->join('detail_kembali_barang', 'detail_kembali_barang.id_kembali=pengembalian.id_kembali');
-    // $this->db->join('detail_kembali_tenda', 'detail_kembali_tenda.id_kembali=pengembalian.id_kembali');
-    $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
-    $this->db->where('pengembalian.id_kembali', $id);
-    $query = $this->db->get();
-    return $query->result();
-
-  }
 
     public function view_by_date($date){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
+    $this->db->join('user', 'pengembalian.id_user=user.id_user');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('DATE(tgl_bongkar)', $date);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -115,6 +105,7 @@ function get_kembali1($kode){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
+    $this->db->join('user', 'pengembalian.id_user=user.id_user');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('MONTH(tgl_pasang)', $month); // Tambahkan where bulan
     $this->db->where('YEAR(tgl_pasang)', $year); // Tambahkan where tahun
@@ -128,6 +119,7 @@ function get_kembali1($kode){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
+    $this->db->join('user', 'pengembalian.id_user=user.id_user');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('YEAR(tgl_pasang)', $year);
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
@@ -139,6 +131,7 @@ function get_kembali1($kode){
     $this->db->select('*');
     $this->db->from('pengembalian');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
+    $this->db->join('user', 'pengembalian.id_user=user.id_user');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
     $query = $this->db->get();
