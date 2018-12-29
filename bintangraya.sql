@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Des 2018 pada 13.12
--- Versi Server: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Dec 29, 2018 at 08:41 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -39,7 +37,7 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_sewa`, `harga_ganti_rugi`, `harga_jasa`, `stok_barang`) VALUES
@@ -78,7 +76,7 @@ INSERT INTO `barang` (`id_barang`, `id_kategori`, `nama_barang`, `harga_sewa`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_kembali_barang`
+-- Table structure for table `detail_kembali_barang`
 --
 
 CREATE TABLE `detail_kembali_barang` (
@@ -90,7 +88,7 @@ CREATE TABLE `detail_kembali_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_kembali_barang`
+-- Dumping data for table `detail_kembali_barang`
 --
 
 INSERT INTO `detail_kembali_barang` (`id_kembali`, `id_barang`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
@@ -102,7 +100,7 @@ INSERT INTO `detail_kembali_barang` (`id_kembali`, `id_barang`, `jumlah_sewa`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_kembali_tenda`
+-- Table structure for table `detail_kembali_tenda`
 --
 
 CREATE TABLE `detail_kembali_tenda` (
@@ -114,7 +112,7 @@ CREATE TABLE `detail_kembali_tenda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_kembali_tenda`
+-- Dumping data for table `detail_kembali_tenda`
 --
 
 INSERT INTO `detail_kembali_tenda` (`id_kembali`, `id_tenda`, `jumlah_sewa`, `jumlah_kembali`, `hilangrusak`) VALUES
@@ -126,7 +124,7 @@ INSERT INTO `detail_kembali_tenda` (`id_kembali`, `id_tenda`, `jumlah_sewa`, `ju
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_sementara`
+-- Table structure for table `detail_sementara`
 --
 
 CREATE TABLE `detail_sementara` (
@@ -140,7 +138,7 @@ CREATE TABLE `detail_sementara` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_sewa`
+-- Table structure for table `detail_sewa`
 --
 
 CREATE TABLE `detail_sewa` (
@@ -151,22 +149,10 @@ CREATE TABLE `detail_sewa` (
   `harga_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `detail_sewa`
---
-
-INSERT INTO `detail_sewa` (`id_sewa`, `id`, `jumlah_barang`, `harga_sewa`, `harga_total`) VALUES
-('TS0001', 'PT002', 1, 150000, 150000),
-('TS0002', 'PT002', 1, 150000, 150000),
-('TS0003', 'PT002', 1, 150000, 150000),
-('TS0003', 'BR002', 200, 1000, 200000),
-('TS0004', 'PT006', 2, 650000, 1300000),
-('TS0004', 'BR011', 1000, 500, 500000);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_barang`
+-- Table structure for table `kategori_barang`
 --
 
 CREATE TABLE `kategori_barang` (
@@ -175,7 +161,7 @@ CREATE TABLE `kategori_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori_barang`
+-- Dumping data for table `kategori_barang`
 --
 
 INSERT INTO `kategori_barang` (`id_kategori`, `nama_kategori`) VALUES
@@ -187,7 +173,7 @@ INSERT INTO `kategori_barang` (`id_kategori`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `paket_tenda`
+-- Table structure for table `paket_tenda`
 --
 
 CREATE TABLE `paket_tenda` (
@@ -199,7 +185,7 @@ CREATE TABLE `paket_tenda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `paket_tenda`
+-- Dumping data for table `paket_tenda`
 --
 
 INSERT INTO `paket_tenda` (`id_hargatenda`, `id_tenda`, `jenis_tenda`, `harga_sewa`, `harga_jasa`) VALUES
@@ -213,7 +199,7 @@ INSERT INTO `paket_tenda` (`id_hargatenda`, `id_tenda`, `jenis_tenda`, `harga_se
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengembalian`
+-- Table structure for table `pengembalian`
 --
 
 CREATE TABLE `pengembalian` (
@@ -222,18 +208,10 @@ CREATE TABLE `pengembalian` (
   `tgl_kembali` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pengembalian`
---
-
-INSERT INTO `pengembalian` (`id_kembali`, `id_sewa`, `tgl_kembali`) VALUES
-('KB0001', 'TS0001', '2018-12-28 03:14:16'),
-('KB0002', 'TS0002', '2018-12-28 09:06:59');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sementara`
+-- Table structure for table `sementara`
 --
 
 CREATE TABLE `sementara` (
@@ -249,7 +227,7 @@ CREATE TABLE `sementara` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sementara`
+-- Dumping data for table `sementara`
 --
 
 INSERT INTO `sementara` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `tgl_bongkar`, `lama`) VALUES
@@ -258,11 +236,12 @@ INSERT INTO `sementara` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sewa`
+-- Table structure for table `sewa`
 --
 
 CREATE TABLE `sewa` (
   `id_sewa` varchar(6) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama_pelanggan` varchar(30) NOT NULL,
   `alamat_pelanggan` text NOT NULL,
   `telp_pelanggan` varchar(15) NOT NULL,
@@ -281,20 +260,10 @@ CREATE TABLE `sewa` (
   `status` varchar(25) DEFAULT 'Menunggu Proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `sewa`
---
-
-INSERT INTO `sewa` (`id_sewa`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `tgl_sekarang`, `tgl_pasang`, `tgl_acara1`, `tgl_acara2`, `lama`, `tgl_bongkar`, `total_tagihan`, `dp`, `pelunasan`, `bayar`, `biaya_ganti`, `kembalian`, `status`) VALUES
-('TS0001', 'Aulia', 'Mastrip', '089236785245', '2018-12-25 12:21:21', '2018-12-25', '2018-12-26', '2018-12-26', 1, '2018-12-27', 150000, 50000, -100000, 0, 0, 0, 'Kembali'),
-('TS0002', 'Rizky', 'Kalimantan', '087565765345', '2018-12-25 12:22:52', '2018-12-26', '2018-12-27', '2018-12-27', 1, '2018-12-28', 150000, 75000, -75000, 0, 0, 0, 'Kembali'),
-('TS0003', 'Mardiana Azizah', 'Jawa 7', '086542345675', '2018-12-25 12:52:22', '2018-12-26', '2018-12-27', '2018-12-27', 1, '2018-12-28', 350000, 150000, -200000, 0, 0, 0, 'Proses'),
-('TS0004', 'Aulia', 'Mastrip', '082236685263', '2018-12-28 08:57:38', '2018-12-28', '2018-12-29', '2018-12-29', 1, '2018-12-30', 1800000, 800000, -1000000, 0, 0, 0, 'Menunggu Proses');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tenda`
+-- Table structure for table `tenda`
 --
 
 CREATE TABLE `tenda` (
@@ -304,7 +273,7 @@ CREATE TABLE `tenda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tenda`
+-- Dumping data for table `tenda`
 --
 
 INSERT INTO `tenda` (`id_tenda`, `ukuran_tenda`, `stok_tenda`) VALUES
@@ -316,7 +285,7 @@ INSERT INTO `tenda` (`id_tenda`, `ukuran_tenda`, `stok_tenda`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -327,7 +296,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
@@ -405,7 +374,8 @@ ALTER TABLE `sementara`
 -- Indexes for table `sewa`
 --
 ALTER TABLE `sewa`
-  ADD PRIMARY KEY (`id_sewa`);
+  ADD PRIMARY KEY (`id_sewa`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tenda`
@@ -429,33 +399,38 @@ ALTER TABLE `user`
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `barang`
+-- Constraints for table `barang`
 --
 ALTER TABLE `barang`
   ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_barang` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `detail_sewa`
+-- Constraints for table `detail_sewa`
 --
 ALTER TABLE `detail_sewa`
   ADD CONSTRAINT `detail_sewa_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `paket_tenda`
+-- Constraints for table `paket_tenda`
 --
 ALTER TABLE `paket_tenda`
   ADD CONSTRAINT `paket_tenda_ibfk_1` FOREIGN KEY (`id_tenda`) REFERENCES `tenda` (`id_tenda`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pengembalian`
+-- Constraints for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD CONSTRAINT `pengembalian_ibfk_1` FOREIGN KEY (`id_sewa`) REFERENCES `sewa` (`id_sewa`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+
+--
+-- Constraints for table `sewa`
+--
+ALTER TABLE `sewa`
+  ADD CONSTRAINT `sewa_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
