@@ -44,12 +44,9 @@
                                 <td><?php echo $no;?></td>
                                 <td><?php echo $row->id_kategori;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
-                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a><br> 
-
-                      
+                                <td> <a href="<?php echo base_url(); ?>DataBarang/edit_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a>
                                 </td> 
-                                <td>
-                                   <a href="<?php echo base_url(); ?>DataBarang/delete_kategori/<?php echo $row->id_kategori;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> 
+                                <td><button type="submit" class="fa fa-trash" style="font-size:30px" data-toggle="modal" data-target="#hapus_kategori<?php echo $row->id_kategori;?>"></button>  
                                   </td>
 
                             </tr>
@@ -97,16 +94,15 @@
                             foreach ($data as $row): ?>
                             <tr>
                                 <td><?php echo $no;?></td>
-                                <td><?php echo $row->id_barang;?></td>
                                 <td><?php echo $row->nama_barang;?></td>
+                                <td><?php echo $row->id_barang;?></td>
                                 <td><?php echo $row->stok_barang;?></td>
                                 <td><?php echo $row->harga_sewa;?></td>
                                 <td><?php echo $row->harga_jasa;?></td>
                                 <td><?php echo $row->harga_ganti_rugi;?></td>
                                 <td><?php echo $row->nama_kategori;?></td>
                                 <td><a href="<?php echo base_url(); ?>DataBarang/edit_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-pencil-square-o" style="font-size:30px"></button></a></td> 
-                                <td>
-                                   <a href="<?php echo base_url(); ?>DataBarang/delete_barang/<?php echo $row->id_barang;?>"><button type="submit" class="fa fa-trash" style="font-size:30px"></button></a> 
+                                <td><button type="submit" class="fa fa-trash" style="font-size:30px" data-toggle="modal" data-target="#hapus_barang<?php echo $row->id_barang;?>"></button>  
                                 </td>
                             </tr>
                             <?php $no++;
@@ -231,25 +227,57 @@
             </div>
       <!-- end modal  -->
 
-<!-- Delete Modal-->
-<!-- <?php foreach ($data as $row):?>
-      <div class="modal fade" id="hapus-data<?php echo $row->id_barang;?>" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm" role="document">
+<!-- modal hapus kategori -->
+<?php foreach ($kategori as $row):?>
+      <div class="modal fade" id="hapus_kategori<?php echo $row->id_kategori;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="hapus-data">Konfirmasi Hapus Data</h5>
+                    <h5 class="modal-title" id="hapus-data">Hapus Kategori</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" action="<?php echo base_url('DataBarang/delete_kategori')?>" method="post" enctype="multipart/form-data" role="form">
+                        <div class="modal-body">
+                                
+                                <div class="form-group">
+                                    <p class="error-text">Apakah anda yakin ingin menghapus data tersebut?</p>
+                                </div>
+                            </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="hidden" name="id_hargatenda" value="<?php echo $row->id_kategori; ?>">
+                    <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
+                </div></form>
+                  </div>
+                </div>
+              </div>
+            </div>
+<?php endforeach;?>
+<!-- end modal hapus -->
+
+<!-- modal hapus barang -->
+<?php foreach ($data as $row):?>
+      <div class="modal fade" id="hapus_barang<?php echo $row->id_barang;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="hapus_barang">Hapus Alat Pesta</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
                     <form class="form-horizontal" action="<?php echo base_url('DataBarang/delete_barang')?>" method="post" enctype="multipart/form-data" role="form">
-                        
+                        <div class="modal-body">
                                 
                                 <div class="form-group">
-                                    <p class="error-text"><i class="fa fa-warning modal-icon"></i>Apakah anda yakin ingin menghapus data tersebut?</p>
+                                    <p class="error-text">Apakah anda yakin ingin menghapus data tersebut?</p>
                                 </div>
-                            
+                            </div>
                   </div>
                   <div class="modal-footer">
                     <input type="hidden" name="id_barang" value="<?php echo $row->id_barang; ?>">
@@ -260,8 +288,8 @@
                 </div>
               </div>
             </div>
-<?php endforeach;?> -->
-      <!-- end modal  -->
+<?php endforeach;?>
+<!-- end modal hapus -->
 
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>

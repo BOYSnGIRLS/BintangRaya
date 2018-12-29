@@ -121,7 +121,13 @@ class DataBarang extends CI_Controller {
     }
 
 
-    function delete_tenda($id){
+    // function delete_tenda($id){
+    //     $this->Model_Barang->delete_tenda($id);
+    //     redirect('DataBarang/tenda');
+    // }
+
+    function delete_tenda(){
+        $id=$this->input->post('id_tenda');
         $this->Model_Barang->delete_tenda($id);
         redirect('DataBarang/tenda');
     }
@@ -168,8 +174,8 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/tenda');
     }
     
-
-    function delete_pakettenda($id1){
+    function delete_pakettenda(){
+        $id1=$this->input->post('id_hargatenda');
         $this->Model_Barang->delete_paket($id1);
         redirect('DataBarang/tenda');
     }
@@ -209,8 +215,8 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/barang');
     }
     
-
-    function delete_kategori($id3){
+    function delete_kategori(){
+        $id3=$this->input->post('id_hargatenda');
         $this->Model_Barang->delete_kategori($id3);
         redirect('DataBarang/barang');
     }
@@ -301,7 +307,8 @@ class DataBarang extends CI_Controller {
         redirect('DataBarang/barang');
     }
 
-    function delete_barang($id2){
+    function delete_barang(){
+        $id2=$this->input->post('id_barang');
         $this->Model_Barang->delete($id2);
         redirect('DataBarang/barang');
     }
