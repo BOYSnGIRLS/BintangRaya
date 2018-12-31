@@ -35,7 +35,7 @@ class InputSewa extends CI_Controller {
                 $this->db->query("DELETE FROM `sementara` WHERE id_sewa='".$kode['kode']."' ");
                 $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
 
-                $this->session->set_flashdata('message', 'anda berhasil menginput data');
+                $this->session->set_flashdata('message', 'TRANSAKSI BERHASIL DISIMPAN');
                 redirect('InputSewa');
             }else{
                 $x =$this->Model_Transaksi->get_barang();
