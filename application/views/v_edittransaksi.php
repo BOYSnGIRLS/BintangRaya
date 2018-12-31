@@ -150,9 +150,16 @@
                                   </table><br>
                                   <table>
                                       <tr>
+<<<<<<< HEAD
+                                          <td width="800"></td>
+                                          <td><a href="<?php echo base_url()?>ListTransaksi/index"><button class=" btn btn-primary btn-lg" name="kembali" type="submit">Kembali</button></a></td>
+                                          <td width="10"></td>
+                                          <td><span class="input-group-btn"><button class=" btn btn-primary btn-lg" name="btnUpdate" type="submit">Simpan</button></span></td>
+=======
                                           <td width="900"></td>
                                           <td  width="150" style="text-align:left;"><button class=" btn btn-primary btn-lg" name="btnUpdate" type="submit">Simpan</button></span></td></form>
                                           <td width="150" style="text-align:left;"><a href="<?php echo base_url().'ListTransaksi/index';?>"><button class=" btn btn-secondary btn-lg" name="btnUpdate" type="submit">Selesai</button></a></td>
+>>>>>>> 95a51f40e63a357f760ae704e4d32281c3774637
                                       </tr>
                                   </table>
 

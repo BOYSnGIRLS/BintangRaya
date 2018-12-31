@@ -305,9 +305,15 @@ class ListTransaksi extends CI_Controller {
                  $indexB++;
             }
 
+<<<<<<< HEAD
+            
+            // $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
+            redirect('ListTransaksi/edit_transaksi');   
+=======
             $totalSum = $this->Model_Transaksi->total($id_sewa);
             $this->db->query("UPDATE `sewa` SET `total_tagihan`='$totalSum', `pelunasan`=`DP`-'$totalSum' WHERE id_sewa = '$id_sewa'");
             redirect('ListTransaksi/edit_transaksi/'.$id_sewa);   
+>>>>>>> 95a51f40e63a357f760ae704e4d32281c3774637
         }
     }
 

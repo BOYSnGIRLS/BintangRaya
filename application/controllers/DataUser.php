@@ -5,6 +5,7 @@ class DataUser extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('url'));
         $this->load->model('Model_User');
+        $this->load->model('Model_app');
 
         $this->load->database();
         $this->load->library('session');
@@ -33,13 +34,11 @@ class DataUser extends CI_Controller {
             'password' => $this->input->post('password'),
             'level' => $this->input->post('level')
         );
-        $level['level'] = $this->Model_user->get_level();
-        $this->Model_User->tambah_user($data+$level);
+        $this->Model_User->tambah_user($data);
         redirect('DataUser/index');
     }
 
     function update_user(){
-
         $id = $this->input->post('id_user');
         $insert = $this->Model_User->update_user(array(
                 'id_user' => $this->input->post('id_user'),
@@ -78,17 +77,33 @@ class DataUser extends CI_Controller {
     }
 
     function edit_profil(){
-        $id = $this->uri->segment(3);
-        $data = array(
-            'title'=> 'Edit Profil'
-        );
-        $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
-        $this->load->view("v_editprofil", $data);
-        $this->load->view('element/v_footer');
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+            $id = $this->uri->segment(3);
+            $data = array(
+                'title'=> 'Edit Profil'
+            );
+            $this->load->view('element/css',$data);
+            $this->load->view('element/v_header', $data);
+            $this->load->view("v_editprofil", $data);
+            $this->load->view('element/v_footer');
+        }else{
+            $id = $this->uri->segment(3);
+            $data = array(
+                'title'=> 'Edit Profil'
+            );
+            $this->load->view('element/css',$data);
+            $this->load->view('element/v_headerPegawai', $data);
+            $this->load->view("v_editprofil", $data);
+            $this->load->view('element/v_footer');
+        }
     }
 
     function edit_profil2(){
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
         $id = $this->uri->segment(3);
                 $data = array(
                     'title'=> 'Edit Profil',
@@ -98,19 +113,45 @@ class DataUser extends CI_Controller {
                 $this->load->view('element/v_header', $data);
                 $this->load->view("v_editprofil2", $data);
                 $this->load->view('element/v_footer');
+        } else {
+            $id = $this->uri->segment(3);
+                $data = array(
+                    'title'=> 'Edit Profil',
+                    'user' => $this->Model_User->get_edit_profil2(),
+                );
+                $this->load->view('element/css',$data);
+                $this->load->view('element/v_headerPegawai', $data);
+                $this->load->view("v_editprofilpegawai", $data);
+                $this->load->view('element/v_footer');
+        }
     }
 
     function update_profil(){
-        $insert = $this->Model_User->update_profil(array(
-                'username' => $this->input->post('username'),
-                'password' => $this->input->post('password')
-        ));
-        $data=array(
-                    'title'=>'Sukses Ganti Profil'
-                );
-              $this->load->view('element/css',$data);
-              $this->load->view('v_berhasil');
-              $this->load->view('element/v_footer');
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+            $insert = $this->Model_User->update_profil(array(
+                    'username' => $this->input->post('username'),
+                    'password' => $this->input->post('password')
+            ));
+            $data=array(
+                        'title'=>'Sukses Ganti Profil'
+                    );
+                  $this->load->view('element/css',$data);
+                  $this->load->view('v_berhasil');
+                  $this->load->view('element/v_footer');
+        }else {
+            $insert = $this->Model_User->update_profil_pegawai(array(
+                    'username' => $this->input->post('username'),
+                    'password' => $this->input->post('password')
+            ));
+            $data=array(
+                        'title'=>'Sukses Ganti Profil'
+                    );
+                  $this->load->view('element/css',$data);
+                  $this->load->view('v_berhasil');
+                  $this->load->view('element/v_footer');
+        }
     }
 
     function cek_akun() {
@@ -130,51 +171,6 @@ class DataUser extends CI_Controller {
         }
     }
 
-
-    // function cek_pass(){
-    //     if(isset($_POST['btn_pass'])){
-    //         $this->Model_User->password = $_POST['password'];
-    //         if($this->Model_User->cek_pass()==TRUE){
-    //                 $password  = $this->Model_User->password($user);
-    //                 redirect('DataUser/edit_profil');
-    //                 "valid password";
-    //             }else{
-    //                 "Invalid password";
-    //             }
-    //     }else{
-    //         $id = $this->uri->segment(3);
-    //         $data = array(
-    //             'title'=> 'Edit Profil',
-    //             'user' => $this->Model_User->get_edit_profil($id),
-    //         );
-    //         $this->load->view('element/css',$data);
-    //         $this->load->view('element/v_header', $data);
-    //         $this->load->view("v_editprofil", $data);
-    //         $this->load->view('element/v_footer');
-    //     }
-    // }
-
-    // public function change_pass(){
-    //     if($this->input->post('change_pass')){
-    //         $old_pass=$this->input->post('old_pass');
-    //         $new_pass=$this->input->post('new_pass');
-    //         $confirm_pass=$this->input->post('confirm_pass');
-    //         $fetch_pass=$this->input->post('fetch_pass');
-    //         $session_id=$this->session->userdata('id_user');
-    //         $que=$this->db->query("SELECT * from user where id_user='$session_id'");
-    //         $row=$que->row();
-
-    //         if((!strcmp($old_pass, $fetch_pass))&& (!strcmp($new_pass, $confirm_pass))){
-    //             $this->Model_User->change_pass($session_id,$new_pass);
-    //             echo "Password changed successfully !";
-    //         }else{
-    //             echo "Invalid";
-    //         }
-    //     }
-    //     $this->load->view('v_coba');
-        
-    // }
-         	
 }
 
 ?>

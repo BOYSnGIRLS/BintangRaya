@@ -110,6 +110,9 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
+                                                <a href="<?php echo base_url(); ?>DataUser/edit_profil">
+                                                    <i class="zmdi zmdi-account"></i> Edit Profil</a>
+                                                   
                                                 <a href="<?php echo base_url();?>Login/Logout">
                                                     <i class="zmdi zmdi-power"></i>Keluar</a>
                                             </div>

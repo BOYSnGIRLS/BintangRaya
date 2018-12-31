@@ -267,13 +267,12 @@
                         <div class="modal-body">
                                 
                                 <div class="form-group">
-                                    <p class="error-text"><i class="fa fa-warning modal-icon"></i>Apakah anda yakin ingin menghapus data tersebut?
-                    <br>Data tidak dapat dikembalikan lagi</p>
-                                </div>
+                                    <p class="error-text"></i>Apakah anda yakin ingin menghapus data tersebut?</p>
+                    </div>
                             </div>
                   </div>
                   <div class="modal-footer">
-                    <input type="text" name="id_hargatenda" value="<?php echo $row->id_hargatenda; ?>">
+                    <input type="hidden" name="id_hargatenda" value="<?php echo $row->id_hargatenda; ?>">
                     <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
                 </div></form>

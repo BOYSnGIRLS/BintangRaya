@@ -21,7 +21,7 @@
                                             <tr>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                                 <td>
-                                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="btn_conf">Konfirmasi</button> 
+                                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="btn_conf">Konfirmasi</button>
                                                 </td>
                                             </tr>
                                             <!-- <tr>

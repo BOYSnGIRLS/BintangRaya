@@ -17,7 +17,8 @@ class DataBarang extends CI_Controller {
     }
     
 
-	public function index(){	
+	public function index(){
+        	
 	   if($this->session->userdata('username')){
         $data=array(
             'title'=>'Data Barang',

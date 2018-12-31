@@ -6,7 +6,7 @@
                             <div class="col-lg-12">
                                 <div class="au-card m-b-30">
                                 <div class="au-card-inner">
-                                       <h2 class="title-5 m-b-35">EDIT PROFIL</h2>
+                                       <h2 class="title-5 m-b-35">EDIT PROFIL PEGAWAI</h2>
                                        <?php echo @$error; ?>
                                     <form method="post" action="<?= base_url('DataUser/update_profil')?>">
                                         <table>
