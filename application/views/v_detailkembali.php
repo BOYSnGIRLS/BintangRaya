@@ -72,6 +72,7 @@
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_sewa);?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->jumlah_kembali);?></td>
                                      <td style="text-align:center;"><?php echo number_format($items->hilangrusak);?></td>
+                                     <td style="text-align:center;">-</td>
                                 </tr>
                                 
                                 <?php

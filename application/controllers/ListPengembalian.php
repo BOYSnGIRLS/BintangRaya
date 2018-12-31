@@ -261,7 +261,7 @@ class ListPengembalian extends CI_Controller {
             $indexT = 0;
             foreach ($idT as $row) {
                 $hilangrusak = $jumlah_sewaT[$indexT]-$jumlah_kembaliT[$indexT];
-                $this->db->query("INSERT INTO `detail_kembali_tenda`(`id_kembali`,  `id_tenda`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`, `harga_ganti`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaT[$indexT]."',  '".$jumlah_kembaliT[$indexT]."', '".$hilangrusak."') ");
+                $this->db->query("INSERT INTO `detail_kembali_tenda`(`id_kembali`,  `id_tenda`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaT[$indexT]."',  '".$jumlah_kembaliT[$indexT]."', '".$hilangrusak."') ");
                 $indexT++;
 
             }
