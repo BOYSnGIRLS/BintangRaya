@@ -96,7 +96,6 @@
                                                 <td><?php echo $row->username ?></td>
                                             </tr>
                                             <?php 
-                                            // $no++;
                                     endforeach;  ?>
                                         </tbody>
                                     </table>

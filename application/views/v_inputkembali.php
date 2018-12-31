@@ -69,12 +69,12 @@
 
                       <div class="col-sm-4">
                         <label for="tgl">Tanggal Acara 1:</label>
-                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>"  readonly>
+                       <input class="form-control" type="text" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>"  readonly>
                       </div>
 
                       <div class="col-sm-4">
                         <label for="tgl">Tanggal Acara 2:</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" readonly>
+                        <input class="form-control" type="text" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" readonly>
                       </div>
                     </div>
                     </div>
@@ -120,7 +120,7 @@
                                      <td><?=$items->nama_barang;?></td>
                                      <td style="text-align:left;"><?php echo number_format($items->jumlah_barang);?></td>
                                      <input type="hidden" name="idBarang[]" class="form-control" value="<?php echo $items->id_barang; ?>">
-                                     <input type="text" name="hargaGanti[]" class="form-control" value="<?php echo $items->harga_ganti_rugi; ?>">
+                                     <input type="hidden" name="hargaGanti[]" class="form-control" value="<?php echo $items->harga_ganti_rugi; ?>">
                                      <input type="hidden" name="barangSewa[]" class="form-control" value="<?php echo $items->jumlah_barang; ?>">
                                      <td><input type="text" name="barang_kembali[]" id="jumlah_kembali" class="form-control"></td>
                                 </tr>
@@ -133,7 +133,7 @@
                                   <td></td>
                                   <input type="hidden" class="form-control" id="id_sewa" name="id_sewa" value="<?php if(isset($data)) { echo $data[0]->id_sewa; } ?>"
                                   <input type="hidden" class="form-control" id="id_kembali" name="id_kembali"  style="width:200px;" value="<?php echo $kode;?>" readonly>
-                                <th><button  name="btnSimpan" class="btn btn-info btn-lg"> Simpan</button></th>
+                                <th style="text-align:right;"><button  name="btnSimpan" class="btn btn-info btn-lg"> Simpan</button></th>
                                 </tr>
                             </tbody>
                         </table>
