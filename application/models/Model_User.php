@@ -34,11 +34,20 @@ class Model_User extends CI_Model {
 		return $query->result_array();
 	}
 
+	function get_edit_profil2(){
+		$query = $this->db->query("SELECT * FROM  user WHERE username = '".$this->session->userdata('username')."'");
+		return $query->result_array();
+	}
+
 	function update_profil($data = array()){
 		$this->db->where('id_user','1');
 		return $this->db->update('user',$data);
 	}
 
+	function update_profil_pegawai($data = array()){
+		$this->db->where('level','1');
+		return $this->db->update('user',$data);
+	}
 
 	public $username;
 	public $password;

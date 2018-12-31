@@ -162,6 +162,7 @@
                                   <table>
                                       <tr>
                                           <td width="800"></td>
+                                          <td><a href="<?php echo base_url()?>ListTransaksi/index"><button class=" btn btn-primary btn-lg" name="kembali" type="submit">Kembali</button></a></td>
                                           <td width="10"></td>
                                           <td><span class="input-group-btn"><button class=" btn btn-primary btn-lg" name="btnUpdate" type="submit">Simpan</button></span></td>
                                       </tr>

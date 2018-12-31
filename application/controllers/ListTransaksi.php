@@ -303,7 +303,7 @@ class ListTransaksi extends CI_Controller {
 
             
             // $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
-            redirect('ListTransaksi/index');   
+            redirect('ListTransaksi/edit_transaksi');   
         }
     }
 

@@ -88,8 +88,8 @@ class Model_Barang extends CI_Model {
 	}
 
 	function update_kategori($data = array(),$id3){
-		$this->db->where('id_barang',$id3);
-		return $this->db->update('barang',$data);
+		$this->db->where('id_kategori',$id3);
+		return $this->db->update('kategori_barang',$data);
 	}
 
 	function get_id(){
