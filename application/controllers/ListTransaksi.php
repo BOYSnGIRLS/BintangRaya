@@ -286,24 +286,28 @@ class ListTransaksi extends CI_Controller {
             $idB = $this->input->post('idBarang');
             $jumlah_sewaT = $this->input->post('stok_tenda');
             $jumlah_sewaB = $this->input->post('stok_barang');
+            $harga_sewaT = $this->input->post('hargaSewaT');
+            $harga_sewaB = $this->input->post('hargaSewaB');
            
            $this->db->query("UPDATE `sewa` SET `nama_pelanggan`='$nama_pelanggan',`alamat_pelanggan`='$alamat',`telp_pelanggan`='$no_telp', `tgl_pasang`='$tgl_pasang', `tgl_acara1`='$tgl1', `tgl_acara2`='$tgl2', `tgl_bongkar`='$tgl_bongkar', `lama`='$lama' WHERE `id_sewa`='$id_sewa'");
 
             $indexT = 0;
             foreach ($idT as $row) {
-                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah_sewaT[$indexT]' WHERE `id_sewa`= '$id_sewa' AND `id`='$row'");
+                $hargaT = $jumlah_sewaT[$indexT]*$harga_sewaT[$indexT];
+                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah_sewaT[$indexT]', `harga_total`='$hargaT' WHERE `id_sewa`= '$id_sewa' AND `id`='$row'");
             $indexT++;
             }
 
             $indexB = 0; 
             foreach ($idB as $row) {
-                 $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah_sewaB[$indexB]' WHERE `id_sewa`= '$id_sewa' AND `id`='$row'");
+                $hargaB = $jumlah_sewaB[$indexB]*$harga_sewaB[$indexB];                
+                $this->db->query("UPDATE `detail_sewa` SET `jumlah_barang`='$jumlah_sewaB[$indexB]', `harga_total`='$hargaB' WHERE `id_sewa`= '$id_sewa' AND `id`='$row'");
                  $indexB++;
             }
 
-            
-            // $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
-            redirect('ListTransaksi/index');   
+            $totalSum = $this->Model_Transaksi->total($id_sewa);
+            $this->db->query("UPDATE `sewa` SET `total_tagihan`='$totalSum', `pelunasan`='$totalSum'-`DP` WHERE id_sewa = '$id_sewa'");
+            redirect('ListTransaksi/edit_transaksi/'.$id_sewa);   
         }
     }
 
