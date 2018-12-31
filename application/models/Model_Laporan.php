@@ -1,45 +1,5 @@
 <?php
 class Model_Laporan extends CI_Model{
-
-
-//Model List Transaksi
-// public function view_by_date($date){
-// 	$this->db->select('*,SUM(sewa.total_tagihan) AS totals');
-// 	$this->db->from('sewa');
-// 	$this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-//     $this->db->join('user', 'sewa.id_user=user.id_user');
-//     $this->db->group_by('sewa.id_sewa');
-// 	$this->db->where('DATE(tgl_pasang)', $date);
-//     $this->db->order_by('sewa.tgl_pasang', 'DESC');
-// 	$query = $this->db->get();
-// 	return $query->result();
-//   }
-    
-//   public function view_by_month($month, $year){
-//     $this->db->select('*');
-//     $this->db->from('sewa');
-//     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-//     $this->db->join('user', 'sewa.id_user=user.id_user');
-//     $this->db->group_by('sewa.id_sewa');
-//  	$this->db->where('MONTH(tgl_pasang)', $month); // Tambahkan where bulan
-//     $this->db->where('YEAR(tgl_pasang)', $year); // Tambahkan where tahun
-//     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
-//  		$query = $this->db->get();
-// 		return $query->result();
-//   }
-
-//   public function view_by_year($year){
-//     $this->db->select('*');
-//     $this->db->from('sewa');
-//     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
-//     $this->db->join('user', 'sewa.id_user=user.id_user');
-//     $this->db->group_by('sewa.id_sewa');
-//  	$this->db->where('YEAR(tgl_pasang)', $year);
-//     $this->db->order_by('sewa.tgl_bongkar', 'DESC');
- 		
-//         $query = $this->db->get();
-// 		return $query->result();
-//   }
    
   public function view_all(){
     $this->db->select('*,SUM(sewa.total_tagihan) AS totals');

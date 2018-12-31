@@ -365,6 +365,13 @@ class ListTransaksi extends CI_Controller {
             }
         }
 
+    function remove(){
+        $id_barang = $this->uri->segment(3);
+        $id_sewa = $this->uri->segment(4);
+        $this->db->query("DELETE FROM `detail_sewa` WHERE id_sewa='$id_sewa' AND id='$id_barang'");
+        redirect('ListTransaksi/edit_transaksi/'.$id_sewa);
+
+    }
 
 
 }

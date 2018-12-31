@@ -33,28 +33,16 @@
                                   </div>
 
                                   <div class="col-sm-4">
-                                    <label for="tgl">Tanggal Acara 1:</label>
+                                    <label for="tgl">Tanggal Acara Mulai:</label>
                                    <input class="form-control" type="date" name="tgl_acara1" value="<?php echo @$trans[0]['tgl_acara1']; ?>">
                                   </div>
 
                                   <div class="col-sm-4">
-                                    <label for="tgl">Tanggal Acara 2:</label>
+                                    <label for="tgl">Selesai :</label>
                                     <input class="form-control" type="date" name="tgl_acara2" value="<?php echo @$trans[0]['tgl_acara2']; ?>">
                                   </div>
                               </div>
-                             <!--  <div class="form-group row">
-                                  <div class="col-sm-4">
-                                    
-                                  </div>
-
-                                  <div class="col-sm-4">
-                                    
-                                  </div>
-
-                                  <div class="col-sm-4">
-                                    <button class="btn btn-info" name="btnEdit" >Submit</button>
-                                  </div>
-                              </div> -->
+                             
                               
                         </div>
 
@@ -140,7 +128,7 @@
                                              <td style="text-align:center;">
                                               <input class="form-control" type="text" name="stok_tenda[]" maxlength="15" value="<?php echo number_format($items->jumlah_barang);?>"></td>
                                      <input type="hidden" name="idhargaTenda[]" id="jumlah_kembali" class="form-control" value="<?php echo $items->id_hargatenda; ?>">
-                                            <td><button type="submit" class="btn btn-danger">Hapus</button></td>
+                                            <td><a href="<?php echo base_url().'ListTransaksi/remove/'.$items->id_hargatenda.'/'.$items->id_sewa;?>"><button type="submit" class="btn btn-danger">Hapus</button></a></td>
 
                                         </tr>
                                         <?php endforeach; ?>
@@ -153,7 +141,7 @@
                                      <input type="hidden" name="idBarang[]" class="form-control" value="<?php echo $items->id_barang; ?>">
                                               <input class="form-control" type="text" name="stok_barang[]" maxlength="15" value="<?php echo number_format($items->jumlah_barang);?>">
                                               </td>
-                                              <td><button type="submit" class="btn btn-danger">Hapus</button></td>
+                                              <td><a href="<?php echo base_url().'ListTransaksi/remove/'.$items->id_barang.'/'.$items->id_sewa;?>"><button type="submit" class="btn btn-danger">Hapus</button></a></td>
                                         </tr>
                                         <?php endforeach; ?>
 
