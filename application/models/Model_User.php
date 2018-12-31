@@ -29,19 +29,51 @@ class Model_User extends CI_Model {
 		return $query->result();
 	}
 
-	function get_level(){
-	    $this->db->select('RIGHT(user.level,1) as level', FALSE);
-	    $this->db->limit(1);    
-	    $query = $this->db->get('user');     
-	    if($query->num_rows() <> 0){ 
-	     $data = $query->row();      
-	    }
-	    else {      
-	     $level = 1;    
-	    }
-	    $level = str_pad($level, 1, "0", STR_PAD_LEFT); 
-	    return $level;
-	  }
+	function get_edit_profil(){
+		$query = $this->db->query("SELECT * FROM  user WHERE id_user = '1'");
+		return $query->result_array();
+	}
+
+	function update_profil($data = array()){
+		$this->db->where('id_user','1');
+		return $this->db->update('user',$data);
+	}
+
+
+	public $username;
+	public $password;
+	function cek_akun(){
+        $sql = sprintf("SELECT COUNT(*) AS hitung FROM user WHERE username='%s' AND password='%s'",
+            $this->username,
+            $this->password);
+        $query = $this->db->query($sql);
+        $row  = $query->row_array();
+        return $row['hitung'] == 1;
+    }
+
+	// function fetch_pass($session_id){ 
+	// 	$fetch_pass=$this->db->query("SELECT * from user where id_user='$session_id'");
+	// 	$res=$fetch_pass->result();
+	// }
+	
+	// function change_pass($session_id,$new_pass){
+	// 	$update_pass=$this->db->query("UPDATE user set password='$new_pass' where id_user='$session_id'");
+	// }
+
+	// public $password;
+	// function password($user){
+ //        $query = $this->db->select('password as password')->from('user')->where('username', $user)->get();
+ //        return $query->row()->password;
+ //    }
+
+ //    function cek_pass(){
+ //        $sql = sprintf("SELECT COUNT(*) AS hitung FROM user WHERE password='%s'",
+ //            $this->password);
+ //        $query = $this->db->query($sql);
+ //        $row  = $query->row_array();
+ //        return $row['hitung'] == 1;
+ //    }
+
 }
 
 ?>
