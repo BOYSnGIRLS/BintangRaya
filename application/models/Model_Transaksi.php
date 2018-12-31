@@ -93,5 +93,10 @@ class Model_Transaksi extends CI_Model{
     }
 
   }
+
+  function total($id){
+        $query = $this->db->select('SUM(harga_total) as total')->from('detail_sewa')->where('id_sewa', $id)->get();
+        return $query->row()->total;
+    }
 }
 ?>

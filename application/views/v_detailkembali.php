@@ -39,13 +39,13 @@
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 1:</label>
-                       <span> <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo date('d - m - Y', strtotime($data[0]->tgl_acara1)); } ?>" readonly>
+                        <label for="tgl">Tanggal Acara Mulai:</label>
+                       <span> <input class="form-control" type="text" name="tgl_acara1" value="<?php if(isset($data)) { echo date('d - m - Y', strtotime($data[0]->tgl_acara1)); } ?>" readonly>
                       </div>
 
                       <div class="col-sm-3">
-                        <label for="tgl">Tanggal Acara 2:</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo date('d - m - Y', strtotime($data[0]->tgl_acara2)); } ?>" readonly>
+                        <label for="tgl">Selesai :</label>
+                        <input class="form-control" type="text" name="tgl_acara2" value="<?php if(isset($data)) { echo date('d - m - Y', strtotime($data[0]->tgl_acara2)); } ?>" readonly>
                       </div></span>
                     </div>
                     </div>
