@@ -93,7 +93,7 @@
                                             <img src="<?= base_url('assets/images/icon/avatar-01.jpg')?>" alt="Pak Andre" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Pegawai</a>
+                                            <a class="js-acc-btn"><label class="js-acc-btn"><?php echo $this->session->userdata('username'); ?></label></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -104,9 +104,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">pegawai</a>
+                                                        <?php echo $this->session->userdata('username'); ?>
                                                     </h5>
-                                                    <span class="email">andre@example.com</span>
+                                                    <!-- <span class="email">andre@example.com</span> -->
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
