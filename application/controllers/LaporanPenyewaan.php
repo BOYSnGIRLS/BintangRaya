@@ -6,6 +6,7 @@ class LaporanPenyewaan extends CI_Controller {
         parent::__construct();
         $this->load->model('Model_Laporan');
         $this->load->model('Model_Transaksi');
+        $this->load->model('Model_app');
 
         $this->load->library('session');
         $this->load->helper('url');
@@ -16,6 +17,10 @@ class LaporanPenyewaan extends CI_Controller {
     }
 
 	public function index(){
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+           if($this->session->userdata('username')){
 
             if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
                 $filter = $_GET['filter']; // Ambil data filder yang dipilih user
@@ -57,6 +62,19 @@ class LaporanPenyewaan extends CI_Controller {
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header',$title);
             $this->load->view('v_laporan', $data); 
+           }else{
+            redirect('Login');
+           }
+         }elseif ($ceklevel == 1) {
+            $data=array(
+                'title'=>'Data Barang',
+            );
+            $this->session->set_flashdata('notif', 'ANDA TIDAK DAPAT MENGAKSES HALAMAN INI');
+            $this->load->view('element/css',$data);
+            $this->load->view('v_notfound');  
+              $this->load->view('element/v_footer'); 
+         }
+
     }
 
     

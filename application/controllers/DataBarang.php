@@ -6,6 +6,7 @@ class DataBarang extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('url'));
         $this->load->model('Model_Barang');
+        $this->load->model('Model_app');
 
         $this->load->library('session');
         $this->load->helper('url');
@@ -18,20 +19,31 @@ class DataBarang extends CI_Controller {
     
 
 	public function index(){
-        	
-	   if($this->session->userdata('username')){
-        $data=array(
-            'title'=>'Data Barang',
-            'active_dashboard'=>'active'
-        );
-        $kode['kode'] = $this->Model_Barang->get_id();
-        $this->load->view('element/css',$data);
-        $this->load->view('element/v_header', $data);
-        $this->load->view('home', $kode);   
-        $this->load->view('element/v_footer');
-       }else{
-        redirect('Login');
-       }
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+    	   if($this->session->userdata('username')){
+            $data=array(
+                'title'=>'Data Barang',
+                'active_dashboard'=>'active'
+            );
+            $kode['kode'] = $this->Model_Barang->get_id();
+            $this->load->view('element/css',$data);
+            $this->load->view('element/v_header', $data);
+            $this->load->view('home', $kode);   
+            $this->load->view('element/v_footer');
+           }else{
+            redirect('Login');
+           }
+         }elseif ($ceklevel == 1) {
+            $data=array(
+                'title'=>'Data Barang',
+            );
+            $this->session->set_flashdata('notif', 'ANDA TIDAK DAPAT MENGAKSES HALAMAN INI');
+            $this->load->view('element/css',$data);
+            $this->load->view('v_notfound');  
+              $this->load->view('element/v_footer'); 
+         }
 	}
 
     // ===========================TENDA TENDA TENDA TENDA========================================

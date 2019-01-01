@@ -18,7 +18,6 @@ class Login extends CI_Controller{
                 }else if($ceklevel == 1) {
                   redirect('InputSewa');
                 }
-
             }else{
               $data=array(
                     'title'=>'Login Page'

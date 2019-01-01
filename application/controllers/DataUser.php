@@ -18,14 +18,32 @@ class DataUser extends CI_Controller {
     }
 
     public function index(){	
-	    $title=array(
-            'title'=>'Data User',
-            'active_datapegawai'=>'active');
-        $user['user']=$this->Model_User->get_user();
-        $this->load->view('element/css',$title);
-        $this->load->view('element/v_header', $user);
-        $this->load->view('v_datauser',$user);    
-        $this->load->view('element/v_footer');
+        $user = $this->session->userdata('username');
+        $ceklevel  = $this->Model_app->level($user);
+        if ($ceklevel == 0) {
+           if($this->session->userdata('username')){
+            $title=array(
+                'title'=>'Data User',
+                'active_datapegawai'=>'active');
+            $user['user']=$this->Model_User->get_user();
+            $this->load->view('element/css',$title);
+            $this->load->view('element/v_header', $user);
+            $this->load->view('v_datauser',$user);    
+            $this->load->view('element/v_footer');
+           }else{
+            redirect('Login');
+           }
+         }elseif ($ceklevel == 1) {
+            $data=array(
+                'title'=>'Data Barang',
+            );
+            $this->session->set_flashdata('notif', 'ANDA TIDAK DAPAT MENGAKSES HALAMAN INI');
+            $this->load->view('element/css',$data);
+            $this->load->view('v_notfound');  
+            $this->load->view('element/v_footer'); 
+         }
+         
+	    
 	}
 
     public function tambah_user(){

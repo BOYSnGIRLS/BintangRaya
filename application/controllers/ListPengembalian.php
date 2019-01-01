@@ -263,7 +263,6 @@ class ListPengembalian extends CI_Controller {
                 $hilangrusak = $jumlah_sewaT[$indexT]-$jumlah_kembaliT[$indexT];
                 $this->db->query("INSERT INTO `detail_kembali_tenda`(`id_kembali`,  `id_tenda`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaT[$indexT]."',  '".$jumlah_kembaliT[$indexT]."', '".$hilangrusak."') ");
                 $indexT++;
-
             }
 
             $indexB = 0;
@@ -271,6 +270,7 @@ class ListPengembalian extends CI_Controller {
                 $hilangrusak = $jumlah_sewaB[$indexB]-$jumlah_kembaliB[$indexB];
                 $ganti = ($jumlah_sewaB[$indexB]-$jumlah_kembaliB[$indexB])*$harga_ganti[$indexB];
                 $this->db->query("INSERT INTO `detail_kembali_barang`(`id_kembali`,  `id_barang`, `jumlah_sewa`, `jumlah_kembali`,  `hilangrusak`, `harga_ganti`) VALUES ('".$kode."', '".$row."', '".$jumlah_sewaB[$indexB]."',  '".$jumlah_kembaliB[$indexB]."', '".$hilangrusak."', '".$ganti."') ");
+                $this->db->query("UPDATE `barang` SET `stok_barang`=`stok_barang`-'$hilangrusak' WHERE `id_barang`='$row' ");
                 $indexB++;
             }
 
