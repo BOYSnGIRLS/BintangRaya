@@ -43,7 +43,7 @@ class ListTransaksi extends CI_Controller {
             
             $data['ket'] = $ket;
             $data['trans'] = $transaksi;
-
+            $data['admin'] = $ceklevel;
             $title=array(
                 'title'=>'List Transaksi',
                 'active_listtransaksi' => 'active'
@@ -305,15 +305,9 @@ class ListTransaksi extends CI_Controller {
                  $indexB++;
             }
 
-<<<<<<< HEAD
-            
-            // $this->db->query("UPDATE `detail_sewa` WHERE `id_sewa`='$id_sewa'");
-            redirect('ListTransaksi/edit_transaksi');   
-=======
             $totalSum = $this->Model_Transaksi->total($id_sewa);
             $this->db->query("UPDATE `sewa` SET `total_tagihan`='$totalSum', `pelunasan`=`DP`-'$totalSum' WHERE id_sewa = '$id_sewa'");
-            redirect('ListTransaksi/edit_transaksi/'.$id_sewa);   
->>>>>>> 95a51f40e63a357f760ae704e4d32281c3774637
+            redirect('ListTransaksi/edit_transaksi/'.$id_sewa);  
         }
     }
 
@@ -381,6 +375,12 @@ class ListTransaksi extends CI_Controller {
         $this->db->query("DELETE FROM `detail_sewa` WHERE id_sewa='$id_sewa' AND id='$id_barang'");
         redirect('ListTransaksi/edit_transaksi/'.$id_sewa);
 
+    }
+
+    function batal_transaksi(){
+        $id_sewa = $this->input->post('id_sewa');
+        $this->db->query("DELETE FROM `sewa` WHERE id_sewa='$id_sewa'");
+        redirect('ListTransaksi');
     }
 
 
