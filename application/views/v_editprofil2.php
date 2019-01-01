@@ -14,6 +14,7 @@
                                                 <td width="200" height="50" >Username</td>
                                                 <td><input class="form-control" type="text" name="username" maxlength="15" value="<?php echo @$user[0]['username']; ?>">
                                                 </td>
+
                                             </tr>
                                             <tr>
                                                 <td width="200" height="50" >Password Baru</td>

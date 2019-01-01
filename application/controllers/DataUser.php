@@ -122,7 +122,7 @@ class DataUser extends CI_Controller {
         $user = $this->session->userdata('username');
         $ceklevel  = $this->Model_app->level($user);
         if ($ceklevel == 0) {
-        $id = $this->uri->segment(3);
+            $id = $this->uri->segment(3);
                 $data = array(
                     'title'=> 'Edit Profil',
                     'user' => $this->Model_User->get_edit_profil(),
@@ -132,44 +132,33 @@ class DataUser extends CI_Controller {
                 $this->load->view("v_editprofil2", $data);
                 $this->load->view('element/v_footer');
         } else {
-            $id = $this->uri->segment(3);
+                $id = $this->uri->segment(3);
+                $user = $this->session->userdata('username');
                 $data = array(
                     'title'=> 'Edit Profil',
-                    'user' => $this->Model_User->get_edit_profil2(),
+                    'user' => $this->Model_User->get_edit_profil(),
                 );
                 $this->load->view('element/css',$data);
                 $this->load->view('element/v_headerPegawai', $data);
-                $this->load->view("v_editprofilpegawai", $data);
+                $this->load->view("v_editprofil2", $data);
                 $this->load->view('element/v_footer');
         }
     }
 
     function update_profil(){
         $user = $this->session->userdata('username');
-        $ceklevel  = $this->Model_app->level($user);
-        if ($ceklevel == 0) {
-            $insert = $this->Model_User->update_profil(array(
-                    'username' => $this->input->post('username'),
-                    'password' => $this->input->post('password')
-            ));
-            $data=array(
-                        'title'=>'Sukses Ganti Profil'
-                    );
-                  $this->load->view('element/css',$data);
-                  $this->load->view('v_berhasil');
-                  $this->load->view('element/v_footer');
-        }else {
-            $insert = $this->Model_User->update_profil_pegawai(array(
-                    'username' => $this->input->post('username'),
-                    'password' => $this->input->post('password')
-            ));
-            $data=array(
-                        'title'=>'Sukses Ganti Profil'
-                    );
-                  $this->load->view('element/css',$data);
-                  $this->load->view('v_berhasil');
-                  $this->load->view('element/v_footer');
-        }
+        $id = $this->Model_app->iduser($user);
+        $insert = $this->Model_User->update_profil(array(
+                'username' => $this->input->post('username'),
+                'password' => $this->input->post('password')
+        ),$id);
+        $data=array(
+                'title'=>'Sukses Ganti Profil'
+        );
+        $this->load->view('element/css',$data);
+        $this->load->view('v_berhasil');
+        $this->load->view('element/v_footer');
+        
     }
 
     function cek_akun() {
