@@ -377,5 +377,9 @@ class ListTransaksi extends CI_Controller {
 
     }
 
+    function batal_transaksi(){
+        
+    }
+
 
 }

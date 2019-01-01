@@ -87,12 +87,15 @@
 
                                                    <?php };?>
 
-                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a></td>
+                                                <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a>
+                                                 <!--   <a href="<?php echo base_url(); ?>ListTransaksi/batal_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-warning">Batal</button></a> -->
+                                                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#batal_sewa<?php echo $row->id_sewa;?>">Batal</button> 
+                                                </td>
 
                                                 <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
                                                 <td>
-                                                    <label class="btn btn-warning" ><?php echo anchor('ListTransaksi/notatagihan/'.$row->id_sewa,'Detail', array('target' => '_blank')); ?></label> 
+                                                    <a href="<?php echo base_url(); ?>ListTransaksi/notatagihan/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Detail</button></a>
                                                     <label class="btn btn-warning" ><?php echo anchor('ListTransaksi/notatagihan2/'.$row->id_sewa,'Cetak', array('target' => '_blank')); ?></label> 
                                                 </td>
                                                 <td><?php echo $row->username?></td>
@@ -198,6 +201,38 @@
                 </div>
             </div>
             <!-- end modal -->
+
+            <!-- Batal Transaksi-->
+        <?php foreach ($trans as $row):?>
+            <div class="modal fade" id="batal_sewa<?php echo $row->id_sewa;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="batal_sewa">Batalkan Transaksi Sewa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" action="<?php echo base_url('ListTransaksi/batal_transaksi')?>" method="post" enctype="multipart/form-data" role="form">
+                        <div class="modal-body">
+                                
+                                <div class="form-group">
+                                    <p class="error-text">Apakah anda yakin ingin membatalkan transaksi tersebut ?</p>
+                                </div>
+                            </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="hidden" name="id_sewa" value="<?php echo $row->id_sewa; ?>">
+                    <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
+                </div></form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <?php endforeach;?>
+            <!-- -->
 
     
     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
