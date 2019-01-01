@@ -89,9 +89,10 @@
 
                                                 <td><a href="<?php echo base_url(); ?>ListTransaksi/edit_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-info">Edit</button></a>
                                                  <!--   <a href="<?php echo base_url(); ?>ListTransaksi/batal_transaksi/<?php echo $row->id_sewa ;?>"><button type="submit" class="btn btn-warning">Batal</button></a> -->
+                                                 <?php if(isset($admin)){ ?>
                                                     <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#batal_sewa<?php echo $row->id_sewa;?>">Batal</button> 
                                                 </td>
-
+                                                <?php } ?>
                                                 <td><label  class="btn btn-warning"><?php echo anchor('ListTransaksi/suratjalan/'.$row->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?></label> 
 
                                                 <td>

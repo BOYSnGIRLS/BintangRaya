@@ -13,8 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="#">
                                 <!-- <img src="images/icon/logo.png" alt="Bintang Raya"> -->
                                 <h1>BINTANG RAYA</h1>
+<!-- 
+                    <center><h2 class="title-2 m-b-40"><?php echo $this->session->flashdata('message');?></h2></center> -->
                             </a>
                         </div>
+                        
                         <div class="login-form">
                             <form action="<?= base_url('Login/cek_login')?>" method="post">
 

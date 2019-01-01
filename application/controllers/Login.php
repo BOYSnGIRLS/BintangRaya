@@ -11,8 +11,13 @@ class Login extends CI_Controller{
   public function index (){
     if($this->Model_app->logged_id())
             {
-                //jika memang session sudah terdaftar, maka redirect ke halaman dahsboard
-                redirect("DataBarang");
+              $user = $this->session->userdata('username');
+              $ceklevel  = $this->Model_app->level($user);
+                if ($ceklevel == 0) {
+                  redirect('DataBarang');
+                }else if($ceklevel == 1) {
+                  redirect('InputSewa');
+                }
 
             }else{
               $data=array(
@@ -40,6 +45,7 @@ class Login extends CI_Controller{
                   redirect('InputSewa');
                 }
             }else{
+                $this->session->set_flashdata('notif', 'USERNAME ATAU PASSWORD YANG DIMASUKKAN SALAH');
                 redirect('Login');
             }
         }else{

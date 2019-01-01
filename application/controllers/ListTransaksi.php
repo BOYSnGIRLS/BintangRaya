@@ -43,7 +43,7 @@ class ListTransaksi extends CI_Controller {
             
             $data['ket'] = $ket;
             $data['trans'] = $transaksi;
-
+            $data['admin'] = $ceklevel;
             $title=array(
                 'title'=>'List Transaksi',
                 'active_listtransaksi' => 'active'
