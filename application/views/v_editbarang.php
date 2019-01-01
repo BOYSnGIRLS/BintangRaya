@@ -10,12 +10,12 @@
                                     <form method="post" action="<?php echo base_url()?>DataBarang/update_barang">
                                         <table>
                                             <tr>
-                                                <td width="200" height="50" >Kategori Barang</td>
-                                                <td><input class="form-control" type="text" name="kategori" maxlength="15" value="<?php echo @$user[0]['nama_kategori']; ?>"></td>
+                                                <td width="200" height="50" >Kode Barang</td>
+                                                <td><input class="form-control" type="text" name="id_barang" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>" readonly></td>
                                             </tr>
                                             <tr>
-                                                <td width="200" height="50" >Kode Barang</td>
-                                                <td><input class="form-control" type="text" name="id_barang" maxlength="5" value="<?php echo @$user[0]['id_barang']; ?>"></td>
+                                                <td width="200" height="50" >Kategori Barang</td>
+                                                <td><input class="form-control" type="text" name="kategori" maxlength="15" value="<?php echo @$user[0]['nama_kategori']; ?>"></td>
                                             </tr>
                                             <tr>
                                              <td width="200" height="50">Nama Barang</td>
@@ -32,6 +32,10 @@
                                             <tr>
                                              <td width="200" height="50">Harga Jasa (Rp)</td>
                                              <td><input class="form-control" type="text" name="harga_jasa" maxlength="15" value="<?php echo @$user[0]['harga_jasa']; ?>"></td>
+                                            </tr>
+                                            <tr>
+                                             <td width="200" height="50">Harga Ganti Rugi (Rp)</td>
+                                             <td><input class="form-control" type="text" name="harga_jasa" maxlength="15" value="<?php echo @$user[0]['harga_ganti_rugi']; ?>"></td>
                                             </tr>
                                         </table><br>
                                         <table>

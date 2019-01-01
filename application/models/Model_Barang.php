@@ -16,6 +16,7 @@ class Model_Barang extends CI_Model {
     	$this->db->select('*');
     	$this->db->from('paket_tenda');
     	$this->db->join('tenda', 'paket_tenda.id_tenda=tenda.id_tenda');
+    	$this->db->order_by('jenis_tenda','ASC');
     	$query = $this->db->get();
 		return $query->result();
 	}
@@ -23,12 +24,13 @@ class Model_Barang extends CI_Model {
 	function get_kategori(){
 		$this->db->select('*');
 		$this->db->from('kategori_barang');
-	    $data = $this->db->get();
+		$this->db->order_by('nama_kategori','ASC');
+		$data = $this->db->get();
 	    return $data->result();
 	}
 
 	function get_barang(){
-		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori");
+		$query = $this->db->query("SELECT * FROM barang JOIN kategori_barang WHERE barang.id_kategori=kategori_barang.id_kategori ORDER BY nama_barang ASC ");
 		return $query->result();
 	}
 	

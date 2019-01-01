@@ -18,7 +18,7 @@
                                             </tr>
                                             <tr>
                                                 <td width="200" height="50" >Password Baru</td>
-                                                <td><input class="form-control" type="text" name="password" maxlength="6" placeholder="masukkan 6 digit karakter"></td>
+                                                <td><input class="form-control" type="text" name="password" maxlength="6" placeholder="Maksimal 6 digit karakter"></td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

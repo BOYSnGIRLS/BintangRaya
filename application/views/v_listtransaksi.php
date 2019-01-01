@@ -51,7 +51,7 @@
                                                 <th width="100%">Tgl Pasang</th>
                                                 <th>Alamat</th>
                                                 <th>Status</th>
-                                                <th>Pesanan Tambahan</th>
+                                                <th>Aksi</th>
                                                 <th>Surat Jalan</th>
                                                 <th>Nota Tagihan</th>
                                                 <th>Petugas</th>
@@ -225,8 +225,8 @@
                   </div>
                   <div class="modal-footer">
                     <input type="hidden" name="id_sewa" value="<?php echo $row->id_sewa; ?>">
-                    <button class="btn btn-danger btn-ok" type="submit"> Hapus&nbsp;</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Batal</button>
+                    <button class="btn btn-info btn-ok" type="submit"> Ya&nbsp;</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Tidak</button>
                 </div></form>
                   </div>
                 </div>

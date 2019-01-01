@@ -30,21 +30,19 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Pegawai</th>
-                                            <th>Password</th>
-                                            <th>Jabatan</th>
-                                            <th colspan="2">Aksi</th>
+                                            <th>Nama</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($user as $row): ?>
+                                        foreach ($pegw as $row): ?>
                                         <tr>
                                             <td><?php echo $no;?></td>
                                             <td><?php echo $row->username;?></td>
-                                            <td><?php echo $row->password;?></td>
                                             <td><?php 
                                                   if($row->level == '0'){
                                                     echo "Admin";
@@ -52,8 +50,8 @@
                                                     echo "Pegawai";
                                                   }?>
                                             </td>
-                                            <td> <button type="submit" class="fa fa-pencil-square-o" style="font-size:30px" data-toggle="modal" data-target="#modal_edit<?php echo $row->id_user;?>"></button>
-                                            </td> 
+                                            <!-- <td> <button type="submit" class="fa fa-pencil-square-o" style="font-size:30px" data-toggle="modal" data-target="#modal_edit<?php echo $row->id_user;?>"></button>
+                                            </td>  -->
                                             <td>
                                                <button type="submit" class="fa fa-trash" style="font-size:30px" data-toggle="modal" data-target="#modal_hapus<?php echo $row->id_user;?>"></button> 
                                               </td>
@@ -91,13 +89,12 @@
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Password </label>
                                     <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="password" maxlength="6" placeholder="Tuliskan 6 karakter"></textarea>
+                                      <input type="text" class="form-control" name="password" maxlength="6" placeholder="Maksimal 6 karakter"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" col-lg-4 col-sm-2 control-label">Kode</label>
                                     <div class="col-lg-10">
-                                       <input type="" class="form-control" name="level" placeholder=" Kode 0 = Admin dan Kode 1 = Pegawai">
+                                       <input type="hidden" class="form-control" name="level" value="1">
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +110,7 @@
       <!-- end modal large -->
 
   <!-- modal edit -->
-  <?php foreach ($user as $row): ?>
+  <?php foreach ($pegw as $row): ?>
             <div class="modal fade" id="modal_edit<?php echo $row->id_user;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -159,7 +156,7 @@
       <!-- end modal  -->
 
 <!-- Delete Modal-->
-<?php foreach ($user as $row):?>
+<?php foreach ($pegw as $row):?>
       <div class="modal fade" id="modal_hapus<?php echo $row->id_user;?>" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">

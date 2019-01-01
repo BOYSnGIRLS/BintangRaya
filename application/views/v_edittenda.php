@@ -11,7 +11,7 @@
                                         <table>
                                             <tr>
                                                 <td width="200" height="50" >Kode Tenda</td>
-                                                <td><input class="form-control" type="text" name="id_tenda" maxlength="5" value="<?php echo @$user[0]['id_tenda']; ?>"></td>
+                                                <td><input class="form-control" type="text" name="id_tenda" maxlength="5" value="<?php echo @$user[0]['id_tenda']; ?>" readonly></td>
                                             </tr>
                                             <tr>
                                              <td width="200" height="50">Ukuran Tenda</td>

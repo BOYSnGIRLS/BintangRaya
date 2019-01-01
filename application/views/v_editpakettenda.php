@@ -11,7 +11,7 @@
                                         <table>
                                             <tr>
                                                 <td width="200" height="50" >Kode Paket</td>
-                                                <td><input class="form-control" type="text" name="id_hargatenda" maxlength="5" value="<?php echo @$user[0]['id_hargatenda']; ?>"></td>
+                                                <td><input class="form-control" type="text" name="id_hargatenda" maxlength="5" value="<?php echo @$user[0]['id_hargatenda']; ?>" readonly></td>
                                             </tr>
                                             <tr>
                                              <td width="200" height="50">Jenis Tenda</td>

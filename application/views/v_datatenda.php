@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-lg-6">
                               <form  action="cari_tenda" method="post" style="text-align: center;">
-                                <input class="au-input au-input--xl" type="text" name="jenis_tenda" placeholder="Cari tenda " />
+                                <input class="au-input au-input--xl" type="text" name="jenis_tenda" placeholder="Cari paket tenda " />
                                 <button class="au-btn btn-primary" type="submit" name="btnSubmit2"><i class="zmdi zmdi-search"></i></button>
                               </form>
                             </div>

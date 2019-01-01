@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="login-form">
                                 <div class="form-group">
-                                    <label>Silahkan login kembali</label>
-                                    <a href="<?php echo base_url(); ?>Login/Logout">Login</a>
+                                    <center><label>Silahkan login kembali <a href="<?php echo base_url(); ?>Login/Logout">Login</a></label></center>
+                                       
                                 </div>                           
                         </div>
                     </div>

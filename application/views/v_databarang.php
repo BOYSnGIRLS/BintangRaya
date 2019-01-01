@@ -178,6 +178,12 @@
                                       <input type="number" class="form-control" name="stok_barang" placeholder="Tuliskan Jumlah Stok"></textarea>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Harga Ganti Rugi</label>
+                                    <div class="col-lg-10">
+                                      <input type="number" class="form-control" name="harga_ganti_rugi" placeholder="Tuliskan Harga"></textarea>
+                                    </div>
+                                </div>
                             </div>
                   </div>
                   <div class="modal-footer">

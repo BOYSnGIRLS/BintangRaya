@@ -25,10 +25,10 @@ class DataUser extends CI_Controller {
             $title=array(
                 'title'=>'Data User',
                 'active_datapegawai'=>'active');
-            $user['user']=$this->Model_User->get_user();
+            $pegw['pegw']=$this->Model_User->get_user();
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header', $user);
-            $this->load->view('v_datauser',$user);    
+            $this->load->view('v_datauser',$pegw);    
             $this->load->view('element/v_footer');
            }else{
             redirect('Login');
@@ -77,7 +77,7 @@ class DataUser extends CI_Controller {
         if(isset($_POST['btnSubmit'])){
 
             $username = $_POST['username'];
-            $user['user'] = $this->Model_User->cari($username);
+            $pegw['pegw'] = $this->Model_User->cari($username);
 
             $title=array(
             'title'=>'Data User',
@@ -85,7 +85,7 @@ class DataUser extends CI_Controller {
             );
             $this->load->view('element/css',$title);
             $this->load->view('element/v_header');
-            $this->load->view('v_datauser',$user);       
+            $this->load->view('v_datauser',$pegw);       
             $this->load->view('element/v_footer');
 
            
