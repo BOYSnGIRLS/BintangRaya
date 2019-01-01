@@ -378,7 +378,9 @@ class ListTransaksi extends CI_Controller {
     }
 
     function batal_transaksi(){
-        
+        $id_sewa = $this->input->post('id_sewa');
+        $this->db->query("DELETE FROM `sewa` WHERE id_sewa='$id_sewa'");
+        redirect('ListTransaksi');
     }
 
 
