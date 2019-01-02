@@ -110,7 +110,9 @@
                     </form>
              
 
-                                  <table class="table table-borderless table-striped table-earning">
+             
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
                                       <thead>
                                             <tr>
                                               <th>Kode Barang</th>
@@ -158,6 +160,7 @@
                                   </from>
                     </div>
                   </div>
+                </div>
                 </div>
             <div class="row">
                   <div class="col-md-12">

@@ -50,6 +50,8 @@
                     </div>
                     </div>
 
+
+                <div class="table-responsive table--no-card m-b-30">
                     <table class="table table-borderless table-data3">
                             <thead>
                             <tr>
@@ -96,6 +98,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                      </div>
 
 <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
 <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>

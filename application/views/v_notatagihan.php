@@ -16,6 +16,8 @@
                                         <br>
 
                                     <div class="row">
+
+                                <div class="table-responsive table--no-card m-b-30">
                                         <table class="table table-borderless ">
                                             <tr>
                                                 <td>NPWP</td>
@@ -49,9 +51,10 @@
                                             </tr>
 
                                         </table>
-                                    </div><br>
+                                    </div>
+                                </div><br>
                                     
-                                        <div class="table-responsive table--no-card m-b-30">
+                                    <div class="table-responsive table--no-card m-b-30">
 										<table class="table table-borderless table-striped table-earning">
                                             <thead>
                                             <tr>

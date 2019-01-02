@@ -63,7 +63,6 @@
                                             foreach ($trans as $row):
                                             ?>
                                             <tr>
-                                                <!-- <td><?php echo $no++; ?></td> -->
                                                 <td><?php echo $row->id_sewa ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
                                                 <td><?php echo date('d - m - Y', strtotime($row->tgl_pasang));?></td>
