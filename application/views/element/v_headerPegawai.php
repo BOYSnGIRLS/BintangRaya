@@ -6,7 +6,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="<?= base_url('InputSewa')?>">
                             <!-- <img src="images/icon/logo.png" alt="CoolAdmin" /> -->
                             <h2>BINTANG RAYA</h2>
                         </a>
@@ -21,15 +21,15 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                        <li class="<?php if(isset($active_inputsewa)){echo $active_inputsewa ;}?> has-sub">
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_listtransaksi)){echo $active_listtransaksi ;}?> has-sub">
                             <a href="<?= base_url('ListTransaksi')?>">
                                 <i class="fas fa-table"></i>List Transaksi</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_listkembali)){echo $active_listkembali ;}?> has-sub">
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
@@ -87,6 +87,7 @@
                         
                              
                             <div class="header-button">
+                                <div class="noti-wrap"></div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">

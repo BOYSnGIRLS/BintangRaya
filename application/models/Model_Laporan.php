@@ -83,6 +83,17 @@ function surat_jalan($id){
     return $query->result();
   }
 
+function get_kembali($kode){
+    $this->db->select('*');
+    $this->db->from('detail_kembali_barang');
+    $this->db->join('barang','barang.id_barang=detail_kembali_barang.id_barang');
+    $this->db->join('pengembalian', 'pengembalian.id_kembali=detail_kembali_barang.id_kembali');
+    $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
+    $this->db->where('pengembalian.id_sewa', $kode);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
   function nota_tagihan($id){
     $query = $this->db->query("SELECT * FROM sewa JOIN detail_sewa  WHERE sewa.id_sewa=detail_sewa.id_sewa AND sewa.id_sewa='$id' ");
     return $query->result();
@@ -138,6 +149,7 @@ public function view_by_date2($date){
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
+    $this->db->where('status','Selesai');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('DATE(tgl_acara1)', $date);
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
@@ -150,6 +162,7 @@ public function view_by_month2($month, $year){
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
+    $this->db->where('status','Selesai');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('MONTH(tgl_acara1)', $month); // Tambahkan where bulan
     $this->db->where('YEAR(tgl_acara1)', $year); // Tambahkan where tahun
@@ -163,6 +176,7 @@ public function view_by_year2($year){
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
+    $this->db->where('status','Selesai');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('YEAR(tgl_acara1)', $year);
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
@@ -175,6 +189,7 @@ public function view_all2(){
     $this->db->from('sewa');
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
+    $this->db->where('status','Selesai');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
     $query = $this->db->get();

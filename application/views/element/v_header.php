@@ -1,12 +1,12 @@
 
 <body class="animsition">
-    <div class="page-wrapper">
+    <div class="page-wrapper" >
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="<?= base_url('DataBarang')?>">
                             <!-- <img src="images/icon/logo.png" alt="CoolAdmin" /> -->
                             <h2>BINTANG RAYA</h2>
                         </a>
@@ -21,45 +21,32 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                        <li class="<?php if(isset($active_dashboard)){echo $active_dashboard ;}?> has-sub">
                             <a class="js-arrow" href="<?= base_url('DataBarang')?>">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_datapegawai)){echo $active_datapegawai ;}?> has-sub">
                             <a href="<?= base_url('DataUser')?>">
-                                <i class="fas fa-tachometer-alt"></i>Data Pegawai</a>
+                                <i class="fas fa-chart-bar"></i>Data Pegawai</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_inputsewa)){echo $active_inputsewa ;}?> has-sub">
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_listtransaksi)){echo $active_listtransaksi ;}?> has-sub">
                             <a href="<?= base_url('ListTransaksi')?>">
                                 <i class="fas fa-table"></i>List Transaksi</a>
                         </li>
-                        <li>
+                        <li class="<?php if(isset($active_listkembali)){echo $active_listkembali ;}?> has-sub">
                             <a href="<?= base_url('ListPengembalian')?>">
                                 <i class="fas fa-table"></i>List Pengembalian</a>
                         </li>
-                        <li>
+
+                        <li class="<?php if(isset($active_laporanpenyewaan)){echo $active_laporanpenyewaan;}?> has-sub">
                             <a href="<?= base_url('LaporanPenyewaan')?>">
                                 <i class="fas fa-table"></i>Laporan Penyewaan</a>
                         </li>
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li> -->
+                        
                     </ul>
                 </div>
             </nav>
@@ -128,6 +115,7 @@
                         
                              
                             <div class="header-button">
+                                <div class="noti-wrap"></div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">

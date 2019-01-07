@@ -15,118 +15,166 @@
 									</center>
                                         <br>
 
-                                    <div class="row">
+        <div class="row">
 
-                                <div class="table-responsive table--no-card m-b-30">
-                                        <table class="table table-borderless ">
-                                            <tr>
-                                                <td>NPWP</td>
-                                                <td>: 80.370.340.4-626.000</td>
-                                                <td>Telp</td>
-                                                <td>: <?php echo $data[0]->telp_pelanggan;?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>SIUP</td>
-                                                <td>: 503/0629/411/2016</td>
-                                                <td>Tanggal Pasang</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_pasang));?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nomor Surat</td>
-                                                <td>: <?php echo $data[0]->id_sewa;?></td>
-                                                <td>Tanggal Acara</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?> s/d <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara2));?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nama</td>
-                                                <td>: <?php echo $data[0]->nama_pelanggan;?></td>
-                                                <td>Lama Acara</td>
-                                                <td>: <?php echo $data[0]->lama;?> Hari</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alamat</td>
-                                                <td>: <?php echo $data[0]->alamat_pelanggan;?></td>
-                                                <td>Tanggal Bongkar</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_bongkar));?></td>
-                                            </tr>
+                            <div class="row">
+                        <div class="col-sm-6" >
+                            <div class="table-responsive">
+                            <table class="table table-responsive table-borderless ">
+                                <tr>
+                                    <td>NPWP</td>
+                                    <td>:</td>
+                                    <td>80.370.340.4-626.000</td>
+                                </tr>
+                                <tr>
+                                    <td>SIUP</td>
+                                    <td>:</td>
+                                    <td>503/0629/411/2016</td>
+                                </tr>
+                                <tr>
+                                    <td>Nomor Nota</td>
+                                    <td>:</td>
+                                    <td><?php echo $data[0]->id_sewa;?></td>
+                                </tr>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>:</td>
+                                    <td><?php echo $data[0]->nama_pelanggan;?></td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat</td>
+                                    <td>:</td>
+                                    <td><?php echo $data[0]->alamat_pelanggan;?></td>
+                                </tr>
 
-                                        </table>
-                                    </div>
-                                </div><br>
-                                    
-                                    <div class="table-responsive table--no-card m-b-30">
-										<table class="table table-borderless table-striped table-earning">
-                                            <thead>
-                                            <tr>
-                                                <th>Satuan</th>
-                                                <th>Nama Barang</th>
-												<th>Harga</th>
-                                                <th>Jumlah</th>
-											</tr>
-                                        </thead>
-                                            <tbody>
-                                            <?php
-                                            foreach ($detail_sewa2 as $items): ?>
-                                        <tr>
-                                            <td><?php echo number_format($items->jumlah_barang);?></td>
-                                            <td><?=$items->jenis_tenda;?></td>
-                                            <td><?php echo number_format($items->harga_sewa);?></td>
-                                            <td><?php echo number_format($items->harga_total);?></td>
-                                        </tr>
-                                            <?php
-                                            endforeach; ?>
-
-                                            <?php 
-                                            foreach ($detail_sewa1 as $items): ?>
-                                        <tr>
-                                            <td><?php echo number_format($items->jumlah_barang);?></td>
-                                            <td><?=$items->nama_barang;?></td>
-                                            <td><?php echo number_format($items->harga_sewa);?></td>
-                                            <td><?php echo number_format($items->harga_total);?></td>
-                                        </tr>
-                                
-                                            <?php
-                                            endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                        <hr>
-            <table style="">
-                <tr>
-                    <th>Total (Rp) : </th>
-                    <th style="text-align:right;"><input type="text" name="total" value="<?php echo number_format($data[0]->total_tagihan) ;?>" style="text-align:right;"></th>
-                </tr>
-                <tr>
-                    <th>DP (Rp)         : </th>
-                    <th style="text-align:right;"><input type="text" name="dp" value="<?php echo number_format($data[0]->dp) ;?>" style="text-align:right;"></th>
-                </tr>
-                <tr>
-                    <th>Biaya Ganti Rugi : </th>
-                    <th style="text-align:right;"><input type="text" name="ganti_rugi" value="<?php echo number_format($data[0]->biaya_ganti) ;?>" style="text-align:right;"></th>
-                </tr>
-                <tr>
-                    <th>Pelunasan (Rp)  : </th>
-                    <th style="text-align:right;"><input type="text" class="input-sm" id="pelunasan" name="pelunasan" value="<?php echo number_format($data[0]->pelunasan) ;?>" style="text-align:right;">
-                    <input type="hidden" class="input-sm" id="pelunasan2" name="pelunasan2" value="<?php echo $data[0]->pelunasan ;?>" style="text-align:right;">
-                    </th>
-                </tr>
-                <tr>
-                    <th>Total Tagihan (Rp)         : </th>
-                    <th style="text-align:right;"><input type="text" id="tagihan" name="tagihan" value="<?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?>" style="text-align:right;">
-                        <input type="hidden" class="input-sm" id="tagihan2" name="tagihan2" value="<?php echo ($data[0]->pelunasan)-($data[0]->biaya_ganti) ;?>" style="text-align:right;">
-                    </th>
-                </tr>
-                <tr>
-                    <th>Pembayaran (Rp)         : </th>
-                    <th style="text-align:right;"><input type="text" name="pembayaran" value="<?php echo number_format($data[0]->bayar) ;?>" style="text-align:right;"></th>
-                </tr>
-                <tr>
-                    <th>Kembalian (Rp)         : </th>
-                    <th style="text-align:right;"><input type="text" name="kembali" value="<?php echo number_format($data[0]->kembalian) ;?>" style="text-align:right;"></th>
-                </tr>
-            </table>
-            <hr/>
+                            </table>
                         </div>
-                        <form action="<?php echo base_url().'ListTransaksi/notatagihan'?>" method="post">
+                        </div>
+
+                        <div class="col-sm-6" >
+                            <div class="table-responsive">
+                            <table class="table table-responsive table-borderless ">
+                                <tr>
+                                    <td>Telp</td>
+                                    <td>:</td>
+                                    <td><?php echo $data[0]->telp_pelanggan;?></td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Pasang</td>
+                                    <td>:</td>
+                                    <td><?php echo date ('d - m - Y', strtotime($data[0]->tgl_pasang));?></td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Acara</td>
+                                    <td>:</td>
+                                    <td><?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?> s/d <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara2));?></td>
+                                </tr>
+                                <tr>
+                                    <td>Lama Acara</td>
+                                    <td>:</td>
+                                    <td><?php echo $data[0]->lama;?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Bongkar</td>
+                                    <td>:</td>
+                                    <td><?php echo date ('d - m - Y', strtotime($data[0]->tgl_bongkar));?></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        </div>
+                        </div>
+                        <br>    
+                                    
+                            <div class="table-responsive table--no-card m-b-30">
+								<table class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                    <tr>
+                                        <th>Satuan</th>
+                                        <th>Nama Barang</th>
+										<th>Harga</th>
+                                        <th>Jumlah</th>
+									</tr>
+                                </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($detail_sewa2 as $items): ?>
+                                <tr>
+                                    <td><?php echo number_format($items->jumlah_barang);?></td>
+                                    <td><?=$items->jenis_tenda;?></td>
+                                    <td><?php echo number_format($items->harga_sewa);?></td>
+                                    <td><?php echo number_format($items->harga_total);?></td>
+                                </tr>
+                                    <?php
+                                    endforeach; ?>
+
+                                    <?php 
+                                    foreach ($detail_sewa1 as $items): ?>
+                                <tr>
+                                    <td><?php echo number_format($items->jumlah_barang);?></td>
+                                    <td><?=$items->nama_barang;?></td>
+                                    <td><?php echo number_format($items->harga_sewa);?></td>
+                                    <td><?php echo number_format($items->harga_total);?></td>
+                                </tr>
+                        
+                                    <?php
+                                    endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <hr>
+                            </div>
+                        </div>
+
+                    <table class="table table-striped" >
+                        <tr>
+                            <th>Total (Rp)</th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format($data[0]->total_tagihan) ;?></th>
+                            <input type="hidden" name="total" value="<?php echo number_format($data[0]->total_tagihan) ;?>" style="text-align:right;">
+                        </tr>
+                        <tr>
+                            <th>DP (Rp) </th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format($data[0]->dp) ;?></th>
+                            <input type="hidden" name="dp" value="<?php echo number_format($data[0]->dp) ;?>" style="text-align:right;">
+                        </tr>
+                        <tr>
+                            <th>Biaya Ganti Rugi</th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format($data[0]->biaya_ganti) ;?></th>
+                            <input type="hidden" name="ganti_rugi" value="<?php echo number_format($data[0]->biaya_ganti) ;?>" style="text-align:right;">
+                        </tr>
+                        <tr>
+                            <th>Pelunasan (Rp)  </th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format($data[0]->pelunasan) ;?></th>
+                            <input type="hidden" class="input-sm" id="pelunasan" name="pelunasan" value="<?php echo number_format($data[0]->pelunasan) ;?>" style="text-align:right;">
+                            <input type="hidden" class="input-sm" id="pelunasan2" name="pelunasan2" value="<?php echo $data[0]->pelunasan ;?>" style="text-align:right;">
+                            
+                        </tr>
+                        <tr>
+                            <th>Total Tagihan (Rp) </th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?></th>
+                            <input type="hidden" id="tagihan" name="tagihan" value="<?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?>" style="text-align:right;">
+                            <input type="hidden" class="input-sm" id="tagihan2" name="tagihan2" value="<?php echo ($data[0]->pelunasan)-($data[0]->biaya_ganti) ;?>" style="text-align:right;">
+                            
+                        </tr>
+                        <tr>
+                            <th>Pembayaran (Rp) </th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format($data[0]->bayar) ;?></th>
+                            <input type="hidden" name="pembayaran" value="<?php echo number_format($data[0]->bayar) ;?>" style="text-align:right;">
+                        </tr>
+                        <tr>
+                            <th>Kembalian (Rp) </th>
+                            <th>:</th>
+                            <th style="text-align:right;"><?php echo number_format($data[0]->kembalian) ;?></th>
+                            <input type="hidden" name="kembali" value="<?php echo number_format($data[0]->kembalian) ;?>" style="text-align:right;">
+                        </tr>
+                    </table>
+            <hr/>
+                    <form action="<?php echo base_url().'ListTransaksi/notatagihan'?>" method="post">
                         <div class="form-group row">
                             <div class="col-sm-4" >
                                 <label>Pembayaran</label>

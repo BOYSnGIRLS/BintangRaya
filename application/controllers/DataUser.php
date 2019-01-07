@@ -48,8 +48,12 @@ class DataUser extends CI_Controller {
 
     public function tambah_user(){
         $data = array(
+            'nama_user' => $this->input->post('nama_user'),
             'username' => $this->input->post('username'),
             'password' => $this->input->post('password'),
+            'umur_user' => $this->input->post('umur_user'),
+            'nomor_user' => $this->input->post('nomor_user'),
+            'alamat_user' => $this->input->post('alamat_user'),
             'level' => $this->input->post('level')
         );
         $this->Model_User->tambah_user($data);

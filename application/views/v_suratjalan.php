@@ -17,29 +17,37 @@
 
                                 
                                 
-                                    <div class="row">       
+                                    <div class="row"> 
+                                <div class="table-responsive table--no-card m-b-30">
                                         <table class="table table-borderless">
                                             <tr>
                                                 <td>Nomor Surat</td>
-                                                <td>: <?php echo $data[0]->id_sewa;?></td>
+                                                <td>:</td>
+                                                <td><?php echo $data[0]->id_sewa;?></td>
                                                 <td>Nama Pelanggan</td>
-                                                <td>: <?php echo $data[0]->nama_pelanggan;?></td>
+                                                <td>:</td>
+                                                <td><?php echo $data[0]->nama_pelanggan;?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Pasang</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_pasang));?></td>
+                                                <td>:</td>
+                                                <td><?php echo date ('d - m - Y', strtotime($data[0]->tgl_pasang));?></td>
                                                 <td>Alamat</td>
-                                                <td>: <?php echo $data[0]->alamat_pelanggan;?></td>
+                                                <td>:</td>
+                                                <td><?php echo $data[0]->alamat_pelanggan;?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Acara</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?> s/d <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara2));?></td>
+                                                <td>:</td>
+                                                <td><?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara1));?> s/d <?php echo date ('d - m - Y', strtotime($data[0]->tgl_acara2));?></td>
                                                 <td>No. Telepon</td>
-                                                <td>: <?php echo $data[0]->telp_pelanggan;?></td>
+                                                <td>:</td>
+                                                <td><?php echo $data[0]->telp_pelanggan;?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Bongkar</td>
-                                                <td>: <?php echo date ('d - m - Y', strtotime($data[0]->tgl_bongkar));?></td>
+                                                <td>:</td>
+                                                <td><?php echo date ('d - m - Y', strtotime($data[0]->tgl_bongkar));?></td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
@@ -49,6 +57,7 @@
                                         <br>
 
 									
+                                <div class="table-responsive table--no-card m-b-30">
                                         <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
@@ -95,13 +104,7 @@
 
                            
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -30,9 +30,9 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th>Username</th>
+                                            <th>Nama Pegawai</th>
+                                            <th colspan="2">Aksi</th>
                                             
                                         </tr>
                                     </thead>
@@ -43,15 +43,9 @@
                                         <tr>
                                             <td><?php echo $no;?></td>
                                             <td><?php echo $row->username;?></td>
-                                            <td><?php 
-                                                  if($row->level == '0'){
-                                                    echo "Admin";
-                                                  }else{
-                                                    echo "Pegawai";
-                                                  }?>
+                                            <td><?php echo $row->nama_user;?></td>
+                                            <td><button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_detail<?php echo $row->id_user;?>">Detail</button>
                                             </td>
-                                            <!-- <td> <button type="submit" class="fa fa-pencil-square-o" style="font-size:30px" data-toggle="modal" data-target="#modal_edit<?php echo $row->id_user;?>"></button>
-                                            </td>  -->
                                             <td>
                                                <button type="submit" class="fa fa-trash" style="font-size:30px" data-toggle="modal" data-target="#modal_hapus<?php echo $row->id_user;?>"></button> 
                                               </td>
@@ -81,15 +75,39 @@
                     <form class="form-horizontal" action="<?php echo base_url('DataUser/tambah_user')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
                                 <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Nama Lengkap</label>
+                                    <div class="col-lg-10">
+                                      <input type="text" class="form-control" name="nama_user" placeholder="Tuliskan Nama Pegawai">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Username</label>
                                     <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="username" placeholder="Tuliskan Nama Pegawai">
+                                      <input type="text" class="form-control" name="username" placeholder="Tuliskan Username Pegawai">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-4 col-sm-2 control-label">Password </label>
                                     <div class="col-lg-10">
                                       <input type="text" class="form-control" name="password" maxlength="6" placeholder="Maksimal 6 karakter"></textarea>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Umur </label>
+                                    <div class="col-lg-10">
+                                      <input type="text" class="form-control" name="umur_user" maxlength="2" placeholder="Masukkan Umur Pegawai (Tahun)"></textarea>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Nomor Telepon</label>
+                                    <div class="col-lg-10">
+                                      <input type="text" class="form-control" name="nomor_user" maxlength="15" placeholder="Masukkan Nomor Telepon Pegawai"></textarea>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-lg-4 col-sm-2 control-label">Alamat </label>
+                                    <div class="col-lg-10">
+                                      <input type="text" class="form-control" name="alamat_user" maxlength="50" placeholder="Masukkan Alamat Pegawai"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -109,44 +127,70 @@
             </div>
       <!-- end modal large -->
 
-  <!-- modal edit -->
+  <!-- modal detail -->
   <?php foreach ($pegw as $row): ?>
-            <div class="modal fade" id="modal_edit<?php echo $row->id_user;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal_detail<?php echo $row->id_user;?>" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="largeModalLabel">Edit Data Pegawai</h5>
+                    <h5 class="modal-title" id="largeModalLabel">Detail Data Pegawai</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form class="form-horizontal" action="<?php echo base_url('DataUser/update_user')?>" method="post" enctype="multipart/form-data" role="form">
                         <div class="modal-body">
-                                <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Username</label>
-                                    <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="username" value="<?php echo $row->username;?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Password </label>
-                                    <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="password" maxlength="6" value="<?php echo $row->password;?>"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" col-lg-4 col-sm-2 control-label">Kode</label>
-                                    <div class="col-lg-10">
-                                       <input type="" class="form-control" name="level" value="<?php echo $row->level;?>">
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                    <table>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Nama</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>:</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td><?php echo $row->nama_user;?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Username</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>:</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td><?php echo $row->username;?></td>
+                                        </tr>
+                                         <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Umur</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>:</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td><?php echo $row->umur_user;?>&nbsp;&nbsp;Tahun</td>
+                                        </tr>
+                                         <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Nomor Telp</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>:</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td><?php echo $row->nomor_user;?></td>
+                                        </tr>
+                                         <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Alamat</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>:</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td><?php echo $row->alamat_user;?></td>
+                                        </tr>
+                                        
+                                    </table>
+                                    
                             </div>
+                        </div>
                   </div>
                   <div class="modal-footer">
-                    <input type="hidden" name="id_user" value="<?php echo $row->id_user; ?>">
-                    <button class="btn btn-info" type="submit"> Update&nbsp;</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
+                    
+                    <button type="button" class="btn btn-info" data-dismiss="modal"> Selesai</button>
                 </div></form>
                   </div>
                 </div>

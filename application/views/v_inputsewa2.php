@@ -140,7 +140,7 @@
 
 
                 <!-- Tampil barang yang disewa -->
-
+            <div class="table-responsive table--no-card m-b-30">
                 <table class="table table-borderless table-data3">
                     <thead>
                     <tr>
@@ -182,10 +182,11 @@
                              <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                         </tr>
                         
-                        <?php
+                        <?php $no++;
                         endforeach; ?>
                     </tbody>
                 </table>
+            </div>
             <hr>
 
         <form action="<?php echo base_url().'InputSewa'?>" method="post">

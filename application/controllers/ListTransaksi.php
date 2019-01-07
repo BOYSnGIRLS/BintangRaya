@@ -106,9 +106,7 @@ class ListTransaksi extends CI_Controller {
         );
         
         $this->load->view('element/css',$data);
-        // $this->load->view('element/v_header', $data);
         $this->load->view('v_suratjalan', $data);
-        $this->load->view('element/v_footer'); 
         
     }
 
@@ -188,12 +186,12 @@ class ListTransaksi extends CI_Controller {
             'active_listtransaksi'=>'active',
             'data'=>$this->Model_Laporan->nota_tagihan($id),
             'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
-            'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
+            'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id),
+            'barang_kembali' => $this->Model_Laporan->get_kembali($id)
         );
         
         $this->load->view('element/css',$data);
         $this->load->view('v_notatagihan2', $data);
-        $this->load->view('element/v_footer'); 
         
     }
 

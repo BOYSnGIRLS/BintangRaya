@@ -89,6 +89,7 @@
      <?php if(isset($data)){
          ?>
       <form  action="<?php echo site_url('ListPengembalian/inputkembali');?>" method="POST">
+                <div class="table-responsive table--no-card m-b-30">
                     <table class="table table-borderless table-data3">
                             <thead>
                             <tr>

@@ -203,7 +203,7 @@ class InputSewa extends CI_Controller {
     function remove(){
         $id_barang = $this->uri->segment(3);
         $id_sewa = $this->Model_Transaksi->get_notrans();
-        $this->db->query("DELETE FROM `detail_sewa` WHERE id_sewa='$id_sewa' AND id='$id_barang'");
+        $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='$id_sewa' AND id='$id_barang'");
         redirect('InputSewa/index');
 
     }
