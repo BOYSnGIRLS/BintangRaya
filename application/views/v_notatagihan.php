@@ -15,9 +15,7 @@
 									</center>
                                         <br>
 
-        <div class="row">
-
-                            <div class="row">
+       <div class="row">
                         <div class="col-sm-6" >
                             <div class="table-responsive">
                             <table class="table table-responsive table-borderless ">
@@ -85,47 +83,77 @@
                         </div>
                         </div>
                         <br>    
-                                    
-                            <div class="table-responsive table--no-card m-b-30">
-								<table class="table table-borderless table-striped table-earning">
-                                    <thead>
-                                    <tr>
-                                        <th>Satuan</th>
-                                        <th>Nama Barang</th>
-										<th>Harga</th>
-                                        <th>Jumlah</th>
-									</tr>
-                                </thead>
-                                    <tbody>
-                                    <?php
-                                    foreach ($detail_sewa2 as $items): ?>
+                        <div class="table-responsive table--no-card m-b-30">
+                            <table class="table table-borderless table-striped table-earning">
+                                <thead>
                                 <tr>
-                                    <td><?php echo number_format($items->jumlah_barang);?></td>
-                                    <td><?=$items->jenis_tenda;?></td>
-                                    <td><?php echo number_format($items->harga_sewa);?></td>
-                                    <td><?php echo number_format($items->harga_total);?></td>
+                                    <th>Satuan</th>
+                                    <th>Nama Barang</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
                                 </tr>
-                                    <?php
-                                    endforeach; ?>
+                            </thead>
+                                <tbody>
+                                <?php
+                                foreach ($detail_sewa2 as $items): ?>
+                            <tr>
+                                <td><?php echo number_format($items->jumlah_barang);?></td>
+                                <td><?=$items->jenis_tenda;?></td>
+                                <td><?php echo number_format($items->harga_sewa);?></td>
+                                <td><?php echo number_format($items->harga_total);?></td>
+                            </tr>
+                                <?php
+                                endforeach; ?>
 
-                                    <?php 
-                                    foreach ($detail_sewa1 as $items): ?>
-                                <tr>
-                                    <td><?php echo number_format($items->jumlah_barang);?></td>
-                                    <td><?=$items->nama_barang;?></td>
-                                    <td><?php echo number_format($items->harga_sewa);?></td>
-                                    <td><?php echo number_format($items->harga_total);?></td>
-                                </tr>
-                        
-                                    <?php
-                                    endforeach; ?>
-                                    </tbody>
-                                </table>
-                                <hr>
+                                <?php 
+                                foreach ($detail_sewa1 as $items): ?>
+                            <tr>
+                                <td><?php echo number_format($items->jumlah_barang);?></td>
+                                <td><?=$items->nama_barang;?></td>
+                                <td><?php echo number_format($items->harga_sewa);?></td>
+                                <td><?php echo number_format($items->harga_total);?></td>
+                            </tr>
+                    
+                                <?php
+                                endforeach; ?>
+                                </tbody>
+                            </table>
                             </div>
-                        </div>
+            
+            <div class="row">
+                <div class="col-sm-8" >
+                    <h4>Barang Hilang atau Rusak (BHR)</h4>
+                    <br>
+                    <div class="table-responsive table--no-card m-b-30">
+                            <table class="table table-borderless table-striped table-earning">
+                                <thead>
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Jumlah</th>
+                                    <th>Biaya</th>
+                                    <th>Total Ganti Rugi</th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                <?php 
+                                foreach ($barang_kembali as $items): ?>
+                                
+                                <tr>
+                                     <td><?=$items->nama_barang;?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->hilangrusak);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->harga_ganti_rugi);?></td>
+                                     <td style="text-align:center;"><?php echo number_format($items->harga_ganti);?></td>
+                                </tr>
+                    
+                                <?php
+                                endforeach; ?>
+                                </tbody>
+                            </table>
+                            </div>
+                </div>
 
-                    <table class="table table-striped" >
+                <div class="col-sm-4" >
+                    <table class="table table-borderless" >
                         <tr>
                             <th>Total (Rp)</th>
                             <th>:</th>
