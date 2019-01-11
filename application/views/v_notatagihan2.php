@@ -228,7 +228,7 @@
 
                                     </div>
                                     <br>
-                                        <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
+                                        <input name="cetak" type="button" id="cetak" value="Cetak" onclick="Cetakan()" style="visibility: visible;">
                                     <br>
                                 </div>
                             </div>
@@ -246,4 +246,22 @@
                 </div>
             </div>
 
-            <!-- END MAIN CONTENT
+            <!-- END MAIN CONTENT -->
+
+<script>
+    function Cetakan(){
+  var x = document.getElementsByName("cetak");
+  for(i = 0; i < x.length ; i++)
+  {
+        x[i].style.visibility = "hidden";
+  }
+  window.print();
+  alert("Jangan di tekan tombol OK sebelum dokumen selesai tercetak!");
+  for(i = 0; i < x.length ; i++)
+  {
+        x[i].style.visibility = "visible";
+  }
+}
+</script>
+
+
