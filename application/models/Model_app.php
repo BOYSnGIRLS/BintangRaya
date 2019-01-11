@@ -4,6 +4,8 @@
 class Model_app extends CI_Model{
     public $username;
     public $password;
+    public $tgl_acara1;
+    public $tgl_acara2;
 
     function __construct(){
         parent::__construct();
