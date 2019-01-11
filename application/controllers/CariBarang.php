@@ -18,31 +18,29 @@ class CariBarang extends CI_Controller {
 
     function index(){
         $user = $this->session->userdata('username');
-        $tgl1 = $this->session->userdata('tgl_acara1');
-        $tgl2 = $this->session->userdata('tgl_acara2');
-        $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
-        $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
-        $data = array(
-            'tgl_pasang' = $tgl_pasang,
-            'tgl_acara1' = $tgl1,
-            'tgl_acara2' = $tgl2,
-            'tgl_bongkar' = $tgl_bongkar
-            )
         $ceklevel  = $this->Model_app->level($user);
         if ($ceklevel == 0) {
-            $this->load->view('element/css');
-            $this->load->view('element/v_header');
-            $this->load->view('v_caribarang',$data);
+            $title = array(
+                'title' => 'Cari Barang',
+                'active_cari'=> 'active'
+                );
+            $this->load->view('element/css', $title);
+            $this->load->view('element/v_header', $title);
+            $this->load->view('v_caribarang');
 
         }else if($ceklevel == 1) {
+            $title = array(
+                'title' => 'Cari Barang',
+                'active_cari'=> 'active'
+                );
             $this->load->view('element/css');
             $this->load->view('element/v_headerPegawai');
-            $this->load->view('v_caribarang',$data);
+            $this->load->view('v_caribarang');
             }
         }
 
         
-    }
+    
 
     public function get_autocomplete(){    //membuat dropdown pilihan di search box
         if (isset($_GET['term'])) {
@@ -75,10 +73,22 @@ class CariBarang extends CI_Controller {
     }
 
     public function inputTgl(){
-        $this->Model_app->tgl_acara1 = $_POST['tgl_acara1'];
-        $this->Model_app->tgl_acara2 = $_POST['tgl_acara1'];
-        $this->session->set_userdata('tgl_acara1', $this->Model_app->tgl_acara1);
-        $this->session->set_userdata('tgl_acara2', $this->Model_app->tgl_acara2);
+        $tgl1 = $this->input->post('tgl_acara1');
+        $tgl2 = $this->input->post('tgl_acara2');
+        $tgl_pasang = date('Y-m-d', strtotime('-1 day', strtotime($tgl1)));
+        $tgl_bongkar = date('Y-m-d', strtotime('+1 day', strtotime($tgl2)));
+        $this->session->set_userdata('tgl_acara1', $tgl1);
+        $this->session->set_userdata('tgl_acara2', $tgl2);
+        $this->session->set_userdata('tgl_pasang', $tgl_pasang);
+        $this->session->set_userdata('tgl_bongkar', $tgl_bongkar);
+        redirect('CariBarang');
+    }
 
+    public function selesai(){
+        $this->session->unset_userdata('tgl_pasang');
+        $this->session->unset_userdata('tgl_acara1');
+        $this->session->unset_userdata('tgl_acara2');
+        $this->session->unset_userdata('tgl_bongkar');
+        redirect('DataBarang');
     }
 }

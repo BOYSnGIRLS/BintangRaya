@@ -214,7 +214,7 @@
                 <div class="col-sm-3" >
                     <table class="table table-borderless" >
                         <tr>
-                            <th>Jember, 1 Januari 2019</th>
+                            <th>Jember, <?php echo date('d-m-Y'); ?></th>
                         </tr>
                         <tr><th></th></tr>
                         <tr><th></th></tr>

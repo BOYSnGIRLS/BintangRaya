@@ -6,22 +6,24 @@
      <form id="form_input_detail" action="<?php echo site_url('CariBarang/inputTgl');?>" method="POST">
         <div class="row">
              <div class="col-lg-12">
+                <div class="au-card m-b-30">
+                    <div class="au-card-inner">    
+                    <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="tgl">Tanggal Acara Mulai:</label>
-                        <input type="hidden" name="tgl_pasang" value="<?php if(isset($data)) { echo $data[0]->tgl_pasang; } ?>" readonly >
-                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" required>
+                        <input type="hidden" name="tgl_pasang" value="<?php if(null !== $this->session->userdata('tgl_pasang')) { $tgl_pasang = $this->session->userdata('tgl_pasang'); echo $tgl_pasang; } ?>" readonly >
+                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(null !== $this->session->userdata('tgl_acara1')) { $tgl_acara1 = $this->session->userdata('tgl_acara1'); echo $tgl_acara1; } ?>" required>
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Selesai :</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" required>
-                        <input type="hidden" name="tgl_bongkar" value="<?php if(isset($data)) { echo $data[0]->tgl_bongkar; } ?>" readonly >
+                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(null !== $this->session->userdata('tgl_acara2')) { $tgl_acara2 = $this->session->userdata('tgl_acara2'); echo $tgl_acara2; } ?>" required>
+                        <input type="hidden" name="tgl_bongkar" value="<?php if(null !== $this->session->userdata('tgl_bongkar')) { $tgl_bongkar = $this->session->userdata('tgl_bongkar'); echo $tgl_bongkar; } ?>" readonly >
                       </div>
                       <button class="btn btn-info" name="btnTgl" >Submit</button>
+                  </div>
                   </form>
                     </div>
-
-            </div>
 
                     <div class="form-group row">
                         <div class="col-lg-9">
@@ -29,7 +31,6 @@
                         <form id="form_search" action="" method="GET">
                             <label>Cari Barang</label>
                             <div class="input-group">
-                                <input type="hidden" name="id_sewa" value="<?php echo $kode;?>" readonly >
                                 <input type="text" name="title" class="form-control" id="title" placeholder="nama_barang" style="width:200px;" required="">
                                 
                              </div>
@@ -77,13 +78,12 @@
                     </script>
 
 
-        <form id="form_search" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
+        <form id="form_search" action="<?php echo site_url('CariBarang/selesai');?>" method="POST">
             <div class="form-group row">
                 <div class="col-sm-3" >
                     <label  for="nama">Nama Barang:</label>
                     <input class="form-control" type="text" name="nama_barang" readonly>
                     <input class="form-control" type="hidden" name="id_barang" readonly>
-                    <input type="hidden" class="form-control" id="id_sewa" name="id_sewa" style="width:200px;" value="<?php echo $kode;?>" readonly>
                   </div>
 
                   <div class="col-sm-3" >
@@ -96,17 +96,9 @@
                     <input class="form-control" type="text" name="harga_sewa" readonly >
                     <input type="hidden" name="jasa" readonly="">
                   </div>
-                  
-                  <div class="col-sm-3">
-                  <label for="nomor">Jumlah Sewa: </label>
-                    <input class="form-control" type="number" min="0" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
-                    <span class="input-group-btn">
-                            <button class="btn btn-info" type="submit">Submit&nbsp;</button>
-                        </span>
-                    </div>
-                </div>
+            <button class="btn btn-info" name="btnTgl" >Submit</button>            
         </form>
-
+</div></div></div>
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
