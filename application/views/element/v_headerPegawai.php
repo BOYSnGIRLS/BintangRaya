@@ -25,6 +25,10 @@
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
                         </li>
+                        <li class="<?php if(isset($active_cari)){echo $active_cari ;}?> has-sub">
+                            <a href="<?= base_url('CariBarang')?>">
+                                <i class="fas fa-tachometer-alt"></i>Lihat Stok</a>
+                        </li>
                         <li class="<?php if(isset($active_listtransaksi)){echo $active_listtransaksi ;}?> has-sub">
                             <a href="<?= base_url('ListTransaksi')?>">
                                 <i class="fas fa-table"></i>List Transaksi</a>
@@ -53,6 +57,10 @@
                         <li class="<?php if(isset($active_inputsewa)){echo $active_inputsewa ;}?> has-sub">
                             <a href="<?= base_url('InputSewa')?>">
                                 <i class="fas fa-chart-bar"></i>Input Sewa</a>
+                        </li>
+                        <li class="<?php if(isset($active_cari)){echo $active_cari ;}?> has-sub">
+                            <a href="<?= base_url('CariBarang')?>">
+                                <i class="fas fa-tachometer-alt"></i>Lihat Stok</a>
                         </li>
                         <li class="<?php if(isset($active_listtransaksi)){echo $active_listtransaksi ;}?> has-sub">
                             <a href="<?= base_url('ListTransaksi')?>">

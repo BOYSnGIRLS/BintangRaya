@@ -17,7 +17,7 @@
 
                                 
                                 
-                                    <div class="row"> 
+                            <div class="row"> 
                                 <div class="table-responsive table--no-card m-b-30">
                                         <table class="table table-borderless">
                                             <tr>
@@ -61,9 +61,10 @@
                                         <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
+                                                <th>Jumlah Barang</th>
                                                 <th>Kode Barang</th>
                                                 <th>Nama Barang</th>
-												<th>Jumlah Barang</th>
+												
 											</tr>
                                         </thead>
                                         <tbody>
@@ -71,9 +72,10 @@
                                             <?php
                                             foreach ($detail_sewa2 as $items): ?>
                                         <tr>
+                                            <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                              <td><?=$items->id_hargatenda ;?></td>
                                              <td><?=$items->jenis_tenda;?></td>
-                                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                                             
                                          </tr>
                                             <?php
                                             endforeach; ?>
@@ -81,9 +83,10 @@
                                             <?php 
                                             foreach ($detail_sewa1 as $items): ?>
                                         <tr>
+                                            <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                              <td><?=$items->id_barang ;?></td>
                                              <td><?=$items->nama_barang;?></td>
-                                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                                             
                                              
                                         </tr>
                                 
@@ -95,11 +98,49 @@
                                     </div>
                                     <hr>
                                     <br>
-                                        <button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>
+                                    
+                                    
+                                        <!--<button class="au-btn au-btn-icon au-btn--blue" onClick="window.print();">CETAK</button>-->
                                     <br>
-                                    <!-- <?php echo anchor('ListTransaksi/suratjalan2/'.$data[0]->id_sewa,'VERSI CETAK', array('target' => '_blank')); ?> 
-                                    -->
+                                    
                                 </div>
+                                
+                                <div class="row">
+                <div class="col-sm-9" >
+                    <table class="table table-borderless" >
+                        <tr>
+                            <th>Mengetahui,</th>
+                        </tr>
+                        <tr><th></th></tr>
+                        <tr><th></th></tr>
+                        <tr><th></th></tr>
+                        <tr>
+                            <th>(Penerima)</th>
+                        </tr>
+                        
+                    </table>
+                   
+                </div>
+
+                <div class="col-sm-3" >
+                    <table class="table table-borderless" >
+                        <tr>
+                            <th>Jember, <?php echo date('d-m-Y'); ?></th>
+                        </tr>
+                        <tr><th></th></tr>
+                        <tr><th></th></tr>
+                        <tr><th></th></tr>
+                        <tr>
+                            <th>(Andry Irdhiansyah)</th>
+                        </tr>
+                        
+                    </table>
+                </div>
+
+            </div>
+            <br>
+                                        <input name="cetak" type="button" id="cetak" value="Cetak" onclick="Cetakan()" style="visibility: visible;">
+                                    <br>
                             </div>
 
                            
@@ -109,4 +150,22 @@
                 </div>
             </div>
         <?php }?>
-            <!-- END MAIN CONTENT
+            <!--END MAIN CONTENT-->
+            
+<script>
+    function Cetakan(){
+  var x = document.getElementsByName("cetak");
+  for(i = 0; i < x.length ; i++)
+  {
+        x[i].style.visibility = "hidden";
+  }
+  window.print();
+  alert("Jangan di tekan tombol OK sebelum dokumen selesai tercetak!");
+  for(i = 0; i < x.length ; i++)
+  {
+        x[i].style.visibility = "visible";
+  }
+}
+</script>
+
+

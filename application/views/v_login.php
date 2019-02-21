@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 
-<body class="animsition">
+<body class="animsition" background="assets/images/bg3.jpg">
     <div class="page-wrapper">
-        <div class="page-content--bge5">
+        <div>
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">

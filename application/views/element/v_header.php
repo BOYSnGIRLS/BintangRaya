@@ -26,7 +26,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="<?php if(isset($active_cari)){echo $active_cari ;}?> has-sub">
-                            <a class="js-arrow" href="<?= base_url('CariBarang')?>">
+                            <a href="<?= base_url('CariBarang')?>">
                                 <i class="fas fa-tachometer-alt"></i>Lihat Stok</a>
                         </li>
                         <li class="<?php if(isset($active_datapegawai)){echo $active_datapegawai ;}?> has-sub">
@@ -71,6 +71,10 @@
                         <li class="<?php if(isset($active_dashboard)){echo $active_dashboard ;}?> has-sub">
                             <a class="js-arrow" href="<?= base_url('DataBarang')?>">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li class="<?php if(isset($active_cari)){echo $active_cari ;}?> has-sub">
+                            <a href="<?= base_url('CariBarang')?>">
+                                <i class="fas fa-tachometer-alt"></i>Lihat Stok</a>
                         </li>
                         <li class="<?php if(isset($active_datapegawai)){echo $active_datapegawai ;}?> has-sub">
                             <a href="<?= base_url('DataUser')?>">

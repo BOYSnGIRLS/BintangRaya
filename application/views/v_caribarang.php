@@ -20,10 +20,15 @@
                         <input class="form-control" type="date" name="tgl_acara2" value="<?php if(null !== $this->session->userdata('tgl_acara2')) { $tgl_acara2 = $this->session->userdata('tgl_acara2'); echo $tgl_acara2; } ?>" required>
                         <input type="hidden" name="tgl_bongkar" value="<?php if(null !== $this->session->userdata('tgl_bongkar')) { $tgl_bongkar = $this->session->userdata('tgl_bongkar'); echo $tgl_bongkar; } ?>" readonly >
                       </div>
-                      <button class="btn btn-info" name="btnTgl" >Submit</button>
-                  </div>
+                      
+                      <div class="col-sm-3">
+                        <label for="btn">-------------------</label>
+                        <a href="<?php echo site_url('CariBarang/selesai');?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span>Hapus</a>
+                        <button class="btn btn-info" name="btnTgl" >Cari</button>
+                      </div>
+                      </div>
                   </form>
-                    </div>
+                </div>
 
                     <div class="form-group row">
                         <div class="col-lg-9">
@@ -37,6 +42,7 @@
 
 
                         </form>
+                    </div>
                     </div>
 
                     <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
@@ -78,7 +84,7 @@
                     </script>
 
 
-        <form id="form_search" action="<?php echo site_url('CariBarang/selesai');?>" method="POST">
+        <!--<form id="form_search" action="<?php echo site_url('CariBarang/selesai');?>" method="POST">-->
             <div class="form-group row">
                 <div class="col-sm-3" >
                     <label  for="nama">Nama Barang:</label>
@@ -95,10 +101,9 @@
                     <label  for="nama">Biaya Sewa (Rp):</label>
                     <input class="form-control" type="text" name="harga_sewa" readonly >
                     <input type="hidden" name="jasa" readonly="">
-                  </div>
-            <button class="btn btn-info" name="btnTgl" >Submit</button>            
+                  </div>            
         </form>
-</div></div></div>
+</div></div>
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">

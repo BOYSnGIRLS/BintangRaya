@@ -24,7 +24,7 @@
                             
                         </div>
                         <div class="row">
-                        <!-- Tabel Tampil Barang -->
+                        <!-- Tabel Tampil pegawai -->
                         <div class="table-responsive table--no-card m-b-30">
                                 <table class="table table-borderless table-striped table-striped table-earning">
                                     <thead>
@@ -93,9 +93,9 @@
                                     </div>
                                 </div>
                                  <div class="form-group">
-                                    <label class="col-lg-4 col-sm-2 control-label">Umur </label>
+                                    <label class="col-lg-4 col-sm-2 control-label">Tanggal Lahir </label>
                                     <div class="col-lg-10">
-                                      <input type="text" class="form-control" name="umur_user" maxlength="2" placeholder="Masukkan Umur Pegawai (Tahun)"></textarea>
+                                      <input type="date" class="form-control" name="lahir_user" maxlength="2" placeholder="Tanggal Lahir Pegawai "></textarea>
                                     </div>
                                 </div>
                                  <div class="form-group">
@@ -160,11 +160,11 @@
                                         </tr>
                                          <tr>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                            <td>Umur</td>
+                                            <td>Tanggal Lahir</td>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                             <td>:</td>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                            <td><?php echo $row->umur_user;?>&nbsp;&nbsp;Tahun</td>
+                                            <td><?php echo  date ('d - m - Y', strtotime($row->lahir_user));?></td>
                                         </tr>
                                          <tr>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

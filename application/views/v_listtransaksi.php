@@ -48,6 +48,7 @@
                                                 <!-- <th>No</th> -->
                                                 <th>Kode Transaksi</th>
                                                 <th>Nama Pelanggan</th>
+                                                <th>Nomor Telepon</th>
                                                 <th width="100%">Tgl Pasang</th>
                                                 <th>Alamat</th>
                                                 <th>Status</th>
@@ -65,6 +66,7 @@
                                             <tr>
                                                 <td><?php echo $row->id_sewa ?></td>
                                                 <td><?php echo $row->nama_pelanggan ?></td>
+                                                <td><?php echo $row->telp_pelanggan ?></td>
                                                 <td><?php echo date('d - m - Y', strtotime($row->tgl_pasang));?></td>
                                                 <td><?php echo $row->alamat_pelanggan?></td>
 

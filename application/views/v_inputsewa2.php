@@ -194,11 +194,12 @@
                 <tr>
                     <?php if (isset($lama)) {
                     ?>
-                    <td style="width:760px;" rowspan="2"></td>
-                    <th style="width:200px;">Lama Acara (hari) </th>
+                    <td style="width:400px;" rowspan="2"></td>
+                    <th style="width:280px;">Lama Acara (hari) </th>
                     <th style="text-align:right;width:140px;">
                     <input type="text" name="lama" value="<?php echo number_format($lama[0]->lama);?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" ></th>
-                    <th style="width:140px;">Total (Rp)</th>
+
+                    <th style="width:320px;">Total (Rp)</th>
                     <th style="text-align:right;width:250px;">
                     <?php }?>
 
@@ -216,6 +217,13 @@
 
                 <tr>
                     <td></td><td></td><td></td>
+                    <th>Biaya Transportasi (Rp)</th>
+                    <th style="text-align:right;">
+                    <input type="number" min="0" id="biaya_trans" name="biaya_trans" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)" ></th>
+                </tr>
+
+                <tr>
+                    <td></td><td></td><td></td>
                     <th>DP (Rp)</th>
                     <th style="text-align:right;">
 
@@ -225,7 +233,7 @@
                 <tr>
                     <td></td><td></td><td></td>
                     <th>Pelunasan (Rp)</th>
-                    <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                    <th style="text-align:right;"><input type="text" id="pelunasan" name="pelunasan" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
                 </tr>
                 <tr>
                     <td></td><td></td><td></td>
@@ -263,10 +271,11 @@
         $(function(){
             $('#jml_uang').on("input",function(){
                 var total=$('#total_tagih').val();
+                var trans=$('#biaya_trans').val();
                 var jumuang=$('#jml_uang').val();
                 var hsl=jumuang.replace(/[^\d]/g,"");
                 $('#jml_uang2').val(hsl);
-                $('#kembalian').val(hsl-total);
+                $('#pelunasan').val(hsl-total-trans);
             })
             
         });

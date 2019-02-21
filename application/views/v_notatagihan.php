@@ -17,8 +17,7 @@
 
        <div class="row">
                         <div class="col-sm-6" >
-                            <div class="table-responsive">
-                            <table class="table table-responsive table-borderless ">
+                            <table width="450px">
                                 <tr>
                                     <td>NPWP</td>
                                     <td>:</td>
@@ -47,11 +46,9 @@
 
                             </table>
                         </div>
-                        </div>
 
                         <div class="col-sm-6" >
-                            <div class="table-responsive">
-                            <table class="table table-responsive table-borderless ">
+                            <table width="450px">
                                 <tr>
                                     <td>Telp</td>
                                     <td>:</td>
@@ -81,13 +78,14 @@
                             </table>
                         </div>
                         </div>
-                        </div>
-                        <br>    
-                        <div class="table-responsive table--no-card m-b-30">
-                            <table class="table table-borderless table-striped table-earning">
+                    
+                    <hr>
+                    <h4>Barang Yang Disewa</h4>
+                    <br>
+                            <table width="900px">
                                 <thead>
                                 <tr>
-                                    <th>Satuan</th>
+                                    <th style="text-align:center;">Satuan</th>
                                     <th>Nama Barang</th>
                                     <th>Harga</th>
                                     <th>Jumlah</th>
@@ -97,7 +95,7 @@
                                 <?php
                                 foreach ($detail_sewa2 as $items): ?>
                             <tr>
-                                <td><?php echo number_format($items->jumlah_barang);?></td>
+                                <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                 <td><?=$items->jenis_tenda;?></td>
                                 <td><?php echo number_format($items->harga_sewa);?></td>
                                 <td><?php echo number_format($items->harga_total);?></td>
@@ -108,7 +106,7 @@
                                 <?php 
                                 foreach ($detail_sewa1 as $items): ?>
                             <tr>
-                                <td><?php echo number_format($items->jumlah_barang);?></td>
+                                <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                                 <td><?=$items->nama_barang;?></td>
                                 <td><?php echo number_format($items->harga_sewa);?></td>
                                 <td><?php echo number_format($items->harga_total);?></td>
@@ -118,14 +116,11 @@
                                 endforeach; ?>
                                 </tbody>
                             </table>
-                            </div>
             
-            <div class="row">
-                <div class="col-sm-8" >
+                    <hr>
                     <h4>Barang Hilang atau Rusak (BHR)</h4>
                     <br>
-                    <div class="table-responsive table--no-card m-b-30">
-                            <table class="table table-borderless table-striped table-earning">
+                            <table width="900px">
                                 <thead>
                                 <tr>
                                     <th>Nama Barang</th>
@@ -150,81 +145,90 @@
                                 </tbody>
                             </table>
                             </div>
-                </div>
-
-                <div class="col-sm-4" >
-                    <table class="table table-borderless" >
+                <hr>
+                
+            <div class="row">
+                <div class="col-sm-6" >
+                    <table width="350px" >
                         <tr>
-                            <th>Total (Rp)</th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format($data[0]->total_tagihan) ;?></th>
+                            <td>Biaya Transportasi(Rp) </td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format($data[0]->biaya_transportasi) ;?></td>
+                            <input type="hidden" name="kembali" value="<?php echo number_format($data[0]->biaya_transportasi) ;?>" style="text-align:right;">
+                        </tr>
+                        <tr>
+                            <td>Total (Rp)</td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format($data[0]->total_tagihan) ;?></td>
                             <input type="hidden" name="total" value="<?php echo number_format($data[0]->total_tagihan) ;?>" style="text-align:right;">
                         </tr>
                         <tr>
-                            <th>DP (Rp) </th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format($data[0]->dp) ;?></th>
+                            <td>DP (Rp) </td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format($data[0]->dp) ;?></td>
                             <input type="hidden" name="dp" value="<?php echo number_format($data[0]->dp) ;?>" style="text-align:right;">
                         </tr>
                         <tr>
-                            <th>Biaya Ganti Rugi</th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format($data[0]->biaya_ganti) ;?></th>
+                            <td>Biaya Ganti Rugi</td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format($data[0]->biaya_ganti) ;?></td>
                             <input type="hidden" name="ganti_rugi" value="<?php echo number_format($data[0]->biaya_ganti) ;?>" style="text-align:right;">
                         </tr>
+                    </table>
+                    </div>
+                <div class="col-sm-6">
+                    <table width="350px">
                         <tr>
-                            <th>Pelunasan (Rp)  </th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format($data[0]->pelunasan) ;?></th>
+                            <td>Pelunasan (Rp)  </td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format($data[0]->pelunasan) ;?></td>
                             <input type="hidden" class="input-sm" id="pelunasan" name="pelunasan" value="<?php echo number_format($data[0]->pelunasan) ;?>" style="text-align:right;">
                             <input type="hidden" class="input-sm" id="pelunasan2" name="pelunasan2" value="<?php echo $data[0]->pelunasan ;?>" style="text-align:right;">
                             
                         </tr>
                         <tr>
-                            <th>Total Tagihan (Rp) </th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?></th>
+                            <td>Total Tagihan (Rp) </td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?></td>
                             <input type="hidden" id="tagihan" name="tagihan" value="<?php echo number_format (($data[0]->pelunasan)-($data[0]->biaya_ganti)) ;?>" style="text-align:right;">
                             <input type="hidden" class="input-sm" id="tagihan2" name="tagihan2" value="<?php echo ($data[0]->pelunasan)-($data[0]->biaya_ganti) ;?>" style="text-align:right;">
                             
                         </tr>
                         <tr>
-                            <th>Pembayaran (Rp) </th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format($data[0]->bayar) ;?></th>
+                            <td>Pembayaran (Rp) </td>
+                            <td>:</td>
+                            <td style="text-align:right;"><?php echo number_format($data[0]->bayar) ;?></td>
                             <input type="hidden" name="pembayaran" value="<?php echo number_format($data[0]->bayar) ;?>" style="text-align:right;">
                         </tr>
-                        <tr>
-                            <th>Kembalian (Rp) </th>
-                            <th>:</th>
-                            <th style="text-align:right;"><?php echo number_format($data[0]->kembalian) ;?></th>
-                            <input type="hidden" name="kembali" value="<?php echo number_format($data[0]->kembalian) ;?>" style="text-align:right;">
-                        </tr>
                     </table>
+                    </div>
+                    </div>
             <hr/>
                     <form action="<?php echo base_url().'ListTransaksi/notatagihan'?>" method="post">
+                           <?php if($data[0]->bayar > 0) {
+                               echo "<center><h4>Pembayaran Selesai</h4></center>";
+                                }else { ?>
                         <div class="form-group row">
-                            <div class="col-sm-4" >
-                                <label>Pembayaran</label>
-                                <input type="hidden" name="id_sewa" value="<?php echo $data[0]->id_sewa;?>">
-                                <input type="number" class="form-control input-sm" id="bayar" name="bayar" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)">
-                                <input type="hidden" class="form-control input-sm" id="bayar2" name="bayar2" style="text-align:right;margin-bottom:5px;" required>
-
+                               <div class="col-sm-6" >
+                                    <b><label>Pembayaran</label></b>
+                                    <input type="hidden" name="id_sewa" value="<?php echo $data[0]->id_sewa;?>">
+                                    <input type="number" class="form-control input-sm" id="bayar" name="bayar" style="text-align:right;margin-bottom:5px;" required onkeypress="return hanyaAngka(event)">
+                                    <input type="hidden" class="form-control input-sm" id="bayar2" name="bayar2" style="text-align:right;margin-bottom:5px;" required>
+                                </div>
+                                <div class="col-sm-6" >
+                                    <b><label>Kembalian</label></b>
+                                    <input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                                </div>
                             </div>
-                            <div class="col-sm-4" >
-                                <label>Kembalian</label>
-                                <input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                            <div >
+                                    <button name="btnTambah" class="btn btn-info btn-lg">Simpan</button>
                             </div>
-                        </div>
-                        <div >
-                                <button name="btnTambah" class="btn btn-info btn-lg">Simpan</button>
-                        </div>
+                          <?php } ?>
                         </form>
 
                                     </div>
                                 </div>
                             </div>
-
                            
                         </div>
                         <div class="row">

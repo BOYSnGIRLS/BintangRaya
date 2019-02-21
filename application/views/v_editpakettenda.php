@@ -8,6 +8,7 @@
                                 <div class="au-card-inner">
                                        <h2 class="title-5 m-b-35">EDIT PAKET TENDA</h2>
                                     <form method="post" action="<?php echo base_url()?>DataBarang/update_pakettenda">
+                                    
                                         <table>
                                             <tr>
                                                 <td width="200" height="50" >Kode Paket</td>
@@ -15,7 +16,7 @@
                                             </tr>
                                             <tr>
                                              <td width="200" height="50">Jenis Tenda</td>
-                                             <td><input class="form-control" type="text" name="jenis_tenda" maxlength="15" value="<?php echo @$user[0]['jenis_tenda']; ?>"></td>
+                                             <td><input class="form-control" type="text" name="jenis_tenda" maxlength="50" value="<?php echo @$user[0]['jenis_tenda']; ?>"></td>
                                             </tr>
                                             <tr>
                                              <td width="200" height="50">Harga Sewa</td>
@@ -41,6 +42,7 @@
                                         
                                     </form>
                          </div>
+                         
                     </div>
 
                         </div>

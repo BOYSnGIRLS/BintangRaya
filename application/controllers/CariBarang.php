@@ -89,6 +89,6 @@ class CariBarang extends CI_Controller {
         $this->session->unset_userdata('tgl_acara1');
         $this->session->unset_userdata('tgl_acara2');
         $this->session->unset_userdata('tgl_bongkar');
-        redirect('DataBarang');
+        redirect('CariBarang');
     }
 }

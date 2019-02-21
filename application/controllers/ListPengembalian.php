@@ -277,7 +277,7 @@ class ListPengembalian extends CI_Controller {
             $biaya = $this->Model_Pengembalian->biaya($kode);
             $this->db->query("UPDATE `sewa` SET `biaya_ganti`='$biaya' WHERE `id_sewa`='$id_sewa'");
 
-            redirect('ListPengembalian');   
+            redirect('ListTransaksi/notatagihan/'.$id_sewa);   
         }
     }
 }

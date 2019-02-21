@@ -123,16 +123,15 @@ class ListTransaksi extends CI_Controller {
 
                 $this->db->query("UPDATE `sewa` SET `bayar`='".$bayar."',`kembalian`='".$kembalian."' WHERE id_sewa='".$kode['kode']."'");
 
-            redirect(base_url('ListTransaksi'));
-
-
+            redirect(base_url('ListTransaksi/notatagihan2/'.$kode['kode']));
             }else{
                 $data = array(
                 'title'=>'Nota Tagihan',
                 'active_listtransaksi'=>'active',
                 'data'=>$this->Model_Laporan->nota_tagihan($id),
                 'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
-                'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
+                'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id),
+                'barang_kembali' => $this->Model_Laporan->get_kembali($id)
             );
             }
             
@@ -158,7 +157,8 @@ class ListTransaksi extends CI_Controller {
                 'active_listtransaksi'=>'active',
                 'data'=>$this->Model_Laporan->nota_tagihan($id),
                 'detail_sewa1' => $this->Model_Laporan->get_sewa1($id),
-                'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id)
+                'detail_sewa2' =>$this->Model_Laporan->get_sewa2($id),
+                'barang_kembali' => $this->Model_Laporan->get_kembali($id)
                 );
             }
             

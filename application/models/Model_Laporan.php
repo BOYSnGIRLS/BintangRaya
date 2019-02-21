@@ -90,6 +90,7 @@ function get_kembali($kode){
     $this->db->join('pengembalian', 'pengembalian.id_kembali=detail_kembali_barang.id_kembali');
     $this->db->join('sewa', 'sewa.id_sewa=pengembalian.id_sewa');
     $this->db->where('pengembalian.id_sewa', $kode);
+    $this->db->where('detail_kembali_barang.hilangrusak > 0');
     $query = $this->db->get();
     return $query->result();
   }
@@ -150,6 +151,7 @@ public function view_by_date2($date){
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
     $this->db->where('status','Selesai');
+    $this->db->or_where('status','Kembali');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('DATE(tgl_acara1)', $date);
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
@@ -163,6 +165,7 @@ public function view_by_month2($month, $year){
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
     $this->db->where('status','Selesai');
+    $this->db->or_where('status','Kembali');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('MONTH(tgl_acara1)', $month); // Tambahkan where bulan
     $this->db->where('YEAR(tgl_acara1)', $year); // Tambahkan where tahun
@@ -177,6 +180,7 @@ public function view_by_year2($year){
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
     $this->db->where('status','Selesai');
+    $this->db->or_where('status','Kembali');
     $this->db->group_by('sewa.id_sewa');
     $this->db->where('YEAR(tgl_acara1)', $year);
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
@@ -190,6 +194,7 @@ public function view_all2(){
     $this->db->join('detail_sewa','sewa.id_sewa=detail_sewa.id_sewa');
     $this->db->join('user', 'sewa.id_user=user.id_user');
     $this->db->where('status','Selesai');
+    $this->db->or_where('status','Kembali');
     $this->db->group_by('sewa.id_sewa');
     $this->db->order_by('sewa.tgl_acara1', 'DESC');
     $query = $this->db->get();
