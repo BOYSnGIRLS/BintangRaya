@@ -3,7 +3,6 @@
 <div class="section__content section__content--p30">
     <div class="container-fluid"> 
 
-     <form id="form_input_detail" action="<?php echo site_url('InputSewa2/inputket');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
@@ -29,7 +28,7 @@
                     <script type="text/javascript">
                         function a(id){
                         var stok = "asas";
-                        var link = '<?php echo base_url('InputSewa/getStokBarang') ; ?>';
+                        var link = '<?php echo base_url('InputSewa2/getStokBarang') ; ?>';
                         $.ajax({
                             type : "POST",
                             url : link,
@@ -47,7 +46,7 @@
                                               
                         $(document).ready(function(){
                             $('#title').autocomplete({
-                            source: "<?php echo site_url().'InputSewa/get_autocomplete/';?>",
+                            source: "<?php echo site_url().'InputSewa2/get_autocomplete/';?>",
                   
                             select: function (event, ui) {
                                 $(this).val(ui.item.label);
@@ -61,7 +60,7 @@
                         });
                     </script>
 
-        <form id="form_search" action="<?php echo site_url('InputSewa/inputdetail');?>" method="POST">
+        <form id="form_search" action="<?php echo site_url('InputSewa2/inputdetail3');?>" method="POST">
             <div class="form-group row">
                 <div class="col-sm-3" >
                     <label  for="nama">Nama Barang:</label>
@@ -145,6 +144,9 @@
                     </tbody>
                 </table>
             </div>
+
+            <a href="<?php echo site_url('InputSewa2/step1');?>"><button class="btn btn-info">Simpan</button> </a>
+            
             <div class="row">
             <div class="col-md-12">
                 <div class="copyright">

@@ -3,7 +3,7 @@
 <div class="section__content section__content--p30">
     <div class="container-fluid"> 
 
-     <form id="form_input_detail" action="<?php echo site_url('InputSewa/inputket');?>" method="POST">
+     <form id="form_input_detail" action="<?php echo site_url('InputSewa2/inputket');?>" method="POST">
         <div class="row">
             <div class="col-lg-12">
                 <div class="au-card m-b-30">
@@ -46,7 +46,8 @@
                       <button class="btn btn-info" name="btnTgl" >Submit</button>
                   </form>
                     </div>
-                    <a href="<?php echo site_url('InputSewa2/step2');?>"><button>Lanjut</button> </a>
+                    <a href="<?php echo site_url('InputSewa2/step1');?>"><button>Lanjut</button> </a>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">

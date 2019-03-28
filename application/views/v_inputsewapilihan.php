@@ -53,17 +53,13 @@
 
                     </div>
 
+            <!-- ------------BUTTON UNTUK PILIH BARANG----------------------------------- -->
+
                     <div>
-                        <button class="btn btn-info">Bijian</button>
-                        <button class="btn btn-info">Meteran</button>
+                        <a href="<?php echo site_url('InputSewa2/step2');?>"><button class="btn btn-info">Bijian</button></a>
+                        <a href="<?php echo site_url('InputSewa2/step3');?>"><button class="btn btn-info">Meteran</button></a>
                     </div>
                     <br>
-
-                    <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
-                    <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
-                    <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
-                    
-        
 
                 <!-- Tampil barang yang disewa -->
             <div class="table-responsive table--no-card m-b-30">
@@ -96,7 +92,22 @@
                         <?php $no++;
                         endforeach; ?>
                         <?php 
-                        foreach ($detail_sewa1 as $items): ?>
+                        foreach ($detail_sewa1biji as $items): ?>
+                        
+                        <tr>
+                            <td><?php echo $no ;?></td>
+                             <td><?=$items->id_barang ;?></td>
+                             <td><?=$items->nama_barang;?></td>
+                             <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
+                             <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
+                             <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                        </tr>
+                        
+                        <?php $no++;
+                        endforeach; ?>
+                        <?php 
+                        foreach ($detail_sewa1meter as $items): ?>
                         
                         <tr>
                             <td><?php echo $no ;?></td>
@@ -224,6 +235,11 @@
    </script>
 
 <!-- Jquery JS-->
+
+    <script src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>" type="text/javascript"></script>
+    <script src="<?php echo base_url().'assets/js/bootstrap.js'?>" type="text/javascript"></script>
+    <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+
     <!-- Bootstrap JS-->
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
