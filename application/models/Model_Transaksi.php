@@ -7,6 +7,16 @@ class Model_Transaksi extends CI_Model{
 	    return $query->result();
 	  }
 
+  function get_sewa1($kode){
+    $this->db->select('*');
+    $this->db->from('detail_sementara');
+    $this->db->join('barang','barang.id_barang=detail_sementara.id');
+    $this->db->where('id_sewa', $kode);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+
 	function get_sewa1biji($kode){
     $this->db->select('*');
     $this->db->from('detail_sementara');

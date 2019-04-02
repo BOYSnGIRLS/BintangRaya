@@ -36,7 +36,7 @@ class InputSewa2 extends CI_Controller {
                 $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
 
                 $this->session->set_flashdata('message', 'TRANSAKSI BERHASIL DISIMPAN');
-                redirect('InputSewa');
+                redirect('InputSewa2');
             }else{
                 $x =$this->Model_Transaksi->get_barang();
                 $title=array(
@@ -47,7 +47,8 @@ class InputSewa2 extends CI_Controller {
 
                 $this->load->view('element/css',$title);
                 $this->load->view('element/v_header');
-                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
+                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1biji($kode['kode']);
+                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1meter($kode['kode']);
                 $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
 
                 $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
@@ -84,7 +85,7 @@ class InputSewa2 extends CI_Controller {
                 $this->db->query("DELETE FROM `detail_sementara` WHERE id_sewa='".$kode['kode']."' ");
 
                 $this->session->set_flashdata('message', 'anda berhasil menginput data');
-                redirect('InputSewa');
+                redirect('InputSewa2');
             }else{
 
 
@@ -97,7 +98,8 @@ class InputSewa2 extends CI_Controller {
 
                 $this->load->view('element/css',$title);
                 $this->load->view('element/v_headerPegawai');
-                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1($kode['kode']);
+                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1biji($kode['kode']);
+                $detail_sewa['detail_sewa1'] = $this->Model_Transaksi->get_sewa1meter($kode['kode']);
                 $detail_sewa['detail_sewa2'] = $this->Model_Transaksi->get_sewa2($kode['kode']);
 
                 $cek = $this->db->query("SELECT * FROM `sementara` WHERE id_sewa='".$kode['kode']."'")->num_rows();
