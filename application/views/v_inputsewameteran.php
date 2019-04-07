@@ -83,11 +83,11 @@
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="nomor">Panjang : </label>
-                    <input class="form-control" type="number" min="0" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
+                    <input class="form-control" type="number" min="0" placeholder="Masukan Jumlah Sewa" type="text" name="panjang" onkeypress="return hanyaAngka(event)">
                 </div>
                 <div class="col-sm-3">
                     <label for="nomor">Lebar : </label>
-                    <input class="form-control" type="number" min="0" placeholder="Masukan Jumlah Sewa" type="text" name="jumlah_sewa" onkeypress="return hanyaAngka(event)">
+                    <input class="form-control" type="number" min="0" placeholder="Masukan Jumlah Sewa" type="text" name="lebar" onkeypress="return hanyaAngka(event)">
                 </div>
             </div>
             <button class="btn btn-info" type="submit">Submit&nbsp;</button>
@@ -121,7 +121,7 @@
                              <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_hargatenda;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                         </tr>
                         
                         <?php $no++;
@@ -136,7 +136,7 @@
                              <td style="text-align:center;"><?php echo number_format($items->jumlah_barang);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_sewa);?></td>
                              <td style="text-align:right;"><?php echo number_format($items->harga_total);?></td>
-                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'InputSewa2/remove/'.$items->id_barang;?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                         </tr>
                         
                         <?php $no++;

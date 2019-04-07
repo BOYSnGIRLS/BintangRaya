@@ -23,29 +23,29 @@
                         </div>
                         <div class="col-sm-4" >
                             <label  for="nama">Nama Penyewa:</label>
-                            <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>" required>
+                            <input class="form-control" placeholder="Masukan Nama" type="text" name="nama_pelanggan" value="<?php if(isset($data)) { echo $data[0]->nama_pelanggan; } ?>" readonly>
                         </div>
                         <div class="col-sm-4">
                             <label for="nomor">Nomor Telepon: </label>
-                            <input class="form-control" placeholder="Masukan Nomor" type="number"  maxlength="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" required>
+                            <input class="form-control" placeholder="Masukan Nomor" type="number"  maxlength="15" min="0" name="no_telp" value="<?php if(isset($data)) { echo $data[0]->telp_pelanggan; } ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-4">
                         <label for="alamat">Alamat Lengkap:</label>
-                        <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>" required>
+                        <input class="form-control" type="textarea" name="alamat" value="<?php if(isset($data)) { echo $data[0]->alamat_pelanggan; } ?>" readonly>
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Tanggal Acara Mulai:</label>
                         <input type="hidden" name="tgl_pasang" value="<?php if(isset($data)) { echo $data[0]->tgl_pasang; } ?>" readonly >
-                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" required>
+                       <input class="form-control" type="date" name="tgl_acara1" value="<?php if(isset($data)) { echo $data[0]->tgl_acara1; } ?>" readonly>
                       </div>
 
                       <div class="col-sm-3">
                         <label for="tgl">Selesai :</label>
-                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" required>
+                        <input class="form-control" type="date" name="tgl_acara2" value="<?php if(isset($data)) { echo $data[0]->tgl_acara2; } ?>" readonly>
                       </div>
                       
                   </form>

@@ -288,12 +288,16 @@ class InputSewa2 extends CI_Controller {
             $id_sewa = $this->input->post('id_sewa');
             $id_barang = $this->input->post('id_barang');
             $harga=$this->input->post('harga_sewa');
-            $jumlah = $this->input->post('jumlah_sewa');
-            $total = $harga*$jumlah;
+
+            $panjang = $this->input->post('panjang');
+            $lebar = $this->input->post('lebar');
+            $luas = $panjang * $lebar;
+
+            $total = $harga*$luas;
             $cek = $this->db->query("SELECT * FROM `detail_sementara` WHERE id_sewa='".$id_sewa."' AND id='".$id_barang."'")->num_rows();
             if($cek >= 1){
-                    $this->db->query("UPDATE `detail_sementara` SET `jumlah_barang`=jumlah_barang+'$jumlah',`harga_total`=harga_total+'$total' WHERE id_sewa='$id_sewa' AND id='$id_barang'");
-                    redirect('InputSewa/index');
+                    $this->db->query("UPDATE `detail_sementara` SET `jumlah_barang`=jumlah_barang+'$luas',`harga_total`=harga_total+'$total' WHERE id_sewa='$id_sewa' AND id='$id_barang'");
+                    redirect('InputSewa2/step1');
                 }
                 
                 
@@ -303,7 +307,7 @@ class InputSewa2 extends CI_Controller {
                     'id_sewa' => $id_sewa,
                     'id' => $id_barang,
                     'harga_sewa' => $harga,
-                    'jumlah_barang' => $jumlah,
+                    'jumlah_barang' => $luas,
                     'harga_total' => $total,
                 );
                     
